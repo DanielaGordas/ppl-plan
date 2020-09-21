@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  token: MyString
+  postal_code: MyString
+  age: MyString
+  gender: MyString
+
+two:
+  token: MyString
+  postal_code: MyString
+  age: MyString
+  gender: MyString

@@ -1,0 +1,2 @@
+class GuestsController < ApiController
+end
