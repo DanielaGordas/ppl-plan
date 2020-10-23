@@ -1,13 +1,18 @@
 {
-    "name": "list-of-ingredients",
-    "license": "MIT",
-    "engines": {
-      "node": "10.15.3",
-      "yarn": "1.15.2"
-    },
-    "scripts": {
-      "build": "yarn --cwd client install && yarn --cwd client build",
-      "deploy": "cp -a client/build/. public/",
-      "heroku-postbuild": "yarn build && yarn deploy"
-    }
+  "name": "list-of-ingredients",
+  "license": "MIT",
+  "engines": {
+    "node": "10.20.0",
+    "yarn": "1.22.5"
+  },
+  "scripts": {
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1",
+    "react-responsive-carousel": "^3.2.10",
+    "react-router-dom": "^5.2.0"
   }
+}
