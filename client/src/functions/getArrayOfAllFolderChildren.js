@@ -4,8 +4,6 @@ const context = require.context('../../src/images/infographics-carousel', true, 
 pass the folder path, and an optional regex (otherwise just pass /./)
 */
 
-
-
 const getArrayOfAllFolderChildren = (requireContext) => {
   const context = requireContext;
   const images = context.keys();
