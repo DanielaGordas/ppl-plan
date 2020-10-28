@@ -2,30 +2,18 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import classes from '../styles/components/infographics-carousel.module.scss';
+import getArrayOfAllFolderChildren from '../functions/getArrayOfAllFolderChildren';
 
 
 const InfographicsCarousel = () => {
-  const imagesContext = require.context('../../src/images/infographics-carousel', true, /\.jpg$/);
-  const images = imagesContext.keys();
-  const joinedPaths = [];
-  images.forEach(i => {
-    joinedPaths.push(imagesContext(i));
-  });
+  const context = require.context('../../src/images/infographics-carousel', true, /\.jpg$/);
+  const images = getArrayOfAllFolderChildren(context);
 
   return (
     <Carousel className={classes.Carousel}>
-      <div>
-        <img src={joinedPaths[1]} />
-        <p className="legend">Legend 1</p>
-      </div>
-      <div>
-        <img src={joinedPaths[0]} />
-        <p className="legend">Legend 2</p>
-      </div>
-      <div>
-        <img src={joinedPaths[2]} />
-        <p className="legend">Legend 3</p>
-      </div>
+      {images.map(image => (
+        <img src={image}/>
+      ))}
     </Carousel>
   )
 }
