@@ -13,16 +13,19 @@ class ExamplePage extends Component {
     this.getTopics()
   }
 
-  fetch(endpoint) {
-    return window.fetch(endpoint)
-      .then(response => response.json())
-      .catch(error => console.log(error))
+  async fetch(endpoint) {
+    try {
+      const response = await window.fetch(endpoint)
+      return await response.json()
+    } catch (error) {
+      return console.log(error)
+    }
   }
 
   getTopics() {
     this.fetch('/api/topics')
       .then(topics => {
-        if (topics.length) {
+        if (topics.length > 0 ) {
           this.setState({ topics: topics })
           this.getTopic(topics[0].id)
         } else {

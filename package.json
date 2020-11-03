@@ -1,9 +1,9 @@
 {
-  "name": "list-of-ingredients",
+  "name": "ppl-plan",
   "license": "MIT",
   "engines": {
-    "node": "10.20.0",
-    "yarn": "1.22.5"
+    "node": "15.0.1",
+    "yarn": "1.22.10"
   },
   "scripts": {
     "build": "yarn --cwd client install && yarn --cwd client build",
@@ -11,6 +11,7 @@
     "heroku-postbuild": "yarn build && yarn deploy"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "node-sass": "^4.14.1",
     "react-responsive-carousel": "^3.2.10",
     "react-router-dom": "^5.2.0"
