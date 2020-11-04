@@ -29,7 +29,6 @@ const Topic = ( {match} ) => {
         <div className={classes.Topic} >
             <h4>{topic.title}</h4>
             <InfographicsCarousel />
-            <h4>GAME</h4>
             <Link to="/game"><button>Go to Game</button></Link>
         </div>
     )

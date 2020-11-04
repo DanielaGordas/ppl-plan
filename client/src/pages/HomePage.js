@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/components/button.scss'
+import classes from '../styles/pages/home.module.scss';
+import logo from '../images/logo-tagline.jpg'; 
 
 const HomePage = () => {
     return(
-        <div>
-            <h1>Home Page</h1>
-            <Link to={'/user'}><button>Let's Go</button></Link>
+        <div className={classes.Home}>
+            <img className={classes.HomeImg} src={logo} alt="logo"/>
+            <Link to={'/user'}><button className="Btn">Let's Go</button></Link>
         </div>
     )
 }
