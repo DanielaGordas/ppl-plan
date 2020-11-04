@@ -1,8 +1,20 @@
 .UserPage {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
+    margin-top: 2rem;
+}
+
+.UserPageContent {
+    margin: 2rem;
+    text-align: justify;
+    text-justify: left;
+    margin-top: 2rem;
+}
+
+.UserPageContent h4 {
+    background: #F0F0F0;
+    padding: 1rem;
 }
 
 .UserPageImg {
