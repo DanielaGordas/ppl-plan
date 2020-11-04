@@ -1,6 +1,5 @@
 // component that contains each topic 
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from '../styles/components/topic.module.scss';
 import InfographicsCarousel from './InfographicsCarousel';
 import Box from './Box';
@@ -21,11 +20,10 @@ const cards = [
   {id: 10, name: 'Improved public transport services', description: 'Measures including bus route optimisation and reclaiming roads for dedicated bus/tram lanes in cities can improve the frequency, efficiency and reliability of current public transport options.', selected: false, icon: <FaTram/>},
 ]
 
-const Topic = ({topic}) => {
-
+const Topic = ( {topic} ) => {
 
     return(
-        <div className={classes.Topic} key={topic.id}>
+        <div className={classes.Topic} >
             <h4>{topic.title}</h4>
             <p>{topic.description}</p>
             <InfographicsCarousel />
