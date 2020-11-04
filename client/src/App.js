@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './styles/components/layout.module.scss';
+import classes from './App.scss';
 import TopicsList from './components/TopicsList';
 import Topic from './components/Topic';
 import Box from './components/Box';

@@ -37,6 +37,7 @@ const Box = () => {
 
     return(
         <div>
+            <h3>Choose 5 options that you consider important from below</h3>
             <div className={classes.Box}>
                 {cards.map(card => (
                     <Card key={card.id} {...card} updateSelected={updateSelected} />
