@@ -27,9 +27,11 @@ const Topic = ( {match} ) => {
 
     return(
         <div className={classes.Topic} >
-            <h4>{topic.title}</h4>
+
+            <h2>{topic.title}</h2>
+            <p>Can we create a clean future?</p>
             <InfographicsCarousel />
-            <Link to="/game"><button>Go to Game</button></Link>
+            <Link to="/game"><button className="Btn">Launch Challenge</button></Link>
         </div>
     )
 }

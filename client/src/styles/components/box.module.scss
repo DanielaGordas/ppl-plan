@@ -4,6 +4,12 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     color: #232226;
+}
+
+.BoxWrapper {
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
 }
