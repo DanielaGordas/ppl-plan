@@ -43,6 +43,7 @@ const Box = () => {
                     <Card key={card.id} {...card} updateSelected={updateSelected} />
                 ))}
             </div>
+            <button className="Btn">Complete!</button>
         </div>
     )
 }
