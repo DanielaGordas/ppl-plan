@@ -10,12 +10,9 @@ class SurveysController < ApiController
 		render json: @survey.to_json(:include => { :topics => { :only => [:id, :description] }})
 	end
 
-	def new
-
-  end
-
-  # To be implemented once we have the app flow
-  def create
-  end
+	# To be implemented once we have the app flow
+	def create
+		@guest = guest_user
+	end
 
 end
