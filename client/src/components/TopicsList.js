@@ -1,7 +1,7 @@
 // component that contains the list of topics from the API
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Topic from './Topic';
+import UserDataCollection from '../pages/UserDataCollection';
 
 const TopicsList = props => {
     
@@ -18,9 +18,7 @@ const TopicsList = props => {
     return (
         <div>
           <div className="topics-list">
-            {topics.map(topic => (
-              < Topic topic={topic} key={topic.id}/>
-            ))}
+            < UserDataCollection topics={topics} />
           </div>
         </div>
     )
