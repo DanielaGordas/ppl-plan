@@ -1,5 +1,4 @@
 // component that contains the list of topics from the API
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Topic from './Topic';
@@ -20,7 +19,7 @@ const TopicsList = props => {
         <div>
           <div className="topics-list">
             {topics.map(topic => (
-              < Topic topic={topic}/>
+              < Topic topic={topic} key={topic.id}/>
             ))}
           </div>
         </div>
