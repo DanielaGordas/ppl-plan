@@ -10,7 +10,7 @@ const HomePage = () => {
         <div className={classes.Home}>
             <img className={classes.HomeImg} src={logo} alt="logo"/>
             <img className={classes.HomeImg} src={windmill} alt="windmill"/>
-            <Link to={'/user'}><button className="Btn">Let's Go</button></Link>
+            <Link to="/user"><button>Start</button></Link>
         </div>
     )
 }
