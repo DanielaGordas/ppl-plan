@@ -16,7 +16,6 @@ const UserDataCollection = ({ topics }) => {
 
     const addUser = guest => {
         const qs = require('qs');
-        console.log(guest);
       
         axios.post('/api/guests', qs.stringify(
             {
