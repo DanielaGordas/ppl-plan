@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/components/button.scss'
+import '../styles/components/button.scss';
 import NewUserForm from '../components/NewUserForm';
 import classes from '../styles/pages/user.module.scss';
 import megaphone from '../images/megaphone.jpg'; 
@@ -15,6 +15,7 @@ const UserDataCollection = ({ topics }) => {
     };
 
     const addUser = guest => {
+        
         const qs = require('qs');
       
         axios.post('/api/guests', qs.stringify(
@@ -27,6 +28,7 @@ const UserDataCollection = ({ topics }) => {
             .then(res=>( console.log(res)))
             .catch( error => console.log(error))
     };
+
 
     return(
         <div className={classes.UserPage}>
