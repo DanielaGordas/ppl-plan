@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   scope '/api' do
-    resources :guests, only: [:index, :create, :update]
-    resources :surveys, only: [:create]
+    resources :guests, only: [:index, :show, :create, :update]
     resources :topics, only: [:index, :show]
+    resources :games, only: [:index, :show]
+    resources :answers, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

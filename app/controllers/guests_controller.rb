@@ -3,6 +3,10 @@ class GuestsController < ApiController
         @guests = Guest.all
         render json: @guests
     end
+
+    def show
+        @guest = guest_user
+    end
      
     def create
         @guest = guest_user
