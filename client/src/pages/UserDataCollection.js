@@ -32,6 +32,7 @@ const UserDataCollection = ()=> {
             .catch(error => console.log(error))
     };
 
+    
     //retrieves the guest object from local storage
     const guestDetails = JSON.parse(window.localStorage.getItem('guest'));
 
