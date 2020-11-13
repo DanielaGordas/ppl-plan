@@ -14,6 +14,8 @@ const UserDataCollection = ()=> {
         postal_code:''
     };
 
+    // function that sends a post request to the API with the guest user details from the form
+    // this will trigger the create method in the guests_controller.rb 
     const addUser = guest => {
         
         const qs = require('qs');
@@ -26,22 +28,20 @@ const UserDataCollection = ()=> {
                 gender: guest.gender,
                 postal_code: guest.postal_code}
             }))
-            .then(res => console.log(res.data))
+            .then(res => setGuest(res.data))
             .catch(error => console.log(error))
     };
 
-    // const [user, setUser] = useState({})
+    // when the guest user is created it also persists in local storage so we can pass it to the game components
 
-    // function that gets the user data from the API
-    // const getUser = id => {
-    //     const url = `/api/guests/${id}`
-    //     axios.get(url)
-    //         .then(res => setUser(res.data))
-    //         .catch( error => console.log(error))
-    // }
+    const guestDetails = JSON.parse(window.localStorage.getItem('guest'));
 
-    // console.log(user);
+    const [guest, setGuest] = useState(guestDetails || {})
 
+    useEffect(() => {
+        window.localStorage.setItem('guest', JSON.stringify(guest));
+    }, [guest])
+    
     return(
         <div className={classes.UserPage}>
             <img src={megaphone} alt="megaphone" className={classes.UserPageImg}/>
