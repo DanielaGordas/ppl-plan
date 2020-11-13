@@ -1,4 +1,4 @@
-class GamesController < ApplicationController
+class GamesController < ApiController
   
   # GET api/games
   def index

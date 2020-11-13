@@ -6,8 +6,9 @@ class GuestsController < ApiController
 
     def show
         @guest = guest_user
+        render json: @guest
     end
-     
+    
     def create
         @guest = guest_user
         @guest.update(guest_params)
