@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/components/button.scss';
 import NewUserForm from '../components/NewUserForm';
@@ -6,7 +6,7 @@ import classes from '../styles/pages/user.module.scss';
 import megaphone from '../images/megaphone.jpg'; 
 import axios from 'axios';
 
-const UserDataCollection = ({ topics }) => {
+const UserDataCollection = ()=> {
 
     const initialFormState = {
         age:'',
@@ -18,6 +18,7 @@ const UserDataCollection = ({ topics }) => {
         
         const qs = require('qs');
       
+        // post request that creates an instance of guest user
         axios.post('/api/guests', qs.stringify(
             {
               guest:{
@@ -25,10 +26,21 @@ const UserDataCollection = ({ topics }) => {
                 gender: guest.gender,
                 postal_code: guest.postal_code}
             }))
-            .then(res=>( console.log(res)))
-            .catch( error => console.log(error))
+            .then(res => console.log(res.data))
+            .catch(error => console.log(error))
     };
 
+    // const [user, setUser] = useState({})
+
+    // function that gets the user data from the API
+    // const getUser = id => {
+    //     const url = `/api/guests/${id}`
+    //     axios.get(url)
+    //         .then(res => setUser(res.data))
+    //         .catch( error => console.log(error))
+    // }
+
+    // console.log(user);
 
     return(
         <div className={classes.UserPage}>
@@ -40,7 +52,7 @@ const UserDataCollection = ({ topics }) => {
                 <NewUserForm addUser={addUser} initialFormState={initialFormState}/>
                 </div>
             </div>
-            <Link to={`/topics/1`}><button className="Btn">Start</button></Link>
+            <Link to="/game/lowcarbon"><button className="Btn">Start</button></Link>
         </div>
     )
 }
