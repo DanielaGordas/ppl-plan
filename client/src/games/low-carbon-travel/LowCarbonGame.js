@@ -35,7 +35,7 @@ const LowCarbonGame = () => {
 
         const qs = require('qs');
 
-        if(guestAnswerArray !== []) {
+        if(guestAnswerArray !== [] && guestDetails) {
             guestAnswerArray.forEach(answer => {
                 axios.post('/api/guest_answers', qs.stringify(
                     {
