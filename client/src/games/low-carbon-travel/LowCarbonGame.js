@@ -4,7 +4,8 @@ import Card from '../../components/Card';
 import axios from 'axios';
 import classes from '../../styles/components/box.module.scss';
 
-const LowCarbonGame = () => {
+
+const LowCarbonGame = (name) => {
 
     const [answers, setAnswers] = useState([]);
 
@@ -40,12 +41,13 @@ const LowCarbonGame = () => {
         setAnswers(newAnswers);
     }
 
+
     return(
         <div className={classes.BoxWrapper}>
             <h3>Choose 5 policies that you would like to see implemented:</h3>
             <div className={classes.Box}>
                 {answers.map(answer => (
-                    <Card key={answer.id} {...answer} updateSelected={updateSelected} />
+                    <Card key={answer.id} {...answer} updateSelected={updateSelected} name="Card" />
                 ))}
             </div>
             <button className="Btn">Complete!</button>
