@@ -6,9 +6,10 @@ import classes from '../../styles/components/box.module.scss';
 
 const LowCarbonGame = () => {
     // retrieves answers from Local Storage
-
     const guestAnswers = JSON.parse(window.localStorage.getItem('answers'));
     const [answers, setAnswers] = useState(guestAnswers || []);
+
+    // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
 
     // fetch all answers for game with id 1 from the API
