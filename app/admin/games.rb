@@ -1,5 +1,5 @@
 ActiveAdmin.register Game do
-  permit_params :name, :description
+  permit_params :name, :description, :instructions
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

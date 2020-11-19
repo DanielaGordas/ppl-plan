@@ -1,3 +1,3 @@
-export const itemTypes = {
-  CARD: 'card'
-}
+// export const ItemTypes = {
+//   CARD: 'card'
+// }
