@@ -31,12 +31,13 @@ const UserDataCollection = ()=> {
             .then(res => setGuest(res.data))
             .catch(error => console.log(error))
     };
-
-    // when the guest user is created it also persists in local storage so we can pass it to the game components
-
+    
+    //retrieves the guest object from local storage
     const guestDetails = JSON.parse(window.localStorage.getItem('guest'));
 
     const [guest, setGuest] = useState(guestDetails || {})
+
+    // stores the guest object in local storage
 
     useEffect(() => {
         window.localStorage.setItem('guest', JSON.stringify(guest));
