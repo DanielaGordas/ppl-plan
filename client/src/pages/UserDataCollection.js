@@ -31,7 +31,6 @@ const UserDataCollection = ()=> {
             .then(res => setGuest(res.data))
             .catch(error => console.log(error))
     };
-
     
     //retrieves the guest object from local storage
     const guestDetails = JSON.parse(window.localStorage.getItem('guest'));
@@ -39,6 +38,7 @@ const UserDataCollection = ()=> {
     const [guest, setGuest] = useState(guestDetails || {})
 
     // stores the guest object in local storage
+
     useEffect(() => {
         window.localStorage.setItem('guest', JSON.stringify(guest));
     }, [guest])
