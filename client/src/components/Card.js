@@ -1,23 +1,44 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 import classes from '../styles/components/card.module.scss';
+import {Draggable} from 'react-beautiful-dnd';
 
-const Card = ({id, title, description, selected, updateSelected, index}) => {
+const Card = ({item, index}) => {
 
-    const change = () => updateSelected(id, !selected);
+    // const change = () => updateSelected(item.id, !item.selected);
 
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
 
-    const openModal = () => setShow(true);  
+    // const openModal = () => setShow(true);  
 
-    const closeModal = () => setShow(false);
+    // const closeModal = () => setShow(false);
  
     return(
-        <div className={classes.Card} style={{border: selected ? '1px solid red': '1px solid grey'}}>
-            <div onClick={openModal} className={classes.CardIcon}>{id}</div>
-            { show? < Modal title={title} description={description} selected={selected} change={change} show={show} closeModal={closeModal} /> : null }
-        </div>
+        <Draggable draggableId={item.id.toString()} index={index}>
+            {(provided, snapshot) => {
+                return(
+                    <div 
+                        className={classes.Card}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                        style={{
+                            border: item.selected ? '1px solid red': '1px solid grey',
+                            userSelect: 'none',
+                            backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
+                            ...provided.draggableProps.style
+
+                        }}
+                    >
+                        {item.id}
+                        {provided.placeholder}
+                    </div>
+                )
+            }}
+        </Draggable>
     )
 }
 
 export default Card;
+
+/* { show? < Modal title={title} description={description} selected={selected} change={change} show={show} closeModal={closeModal} /> : null } */

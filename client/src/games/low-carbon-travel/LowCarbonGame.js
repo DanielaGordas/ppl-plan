@@ -1,13 +1,28 @@
 // Component that contains the cards of the game
 import React, { useState, useEffect } from 'react';
-import Card from '../../components/Card';
+import Box from '../../components/Box';
 import axios from 'axios';
 import classes from '../../styles/components/box.module.scss';
+import {DragDropContext} from 'react-beautiful-dnd';
+import { v4 as uuidv4 } from 'uuid';
 
 const LowCarbonGame = () => {
     // retrieves answers from Local Storage
     const guestAnswers = JSON.parse(window.localStorage.getItem('answers'));
     const [answers, setAnswers] = useState(guestAnswers || []);
+
+    const initialBoxes = {
+        [uuidv4()]: {
+            name: 'InitialOptions',
+            items: answers
+        },
+
+        [uuidv4()]: {
+            name: 'SelectedOptions',
+            items: []
+        }
+    }
+    const [boxes, setBoxes] = useState(initialBoxes);
 
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
@@ -24,12 +39,14 @@ const LowCarbonGame = () => {
         window.localStorage.setItem('answers', JSON.stringify(answers));
     }, [answers])
 
-    // saves selected answers to a new array
     const guestAnswerArray = [];
-    answers.map(answer => {
-        if(answer.selected === true)
-            guestAnswerArray.push(answer)
-    })
+    // saves selected answers to a new array
+    useEffect(() => {
+        answers.map(answer => {
+            if(answer.selected === true)
+                guestAnswerArray.push(answer)
+        })
+    }, [answers])
 
     // saves guest_answers to the DB     
     const submitAnswers = () => {
@@ -62,14 +79,61 @@ const LowCarbonGame = () => {
         setAnswers(newAnswers);
     }
 
+    // handles the end of drag event inside each box and also from one box to the other
+    const onDragEnd = (result, boxes, setBoxes) => {
+        if(!result.destination) return;
+        const {source, destination} = result;
+        if(source.droppableId !== destination.droppableId) {
+            const sourceBox = boxes[source.droppableId];
+            const destBox = boxes[destination.droppableId];
+            const sourceItems = [...sourceBox.items];
+            const destItems = [...destBox.items];
+            // to be implemented: change selected when dragging and
+            // destItems.map(item => item.selected = !item.selected)
+            const [removed] = sourceItems.splice(source.index, 1);
+            destItems.splice(destination.index, 0, removed);
+            setBoxes({
+                ...boxes,
+                [source.droppableId] : {
+                    ...sourceBox,
+                    items: sourceItems
+                },
+                [destination.droppableId] : {
+                    ...destBox,
+                    items: destItems
+                }
+            })
+        } else {
+            const box = boxes[source.droppableId];
+            const copiedItems = [...box.items];
+            const [removed] = copiedItems.splice(source.index, 1);
+            copiedItems.splice(destination.index, 0, removed);
+            setBoxes({
+                ...boxes,
+                [source.droppableId]: {
+                    ...box,
+                    items: copiedItems
+                }
+    
+            })
+        }
+    };
+
     return(
         <div className={classes.BoxWrapper}>
             <h3>Choose 5 policies that you would like to see implemented:</h3>
-                <div className={classes.Box}>
+            <DragDropContext onDragEnd={result => onDragEnd(result, boxes, setBoxes)}>
+                {Object.entries(boxes).map(([id, box]) => {
+                    return(
+                        <Box id={id} items={box.items} key={id}/>
+                    )
+                })}
+                {/* <div className={classes.Box}>
                     {answers.map((answer, index) => (
                         <Card key={answer.id} {...answer} index={index} updateSelected={updateSelected} />
                         ))}
-                </div>
+                </div> */}
+            </DragDropContext>
             <button className="Btn" onClick={submitAnswers}>Complete!</button>
         </div>
     )
