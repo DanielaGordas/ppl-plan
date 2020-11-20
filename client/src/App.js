@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './App.scss';
 import HomePage from './pages/HomePage';
+import NotFound from './components/NotFound';
 import UserDataCollection from './pages/UserDataCollection';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LowCarbonGame from './games/low-carbon-travel/LowCarbonGame';
@@ -16,6 +17,9 @@ const App = () => {
                               <Route path="/user" component={UserDataCollection}/>
                               <Route path="/game/lowcarbon">
                                     <LowCarbonGame />
+                              </Route>
+                              <Route>
+                                    <NotFound />
                               </Route>
                         </Switch>     
                   </div>
