@@ -13,10 +13,16 @@ const UserDataCollection = ()=> {
         gender:'',
         postal_code:''
     };
-
+    const [council, setCouncil] = useState()
     // function that sends a post request to the API with the guest user details from the form
     // this will trigger the create method in the guests_controller.rb 
     const addUser = guest => {
+
+        const postalCode = guest.postal_code;
+
+        axios.get(`https://api.postcodes.io/postcodes/${postalCode}`)
+        .then(res => setCouncil(res.data.result.admin_district))
+        .catch(err => console.log(err))
         
         const qs = require('qs');
       
@@ -26,7 +32,9 @@ const UserDataCollection = ()=> {
               guest:{
                 age: guest.age,
                 gender: guest.gender,
-                postal_code: guest.postal_code}
+                postal_code: guest.postal_code,
+                council: council
+                }
             }))
             .then(res => setGuest(res.data))
             .catch(error => console.log(error))
@@ -42,6 +50,10 @@ const UserDataCollection = ()=> {
     useEffect(() => {
         window.localStorage.setItem('guest', JSON.stringify(guest));
     }, [guest])
+
+    console.log(guest);
+
+    // To do: decide how to persist this in the DB. Either as a separate model with the name and guest_id or as a column in the guests table
     
     return(
         <div className={classes.UserPage}>
