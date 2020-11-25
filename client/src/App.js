@@ -15,7 +15,7 @@ const App = () => {
                         <Switch>
                               <Route path="/" exact component={HomePage} />
                               <Route path="/user" component={UserDataCollection}/>
-                              <Route path="/game/lowcarbon">
+                              <Route path="/lowcarbon">
                                     <LowCarbonGame />
                               </Route>
                               <Route>

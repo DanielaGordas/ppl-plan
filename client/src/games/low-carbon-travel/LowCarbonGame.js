@@ -4,7 +4,7 @@ import Box from '../../components/Box';
 import axios from 'axios';
 import classes from '../../styles/components/box.module.scss';
 import {DragDropContext} from 'react-beautiful-dnd';
-import { v4 as uuidv4 } from 'uuid';
+import { Switch, Route } from 'react-router-dom';
 
 const LowCarbonGame = () => {
     // retrieves answers from Local Storage
@@ -115,17 +115,34 @@ const LowCarbonGame = () => {
     };
 
     return(
-        <div className={classes.BoxWrapper}>
-            <h3>Choose 5 policies that you would like to see implemented:</h3>
-            <DragDropContext onDragEnd={result => onDragEnd(result, boxes, setBoxes)}>
-                {Object.entries(boxes).map(([id, box]) => {
-                    return(
-                        <Box id={id} items={box.items} key={id} isDropDisabled={isDropDisabled}/>
-                    )
-                })}
-            </DragDropContext>
-            <button className="Btn" onClick={submitAnswers}>Complete!</button>
-        </div>
+        <Switch>
+            <Route exact path="/lowcarbon">
+                <div>
+                    <h1>Infographics for lowcarbon travel</h1>
+                </div>
+            </Route>
+            <Route path="/lowcarbon/intro">
+                <div>
+                    <h1>Intro to lowcarbon game</h1>
+                </div>
+            </Route>
+            <Route path="/lowcarbon/game">
+                <div className={classes.BoxWrapper}>
+                    <h3>Choose 5 policies that you would like to see implemented:</h3>
+                    <DragDropContext onDragEnd={result => onDragEnd(result, boxes, setBoxes)}>
+                        {Object.entries(boxes).map(([id, box]) => {
+                            return(
+                                <Box id={id} items={box.items} key={id}/>
+                            )
+                        })}
+                    </DragDropContext>
+                    <button className="Btn" onClick={submitAnswers}>Complete!</button>
+                </div>
+            </Route>
+            <Route path="/lowcarbon/result">
+                <h1>result badges for lowcarbon game</h1>
+            </Route>
+        </Switch>
     )
 }
 
