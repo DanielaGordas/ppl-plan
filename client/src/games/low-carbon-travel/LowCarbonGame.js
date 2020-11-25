@@ -89,6 +89,7 @@ const LowCarbonGame = () => {
             const destBox = boxes[destination.droppableId];
             const sourceItems = [...sourceBox.items];
             const destItems = [...destBox.items];
+            console.log(sourceItems);
             const [removed] = sourceItems.splice(source.index, 1);
             destItems.splice(destination.index, 0, removed);
             // changes the selected field from true to false and viceversa
@@ -120,8 +121,6 @@ const LowCarbonGame = () => {
             })
         }
     };
-
-    console.log(answers);
 
     return(
         <div className={classes.BoxWrapper}>
