@@ -132,7 +132,7 @@ const LowCarbonGame = () => {
                     <DragDropContext onDragEnd={result => onDragEnd(result, boxes, setBoxes)}>
                         {Object.entries(boxes).map(([id, box]) => {
                             return(
-                                <Box id={id} items={box.items} key={id}/>
+                                <Box id={id} items={box.items} key={id} isDropDisabled={isDropDisabled}/>
                             )
                         })}
                     </DragDropContext>
