@@ -12,17 +12,18 @@ const LowCarbonGame = () => {
     const [answers, setAnswers] = useState(guestAnswers || []);
 
     const initialBoxes = {
-        [uuidv4()]: {
+        "1": {
             name: 'InitialOptions',
             items: answers
         },
 
-        [uuidv4()]: {
+        "2": {
             name: 'SelectedOptions',
             items: []
         }
     }
     const [boxes, setBoxes] = useState(initialBoxes);
+    const [selectedBox, setSelectedBox] = useState(boxes["2"]);
 
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
@@ -69,15 +70,15 @@ const LowCarbonGame = () => {
     }
 
     // function that handles the selected key of each object in the cards array 
-    const updateSelected = (id, newSelected) => {
-        const newAnswers = answers.map(answer => {
-            if(answer.id === id){
-                return {...answer, selected: newSelected}
-            }
-            return answer;
-        })
-        setAnswers(newAnswers);
-    }
+    // const updateSelected = (item) => {
+    //     const newAnswers = answers.map(answer => {
+    //         if(answer.id === item.id){
+    //             return {...answer, selected: !item.selected}
+    //         }
+    //         return answer;
+    //     })
+    //     setAnswers(newAnswers);
+    // }
 
     // handles the end of drag event inside each box and also from one box to the other
     const onDragEnd = (result, boxes, setBoxes) => {
@@ -88,10 +89,10 @@ const LowCarbonGame = () => {
             const destBox = boxes[destination.droppableId];
             const sourceItems = [...sourceBox.items];
             const destItems = [...destBox.items];
-            // to be implemented: change selected when dragging and
-            // destItems.map(item => item.selected = !item.selected)
             const [removed] = sourceItems.splice(source.index, 1);
             destItems.splice(destination.index, 0, removed);
+            // changes the selected field from true to false and viceversa
+            removed.selected = !removed.selected;
             setBoxes({
                 ...boxes,
                 [source.droppableId] : {
@@ -103,6 +104,7 @@ const LowCarbonGame = () => {
                     items: destItems
                 }
             })
+
         } else {
             const box = boxes[source.droppableId];
             const copiedItems = [...box.items];
@@ -119,6 +121,8 @@ const LowCarbonGame = () => {
         }
     };
 
+    console.log(answers);
+
     return(
         <div className={classes.BoxWrapper}>
             <h3>Choose 5 policies that you would like to see implemented:</h3>
@@ -128,11 +132,6 @@ const LowCarbonGame = () => {
                         <Box id={id} items={box.items} key={id}/>
                     )
                 })}
-                {/* <div className={classes.Box}>
-                    {answers.map((answer, index) => (
-                        <Card key={answer.id} {...answer} index={index} updateSelected={updateSelected} />
-                        ))}
-                </div> */}
             </DragDropContext>
             <button className="Btn" onClick={submitAnswers}>Complete!</button>
         </div>
