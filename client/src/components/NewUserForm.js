@@ -1,17 +1,17 @@
 import React from 'react';
 import { useForm  } from "react-hook-form";
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const NewUserForm = props => {
 
     const { register, handleSubmit, errors} = useForm(props.initialFormState);
-    let history = useHistory();
+    // let history = useHistory();
 
     const onSubmit = data => {
   
         props.addUser(data)
 
-        history.push("/lowcarbon");
+        // history.push("/lowcarbon");
         
       }; 
 
