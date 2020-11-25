@@ -4,16 +4,17 @@ import {Droppable} from 'react-beautiful-dnd';
 import Card from './Card';
 
 
-const Box = ({id, items}) => {
+const Box = ({id, items, isDropDisabled}) => {
     return(
         <div>
-            <Droppable droppableId={id} direction="horizontal">
+            <Droppable droppableId={id} direction="horizontal" isDropDisabled={isDropDisabled}>
                 {(provided, snapshot) => {
                     return(
                         <div
                         className={classes.Box}
                         {...provided.droppableProps}
                         ref={provided.innerRef}
+
                         style={{
                             background: snapshot.isDraggingOver ? 'lightblue' : 'lightgrey'
                         }}

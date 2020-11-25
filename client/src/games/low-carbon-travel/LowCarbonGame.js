@@ -23,7 +23,8 @@ const LowCarbonGame = () => {
         }
     }
     const [boxes, setBoxes] = useState(initialBoxes);
-    const [selectedBox, setSelectedBox] = useState(boxes["2"]);
+
+    console.log(boxes["2"].items);
 
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
@@ -40,22 +41,13 @@ const LowCarbonGame = () => {
         window.localStorage.setItem('answers', JSON.stringify(answers));
     }, [answers])
 
-    const guestAnswerArray = [];
-    // saves selected answers to a new array
-    useEffect(() => {
-        answers.map(answer => {
-            if(answer.selected === true)
-                guestAnswerArray.push(answer)
-        })
-    }, [answers])
-
     // saves guest_answers to the DB     
     const submitAnswers = () => {
 
         const qs = require('qs');
 
-        if(guestAnswerArray !== [] && guestDetails) {
-            guestAnswerArray.forEach(answer => {
+        if(boxes["2"].items.length === 5 && guestDetails) {
+            boxes["2"].items.forEach(answer => {
                 axios.post('/api/guest_answers', qs.stringify(
                     {
                       guest_answer:{
@@ -79,7 +71,7 @@ const LowCarbonGame = () => {
     //     })
     //     setAnswers(newAnswers);
     // }
-
+    const isDropDisabled = boxes["2"].items.length === 5
     // handles the end of drag event inside each box and also from one box to the other
     const onDragEnd = (result, boxes, setBoxes) => {
         if(!result.destination) return;
@@ -128,7 +120,7 @@ const LowCarbonGame = () => {
             <DragDropContext onDragEnd={result => onDragEnd(result, boxes, setBoxes)}>
                 {Object.entries(boxes).map(([id, box]) => {
                     return(
-                        <Box id={id} items={box.items} key={id}/>
+                        <Box id={id} items={box.items} key={id} isDropDisabled={isDropDisabled}/>
                     )
                 })}
             </DragDropContext>
