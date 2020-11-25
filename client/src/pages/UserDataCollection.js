@@ -27,9 +27,15 @@ const UserDataCollection = ()=> {
 
     // function that sends a post request to the API with the guest user details from the form
     // this will trigger the create method in the guests_controller.rb 
-    const addUser = guest => {
-        
+    const addUser = async guest => {
+
         const qs = require('qs');
+
+        const postalCode = guest.postal_code;
+
+        const council = await axios.get(`https://api.postcodes.io/postcodes/${postalCode}`)
+        .then(res => res.data.result.admin_district)
+        .catch(err => console.log(err))
       
         // post request that creates an instance of guest user
         axios.post('/api/guests', qs.stringify(
@@ -37,7 +43,9 @@ const UserDataCollection = ()=> {
               guest:{
                 age: guest.age,
                 gender: guest.gender,
-                postal_code: guest.postal_code}
+                postal_code: guest.postal_code,
+                council: council
+                }
             }))
             .then(res => setGuest(res.data))
             .catch(error => console.log(error))

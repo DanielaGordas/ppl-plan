@@ -35,9 +35,9 @@ const NewUserForm = props => {
             <option value="55+">55+</option>
           </select>
           {errors.age && <p>This field is required</p>}
-          <label>Postal Code</label>
-          <input name="postal_code" ref={register({ required: true, pattern: /^([A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}|GIR ?0A{2})$/ })} />
-          {errors.postal_code && <p>This field is required</p>}
+          <label>Post Code</label>
+          <input name="postal_code" ref={register({ required: true, pattern: /^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$/ })} />
+          {errors.postal_code && <p>Please provide a valid post code in the format <em>SE5 0EG</em></p>}
           <input type="submit" className="Btn" />
 
         </form>
