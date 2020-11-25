@@ -12,7 +12,10 @@ const Card = ({item, index}) => {
     // const openModal = () => setShow(true);  
 
     // const closeModal = () => setShow(false);
- 
+
+    const handleClick = () => {
+        alert("Hello!");
+    } 
     return(
         <Draggable draggableId={item.id.toString()} index={index}>
             {(provided, snapshot) => {
@@ -29,6 +32,7 @@ const Card = ({item, index}) => {
                             ...provided.draggableProps.style
 
                         }}
+                        onClick={handleClick}
                     >
                         {item.id}
                     </div>
