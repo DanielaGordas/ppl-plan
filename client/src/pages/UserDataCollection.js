@@ -14,6 +14,17 @@ const UserDataCollection = ()=> {
         postal_code:''
     };
 
+    //retrieves the guest object from local storage
+    const guestDetails = JSON.parse(window.localStorage.getItem('guest'));
+
+    const [guest, setGuest] = useState(guestDetails || {})
+
+    // stores the guest object in local storage
+
+    useEffect(() => {
+        window.localStorage.setItem('guest', JSON.stringify(guest));
+    }, [guest])
+
     // function that sends a post request to the API with the guest user details from the form
     // this will trigger the create method in the guests_controller.rb 
     const addUser = guest => {
@@ -32,16 +43,7 @@ const UserDataCollection = ()=> {
             .catch(error => console.log(error))
     };
     
-    //retrieves the guest object from local storage
-    const guestDetails = JSON.parse(window.localStorage.getItem('guest'));
 
-    const [guest, setGuest] = useState(guestDetails || {})
-
-    // stores the guest object in local storage
-
-    useEffect(() => {
-        window.localStorage.setItem('guest', JSON.stringify(guest));
-    }, [guest])
     
     return(
         <div className={classes.UserPage}>
@@ -53,7 +55,7 @@ const UserDataCollection = ()=> {
                 <NewUserForm addUser={addUser} initialFormState={initialFormState}/>
                 </div>
             </div>
-            <Link to="/game/lowcarbon"><button className="Btn">Start</button></Link>
+            {/* <Link to="/lowcarbon"><button className="Btn">Start</button></Link> */}
         </div>
     )
 }
