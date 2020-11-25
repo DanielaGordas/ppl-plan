@@ -7,7 +7,7 @@ import Card from './Card';
 const Box = ({id, items}) => {
     return(
         <div>
-            <Droppable droppableId={id}>
+            <Droppable droppableId={id} direction="horizontal">
                 {(provided, snapshot) => {
                     return(
                         <div

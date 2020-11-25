@@ -31,7 +31,6 @@ const Card = ({item, index}) => {
                         }}
                     >
                         {item.id}
-                        {provided.placeholder}
                     </div>
                 )
             }}
