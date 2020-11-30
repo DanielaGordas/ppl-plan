@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/components/button.scss';
 import NewUserForm from '../components/NewUserForm';
+import NavBar from '../components/NavBar'
 import classes from '../styles/pages/user.module.scss';
-import megaphone from '../images/megaphone.jpg'; 
+import icon from '../images/icon.png'; 
 import axios from 'axios';
 
 const UserDataCollection = ()=> {
@@ -54,16 +55,19 @@ const UserDataCollection = ()=> {
 
     
     return(
-        <div className={classes.UserPage}>
-            <img src={megaphone} alt="megaphone" className={classes.UserPageImg}/>
-            <div className={classes.UserPageContent}>
-                <h3>Add your voice and help make change happen.</h3>
-                <p>We just need some basic information to help ensure we are collecting data in a robust way.</p>
-                <div>
-                <NewUserForm addUser={addUser} initialFormState={initialFormState}/>
+        <div>
+            <NavBar />
+            <div className={classes.UserPage}>
+                <img src={icon} alt="people's plan icon" className={classes.UserPageImg}/>
+                <div className={classes.UserPageContent}>
+                    <h3>Add your voice and help make change happen.</h3>
+                    <p>We just need some basic information to help ensure we are collecting data in a robust way.</p>
+                    <div>
+                    <NewUserForm addUser={addUser} initialFormState={initialFormState}/>
+                    </div>
                 </div>
+                {/* <Link to="/lowcarbon"><button className="Btn">Start</button></Link> */}
             </div>
-            {/* <Link to="/lowcarbon"><button className="Btn">Start</button></Link> */}
         </div>
     )
 }
