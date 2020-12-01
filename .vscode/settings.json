@@ -1,0 +1,11 @@
+{
+    "emmet.preferences": {
+        
+    },
+
+    "emmet.includeLanguages": {
+        "erb": "html",
+        "vue": "html",
+        "javascript": "javascriptreact"
+      },
+}
