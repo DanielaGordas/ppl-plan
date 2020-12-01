@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './App.scss';
+import './App.scss';
 import HomePage from './pages/HomePage';
 import NotFound from './components/NotFound';
 import UserDataCollection from './pages/UserDataCollection';
@@ -11,7 +11,7 @@ const App = () => {
 
       return (
             <Router>
-                  <div className={classes.Layout}>
+                  <div className="Layout">
                         <Switch>
                               <Route path="/" exact component={HomePage} />
                               <Route path="/about" ></Route>

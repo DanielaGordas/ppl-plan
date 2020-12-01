@@ -1,9 +1,12 @@
+@import '../scss-variables.scss';
+
 form {
     margin: 0 auto;
 }
 
 label {
     text-align: left;
+    font-size: 1.2rem;
 }
 
   
@@ -11,17 +14,14 @@ label {
 .select {
     display: block;
     box-sizing: border-box;
-    border: 1px solid #00247D;
+    border: 1px solid $dark-blue;
     border-radius: 4px;
-    background-color: white;
-    margin-bottom: 15px;
-    font-size: 14px;
+    background-color: $white;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
     width: 100%;
-    padding: 0.7em;
-    color: #00247D;
+    padding: 1rem;
+    color: $dark-blue;
   }
 
-.textField {
-    padding: 10px 15px;
-  }
 

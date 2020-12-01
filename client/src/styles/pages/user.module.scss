@@ -1,8 +1,10 @@
+@import '../scss-variables.scss';
+
 .UserPage {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    color: #00247D;
+    // text-align: center;
+    color: $dark-blue;
 }
 
 .UserPageContent {
@@ -13,17 +15,17 @@
 }
 
 .UserPageContent h3 {
-    font-size: 23px;
+    font-size: 2.2rem;
 }
 
 .UserPageContent p {
-    font-size: 15px;
+    font-size: 1.4rem;
 }
 
 .UserPageImg {
     width: 30%;
     height: 30%;
     align-self: center;
-    margin-bottom: -40px;
-    margin-top: 3em;
+    margin-bottom: -4rem;
+    margin-top: 3rem;
 }

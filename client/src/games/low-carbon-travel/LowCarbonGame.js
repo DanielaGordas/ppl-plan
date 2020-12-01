@@ -8,9 +8,23 @@ import { Switch, Route } from 'react-router-dom';
 
 const LowCarbonGame = () => {
     // retrieves answers from Local Storage
-    const guestAnswers = JSON.parse(window.localStorage.getItem('answers'));
-    const [answers, setAnswers] = useState(guestAnswers || []);
+    const lowcarbon = JSON.parse(window.localStorage.getItem('lowcarbon'));
+    const [game, setGame] = useState(lowcarbon || {})
 
+    useEffect(() => {
+        window.localStorage.setItem('lowcarbon', JSON.stringify(game));
+    }, [game])
+
+    const [answers, setAnswers] = useState(game.answers);
+
+
+     // fetch the first game from the API
+    useEffect(() => {
+        axios.get('/api/games/1.json')
+            .then(res => setGame(res.data))
+            .catch(error => console.log(error))
+          }, []);
+    
     const initialBoxes = {
         "1": {
             name: 'InitialOptions',
@@ -24,22 +38,8 @@ const LowCarbonGame = () => {
     }
     const [boxes, setBoxes] = useState(initialBoxes);
 
-    console.log(boxes["2"].items);
-
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
-
-    // fetch all answers for game with id 1 from the API
-    useEffect(() => {
-        axios.get('/api/games/1/answers.json')
-            .then(res => setAnswers(res.data))
-            .catch(error => console.log(error))
-          }, []);
-
-    // stores guest answers in Local Storage
-    useEffect(() => {
-        window.localStorage.setItem('answers', JSON.stringify(answers));
-    }, [answers])
 
     // saves guest_answers to the DB     
     const submitAnswers = () => {
@@ -81,7 +81,6 @@ const LowCarbonGame = () => {
             const destBox = boxes[destination.droppableId];
             const sourceItems = [...sourceBox.items];
             const destItems = [...destBox.items];
-            console.log(sourceItems);
             const [removed] = sourceItems.splice(source.index, 1);
             destItems.splice(destination.index, 0, removed);
             // changes the selected field from true to false and viceversa
