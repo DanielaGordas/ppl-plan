@@ -1,7 +1,5 @@
 import React from 'react';
-import { useForm , Controller } from "react-hook-form";
-import { Checkbox, Input } from "@material-ui/core";
-import Select from "react-select";
+import { useForm } from "react-hook-form";
 import '../styles/components/form.scss'
 // import { useHistory } from 'react-router-dom';
 

@@ -1,9 +1,21 @@
-.Carousel {
-  border: 1px solid #102773;
-  width: 100%;
-  margin-bottom: 1rem;
+@import "../scss-variables.scss";
+
+.Container {
+  text-align: center;
 }
 
+.Carousel {
+  border: 1px solid $dark-blue;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.CarouselTitle {
+  font-size: 2.2rem;
+  color: $dark-blue;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
 
 /* 
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
@@ -11,7 +23,7 @@
 */
 @media (min-width: 481px) and (max-width: 767px) {
   .Carousel {
-    border: 3px dotted #102773;
+    border: 3px dotted $dark-blue;
     height: 60rem;
     width: 30rem;
   }
@@ -24,7 +36,7 @@
 */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .Carousel {
-    background-color: violet;
+    background-color: $dark-blue;
     height: 30vh;
     width: 40vw;
   }
@@ -38,7 +50,7 @@
 
 @media (min-width: 1025px) and (max-width: 1280px) {
   .Carousel {
-    border: 3px dotted turquoise;
+    border: 3px solid $dark-blue;
     height: 20rem;
     width: 25rem;
   }
@@ -47,7 +59,7 @@
 //large screens
 @media (min-width: 1281px) {
   .Carousel {
-    border: 7px dotted purple;
+    border: 7px solid $dark-blue;
     height: 8rem;
     width: 30rem;
   } 
