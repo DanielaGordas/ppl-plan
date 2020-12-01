@@ -48,9 +48,21 @@ const UserDataCollection = ()=> {
                 council: council
                 }
             }))
-            .then(res => setGuest(res.data))
+            .then(res => {
+                setGuest(res.data);
+                handleRedirect();
+            })
             .catch(error => console.log(error))
+        
     };
+
+    const handleRedirect  = () => {
+        if(guest) {
+            window.location = '/lowcarbon'
+        } else {
+            window.location = '/user'
+        }
+    }
     
 
     
