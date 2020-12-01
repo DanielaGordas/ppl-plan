@@ -1,5 +1,5 @@
 .Carousel {
-  border: 1px solid blue;
+  border: 1px solid #102773;
   width: 100%;
   margin-bottom: 1rem;
 }
@@ -11,7 +11,7 @@
 */
 @media (min-width: 481px) and (max-width: 767px) {
   .Carousel {
-    border: 3px dotted blue;
+    border: 3px dotted #102773;
     height: 60rem;
     width: 30rem;
   }
