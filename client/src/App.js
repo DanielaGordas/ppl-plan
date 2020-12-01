@@ -14,6 +14,8 @@ const App = () => {
                   <div className={classes.Layout}>
                         <Switch>
                               <Route path="/" exact component={HomePage} />
+                              <Route path="/about" ></Route>
+                              <Route path="/privacy" ></Route>
                               <Route path="/user" component={UserDataCollection}/>
                               <Route path="/lowcarbon">
                                     <LowCarbonGame />

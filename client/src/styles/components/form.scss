@@ -1,0 +1,27 @@
+form {
+    margin: 0 auto;
+}
+
+label {
+    text-align: left;
+}
+
+  
+.textField,
+.select {
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #00247D;
+    border-radius: 4px;
+    background-color: white;
+    margin-bottom: 15px;
+    font-size: 14px;
+    width: 100%;
+    padding: 0.7em;
+    color: #00247D;
+  }
+
+.textField {
+    padding: 10px 15px;
+  }
+
