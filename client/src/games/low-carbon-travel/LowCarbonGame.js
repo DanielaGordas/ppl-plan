@@ -5,6 +5,7 @@ import axios from 'axios';
 import classes from '../../styles/components/box.module.scss';
 import {DragDropContext} from 'react-beautiful-dnd';
 import { Switch, Route } from 'react-router-dom';
+import Intro from '../../components/Intro';
 
 const LowCarbonGame = () => {
     // retrieves answers from Local Storage
@@ -121,9 +122,7 @@ const LowCarbonGame = () => {
                 </div>
             </Route>
             <Route path="/lowcarbon/intro">
-                <div>
-                    <h1>Intro to lowcarbon game</h1>
-                </div>
+                <Intro text={game.description} />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className={classes.BoxWrapper}>

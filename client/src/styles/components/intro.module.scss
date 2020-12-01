@@ -1,0 +1,27 @@
+@import "../scss-variables.scss";
+
+.SpeechBubble {
+  background: $grey;
+  color: $dark-blue;
+  display: inline-block;
+  font-size: 2.2rem;
+  line-height: 4rem;
+  margin: 5rem 1.5rem;
+  padding: 0 3rem;
+  position: relative;
+  text-align: left;
+  vertical-align: top;
+  min-height: 45vh;
+}
+
+.SpeechBubble:after {
+  border: 3rem solid transparent;
+  border-top-color: $grey;
+  content: "";
+  margin-left: -2rem;
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  width: 0;
+  height: 0;
+}

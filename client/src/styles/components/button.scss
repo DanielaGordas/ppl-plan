@@ -1,12 +1,16 @@
-@import '../scss-variables.scss';
+@import "../scss-variables.scss";
 
 .Btn {
-    background: $dark-blue; 
-    padding: 1.2rem;
-    border: none;
-    color: $white;
-    font-size: 1.6rem;
-    min-width: 30%;
-    border-radius: 2rem;
-    margin-top: 2rem;
+  background: $dark-blue;
+  padding: 1.2rem;
+  border: none;
+  color: $white;
+  font-size: 1.6rem;
+  min-width: 30%;
+  border-radius: 2rem;
+  margin-top: 3rem;
+
+  &-standard {
+    width: 30%;
+  }
 }

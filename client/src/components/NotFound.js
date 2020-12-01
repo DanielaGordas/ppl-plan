@@ -6,7 +6,7 @@ const NotFound = () => {
     return(
         <div style={{textAlign: 'center',}}>
             <h1>404: Not found</h1>
-            <Link to="/"><button clssName="Btn">Back to home</button></Link>
+            <Link to="/"><button className="Btn">Back to home</button></Link>
         </div>
     )
 }
