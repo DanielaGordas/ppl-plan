@@ -50,14 +50,14 @@ const UserDataCollection = ()=> {
             }))
             .then(res => {
                 setGuest(res.data);
-                handleRedirect();
+                handleRedirect(res);
             })
             .catch(error => console.log(error))
         
     };
 
-    const handleRedirect  = () => {
-        if(guest) {
+    const handleRedirect  = (res) => {
+        if(res.status === 201 || res.status === 200) {
             window.location = '/lowcarbon'
         } else {
             window.location = '/user'
