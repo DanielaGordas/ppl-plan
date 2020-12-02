@@ -45,6 +45,10 @@ const LowCarbonGame = () => {
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
 
+    // const [guestAnswers, setGuestAnswers] = useState([])
+
+    // console.log(guestAnswers);
+
     // saves guest_answers to the DB     
     const submitAnswers = () => {
 
@@ -59,11 +63,25 @@ const LowCarbonGame = () => {
                         guest_id: guestDetails.id
                     }
                     }))
-                    .then(res => console.log(res.data))
+                    .then(res => {
+                        // setGuestAnswers(res.data)
+                        handleRedirect(res)
+                    })
                     .catch(err => console.log(err))
             })
         }
     }
+
+
+    const handleRedirect = (res) => {
+        if(res.status === 201 || res.status === 200) {
+            window.location = '/lowcarbon/result'
+        } else {
+            window.location = '/lowcarbon/game'
+        }
+    }
+
+
 
     const isDropDisabled = boxes["2"].items.length === 5
     // handles the end of drag event inside each box and also from one box to the other
@@ -107,14 +125,6 @@ const LowCarbonGame = () => {
         }
     };
 
-
-    const [info, setInfo] = useState(answers[0].title)
-
-    // const handleClick = (id) => {
-    //     alert(id);
-    // }
-    
-
     return(
         <Switch>
             <Route exact path="/lowcarbon">
@@ -147,7 +157,7 @@ const LowCarbonGame = () => {
                                                 >
                                                     {box.items.map((item, index) => {
                                                         return(
-                                                        <Card key={item.id} item={item} index={index} info={info} setInfo={setInfo}/>
+                                                        <Card key={item.id} item={item} index={index}/>
                                                         )
                                                         
                                                     })}

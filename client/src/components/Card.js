@@ -14,8 +14,6 @@ const Card = ({ item, index, info, setInfo }) => {
 
     // const [showInfo, setShowInfo] = useState(false)
 
-    const handleClick = (id) => console.log(id);
-
     return(
         <div className="">
             <Draggable draggableId={item.id.toString()} index={index} >
@@ -27,9 +25,9 @@ const Card = ({ item, index, info, setInfo }) => {
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                             style={{
-                                border: item.selected ? '1px solid red': '1px solid grey',
+                                border: item.selected ? '2px solid red': '2px solid grey',
                                 userSelect: 'none',
-                                backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
+                                backgroundColor: snapshot.isDragging ? '#263B4A' : '#102773',
                                 ...provided.draggableProps.style
 
                             }}
