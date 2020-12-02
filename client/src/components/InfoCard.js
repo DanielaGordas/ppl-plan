@@ -1,8 +1,8 @@
 import React from 'react';
 
-const InfoCard = () => {
+const InfoCard = ({text}) => {
     return(
-        <div>Hi</div>
+        <div>{text}</div>
     )
 }
 
