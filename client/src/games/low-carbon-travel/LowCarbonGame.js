@@ -197,7 +197,7 @@ const LowCarbonGame = () => {
                 <LowCarbonInfo />
             </Route>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.description} link={'/lowcarbon/game'} />
+                <Intro text={game.description} link='/lowcarbon/game' />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className={classes.Instructions}>
