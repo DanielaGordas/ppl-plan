@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/components/button.scss';
 import NewUserForm from '../components/NewUserForm';
 import NavBar from '../components/NavBar'
@@ -78,7 +77,6 @@ const UserDataCollection = ()=> {
                     <NewUserForm addUser={addUser} initialFormState={initialFormState}/>
                     </div>
                 </div>
-                {/* <Link to="/lowcarbon"><button className="Btn">Start</button></Link> */}
             </div>
         </div>
     )

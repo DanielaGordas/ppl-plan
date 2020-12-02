@@ -1,36 +1,36 @@
-import React from 'react';
-import classes from '../styles/components/box.module.scss';
-import {Droppable} from 'react-beautiful-dnd';
-import Card from './Card';
+// import React from 'react';
+// import classes from '../styles/components/box.module.scss';
+// import {Droppable} from 'react-beautiful-dnd';
+// import Card from './Card';
 
 
-const Box = ({id, items, isDropDisabled}) => {
-    return(
-        <div>
-            <Droppable droppableId={id} direction="horizontal" isDropDisabled={isDropDisabled}>
-                {(provided, snapshot) => {
-                    return(
-                        <div
-                        className={classes.Box}
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
+// const Box = ({id, items, isDropDisabled }) => {
+//     return(
+//         <div>
+//             <Droppable droppableId={id} direction="horizontal" isDropDisabled={isDropDisabled}>
+//                 {(provided, snapshot) => {
+//                     return(
+//                         <div
+//                         className={classes.Box}
+//                         {...provided.droppableProps}
+//                         ref={provided.innerRef}
 
-                        style={{
-                            background: snapshot.isDraggingOver ? 'lightblue' : 'lightgrey'
-                        }}
-                        >
-                            {items.map((item, index) => {
-                                return(
-                                    <Card key={item.id} item={item} index={index}/>
-                                )
-                            })}
-                            {provided.placeholder}
-                        </div>
-                    )
-                }}
-            </Droppable>
-        </div>
-    )
-}
+//                         style={{
+//                             background: snapshot.isDraggingOver ? 'lightblue' : 'lightgrey'
+//                         }}
+//                         >
+//                             {items.map((item, index) => {
+//                                 return(
+//                                     <Card key={item.id} item={item} index={index} />
+//                                 )
+//                             })}
+//                             {provided.placeholder}
+//                         </div>
+//                     )
+//                 }}
+//             </Droppable>
+//         </div>
+//     )
+// }
 
-export default Box;
+// export default Box;
