@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import classes from '../styles/components/intro.module.scss';
 import '../styles/components/button.scss';
 
-const Intro = ({text}) => {
+const Intro = ({text, link}) => {
   return (
     <>
     <div className={classes.SpeechBubble}>
       <p>{text}</p>
     </div>
-    <Link to="/lowcarbon/game" style={{textAlign: 'center'}}><button className="Btn Btn-standard">Begin!</button></Link>
+    <Link to={link} style={{textAlign: 'center'}}><button className="Btn Btn-standard">Begin!</button></Link>
     </>
   )
 }

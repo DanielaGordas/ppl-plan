@@ -121,9 +121,12 @@ const LowCarbonGame = () => {
                 <LowCarbonInfo />
             </Route>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.description} />
+                <Intro text={game.description} link={'/lowcarbon/game'} />
             </Route>
             <Route path="/lowcarbon/game">
+                <div className="classes.Instructions">
+                    <h3>{game.instructions}</h3>
+                </div>
                 <div className={classes.BoxWrapper}>
                     <h3>Choose 5 policies that you would like to see implemented:</h3>
                     <DragDropContext onDragEnd={result => onDragEnd(result, boxes, setBoxes)}>
