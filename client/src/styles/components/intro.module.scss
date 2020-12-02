@@ -1,5 +1,18 @@
 @import "../scss-variables.scss";
 
+.GameNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  a,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color: $dark-blue;
+  }
+}
+
 .SpeechBubble {
   background: $grey;
   color: $dark-blue;
