@@ -4,7 +4,6 @@
     display: flex;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    color: #232226;
     margin-bottom: 5rem;
 }
 
@@ -12,4 +11,14 @@
     padding: 1rem;
     text-align: center;
     margin-top: 2rem;
+}
+
+.Card {
+    width: 5em;
+    flex-shrink: 0;
+    padding: 0.3rem;
+    border-radius: 2px;
+    margin: 0.8rem;
+    color: white;
+    text-align: center;
 }

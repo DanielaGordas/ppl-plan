@@ -1,18 +1,20 @@
 // Component that contains the cards of the game
 import React, { useState, useEffect } from 'react';
-import Box from '../../components/Box';
 import axios from 'axios';
-import classes from '../../styles/components/box.module.scss';
-import {DragDropContext} from 'react-beautiful-dnd';
+import classes from '../../styles/pages/lowcarbon.module.scss'
+import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import { Switch, Route } from 'react-router-dom';
 import LowCarbonInfo from './LowCarbonInfo';
 import Intro from '../../components/Intro';
+import InfoCard from '../../components/InfoCard';
 
 const LowCarbonGame = () => {
-    // retrieves answers from Local Storage
+
+    // retrieves game data from Local Storage
     const lowcarbon = JSON.parse(window.localStorage.getItem('lowcarbon'));
     const [game, setGame] = useState(lowcarbon || {})
 
+    // saves the game data in Local Storage
     useEffect(() => {
         window.localStorage.setItem('lowcarbon', JSON.stringify(game));
     }, [game])
@@ -63,16 +65,6 @@ const LowCarbonGame = () => {
         }
     }
 
-    // function that handles the selected key of each object in the cards array 
-    // const updateSelected = (item) => {
-    //     const newAnswers = answers.map(answer => {
-    //         if(answer.id === item.id){
-    //             return {...answer, selected: !item.selected}
-    //         }
-    //         return answer;
-    //     })
-    //     setAnswers(newAnswers);
-    // }
     const isDropDisabled = boxes["2"].items.length === 5
     // handles the end of drag event inside each box and also from one box to the other
     const onDragEnd = (result, boxes, setBoxes) => {
@@ -115,6 +107,17 @@ const LowCarbonGame = () => {
         }
     };
 
+    // const [showInfo, setShowInfo] = useState(false)
+
+    // const handleClick = (id) => {
+    //     setShowInfo(true)
+    //     answers.map(answer => {
+    //         if(answer.id === id) {
+    //             return answer.title
+    //         }
+    //     })
+    // }
+
     return(
         <Switch>
             <Route exact path="/lowcarbon">
@@ -132,10 +135,54 @@ const LowCarbonGame = () => {
                     <DragDropContext onDragEnd={result => onDragEnd(result, boxes, setBoxes)}>
                         {Object.entries(boxes).map(([id, box]) => {
                             return(
-                                <Box id={id} items={box.items} key={id} isDropDisabled={isDropDisabled}/>
+                                <div className={classes.BoxWrapper} key={id}>
+                                    <Droppable droppableId={id} direction="horizontal" isDropDisabled={isDropDisabled}>
+                                        {(provided, snapshot) => {
+                                            return(
+                                                <div
+                                                    {...provided.droppableProps}
+                                                    ref={provided.innerRef}
+
+                                                    style={{
+                                                        background: snapshot.isDraggingOver ? 'lightblue' : 'lightgrey'
+                                                    }}
+                                                    className={classes.Box}
+                                                >
+                                                    {box.items.map((item, index) => {
+                                                        return(
+                                                            <Draggable draggableId={item.id.toString()} index={index} key={item.id}>
+                                                                {(provided, snapshot) => {
+                                                                    return(
+                                                                        <div 
+                                                                            {...provided.draggableProps}
+                                                                            {...provided.dragHandleProps}
+                                                                            ref={provided.innerRef}
+                                                                            style={{
+                                                                                border: item.selected ? '1px solid red': '1px solid grey',
+                                                                                userSelect: 'none',
+                                                                                backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
+                                                                                ...provided.draggableProps.style
+
+                                                                            }}
+                                                                            className={classes.Card}
+                                                                        >
+                                                                            {item.id}
+                                                                        </div>
+                                                                    );
+                                                                }}
+                                                            </Draggable>
+                                                        )   
+                                                    })}
+                                                    {provided.placeholder}
+                                                </div>
+                                            )
+                                        }}
+                                    </Droppable>
+                                </div>
                             )
                         })}
                     </DragDropContext>
+                    {/* { showInfo ? <InfoCard/> : null } */}
                     <button className="Btn" onClick={submitAnswers}>Complete!</button>
                 </div>
             </Route>
