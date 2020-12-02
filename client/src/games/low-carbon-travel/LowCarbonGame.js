@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import classes from '../../styles/pages/lowcarbon.module.scss'
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import LowCarbonInfo from './LowCarbonInfo';
 import Card from '../../components/Card';
 import Intro from '../../components/Intro';
@@ -197,9 +197,13 @@ const LowCarbonGame = () => {
                 <LowCarbonInfo />
             </Route>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.description} link='/lowcarbon/game' />
+                <Intro text={game.description} link='/lowcarbon/game' game='/lowcarbon'/>
             </Route>
             <Route path="/lowcarbon/game">
+                <div className={classes.GameNav}>
+                    <Link to='/lowcarbon/intro'>Back</Link>
+                    <a className="" href="#">Start over</a>
+                </div>
                 <div className={classes.Instructions}>
                     <h3>{game.name}</h3>
                     <p>{game.instructions}</p>
