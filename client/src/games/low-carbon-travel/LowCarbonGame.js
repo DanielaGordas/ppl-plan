@@ -5,8 +5,8 @@ import classes from '../../styles/pages/lowcarbon.module.scss'
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import { Switch, Route } from 'react-router-dom';
 import LowCarbonInfo from './LowCarbonInfo';
+import Card from '../../components/Card';
 import Intro from '../../components/Intro';
-import InfoCard from '../../components/InfoCard';
 
 const LowCarbonGame = () => {
 
@@ -107,16 +107,13 @@ const LowCarbonGame = () => {
         }
     };
 
-    // const [showInfo, setShowInfo] = useState(false)
+
+    const [info, setInfo] = useState(answers[0].title)
 
     // const handleClick = (id) => {
-    //     setShowInfo(true)
-    //     answers.map(answer => {
-    //         if(answer.id === id) {
-    //             return answer.title
-    //         }
-    //     })
+    //     alert(id);
     // }
+    
 
     return(
         <Switch>
@@ -147,28 +144,9 @@ const LowCarbonGame = () => {
                                                 >
                                                     {box.items.map((item, index) => {
                                                         return(
-                                                            <Draggable draggableId={item.id.toString()} index={index} key={item.id}>
-                                                                {(provided, snapshot) => {
-                                                                    return(
-                                                                        <div 
-                                                                            {...provided.draggableProps}
-                                                                            {...provided.dragHandleProps}
-                                                                            ref={provided.innerRef}
-                                                                            style={{
-                                                                                border: item.selected ? '1px solid red': '1px solid grey',
-                                                                                userSelect: 'none',
-                                                                                backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
-                                                                                ...provided.draggableProps.style
-
-                                                                            }}
-                                                                            className={classes.Card}
-                                                                        >
-                                                                            {item.id}
-                                                                        </div>
-                                                                    );
-                                                                }}
-                                                            </Draggable>
-                                                        )   
+                                                        <Card key={item.id} item={item} index={index} info={info} setInfo={setInfo}/>
+                                                        )
+                                                        
                                                     })}
                                                     {provided.placeholder}
                                                 </div>
@@ -179,7 +157,6 @@ const LowCarbonGame = () => {
                             )
                         })}
                     </DragDropContext>
-                    {/* { showInfo ? <InfoCard/> : null } */}
                     <button className="Btn" onClick={submitAnswers}>Complete!</button>
                 </div>
             </Route>
