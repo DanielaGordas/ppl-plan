@@ -42,3 +42,33 @@
     color: #727171;
   }
 }
+
+.Speedometer {
+  position: relative;
+}
+
+.HalfCircle {
+  width: 35rem;
+  height: 17.5rem; /* as the half of the width */
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  border: 1.5rem solid #727171;
+}
+
+.Bottom {
+  background: #727171;
+  height: 3rem;
+  width: 38rem;
+}
+
+.Needle {
+  position: absolute;
+  width: 1.2rem;
+  height: 12rem;
+  background: #727171;
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  // transform: translate(-50%, -50%) rotate(0deg);
+  border-radius: 2rem;
+}
