@@ -85,6 +85,72 @@ const LowCarbonGame = () => {
 
     const isDropDisabled = boxes["2"].items.length === 5
     // handles the end of drag event inside each box and also from one box to the other
+
+    const massTransit = [];
+    const electricCars = [];
+
+    boxes["2"].items.map(item => {
+        if (item.category === "Electric car ownership") {
+            electricCars.push(item);
+        }
+    })
+
+    boxes["2"].items.forEach(item => {
+        if (item.category === "Mass transit") {
+            massTransit.push(item);
+        }
+    })
+
+    const setNeedleStyle = () => {
+        let style = {};
+        if (electricCars.length - massTransit.length === 1) {
+            const firstStyle = {transform: 'translate(-50%, -50%) rotate(-30deg)'};
+            style = Object.assign(style, firstStyle);
+        }
+        if (electricCars.length - massTransit.length === 2) {
+            const secondStyle = {transform: 'translate(-50%, -50%) rotate(-45deg)'};
+            style = Object.assign(style, secondStyle);
+        }
+        if (electricCars.length - massTransit.length === 3) {
+            const thirdStyle = {transform: 'translate(-50%, -50%) rotate(-55deg)'};
+            style = Object.assign(style, thirdStyle);
+        }
+        if (electricCars.length - massTransit.length === 4) {
+            const fourthStyle = {transform: 'translate(-50%, -50%) rotate(-65deg)'};
+            style = Object.assign(style, fourthStyle);
+        }
+        if (massTransit.length - electricCars.length === 1) {
+            const fifthStyle = {transform: 'translate(-50%, -50%) rotate(+30deg)'};
+            style = Object.assign(style, fifthStyle);
+        }
+        if (massTransit.length - electricCars.length === 2) {
+            const sixthStyle = {transform: 'translate(-50%, -50%) rotate(+45deg)'};
+            style = Object.assign(style, sixthStyle);
+        }
+        if (massTransit.length - electricCars.length === 3) {
+            const seventhStyle = {transform: 'translate(-50%, -50%) rotate(+55deg)'};
+            style = Object.assign(style, seventhStyle);
+        }
+        if (massTransit.length - electricCars.length === 4) {
+            const eigthStyle = {transform: 'translate(-50%, -50%) rotate(+65deg)'};
+            style = Object.assign(style, eigthStyle);
+        }
+        if (massTransit.length - electricCars.length === 0) {
+            const ninthStyle = {transform: 'translate(-50%, -50%) rotate(0deg)'};
+            style = Object.assign(style, ninthStyle);
+        }
+        if (massTransit.length - electricCars.length === 5) {
+            const tenthStyle = {transform: 'translate(-50%, -50%) rotate(+90deg)'};
+            style = Object.assign(style, tenthStyle);
+        }
+        if (electricCars.length - massTransit.length === 5) {
+            const eleventhStyle = {transform: 'translate(-50%, -50%) rotate(-90deg)'};
+            style = Object.assign(style, eleventhStyle);
+        }
+
+        return style;
+    }
+
     const onDragEnd = (result, boxes, setBoxes) => {
         if(!result.destination) return;
         const {source, destination} = result;
@@ -170,6 +236,14 @@ const LowCarbonGame = () => {
                             )
                         })}
                     </DragDropContext>
+                    {/* { showInfo ? <InfoCard/> : null } */}
+
+                    <div className={classes.Speedometer}>
+                        <div className={classes.HalfCircle}></div>
+                        <div className={classes.Needle} style={setNeedleStyle()}></div>
+                        <div className={classes.Bottom}></div>
+                    </div>
+
                     <button className="Btn" onClick={submitAnswers}>Complete!</button>
                 </div>
             </Route>
