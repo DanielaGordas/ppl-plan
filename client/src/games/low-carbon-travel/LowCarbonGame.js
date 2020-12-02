@@ -7,6 +7,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import LowCarbonInfo from './LowCarbonInfo';
 import Card from '../../components/Card';
 import Intro from '../../components/Intro';
+import LowCarbonResult from './LowCarbonResult';
 
 const LowCarbonGame = () => {
 
@@ -41,13 +42,16 @@ const LowCarbonGame = () => {
         }
     }
     const [boxes, setBoxes] = useState(initialBoxes);
+    // const [guestAnswers, setGuestAnswers] = useState(boxes["2"].items)
+
+    // useEffect(() => {
+    //     setGuestAnswers(boxes["2"].items)
+    // }, [boxes])
+
+
 
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
-
-    // const [guestAnswers, setGuestAnswers] = useState([])
-
-    // console.log(guestAnswers);
 
     // saves guest_answers to the DB     
     const submitAnswers = () => {
@@ -64,14 +68,12 @@ const LowCarbonGame = () => {
                     }
                     }))
                     .then(res => {
-                        // setGuestAnswers(res.data)
                         handleRedirect(res)
                     })
                     .catch(err => console.log(err))
             })
         }
     }
-
 
     const handleRedirect = (res) => {
         if(res.status === 201 || res.status === 200) {
@@ -89,6 +91,7 @@ const LowCarbonGame = () => {
     const massTransit = [];
     const electricCars = [];
 
+
     boxes["2"].items.map(item => {
         if (item.category === "Electric car ownership") {
             electricCars.push(item);
@@ -100,6 +103,12 @@ const LowCarbonGame = () => {
             massTransit.push(item);
         }
     })
+
+
+    // const [finalResult, setResult] = useState();
+
+    // massTransit.length > electricCars.length ? setResult("mass-transit") : setResult("mass-transit")
+
 
     const setNeedleStyle = () => {
         let style = {};
@@ -252,7 +261,7 @@ const LowCarbonGame = () => {
                 </div>
             </Route>
             <Route path="/lowcarbon/result">
-                <h1>result badges for lowcarbon game</h1>
+                < LowCarbonResult />
             </Route>
         </Switch>
     )
