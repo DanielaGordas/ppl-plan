@@ -5,6 +5,7 @@ import NotFound from './components/NotFound';
 import UserDataCollection from './pages/UserDataCollection';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LowCarbonGame from './games/low-carbon-travel/LowCarbonGame';
+import CircularEconomyGame from './games/circular-economy/CircularEconomyGame';
 
 
 const App = () => {
@@ -19,6 +20,9 @@ const App = () => {
                               <Route path="/user" component={UserDataCollection}/>
                               <Route path="/lowcarbon">
                                     <LowCarbonGame />
+                              </Route>
+                              <Route path="/circulareconomy">
+                                    <CircularEconomyGame />
                               </Route>
                               <Route>
                                     <NotFound />
