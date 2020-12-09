@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
@@ -127,19 +126,19 @@ const CircularEconomyGame = () => {
             id: 7, 
             name: "Locally grown food",
             description: "Community allotments are an excellent way for children and young people to learn about growing food. Individual/family allotments offer great exercise and a regular supply of fruit and vegetables. A mixture of the two can benefit communities with sharing of surplus produce.",
-            name: 'All'
+            column: 'All'
         },
         {
             id: 8, 
-            title: "Home and garden tools",
+            name: "Home and garden tools",
             description: "The average person spends almost £200 per year on tools and uses them infrequently. A shared approach could save huge amounts of resources and money.",
-            name: 'All'
+            column: 'All'
         },
         {
             id: 9, 
-            title: "Cars",
+            name: "Cars",
             description: "Car sharing schemes help relieve local traffic congestion, saving up to £1,000 per year (on fuel costs, parking and other vehicle running costs).",
-            name: 'All'
+            column: 'All'
         },
         {
             id: 10, 
@@ -196,7 +195,7 @@ const CircularEconomyGame = () => {
                   <a className="" href="#">Start over</a>
                 </div>
                 <div className={classes.Instructions}>
-                  <h3>{game.name}</h3>
+                  <h3>{game.title}</h3>
                   <p>{game.instructions}</p>
                 </div>   
                 <div className="Container">            
@@ -220,7 +219,7 @@ const CircularEconomyGame = () => {
                 </div>
             </Route>
             <Route path="/circulareconomy/result">
-                < CircularEconomyResult />
+                <CircularEconomyResult />
             </Route>
         </Switch>
     )
