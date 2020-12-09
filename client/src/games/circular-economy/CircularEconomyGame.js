@@ -4,6 +4,9 @@ import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
 import '../../styles/pages/circulareconomy.scss';
+import { Switch, Route, Link } from 'react-router-dom';
+import CircularEconomyInfo from './CircularEconomyInfo';
+import CircularEconomyResult from './CircularEconomyResult';
 import classes from '../../styles/pages/lowcarbon.module.scss'
 import Intro from '../../components/Intro';
 
@@ -180,35 +183,46 @@ const CircularEconomyGame = () => {
 
     
     return(
-        <>
-            <div className={classes.GameNav}>
-                <Link to='/circulareconomy/intro'>Back</Link>
-                <a className="" href="#">Start over</a>
-            </div>
-            <div className={classes.Instructions}>
-                <h3>{game.name}</h3>
-                <p>{game.instructions}</p>
-            </div>      
-            <div className="Container">
-                <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
-                    <Column title='All' className='Column FirstColumn'>
-                        {returnItemsForColumn('All')}
-                    </Column>
-                    <div className="Choices">
-                        <Column title='Individuals' className='Column SecondColumn'>
-                            {returnItemsForColumn('Individuals')}
+        <Switch>
+            <Route exact path="/circulareconomy">
+                <CircularEconomyInfo title={game.title} />
+            </Route>
+            <Route path="/circulareconomy/intro">
+                <Intro text={game.intro} link='/circulareconomy/game' game='/circulareconomy'/>
+            </Route>
+            <Route path="/circulareconomy/game">
+                <div className={classes.GameNav}>
+                  <Link to='/circulareconomy/intro'>Back</Link>
+                  <a className="" href="#">Start over</a>
+                </div>
+                <div className={classes.Instructions}>
+                  <h3>{game.name}</h3>
+                  <p>{game.instructions}</p>
+                </div>   
+                <div className="Container">            
+                    <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                        <Column title='All' className='Column FirstColumn'>
+                            {returnItemsForColumn('All')}
                         </Column>
-                        <Column title='Community' className='Column SecondColumn'>
-                            {returnItemsForColumn('Community')}
-                        </Column>
-                        <Column title='Council' className='Column SecondColumn'>
-                            {returnItemsForColumn('Council')}
-                        </Column>
-                    </div>
-                    <button className="Btn">Complete!</button>
-                </DndProvider>
-            </div>
-        </>
+                        <div className="Choices">
+                          <Column title='Individuals' className='Column SecondColumn'>
+                              {returnItemsForColumn('Individuals')}
+                          </Column>
+                          <Column title='Community' className='Column SecondColumn'>
+                              {returnItemsForColumn('Community')}
+                          </Column>
+                          <Column title='Council' className='Column SecondColumn'>
+                              {returnItemsForColumn('Council')}
+                          </Column>
+                        </div>
+                        <button className="Btn">Complete!</button>
+                    </DndProvider>
+                </div>
+            </Route>
+            <Route path="/circulareconomy/result">
+                < CircularEconomyResult />
+            </Route>
+        </Switch>
     )
 }
 

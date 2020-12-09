@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import classes from '../../styles/pages/lowcarbon.module.scss'
-import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
+import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import { Switch, Route, Link } from 'react-router-dom';
 import LowCarbonInfo from './LowCarbonInfo';
 import Card from '../../components/Card';
