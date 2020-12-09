@@ -5,7 +5,7 @@ import {TouchBackend} from 'react-dnd-touch-backend';
 import '../../styles/pages/circulareconomy.scss'
 
 
-const MovableItem = ({name, setItems}) => {
+const MovableItem = ({name, setItems, column}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -16,6 +16,7 @@ const MovableItem = ({name, setItems}) => {
             })
         });
     }
+
     const [{ isDragging }, drag] = useDrag({
         item: { name, type:'Our first type'},
         end: (item, monitor) => {
@@ -37,8 +38,16 @@ const MovableItem = ({name, setItems}) => {
 
     const opacity = isDragging ? 0.4 : 1;
 
+    const getDisplay = () => {
+        if(column === "All") {
+            return 'flex'
+        } else {
+            return 'none'
+        }
+    }
+
     return (
-        <div ref={drag} className='MovableItem' style={{  opacity }}>
+        <div ref={drag} className='MovableItem' style={{  opacity, display: getDisplay() }}>
             {name}
         </div>
     )
@@ -51,8 +60,11 @@ const Column = ({children, className, title}) => {
         accept: 'Our first type',
         drop: () => ({name: title}),
     })
+
+
     return (
         <div ref={drop} className={className}>
+            {children.length}
             {title}
             {children}
         </div>
@@ -160,7 +172,7 @@ const CircularEconomyGame = () => {
         return items
         .filter((item) => item.column === columnName)
         .map((item) => (
-            <MovableItem key={item.id} name={item.name} setItems={setItems} />
+            <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} />
         ))
     }
 
