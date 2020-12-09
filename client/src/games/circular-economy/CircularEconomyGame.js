@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
@@ -6,10 +7,11 @@ import '../../styles/pages/circulareconomy.scss';
 import { Switch, Route, Link } from 'react-router-dom';
 import CircularEconomyInfo from './CircularEconomyInfo';
 import CircularEconomyResult from './CircularEconomyResult';
+import classes from '../../styles/pages/lowcarbon.module.scss'
 import Intro from '../../components/Intro';
 
 
-const MovableItem = ({name, setItems, column}) => {
+const MovableItem = ({name, setItems, column, index}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -43,7 +45,7 @@ const MovableItem = ({name, setItems, column}) => {
     const opacity = isDragging ? 0.4 : 1;
 
     const getDisplay = () => {
-        if(column === "All") {
+        if(column === "All" && index === 0) {
             return 'flex'
         } else {
             return 'none'
@@ -68,8 +70,7 @@ const Column = ({children, className, title}) => {
 
     return (
         <div ref={drop} className={className}>
-            {children.length}
-            {title}
+            <h4>{children.length} {title}</h4>
             {children}
         </div>
     )
@@ -175,8 +176,8 @@ const CircularEconomyGame = () => {
     const returnItemsForColumn = (columnName) => {
         return items
         .filter((item) => item.column === columnName)
-        .map((item) => (
-            <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} />
+        .map((item, index) => (
+            <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} index={index} />
         ))
     }
 
@@ -190,20 +191,31 @@ const CircularEconomyGame = () => {
                 <Intro text={game.intro} link='/circulareconomy/game' game='/circulareconomy'/>
             </Route>
             <Route path="/circulareconomy/game">
+                <div className={classes.GameNav}>
+                  <Link to='/circulareconomy/intro'>Back</Link>
+                  <a className="" href="#">Start over</a>
+                </div>
+                <div className={classes.Instructions}>
+                  <h3>{game.name}</h3>
+                  <p>{game.instructions}</p>
+                </div>   
                 <div className="Container">            
                     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
                         <Column title='All' className='Column FirstColumn'>
                             {returnItemsForColumn('All')}
                         </Column>
-                        <Column title='Individuals' className='Column SecondColumn'>
-                            {returnItemsForColumn('Individuals')}
-                        </Column>
-                        <Column title='Community' className='Column SecondColumn'>
-                            {returnItemsForColumn('Community')}
-                        </Column>
-                        <Column title='Council' className='Column SecondColumn'>
-                            {returnItemsForColumn('Council')}
-                        </Column>
+                        <div className="Choices">
+                          <Column title='Individuals' className='Column SecondColumn'>
+                              {returnItemsForColumn('Individuals')}
+                          </Column>
+                          <Column title='Community' className='Column SecondColumn'>
+                              {returnItemsForColumn('Community')}
+                          </Column>
+                          <Column title='Council' className='Column SecondColumn'>
+                              {returnItemsForColumn('Council')}
+                          </Column>
+                        </div>
+                        <button className="Btn">Complete!</button>
                     </DndProvider>
                 </div>
             </Route>
