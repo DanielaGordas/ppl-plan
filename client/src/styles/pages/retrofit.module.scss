@@ -1,0 +1,80 @@
+@import "../scss-variables.scss";
+
+.RoundCard {
+  border-radius: 50%;
+  background-color: #fff3f3;
+  width: 6rem;
+  height: 6rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: $dark-blue;
+}
+
+.Column {
+  min-height: 14rem;
+  width: 14rem;
+  margin: 2rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.FirstColumn {
+  background-color: #f5ffea;
+  font-size: 1rem;
+}
+
+.SecondColumn {
+  background-color: $dark-blue;
+  font-size: 1rem;
+  border-radius: 50%;
+  text-align: center;
+  color: $white;
+}
+
+@mixin on-circle($item-count, $circle-size, $item-size) {
+  position: relative;
+  width: $circle-size;
+  height: $circle-size;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none;
+
+  > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $item-size;
+    height: $item-size;
+    margin: -($item-size / 2);
+
+    $angle: (360 / $item-count);
+    $rot: 0;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg)
+          translate($circle-size / 2)
+          rotate($rot * -1deg);
+      }
+
+      $rot: $rot + $angle;
+    }
+  }
+}
+
+.Choices {
+  @include on-circle($item-count: 9, $circle-size: 20rem, $item-size: 6rem);
+  margin: 5rem auto 0;
+  border: solid 5px $dark-blue;
+}
+
+.Translate {
+  transform: translate(0%, -65%);
+}
