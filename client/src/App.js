@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import NotFound from './components/NotFound';
 import UserDataCollection from './pages/UserDataCollection';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import LowCarbonGame from './games/low-carbon-travel/LowCarbonGame';
+import LowCarbonTravelGame from './games/low-carbon-travel/LowCarbonTravelGame';
 import CircularEconomyGame from './games/circular-economy/CircularEconomyGame';
 import RetrofitHomesGame from './games/retrofit-homes/RetrofitHomesGame';
 
@@ -20,7 +20,7 @@ const App = () => {
                               <Route path="/privacy" ></Route>
                               <Route path="/user" component={UserDataCollection}/>
                               <Route path="/lowcarbon">
-                                    <LowCarbonGame />
+                                    <LowCarbonTravelGame />
                               </Route>
                               <Route path="/circulareconomy">
                                     <CircularEconomyGame />
