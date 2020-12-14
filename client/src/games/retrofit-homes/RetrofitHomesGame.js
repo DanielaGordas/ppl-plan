@@ -8,7 +8,8 @@ import RetrofitHomesInfo from './RetrofitHomesInfo';
 import RetrofitHomesResult from './RetrofitHomesResult';
 import classes from '../../styles/pages/lowcarbon.module.scss'
 import Intro from '../../components/Intro';
-import styles from '../../styles/pages/retrofit.module.scss'
+import styles from '../../styles/pages/retrofit.module.scss';
+
 
 
 const MovableItem = ({name, setItems, column, index}) => {
@@ -89,23 +90,27 @@ const Column = ({children, className, title}) => {
           isOver: monitor.isOver(),
           canDrop: monitor.canDrop(),
         }),
-        canDrop: (item) => {
+        canDrop: () => {
           return children.length === 0 || title === "All";
         }
     })
 
 
     return (
+        <>
         <div ref={drop} className={className}>
-            <h4>{title}</h4>
+             {title !== "All"  &&
+                <h4>{title}</h4> 
+             }
             {children}
         </div>
+        </>
     )
 }
 
 const RetrofitHomesGame = () => {
 
-    const RetrofitHomesGame = {
+    const retrofitHomesGame = {
         id: 3, 
         title: "Retrofit Homes",
         intro: "Congratulations! You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. You get to choose your own home improvements, funded by the government. Pick from the 10 home improvement options and prioritise which you think are best for your home.",
@@ -171,7 +176,7 @@ const RetrofitHomesGame = () => {
       
     ]
 
-    const [game, setGame] = useState(RetrofitHomesGame);
+    const [game, setGame] = useState(retrofitHomesGame);
     const [items, setItems] = useState(retrofitHomesAnswers);
     const isMobile = window.innerWidth < 600;
 
@@ -182,8 +187,6 @@ const RetrofitHomesGame = () => {
             <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} index={index} />
         ))
     }
-
-    console.log(items);
 
     
     return(

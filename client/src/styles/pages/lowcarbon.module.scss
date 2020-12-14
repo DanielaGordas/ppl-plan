@@ -43,6 +43,10 @@
   background-color: $dark-blue;
 }
 
+.Card:active {
+  background: red;
+}
+
 .Selected {
   background-color: $grey;
   width: 5rem;

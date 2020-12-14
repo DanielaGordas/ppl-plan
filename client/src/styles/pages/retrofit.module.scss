@@ -11,22 +11,23 @@
   color: $dark-blue;
 }
 
-.Column {
-  min-height: 14rem;
-  width: 14rem;
+.FirstColumn {
+  border-radius: 50%;
   margin: 2rem;
-  border-radius: 1rem;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  height: 14rem;
+  width: 14rem;
+  background-color: $grey;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.FirstColumn {
-  background-color: #f5ffea;
-  font-size: 1rem;
+.FirstColumn div {
+  padding: 1rem;
+  align-self: center;
 }
 
 .SecondColumn {
@@ -71,7 +72,7 @@
 
 .Choices {
   @include on-circle($item-count: 9, $circle-size: 20rem, $item-size: 6rem);
-  margin: 5rem auto 0;
+  margin: 5rem auto 1rem;
   border: solid 5px $dark-blue;
 }
 

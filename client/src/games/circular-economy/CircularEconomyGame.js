@@ -52,11 +52,12 @@ const MovableItem = ({name, setItems, column, index}) => {
     }
 
     return (
-        <div ref={drag} className='MovableItem' style={{  opacity, display: getDisplay() }}>
+        <a ref={drag} className='MovableItem' style={{  opacity, display: getDisplay() }}>
             {name}
-        </div>
+        </a>
     )
 }
+
 
 
 const Column = ({children, className, title}) => {
@@ -68,12 +69,17 @@ const Column = ({children, className, title}) => {
 
 
     return (
+        <>
         <div ref={drop} className={className}>
-            <h4>{children.length} {title}</h4>
+            <h4>{ title !== "All" ? children.length : null}</h4>
+            <h4> {title !== "All" ? title : null}</h4>
             {children}
         </div>
+        </>
     )
 }
+
+
 
 const CircularEconomyGame = () => {
 
