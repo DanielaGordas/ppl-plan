@@ -1,7 +1,5 @@
 class Guest < ApplicationRecord
-	has_many :guest_answers
-
-	has_many :answers, through: :guest_answers
+	has_many :answers
 
 	# GENDER = ['Female', 'Male', 'Other']
 	# AGE = ['18-25', '25-40', '40-60', '60+']

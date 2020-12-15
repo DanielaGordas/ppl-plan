@@ -8,6 +8,7 @@ import LowCarbonResult from './LowCarbonResult';
 import '../../styles/pages/circulareconomy.scss';
 import classes from '../../styles/pages/lowcarbon.module.scss';
 import Intro from '../../components/Intro';
+import axios from 'axios';
 
 import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg'
 import CarFreeZones from '../../images/low-carbon/Car-free_zones.svg'
@@ -88,10 +89,6 @@ const Column = ({children, className, title}) => {
         }
     })
 
-    // const [description, setDescription] = useState(title === "All" ? children[0].props.name : null)
-
-    // console.log(description)
-
 
     return (
         <div ref={drop} className={className} >
@@ -127,6 +124,7 @@ const LowCarbonTravelGame = () => {
             description: "Invest in a network of car charging stations, with fast chargers every 50km along motorways, and provide better subsidies for home charging points.",
             column: 'All',
             category: 'electric car ownership',
+            game: "Low Carbon Travel",
             svg: EvChargingPoints
         },
         {
@@ -135,6 +133,7 @@ const LowCarbonTravelGame = () => {
             description: "Employees carpooling could save up to £1000 on fuel and vehicle running costs, reduce pollution, and reduce demand for car parking spaces by 50%.",
             column: 'All',
             category: 'electric car ownership',
+            game: "Low Carbon Travel",
             svg: EmployerCarSharingScheme
         },
         {
@@ -143,6 +142,7 @@ const LowCarbonTravelGame = () => {
             description: "Individuals receive money towards an electric vehicle for scrapping their old polluting car, which will boost the UK’s car manufacturing industry, reduce air pollution and reduce emissions.",
             column: 'All',
             category: 'electric car ownership',
+            game: "Low Carbon Travel",
             svg: CarScrappageScheme
         },
         {
@@ -151,6 +151,7 @@ const LowCarbonTravelGame = () => {
             description: "Make new electric vehicles more affordable for individuals and businesses by increasing benefits, such as purchase tax and VAT.",
             column: 'All',
             category: 'electric car ownership',
+            game: "Low Carbon Travel",
             svg: TaxBenefits
         },
         {
@@ -159,6 +160,7 @@ const LowCarbonTravelGame = () => {
             description: "Introduce Purchase Grants to give people money to buy electric vehicles, making them more financially accessible to low income households.",
             column: 'All',
             category: 'electric car ownership',
+            game: "Low Carbon Travel",
             svg: PurchaseGrants
         },
         {
@@ -167,6 +169,7 @@ const LowCarbonTravelGame = () => {
             description: "Electrify the bus network resulting in cheaper and more reliable public transport, as well as improvements in local air quality and public health.",
             column: 'All',
             category: 'mass transit',
+            game: "Low Carbon Travel",
             svg: ElectricBusNetwork
         },
         {
@@ -175,6 +178,7 @@ const LowCarbonTravelGame = () => {
             description: "Enjoy smoother, quieter, more reliable journeys with an electrified rail network. Boost the economy by potentially doubling the number of jobs in this sector, as well as saving money on maintenance and running costs.",
             column: 'All',
             category: 'mass transit',
+            game: "Low Carbon Travel",
             svg: ElectricRailNetwork
         },
         {
@@ -183,6 +187,7 @@ const LowCarbonTravelGame = () => {
             description: "Boost the economy by £5 million annually by investing in a National Cycle Network with dedicated city cycle lanes, making it safer for cyclists and improving public health as a result of regular exercise and cleaner air.",
             column: 'All',
             category: 'mass transit',
+            game: "Low Carbon Travel",
             svg: NationalCyclingNetwork
         },
         {
@@ -191,6 +196,7 @@ const LowCarbonTravelGame = () => {
             description: "Car-free school zones and residential areas make it safer for children to walk and cycle to school, while reducing congestion and air pollution and improving public health.",
             column: 'All',
             category: 'mass transit',
+            game: "Low Carbon Travel",
             svg: CarFreeZones
         },
         {
@@ -199,6 +205,7 @@ const LowCarbonTravelGame = () => {
             description: "Improve public transport efficiency and reliability by optimising bus routes and reclaiming roads for dedicated bus/tram lanes in cities.",
             column: 'All',
             category: 'mass transit',
+            game: "Low Carbon Travel",
             svg: ImproveExistingPublicTransport
         }
       
@@ -218,11 +225,21 @@ const LowCarbonTravelGame = () => {
         ))
     }
 
+    // Style and logic for the needle in the speedometer 
     const massTransit = [];
     const electricCars = [];
 
-    // to be implemented: send responses to DB 
-    // const finalItems = items.filter((item) => item.column === "All")
+    const result = () => {
+        let result = ""
+        if(massTransit.length > electricCars.length) {
+           result = "mass transit"
+        } else {
+            result = "electric cars"
+        }
+        return result;
+    }
+
+    console.log(result());
 
 
     items.map(item => {
@@ -284,6 +301,49 @@ const LowCarbonTravelGame = () => {
 
         return style;
     }
+
+    // Logic for persisting the answers in the DB: 
+
+    // retrieves guest user details from localStorage
+    const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
+ 
+    const finalItems = items.filter((item) => item.column !== "All")
+
+    console.log(finalItems);
+
+    // saves guest_answers to the DB     
+    const submitAnswers = () => {
+
+        const qs = require('qs');
+        
+        if(finalItems.length === 5 && guestDetails) {
+            finalItems.forEach(answer => {
+                axios.post('/api/answers', qs.stringify(
+                    {
+                        answer: {
+                            guest_id: guestDetails.id,
+                            name: answer.name,
+                            description: answer.description,
+                            column: answer.column,
+                            category: answer.category,
+                            game: answer.game
+                    }
+                }))
+                .then(res => {
+                    handleRedirect(res)
+                })
+                    .catch(err => console.log(err))
+                })
+        }
+    }
+        
+            const handleRedirect = (res) => {
+                if(res.status === 201 || res.status === 200) {
+                    window.location = '/lowcarbon/result'
+                } else {
+                    window.location = '/lowcarbon/game'
+                }
+            }
 
 
     return(

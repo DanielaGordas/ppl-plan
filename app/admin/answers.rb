@@ -1,5 +1,5 @@
 ActiveAdmin.register Answer do
-  permit_params :title, :category, :description, :game_id, :selected
+  permit_params :title, :category, :description, :guest_id, :column, :game
   #
   # or
   #
