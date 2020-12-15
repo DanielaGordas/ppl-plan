@@ -11,7 +11,7 @@ import Intro from '../../components/Intro';
 
 
 
-const MovableItem = ({name, setItems, column, index}) => {
+const MovableItem = ({name, setItems, column, description, setInfo, index}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -46,14 +46,19 @@ const MovableItem = ({name, setItems, column, index}) => {
         }),
     });
 
+
     const opacity = isDragging ? 0.4 : 1;
 
-
-  return (
-      <div ref={drag} className={classes.Card} style={{  opacity}}>
-          {name}
-      </div>
-  )
+    const handleClick = () => {
+        if(column === "All" ) {
+            setInfo(description);
+        }
+    }
+    return (
+        <div ref={drag} className={classes.Card} style={{  opacity}} >
+            <a onClick={handleClick}>{name}</a>
+        </div>
+    )
 }
 
 
@@ -71,11 +76,22 @@ const Column = ({children, className, title}) => {
         }
     })
 
+    // const [description, setDescription] = useState(title === "All" ? children[0].props.name : null)
+
+    // console.log(description)
+
 
     return (
-        <div ref={drop} className={className}>
+        <div ref={drop} className={className} >
             {children}
         </div>
+    )
+
+}
+
+const Info = ({info}) => {
+    return(
+        <div style={{fontSize: "1rem"}}>{info}</div>
     )
 }
 
@@ -165,18 +181,23 @@ const LowCarbonTravelGame = () => {
 
     const [game, setGame] = useState(lowCarbonTravelGame);
     const [items, setItems] = useState(lowCarbonTravelAnswers);
+    const [info, setInfo] = useState(lowCarbonTravelAnswers[0].description)
     const isMobile = window.innerWidth < 600;
+
 
     const returnItemsForColumn = (columnName) => {
         return items
         .filter((item) => item.column === columnName)
         .map((item, index) => (
-            <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} index={index} />
+            <MovableItem key={item.id} name={item.name} description={item.description} column={item.column} setItems={setItems} index={index} setInfo={setInfo}/>
         ))
     }
 
     const massTransit = [];
     const electricCars = [];
+
+    // to be implemented: send responses to DB 
+    // const finalItems = items.filter((item) => item.column === "All")
 
 
     items.map(item => {
@@ -262,6 +283,7 @@ const LowCarbonTravelGame = () => {
                         <Column title='All' className={classes.Box}>
                             {returnItemsForColumn('All')}
                         </Column>
+                        < Info info={info} />
                         <div className="Choices">
                           <Column title='1' className={classes.Selected}>
                               {returnItemsForColumn('1')}
