@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_124636) do
+ActiveRecord::Schema.define(version: 2020_12_15_111712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,31 +42,15 @@ ActiveRecord::Schema.define(version: 2020_11_24_124636) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.string "category"
     t.text "description"
-    t.bigint "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "selected", default: false
-    t.index ["game_id"], name: "index_answers_on_game_id"
-  end
-
-  create_table "games", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "instructions"
-  end
-
-  create_table "guest_answers", force: :cascade do |t|
     t.bigint "guest_id", null: false
-    t.bigint "answer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["answer_id"], name: "index_guest_answers_on_answer_id"
-    t.index ["guest_id"], name: "index_guest_answers_on_guest_id"
+    t.string "game"
+    t.string "column"
+    t.index ["guest_id"], name: "index_answers_on_guest_id"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -85,7 +69,5 @@ ActiveRecord::Schema.define(version: 2020_11_24_124636) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "answers", "games"
-  add_foreign_key "guest_answers", "answers"
-  add_foreign_key "guest_answers", "guests"
+  add_foreign_key "answers", "guests"
 end
