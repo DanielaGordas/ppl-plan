@@ -10,9 +10,21 @@ import classes from '../../styles/pages/lowcarbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
 
+import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg'
+import CarFreeZones from '../../images/low-carbon/Car-free_zones.svg'
+import ElectricBusNetwork from '../../images/low-carbon/Electric_bus_network.svg'
+import ElectricCarOwnership from '../../images/low-carbon/Electric_car_ownership.svg'
+import ElectricRailNetwork from '../../images/low-carbon/Electric_rail_network.svg'
+import EmployerCarSharingScheme from '../../images/low-carbon/Employer_car_sharing_scheme.svg'
+import EvChargingPoints from '../../images/low-carbon/EV_charging_points.svg'
+import ImproveExistingPublicTransport from '../../images/low-carbon/Improve_existing_public_transport.svg'
+import Mass_Transit from '../../images/low-carbon/Mass_Transit.svg'
+import NationalCyclingNetwork from '../../images/low-carbon/National_cycling_network.svg'
+import PurchaseGrants from '../../images/low-carbon/Purchase_grants.svg'
+import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg'
+import {FaTrain, FaCar} from 'react-icons/fa'
 
-
-const MovableItem = ({name, setItems, column, description, setInfo, index}) => {
+const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -52,12 +64,12 @@ const MovableItem = ({name, setItems, column, description, setInfo, index}) => {
 
     const handleClick = () => {
         if(column === "All" ) {
-            setInfo(description);
+            setInfo([name, icon]);
         }
     }
     return (
         <div ref={drag} className={classes.Card} style={{  opacity}} >
-            <a onClick={handleClick}>{name}</a>
+            <img src={icon} alt={name} onClick={handleClick}/>
         </div>
     )
 }
@@ -88,7 +100,10 @@ const Column = ({children, className, title}) => {
 
 const Info = ({info}) => {
     return(
-        <div style={{fontSize: "1rem"}}>{info}</div>
+        <div className={classes.Infobox}>
+            <img src={info[1]} alt={info[0]}/>
+            <p>{info[0]}</p>
+        </div>
     )
 }
 
@@ -98,7 +113,7 @@ const LowCarbonTravelGame = () => {
         id: 1, 
         title: "Low Carbon Travel",
         intro: "You’re stuck in traffic on your way to work again and daydreaming of a future where UK commuters don’t waste 115 hours sitting in traffic annually. What does that future look like?",
-        instructions: "Choose 5 of the 11 low carbon travel options to shape the future of transport by dragging them onto the scale, below. The gauge will indicate whether your future commute will be improved by individual electric vehicles or more efficient public transport services."
+        instructions: "Drag 5 of the 10 low carbon travel options on to the scales."
     }
 
 
@@ -110,6 +125,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'electric car ownership',
             game: "Low Carbon Travel",
+            svg: EvChargingPoints
         },
         {
             id: 2, 
@@ -118,6 +134,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'electric car ownership',
             game: "Low Carbon Travel",
+            svg: EmployerCarSharingScheme
         },
         {
             id: 3, 
@@ -126,6 +143,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'electric car ownership',
             game: "Low Carbon Travel",
+            svg: CarScrappageScheme
         },
         {
             id: 4, 
@@ -134,6 +152,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'electric car ownership',
             game: "Low Carbon Travel",
+            svg: TaxBenefits
         },
         {
             id: 5, 
@@ -142,6 +161,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'electric car ownership',
             game: "Low Carbon Travel",
+            svg: PurchaseGrants
         },
         {
             id: 6, 
@@ -150,6 +170,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'mass transit',
             game: "Low Carbon Travel",
+            svg: ElectricBusNetwork
         },
         {
             id: 7, 
@@ -158,6 +179,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'mass transit',
             game: "Low Carbon Travel",
+            svg: ElectricRailNetwork
         },
         {
             id: 8, 
@@ -166,6 +188,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'mass transit',
             game: "Low Carbon Travel",
+            svg: NationalCyclingNetwork
         },
         {
             id: 9, 
@@ -174,6 +197,7 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'mass transit',
             game: "Low Carbon Travel",
+            svg: CarFreeZones
         },
         {
             id: 10, 
@@ -182,13 +206,14 @@ const LowCarbonTravelGame = () => {
             column: 'All',
             category: 'mass transit',
             game: "Low Carbon Travel",
+            svg: ImproveExistingPublicTransport
         }
       
     ]
 
     const [game, setGame] = useState(lowCarbonTravelGame);
     const [items, setItems] = useState(lowCarbonTravelAnswers);
-    const [info, setInfo] = useState(lowCarbonTravelAnswers[0].description)
+    const [info, setInfo] = useState([lowCarbonTravelAnswers[0].name, lowCarbonTravelAnswers[0].svg])
     const isMobile = window.innerWidth < 600;
 
 
@@ -196,7 +221,7 @@ const LowCarbonTravelGame = () => {
         return items
         .filter((item) => item.column === columnName)
         .map((item, index) => (
-            <MovableItem key={item.id} name={item.name} description={item.description} column={item.column} setItems={setItems} index={index} setInfo={setInfo}/>
+            <MovableItem key={item.id} name={item.name} description={item.description} column={item.column} setItems={setItems} index={index} setInfo={setInfo} icon={item.svg} />
         ))
     }
 
@@ -330,44 +355,50 @@ const LowCarbonTravelGame = () => {
                 <Intro text={game.intro} link='/lowcarbon/game' game='/lowcarbon'/>
             </Route>
             <Route path="/lowcarbon/game">
-                <div className={classes.GameNav}>
-                  <Link to='/retrofithomes/intro'>Back</Link>
-                  <a className="" href="#">Start over</a>
-                </div>
-                <div className={classes.Instructions}>
-                  <h3>{game.title}</h3>
-                  <p>{game.instructions}</p>
-                </div>   
-                <div className="Container">            
-                    <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
-                        <Column title='All' className={classes.Box}>
-                            {returnItemsForColumn('All')}
-                        </Column>
-                        < Info info={info} />
-                        <div className="Choices">
-                          <Column title='1' className={classes.Selected}>
-                              {returnItemsForColumn('1')}
-                          </Column>
-                          <Column title='2' className={classes.Selected}>
-                              {returnItemsForColumn('2')}
-                          </Column>
-                          <Column title='3' className={classes.Selected}>
-                              {returnItemsForColumn('3')}
-                          </Column>
-                          <Column title='4' className={classes.Selected}>
-                              {returnItemsForColumn('4')}
-                          </Column>
-                          <Column title='5' className={classes.Selected}>
-                              {returnItemsForColumn('5')}
-                          </Column>
-                        </div>
-                        <div className={classes.Speedometer}>
-                            <div className={classes.HalfCircle}></div>
-                            <div className={classes.Needle} style={setNeedleStyle()}></div>
-                            <div className={classes.Bottom}></div>
-                        </div>
-                        <button className="Btn" onClick={submitAnswers}>Complete!</button>
-                    </DndProvider>
+                <div className={classes.Background}>   
+                    <div className={classes.GameNav}>
+                    <Link to='/lowcarbon/intro'>Back</Link>
+                    <a className="" href="#">Start over</a>
+                    </div>
+                    
+                    <div className={classes.Instructions}>
+                    <h3>{game.title}</h3>
+                    <p>{game.instructions}</p>
+                    </div>   
+                    <div className={classes.Container}>            
+                        <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                            <Column title='All' className={classes.Box}>
+                                {returnItemsForColumn('All')}
+                            </Column>
+                            < Info info={info} />
+                            <div className={classes.Choices}>
+                            <Column title='1' className={classes.Selected}>
+                                {returnItemsForColumn('1')}
+                            </Column>
+                            <Column title='2' className={classes.Selected}>
+                                {returnItemsForColumn('2')}
+                            </Column>
+                            <Column title='3' className={classes.Selected}>
+                                {returnItemsForColumn('3')}
+                            </Column>
+                            <Column title='4' className={classes.Selected}>
+                                {returnItemsForColumn('4')}
+                            </Column>
+                            <Column title='5' className={classes.Selected}>
+                                {returnItemsForColumn('5')}
+                            </Column>
+                            </div>
+                            <div className={classes.Speedometer}>
+                                <div className={classes.HalfCircle}></div>
+                                <div className={classes.Needle} style={setNeedleStyle()}></div>
+                                <div className={classes.Bottom}>
+                                    <FaCar color="white" fontSize="2rem" className={classes.MarginLeft} />
+                                    <FaTrain color="white" fontSize="2rem" className={classes.MarginRight} />
+                                </div>
+                            </div>
+                            <button className={classes.Btn}>Complete!</button>
+                        </DndProvider>
+                    </div>
                 </div>
             </Route>
             <Route path="/lowcarbon/result">
