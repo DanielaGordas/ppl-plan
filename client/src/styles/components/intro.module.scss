@@ -1,5 +1,15 @@
 @import "../scss-variables.scss";
 
+.Background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .GameNav {
   display: flex;
   justify-content: space-between;
@@ -15,16 +25,17 @@
 
 .SpeechBubble {
   background: $grey;
-  color: $dark-blue;
+  opacity: 0.85;
   display: inline-block;
-  font-size: 2.2rem;
-  line-height: 4rem;
-  margin: 5rem 1.5rem;
-  padding: 0 3rem;
+  font-size: 2rem;
+  line-height: 3rem;
+  margin: 6rem 1.5rem;
+  padding: 0 2rem;
   position: relative;
   text-align: left;
   vertical-align: top;
-  min-height: 45vh;
+  min-height: 35vh;
+  width: 70vw;
 }
 
 .SpeechBubble:after {

@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom';
 import classes from '../styles/components/intro.module.scss';
 import '../styles/components/button.scss';
 
-const Intro = ({text, link, game}) => {
+const Intro = ({text, link, game, background}) => {
   return (
     <>
-    <div className={classes.GameNav}>
-        <Link to={game}>Back</Link>
-        <Link to='/user'>Exit Game</Link>
-    </div>
-    <div className={classes.SpeechBubble}>
-      <p>{text}</p>
-    </div>
-    <Link to={link} style={{textAlign: 'center'}}><button className="Btn Btn-standard">Begin!</button></Link>
+      <div className={classes.GameNav}>
+          <Link to={game}>Back</Link>
+          <Link to='/user'>Exit Game</Link>
+      </div>
+      <div className={classes.Background} style={{backgroundImage: `url(${background})`}}>
+        <div className={classes.SpeechBubble}>
+          <p>{text}</p>
+        </div>
+        <Link to={link} style={{textAlign: 'center', marginTop: '7rem'}}><button className="Btn">Begin!</button></Link>
+      </div>
     </>
   )
 }
