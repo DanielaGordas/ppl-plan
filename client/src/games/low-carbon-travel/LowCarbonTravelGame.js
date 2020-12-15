@@ -9,6 +9,7 @@ import '../../styles/pages/circulareconomy.scss';
 import classes from '../../styles/pages/lowcarbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
+import Modal from '../../components/Modal'
 
 import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg'
 import CarFreeZones from '../../images/low-carbon/Car-free_zones.svg'
@@ -22,7 +23,8 @@ import Mass_Transit from '../../images/low-carbon/Mass_Transit.svg'
 import NationalCyclingNetwork from '../../images/low-carbon/National_cycling_network.svg'
 import PurchaseGrants from '../../images/low-carbon/Purchase_grants.svg'
 import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg'
-import {FaTrain, FaCar} from 'react-icons/fa'
+import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa'
+import IntroBackground from '../../images/low-carbon/Game1_screen1.svg'
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -64,7 +66,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
 
     const handleClick = () => {
         if(column === "All" ) {
-            setInfo([name, icon]);
+            setInfo([name, icon, description]);
         }
     }
     return (
@@ -99,11 +101,22 @@ const Column = ({children, className, title}) => {
 }
 
 const Info = ({info}) => {
+    const [show, setShow] = useState(false);
+    const openModal = () => setShow(true);  
+    const closeModal = () => setShow(false);
     return(
+        <>
         <div className={classes.Infobox}>
-            <img src={info[1]} alt={info[0]}/>
-            <p>{info[0]}</p>
+            <div>
+                <img src={info[1]} alt={info[0]}/>
+                <p>{info[0]}</p>
+            </div>
+            <a href="#" className={classes.Link} onClick={openModal}>
+                Read more <FaAngleDown fontSize="1.2rem" color="#102773" />
+            </a>
         </div>
+        { show? <Modal title={info[0]} description={info[2]} show={show} closeModal={closeModal} icon={info[1]}/> : null }
+        </>
     )
 }
 
@@ -213,7 +226,7 @@ const LowCarbonTravelGame = () => {
 
     const [game, setGame] = useState(lowCarbonTravelGame);
     const [items, setItems] = useState(lowCarbonTravelAnswers);
-    const [info, setInfo] = useState([lowCarbonTravelAnswers[0].name, lowCarbonTravelAnswers[0].svg])
+    const [info, setInfo] = useState([lowCarbonTravelAnswers[0].name,lowCarbonTravelAnswers[0].svg, lowCarbonTravelAnswers[0].description])
     const isMobile = window.innerWidth < 600;
 
 
@@ -238,8 +251,6 @@ const LowCarbonTravelGame = () => {
         }
         return result;
     }
-
-    console.log(result());
 
 
     items.map(item => {
@@ -352,7 +363,7 @@ const LowCarbonTravelGame = () => {
                 <LowCarbonInfo title={game.title} />
             </Route>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.intro} link='/lowcarbon/game' game='/lowcarbon'/>
+                <Intro text={game.intro} link='/lowcarbon/game' game='/lowcarbon' background={IntroBackground} />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className={classes.Background}>   
@@ -370,7 +381,7 @@ const LowCarbonTravelGame = () => {
                             <Column title='All' className={classes.Box}>
                                 {returnItemsForColumn('All')}
                             </Column>
-                            < Info info={info} />
+                            <Info info={info} />
                             <div className={classes.Choices}>
                             <Column title='1' className={classes.Selected}>
                                 {returnItemsForColumn('1')}
