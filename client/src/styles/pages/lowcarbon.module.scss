@@ -23,7 +23,7 @@
   background-image: url(../../images/low-carbon/Game1_screen3.svg);
   background-color: $dark-blue;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
 }
@@ -135,7 +135,6 @@
   display: flex;
   margin-bottom: 1rem;
   margin-top: 2rem;
-  width: 83%;
 }
 
 .Speedometer {
@@ -180,6 +179,7 @@
 .Btn {
   background: $dark-blue;
   position: relative;
+  margin-top: 1rem;
   bottom: 2%;
   padding: 1rem;
   border: 1px solid $white;
