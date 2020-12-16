@@ -34,12 +34,9 @@
 }
 
 .Box {
-  width: 95%;
-  height: 7rem;
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 3rem;
   border-radius: 5px;
 }
 
@@ -49,7 +46,6 @@
   flex-shrink: 0;
   padding: 0.3rem;
   border-radius: 2px;
-  margin: 0.8rem;
   color: $white;
   font-size: 1rem;
   text-align: center;
@@ -61,7 +57,7 @@
 
 .Infobox {
   font-size: 1.4rem;
-  padding: 1rem;
+  padding: 0.5rem;
   margin-top: 2rem;
   opacity: 0.8;
   background-color: $grey;
@@ -105,7 +101,7 @@
   text-align: center;
 
   & > .Card > img {
-    transform: translate(-22%, -22%);
+    transform: translate(-5%, -5%);
   }
 }
 
@@ -142,11 +138,11 @@
 }
 
 .HalfCircle {
-  width: 88%;
-  height: 9rem; /* as the half of the width */
+  width: 92%;
+  height: 7rem; /* as the half of the width */
   border-bottom: 0;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  border: 1.5rem solid $dark-blue;
+  border: 1rem solid $dark-blue;
 }
 
 .Bottom {
@@ -168,7 +164,7 @@
 .Needle {
   position: absolute;
   width: 1rem;
-  height: 10rem;
+  height: 8rem;
   background: $dark-blue;
   top: 50%;
   left: 50%;
@@ -180,17 +176,12 @@
   background: $dark-blue;
   position: relative;
   margin-top: 1rem;
-  bottom: 2%;
   padding: 1rem;
   border: 1px solid $white;
   color: $white;
   font-size: 1.6rem;
   min-width: 30%;
   border-radius: 2rem;
-
-  &-standard {
-    width: 30%;
-  }
 }
 
 // Result page
