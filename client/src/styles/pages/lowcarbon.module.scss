@@ -139,10 +139,7 @@
 }
 
 .Speedometer {
-  position: absolute;
-  bottom: 5%;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  position: relative;
 }
 
 .HalfCircle {
@@ -182,7 +179,7 @@
 
 .Btn {
   background: $dark-blue;
-  position: absolute;
+  position: relative;
   bottom: 2%;
   padding: 1rem;
   border: 1px solid $white;

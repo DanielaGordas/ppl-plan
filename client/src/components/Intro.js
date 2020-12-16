@@ -15,7 +15,7 @@ const Intro = ({text, link, game, background}) => {
         <div className={classes.SpeechBubble}>
           <p>{text}</p>
         </div>
-        <Link to={link} style={{textAlign: 'center', marginTop: '7rem'}}><button className="Btn">Begin!</button></Link>
+        <Link to={link} style={{textAlign: 'center', marginTop: '7rem'}}><button className={classes.Btn}>Begin!</button></Link>
       </div>
     </>
   )
