@@ -16,11 +16,12 @@
   justify-content: space-between;
   padding: 1.5rem;
   font-size: 1.2rem;
+  background-color: $dark-blue;
   a,
   a:hover,
   a:active {
     text-decoration: none;
-    color: $dark-blue;
+    color: $white;
   }
 }
 
@@ -57,4 +58,31 @@
   font-size: 1.6rem;
   width: 10rem;
   border-radius: 2rem;
+}
+
+
+.ResultBubble {
+  background: $grey;
+  opacity: 0.8;
+  display: inline-block;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  margin: 10rem;
+  padding: 2rem;
+  position: relative;
+  min-height: 35vh;
+  width: 60vw;
+  align-self: right;
+}
+
+.ResultBubble:after {
+  border: 3rem solid transparent;
+  border-top-color: $grey;
+  content: "";
+  margin-left: -2rem;
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  width: 0;
+  height: 0;
 }

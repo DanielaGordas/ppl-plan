@@ -1,8 +1,7 @@
 import React from 'react';
-import classes from '../../styles/pages/lowcarbon.module.scss';
+import classes from '../../styles/components/intro.module.scss';
 import { Link } from 'react-router-dom';
-import '../../styles/components/button.scss';
-import {FaAward} from "react-icons/fa";
+import background from "../../images/low-carbon/Game1_screen6.svg";
 
 const LowCarbonResult = () => {
     // retrieves result from Local Storage
@@ -17,12 +16,18 @@ const LowCarbonResult = () => {
     };
 
     return (
-        <div className={classes.BoxWrapper}>
-            <h3 className={classes.ResultTitle}>{result}</h3>
-            <p className={classes.ResultText}>{text}</p>
-            <p className={classes.ResultIcon}><FaAward /></p>
-            <Link to="/circulareconomy"> <button className="Btn">Next Game</button></Link>
-      </div>
+      <>
+        <div className={classes.GameNav}>
+          <Link to="/lowcarbon/game">Back</Link>
+          <Link to="/circulareconomy">Next Game</Link>
+        </div>
+        <div className={classes.Background} style={{backgroundImage: `url(${background})`}}>
+            <div className={classes.ResultBubble}>
+              <p>{text}</p>
+            </div>
+            <Link to="/circulareconomy" style={{textAlign: 'center', marginTop: '8rem'}}> <button className={classes.Btn}>Next Game</button></Link>
+        </div>
+      </>
     )
   }
 
