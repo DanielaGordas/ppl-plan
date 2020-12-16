@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
@@ -242,16 +242,6 @@ const LowCarbonTravelGame = () => {
     const massTransit = [];
     const electricCars = [];
 
-    const result = () => {
-        let result = ""
-        if(massTransit.length > electricCars.length) {
-           result = "mass transit"
-        } else {
-            result = "electric cars"
-        }
-        return result;
-    }
-
 
     items.map(item => {
         if (item.category === "electric car ownership" && item.column !== "All") {
@@ -313,14 +303,33 @@ const LowCarbonTravelGame = () => {
         return style;
     }
 
-    // Logic for persisting the answers in the DB: 
+    // decides the result of the game based
+    const result = () => {
+        let result = ""
+        if(massTransit.length > electricCars.length) {
+           result = "mass transit"
+        } else {
+            result = "electric cars"
+        }
+        return result;
+    }
 
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
- 
+    
+    // filters answers that are in the 5 selected columns
     const finalItems = items.filter((item) => item.column !== "All")
 
-    console.log(finalItems);
+    // retrieves result from Local Storage
+    const lowCarbonText = JSON.parse(window.localStorage.getItem('result1'));
+
+    const [lowCarbonResult, setLowCarbonResult] = useState(lowCarbonText || "")
+    // save the result to Local Storage
+    useEffect(() => {
+        window.localStorage.setItem('result1', JSON.stringify(lowCarbonResult));
+    }, [lowCarbonResult])
+
+    // Logic for persisting the answers in the DB: 
 
     // saves guest_answers to the DB     
     const submitAnswers = () => {
@@ -341,6 +350,7 @@ const LowCarbonTravelGame = () => {
                     }
                 }))
                 .then(res => {
+                    setLowCarbonResult(result())
                     handleRedirect(res)
                 })
                     .catch(err => console.log(err))
@@ -407,7 +417,7 @@ const LowCarbonTravelGame = () => {
                                     <FaTrain color="white" fontSize="2rem" className={classes.MarginRight} />
                                 </div>
                             </div>
-                            <button className={classes.Btn}>Complete!</button>
+                            <button className={classes.Btn} onClick={submitAnswers}>Complete!</button>
                         </DndProvider>
                     </div>
                 </div>
