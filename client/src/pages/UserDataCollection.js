@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/components/button.scss';
 import NewUserForm from '../components/NewUserForm';
-import NavBar from '../components/NavBar'
+import NavBar from '../components/NavBar';
 import classes from '../styles/pages/user.module.scss';
 import icon from '../images/icon.png'; 
 import axios from 'axios';
@@ -44,6 +44,7 @@ const UserDataCollection = ()=> {
                 age: guest.age,
                 gender: guest.gender,
                 postal_code: guest.postal_code,
+                ethnicity: guest.ethnicity,
                 council: council
                 }
             }))

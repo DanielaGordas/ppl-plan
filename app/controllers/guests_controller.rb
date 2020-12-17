@@ -23,6 +23,6 @@ class GuestsController < ApiController
     private
 
     def guest_params
-      params.require(:guest).permit(:age, :gender, :postal_code, :council)
+      params.require(:guest).permit(:age, :gender, :postal_code, :council, :ethnicity)
     end
 end
