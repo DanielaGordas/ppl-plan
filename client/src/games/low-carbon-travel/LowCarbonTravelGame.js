@@ -24,7 +24,7 @@ import NationalCyclingNetwork from '../../images/low-carbon/National_cycling_net
 import PurchaseGrants from '../../images/low-carbon/Purchase_grants.svg'
 import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg'
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa'
-import IntroBackground from '../../images/low-carbon/Game1_screen1.svg'
+import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg'
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -100,24 +100,27 @@ const Column = ({children, className, title}) => {
 
 }
 
-const Info = ({info}) => {
+const Info = ({info, finalItems, submitAnswers}) => {
     const [show, setShow] = useState(false);
     const openModal = () => setShow(true);  
     const closeModal = () => setShow(false);
-    return(
-        <>
-        <div className={classes.Infobox}>
-            <div>
-                <img src={info[1]} alt={info[0]}/>
-                <p>{info[0]}</p>
+    if (finalItems.length === 5)
+        return <button className={classes.Btn} onClick={submitAnswers}>Complete!</button>
+    else
+        return(
+            <>
+            <div className={classes.Infobox}>
+                <div>
+                    <img src={info[1]} alt={info[0]}/>
+                    <p>{info[0]}</p>
+                </div>
+                <a href="#" className={classes.Link} onClick={openModal}>
+                    Read more <FaAngleDown fontSize="1.2rem" color="#102773" />
+                </a>
             </div>
-            <a href="#" className={classes.Link} onClick={openModal}>
-                Read more <FaAngleDown fontSize="1.2rem" color="#102773" />
-            </a>
-        </div>
-        { show? <Modal title={info[0]} description={info[2]} show={show} closeModal={closeModal} icon={info[1]}/> : null }
-        </>
-    )
+            { show? <Modal title={info[0]} description={info[2]} show={show} closeModal={closeModal} icon={info[1]}/> : null }
+            </>
+        )
 }
 
 const LowCarbonTravelGame = () => {
@@ -391,7 +394,7 @@ const LowCarbonTravelGame = () => {
                             <Column title='All' className={classes.Box}>
                                 {returnItemsForColumn('All')}
                             </Column>
-                            <Info info={info} />
+                            <Info info={info} finalItems={finalItems} submitAnswers={submitAnswers} />
                             <div className={classes.Choices}>
                             <Column title='1' className={classes.Selected}>
                                 {returnItemsForColumn('1')}
@@ -417,7 +420,6 @@ const LowCarbonTravelGame = () => {
                                     <FaTrain color="white" fontSize="2rem" className={classes.MarginRight} />
                                 </div>
                             </div>
-                            <button className={classes.Btn} onClick={submitAnswers}>Complete!</button>
                         </DndProvider>
                     </div>
                 </div>
