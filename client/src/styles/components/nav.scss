@@ -19,8 +19,8 @@
   
   
   /* Position and sizing of clickable cross button */
-  .bm-cross-button {
-  }
+  // .bm-cross-button {
+  // }
   
   /* Color/shape of close button cross */
   .bm-cross {
@@ -45,6 +45,7 @@
     background: $white;
     padding: 4rem 1.5rem 0;
     font-size: 2rem;
+    text-align: center;
   }
   
   /* Morph shape necessary with bubble or elastic */
@@ -61,6 +62,7 @@
   /* Individual item */
   .bm-item {
     display: inline-block;
+    margin-top: 1.5rem;
     padding: 2rem;
     color: $dark-blue;
     text-decoration: none;
