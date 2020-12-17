@@ -5,9 +5,24 @@
 }
 
 .Carousel {
-  border: 1px solid $dark-blue;
   width: 100%;
-  margin-bottom: 2rem;
+  height: 30%;
+  align-self: center;
+}
+
+// .CarouselImg {
+
+//   align-self: center;
+//   margin-bottom: 3rem;
+// }
+
+.CarouselItem {
+  height: 100%;
+}
+
+.CarouselItem img {
+  object-fit: cover;
+  height: 100%;
 }
 
 .CarouselTitle {
@@ -24,8 +39,8 @@
 @media (min-width: 481px) and (max-width: 767px) {
   .Carousel {
     border: 3px dotted $dark-blue;
-    height: 60rem;
-    width: 30rem;
+    height: 20rem;
+    width: 100%;
   }
 }
 

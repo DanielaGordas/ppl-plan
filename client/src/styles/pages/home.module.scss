@@ -1,3 +1,5 @@
+@import "../scss-variables.scss";
+
 .Home {
     display: flex;
     flex-direction: column;
@@ -5,15 +7,24 @@
     text-align: center;
 }
 
-.HomeImg {
-    width: 100%;
-    height: 30%;
-    align-self: center;
-    margin-bottom: 3rem;
-}
-
 .HomeLogo {
     width: 70%;
-    height: 50%;
+    height: 30%;
     align-self: center;
 }
+
+.Carousel {
+    width: 100%;
+}
+
+
+.CarouselItem {
+  height: 30rem;
+  width: 100%;
+}
+
+.CarouselItem img {
+  object-fit: cover;
+  height: 100%;
+}
+
