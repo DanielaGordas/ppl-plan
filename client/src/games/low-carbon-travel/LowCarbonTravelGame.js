@@ -381,13 +381,13 @@ const LowCarbonTravelGame = () => {
             <Route path="/lowcarbon/game">
                 <div className={classes.Background}>   
                     <div className={classes.GameNav}>
-                    <Link to='/lowcarbon/intro'>Back</Link>
-                    <a className="" href="#">Start over</a>
+                        <Link to='/lowcarbon/intro'>Back</Link>
+                        <a className="" href="#">Start over</a>
                     </div>
                     
                     <div className={classes.Instructions}>
-                    <h3>{game.title}</h3>
-                    <p>{game.instructions}</p>
+                        <h3>{game.title}</h3>
+                        <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
@@ -412,15 +412,15 @@ const LowCarbonTravelGame = () => {
                                 {returnItemsForColumn('5')}
                             </Column>
                             </div>
-                            <div className={classes.Speedometer}>
-                                <div className={classes.HalfCircle}></div>
-                                <div className={classes.Needle} style={setNeedleStyle()}></div>
-                                <div className={classes.Bottom}>
-                                    <FaCar color="white" fontSize="2rem" className={classes.MarginLeft} />
-                                    <FaTrain color="white" fontSize="2rem" className={classes.MarginRight} />
-                                </div>
-                            </div>
                         </DndProvider>
+                        <div className={classes.Speedometer}>
+                            <div className={classes.HalfCircle}></div>
+                            <div className={classes.Needle} style={setNeedleStyle()}></div>
+                            <div className={classes.Bottom}>
+                                <FaCar color="white" fontSize="2rem" className={classes.MarginLeft} />
+                                <FaTrain color="white" fontSize="2rem" className={classes.MarginRight} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Route>
