@@ -1,0 +1,22 @@
+@import "../scss-variables.scss";
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.Content {
+    padding: 2rem;
+    margin-top: 5rem;
+
+}
+
+.Content h1 {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    color: $dark-blue;
+}
+
+
