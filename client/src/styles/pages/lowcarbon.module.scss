@@ -20,8 +20,8 @@
 }
 
 .Background {
-  background-image: url(../../images/low-carbon/Game_1_screen_2.svg);
-  background-color: $dark-blue;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(../../images/low-carbon/Game_1_screen_1.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -56,7 +56,7 @@
 .Infobox {
   font-size: $font-small;
   padding: 0.5rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   opacity: 0.8;
   background-color: $grey;
   border-radius: 5px;
@@ -127,7 +127,7 @@
 
 .Choices {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   margin-top: 2rem;
 }
 
@@ -145,7 +145,7 @@
 
 .Bottom {
   background: $dark-blue;
-  height: 2rem;
+  height: 3rem;
   width: 25rem;
   display: flex;
   justify-content: space-between;
@@ -161,10 +161,10 @@
 
 .Needle {
   position: absolute;
-  width: 1rem;
+  width: 0.5rem;
   height: 7rem;
   background: $white;
-  top: 45%;
+  top: 40%;
   left: 50%;
   transform-origin: bottom;
   border-radius: 2rem;
