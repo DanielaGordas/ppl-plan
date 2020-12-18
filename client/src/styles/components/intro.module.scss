@@ -15,7 +15,7 @@
   display: flex;
   justify-content: space-between;
   padding: 1.5rem;
-  font-size: 1.2rem;
+  font-size: $font-small;
   background-color: $dark-blue;
   a,
   a:hover,
@@ -29,7 +29,7 @@
   background: $grey;
   opacity: 0.85;
   display: inline-block;
-  font-size: 2rem;
+  font-size: $font-large;
   line-height: 3rem;
   margin: 6rem;
   padding: 2rem;
@@ -55,17 +55,16 @@
   padding: 1.2rem;
   border: 1px solid #fff;
   color: $white;
-  font-size: 1.6rem;
+  font-size: $font-medium;
   width: 10rem;
   border-radius: 2rem;
 }
-
 
 .ResultBubble {
   background: $grey;
   opacity: 0.8;
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: $font-medium;
   line-height: 2.5rem;
   margin: 10rem;
   padding: 2rem;

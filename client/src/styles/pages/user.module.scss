@@ -1,58 +1,56 @@
-@import '../scss-variables.scss';
+@import "../scss-variables.scss";
 
-// General styles 
+// General styles
 
 .UserPage {
-    display: flex;
-    flex-direction: column;
-    color: $dark-blue;
+  display: flex;
+  flex-direction: column;
+  color: $dark-blue;
 }
 
 .UserPageContent {
-    margin: 2rem;
-    text-align: center;
-    text-justify: center;
-    margin-top: 2rem;
+  margin: 2rem;
+  text-align: center;
+  text-justify: center;
+  margin-top: 2rem;
 }
 
 .UserPageContent h3 {
-    font-size: 2.2rem;
+  font-size: $font-large;
 }
 
 .UserPageContent p {
-    font-size: 1.4rem;
+  font-size: $font-medium;
 }
 
 .UserPageImg {
-    width: 30%;
-    height: 30%;
-    align-self: center;
-    margin-bottom: -4rem;
-    margin-top: 3rem;
+  width: 30%;
+  height: 30%;
+  align-self: center;
+  margin-bottom: -4rem;
+  margin-top: 3rem;
 }
 
 // Form styles
 
 form {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 label {
-    font-size: 1.2rem;
+  font-size: $font-small;
 }
 
-  
 .TextField,
 .Select {
-    display: block;
-    box-sizing: border-box;
-    border: 1px solid $dark-blue;
-    border-radius: 4px;
-    background-color: $white;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    width: 100%;
-    padding: 1rem;
-    color: $dark-blue;
-  }
-
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid $dark-blue;
+  border-radius: 4px;
+  background-color: $white;
+  margin-bottom: 1rem;
+  font-size: $font-small;
+  width: 100%;
+  padding: 1rem;
+  color: $dark-blue;
+}

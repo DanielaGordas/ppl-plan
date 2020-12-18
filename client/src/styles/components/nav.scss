@@ -1,74 +1,73 @@
-@import '../scss-variables.scss';
+@import "../scss-variables.scss";
 /* Position and sizing of burger button */
 .bm-burger-button {
-    position: fixed;
-    width: 3rem;
-    height: 2rem;
-    right: 3.6rem;
-    top: 2.2rem;
-  }
-  
-  /* Color/shape of burger icon bars */
-  .bm-burger-bars {
-    background: $dark-blue;
+  position: fixed;
+  width: 3rem;
+  height: 2rem;
+  right: 3.6rem;
+  top: 2.2rem;
+}
 
-    &-hover {
-      opacity: 0.8;
-    }
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: $dark-blue;
+
+  &-hover {
+    opacity: 0.8;
   }
-  
-  
-  /* Position and sizing of clickable cross button */
-  // .bm-cross-button {
-  // }
-  
-  /* Color/shape of close button cross */
-  .bm-cross {
-    background:  $dark-blue;
-    width: 0.3rem !important;
-    height: 2.2rem !important;
-    right: 2.2rem;
-    top: 1rem;
-  }
-  
-  /*
+}
+
+/* Position and sizing of clickable cross button */
+// .bm-cross-button {
+// }
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: $dark-blue;
+  width: 0.3rem !important;
+  height: 2.2rem !important;
+  right: 2.2rem;
+  top: 1rem;
+}
+
+/*
   Sidebar wrapper styles
   Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
   */
-  .bm-menu-wrap {
-    position: fixed;
-    height: 100%;
-  }
-  
-  /* General sidebar styles */
-  .bm-menu {
-    background: $white;
-    padding: 4rem 1.5rem 0;
-    font-size: 2rem;
-    text-align: center;
-  }
-  
-  /* Morph shape necessary with bubble or elastic */
-  .bm-morph-shape {
-    fill:  $dark-blue;
-  }
-  
-  /* Wrapper for item list */
-  .bm-item-list {
-    color: $dark-blue;
-    padding: 1rem;
-  }
-  
-  /* Individual item */
-  .bm-item {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 2rem;
-    color: $dark-blue;
-    text-decoration: none;
-  }
-  
-  /* Styling of overlay */
-  .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-  }
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: $white;
+  padding: 4rem 1.5rem 0;
+  font-size: $font-large;
+  text-align: center;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: $dark-blue;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: $dark-blue;
+  padding: 1rem;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 2rem;
+  color: $dark-blue;
+  text-decoration: none;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
