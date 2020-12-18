@@ -386,7 +386,6 @@ const LowCarbonTravelGame = () => {
                     </div>
                     
                     <div className={classes.Instructions}>
-                        <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            

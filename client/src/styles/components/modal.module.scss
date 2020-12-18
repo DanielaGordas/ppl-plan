@@ -15,7 +15,7 @@
   z-index: 5;
 
   span {
-    font-size: 1.5rem;
+    font-size: $font-medium;
     color: $dark-blue;
     cursor: pointer;
     margin-top: 1rem;
@@ -38,13 +38,13 @@
   padding: 1rem;
 
   h4 {
-    font-size: 1.6rem;
+    font-size: $font-medium;
     color: $dark-blue;
     text-align: center;
   }
 
   p {
-    font-size: 1.6rem;
+    font-size: $font-medium;
     line-height: 1.7;
     margin: 0.7rem 0 1rem 0;
   }

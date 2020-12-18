@@ -2,7 +2,7 @@
 
 .RoundCard {
   border-radius: 50%;
-  background-color: #fff3f3;
+  background-color: $grey;
   width: 6rem;
   height: 6rem;
   text-align: center;
@@ -17,7 +17,7 @@
   height: 14rem;
   width: 14rem;
   background-color: $grey;
-  font-size: 1rem;
+  font-size: $font-extra-small;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -32,7 +32,7 @@
 
 .SecondColumn {
   background-color: $dark-blue;
-  font-size: 1rem;
+  font-size: $font-extra-small;
   border-radius: 50%;
   text-align: center;
   color: $white;
