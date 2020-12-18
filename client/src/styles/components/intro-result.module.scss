@@ -58,31 +58,37 @@
   font-size: 1.6rem;
   width: 10rem;
   border-radius: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
 }
 
+// Result Page
 
 .ResultBubble {
   background: $grey;
-  opacity: 0.8;
+  opacity: 0.7;
   display: inline-block;
-  font-size: 1.5rem;
-  line-height: 2.5rem;
-  margin: 10rem;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  margin-top: 2rem;
   padding: 2rem;
-  position: relative;
   min-height: 35vh;
-  width: 60vw;
-  align-self: right;
+  width: 50vw;
 }
 
-.ResultBubble:after {
-  border: 3rem solid transparent;
-  border-top-color: $grey;
-  content: "";
-  margin-left: -2rem;
-  position: absolute;
-  top: 100%;
-  left: 25%;
-  width: 0;
-  height: 0;
+.ResultImg {
+  margin-top:1rem;
+  height: 20rem;
 }
+
+// .ResultBubble:after {
+//   border: 3rem solid transparent;
+//   border-top-color: $grey;
+//   content: "";
+//   margin-left: -2rem;
+//   position: absolute;
+//   top: 100%;
+//   left: 25%;
+//   width: 0;
+//   height: 0;
+// }

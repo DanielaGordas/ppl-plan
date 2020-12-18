@@ -368,7 +368,10 @@ const LowCarbonTravelGame = () => {
                     window.location = '/lowcarbon/game'
                 }
             }
-
+    
+    const startOver = () => {
+        setItems(lowCarbonTravelAnswers)
+    }
 
     return(
         <Switch>
@@ -382,7 +385,7 @@ const LowCarbonTravelGame = () => {
                 <div className={classes.Background}>   
                     <div className={classes.GameNav}>
                         <Link to='/lowcarbon/intro'>Back</Link>
-                        <a className="" href="#">Start over</a>
+                        <a className="" onClick={startOver} >Start over</a>
                     </div>
                     
                     <div className={classes.Instructions}>
