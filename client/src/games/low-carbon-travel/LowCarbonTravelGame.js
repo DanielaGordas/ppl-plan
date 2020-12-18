@@ -129,7 +129,7 @@ const LowCarbonTravelGame = () => {
         id: 1, 
         title: "Low Carbon Travel",
         intro: "You’re stuck in traffic on your way to work again and daydreaming of a future where UK commuters don’t waste 115 hours sitting in traffic annually. What does that future look like?",
-        instructions: "Drag 5 of the 10 low carbon travel options on to the scales."
+        instructions: "Drag the 5 most important travel policies into the empty boxes below."
     }
 
 
