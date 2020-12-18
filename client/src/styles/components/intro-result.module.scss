@@ -9,6 +9,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  overflow: hidden;
 }
 
 .GameNav {
@@ -68,13 +69,13 @@
   background: $grey;
   opacity: 0.7;
   display: inline-block;
-
   font-size: $font-medium;
-  line-height: 2.5rem;
+  line-height: 1.8rem;
   margin-top: 2rem;
   padding: 2rem;
   min-height: 35vh;
   width: 50vw;
+  overflow-y:scroll;
 }
 
 .ResultImg {
