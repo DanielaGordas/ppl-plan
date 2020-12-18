@@ -58,7 +58,7 @@ const UserDataCollection = ()=> {
 
     const handleRedirect  = (res) => {
         if(res.status === 201 || res.status === 200) {
-            window.location = '/lowcarbon'
+            window.location = '/intro'
         } else {
             window.location = '/user'
         }
