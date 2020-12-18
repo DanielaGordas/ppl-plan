@@ -39,6 +39,7 @@
   grid-template-columns: repeat(5, 1fr);
   margin-top: 3rem;
   border-radius: 5px;
+  height: 10rem;
 }
 
 .Card {
@@ -135,8 +136,7 @@
 }
 
 .Speedometer {
-  position: absolute;
-  bottom: 7%;
+  position: relative;
 }
 
 .HalfCircle {
@@ -177,7 +177,7 @@
 .Btn {
   background: $dark-blue;
   position: relative;
-  margin-top: 8rem;
+  margin-top: 5rem;
   padding: 1rem;
   border: 1px solid $white;
   color: $white;
