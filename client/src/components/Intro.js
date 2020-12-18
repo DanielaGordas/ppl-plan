@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classes from '../styles/components/intro.module.scss';
+import classes from '../styles/components/intro-result.module.scss';
 import '../styles/components/button.scss';
 
 const Intro = ({text, link, game, background}) => {
