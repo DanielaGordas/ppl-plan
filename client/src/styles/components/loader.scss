@@ -1,0 +1,38 @@
+@import "../scss-variables.scss";
+
+.loader {
+    border: 1rem solid #bdc3c7;
+    width: 5rem;
+    height: 5rem;
+    margin: 20rem auto;
+    border-top-color: $dark-blue;
+    border-bottom-color: $grey;
+    border-radius: 50%;
+    animation: coloredspin 4s linear infinite;
+  }
+  
+  @keyframes coloredspin {
+    0% {
+      transform: rotate(0deg) scale(1);
+      border-top-color: $dark-blue;
+      border-bottom-color: $dark-blue;
+    }
+    25% {
+      border-top-color: $dark-blue;
+      border-bottom-color: $dark-blue;
+    }
+    50% {
+      border-top-color: $grey;
+      border-bottom-color: $grey;
+      transform: rotate(360deg) scale(1.05);
+    }
+    75% {
+      border-top-color: $grey;
+      border-bottom-color: $grey;
+    }
+  
+    100% {
+      transform: rotate(720deg) scale(1);
+    }
+  }
+  
