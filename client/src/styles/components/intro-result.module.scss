@@ -30,13 +30,14 @@
   background: $grey;
   opacity: 0.85;
   display: inline-block;
-  font-size: $font-large;
+  font-size: $font-medium;
   line-height: 3rem;
   margin: 6rem;
   padding: 2rem;
   position: relative;
   min-height: 35vh;
-  width: 70vw;
+  width: 60vw;
+  border-radius: 3px;
 }
 
 .SpeechBubble:after {
@@ -60,22 +61,35 @@
   width: 10rem;
   border-radius: 2rem;
   margin-bottom: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 // Result Page
 
 .ResultBubble {
   background: $grey;
-  opacity: 0.7;
+  position: relative;
+  opacity: 0.85;
   display: inline-block;
   font-size: $font-medium;
-  line-height: 1.8rem;
+  line-height: 2rem;
   margin-top: 2rem;
   padding: 2rem;
-  min-height: 35vh;
-  width: 50vw;
-  overflow-y:scroll;
+  width: 45vw;
+  border-radius: 3px;
+}
+
+.ResultBubble:after {
+  border: 2rem solid transparent;
+  border-top-color: $grey;
+  content: "";
+  margin-left: -4rem;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform: rotate(90deg);
 }
 
 .ResultImg {
@@ -83,14 +97,13 @@
   height: 20rem;
 }
 
-// .ResultBubble:after {
-//   border: 3rem solid transparent;
-//   border-top-color: $grey;
-//   content: "";
-//   margin-left: -2rem;
-//   position: absolute;
-//   top: 100%;
-//   left: 25%;
-//   width: 0;
-//   height: 0;
-// }
+.ResultContent {
+  display: flex;
+}
+
+.ResultCharacter {
+  margin-right: 3.5rem;
+  height: 30rem;
+  margin-top: 2rem;
+}
+

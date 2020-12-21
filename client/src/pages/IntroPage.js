@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import badges from '../images/Locked_Badges_Screen.svg';
+import badges from '../images/Badges_Screen.svg';
 import classes from '../styles/pages/intro.module.scss';
 
 const IntroPage = () => {
