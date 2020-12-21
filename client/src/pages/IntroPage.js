@@ -9,7 +9,7 @@ const IntroPage = () => {
         <div className={classes.Container} >
             <NavBar />
             <div className={classes.Content}>
-                <h1>The green revolution starts with you!Win 8 unique badges by re-imagining our future.You will unlock exclusive tools to help you live more sustainably.</h1>
+                <h1>The green revolution starts with you!<br></br>Win 8 unique badges by re-imagining our future.<br></br>You will unlock exclusive tools to help you live more sustainably.</h1>
                 <img src={badges} alt="badges"/>
                 <Link to="/lowcarbon/intro"><button className="Btn">Let's go!</button></Link>
             </div>

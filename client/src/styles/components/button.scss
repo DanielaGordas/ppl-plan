@@ -9,4 +9,8 @@
   min-width: 30%;
   border-radius: 2rem;
   margin-top: 3rem;
+
+  &:focus {
+    outline: none;
+  }
 }
