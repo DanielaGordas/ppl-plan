@@ -21,7 +21,7 @@ const NewUserForm = props => {
             <option value="prefer to self-describe">Prefer to self-describe</option>
             <option value="Prefer not to disclose">Prefer not to disclose</option>
           </select>
-          {errors.gender && <p>Please choose one of the options</p>}
+          {errors.gender && <p className={classes.Error}>Please choose one of the options</p>}
           <label>Age</label>
           <select name="age" className={classes.Select}  placeholder="Age" ref={register({required: true})}>
             <option></option>
@@ -32,8 +32,8 @@ const NewUserForm = props => {
             <option value="55-64">55-64</option>
             <option value="65+">65+</option>
             <option value="Prefer not to disclose">Prefer not to disclose</option>
-            {errors.age && <p>Please select your current age group</p>}
           </select>
+          {errors.age && <p className={classes.Error}>Please select your current age group</p>}
           <label>Ethnicity</label>
           <select name="ethnicity" className={classes.Select}  placeholder="Ethnicity" ref={register({required: true})}>
             <option></option>
@@ -55,11 +55,11 @@ const NewUserForm = props => {
             <option value="Any other Black, African or Caribbean background">Any other Black, African or Caribbean background</option>
             <option value="Arab">Arab</option>
             <option value="Any other ethnic group">Any other ethnic group</option>
-            {errors.age && <p>Please select your ethnicity</p>}
           </select>
+          {errors.age && <p className={classes.Error}>Please select your ethnicity</p>}
           <label>Post code</label>
           <input name="postal_code" className={classes.TextField}  ref={register({ required: true, pattern: /^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$/ })} />
-          {errors.postal_code && <p>Please provide a valid post code in the format <em>SE5 0EG</em></p>}
+          {errors.postal_code && <p className={classes.Error}>Please provide a valid post code in the format <em>SE5 0EG</em></p>}
           <input type="submit" className="Btn Submit" />
 
         </form>
