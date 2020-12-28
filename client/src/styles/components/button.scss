@@ -1,6 +1,6 @@
 @import "../scss-variables.scss";
 
-.Btn {
+.Btn, .Btn-border {
   background: $dark-blue;
   padding: 1.2rem;
   border: none;
@@ -13,4 +13,8 @@
   &:focus {
     outline: none;
   }
+}
+
+.Btn-border {
+  border: 1px solid $white;
 }

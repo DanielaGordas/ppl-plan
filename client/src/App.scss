@@ -1,9 +1,10 @@
 @import "./styles/scss-variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Sunflower', sans-serif;
   background-color: $white;
 }
 

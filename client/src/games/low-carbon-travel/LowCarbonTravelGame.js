@@ -6,6 +6,9 @@ import { Switch, Route, Link } from 'react-router-dom';
 import LowCarbonInfo from './LowCarbonInfo';
 import LowCarbonResult from './LowCarbonResult';
 import '../../styles/pages/circulareconomy.scss';
+import '../../styles/pages/circulareconomy.scss';
+import '../../styles/components/button.scss';
+import '../../styles/components/nav.scss';
 import classes from '../../styles/pages/lowcarbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
@@ -24,6 +27,7 @@ import NationalCyclingNetwork from '../../images/low-carbon/National_cycling_net
 import PurchaseGrants from '../../images/low-carbon/Purchase_grants.svg'
 import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg'
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa'
+import { BiArrowBack, BiRevision } from "react-icons/bi";
 import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg'
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
@@ -105,7 +109,7 @@ const Info = ({info, finalItems, submitAnswers}) => {
     const openModal = () => setShow(true);  
     const closeModal = () => setShow(false);
     if (finalItems.length === 5)
-        return <button className={classes.Btn} onClick={submitAnswers}>Complete!</button>
+        return <button className="Btn-border" onClick={submitAnswers}>Complete!</button>
     else
         return(
             <>
@@ -115,7 +119,7 @@ const Info = ({info, finalItems, submitAnswers}) => {
                     <p>{info[0]}</p>
                 </div>
                 <a href="#" className={classes.Link} onClick={openModal}>
-                    Read more <FaAngleDown fontSize="1.2rem" color="#102773" />
+                    Read more <FaAngleDown fontSize="1.5rem"/>
                 </a>
             </div>
             { show? <Modal title={info[0]} description={info[2]} show={show} closeModal={closeModal} icon={info[1]}/> : null }
@@ -129,7 +133,7 @@ const LowCarbonTravelGame = () => {
         id: 1, 
         title: "Low Carbon Travel",
         intro: "You’re stuck in traffic on your way to work again and daydreaming of a future where UK commuters don’t waste 115 hours sitting in traffic annually. What does that future look like?",
-        instructions: "Drag the 5 most important travel policies into the empty boxes below."
+        instructions: "Drag the 5 most important travel policies into the empty boxes below. Tap on each policy to see more info."
     }
 
 
@@ -383,12 +387,19 @@ const LowCarbonTravelGame = () => {
             </Route>
             <Route path="/lowcarbon/game">
                 <div className={classes.Background}>   
-                    <div className={classes.GameNav}>
-                        <Link to='/lowcarbon/intro'>Back</Link>
-                        <a className="" onClick={startOver} >Start over</a>
+                    <div className="GameNav">
+                        <div>
+                            <BiArrowBack className={classes.MarginRight}/>
+                            <Link to='/lowcarbon/intro'> <a>Back</a></Link>
+                        </div>
+                        <div>
+                            <a className="" onClick={startOver} >Start over  </a>
+                            < BiRevision className={classes.MarginLeft}/>
+                        </div>
                     </div>
                     
                     <div className={classes.Instructions}>
+                        <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            

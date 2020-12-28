@@ -1,4 +1,6 @@
 @import "../scss-variables.scss";
+
+// BURGER MENU
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
@@ -70,4 +72,23 @@
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+
+// GAME NAV
+
+.GameNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  font-size: $font-small;
+  background: $white;
+  align-items: center;
+  color: $dark-blue;
+  a,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color: $dark-blue;
+  }
 }
