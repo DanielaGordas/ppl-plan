@@ -1,5 +1,6 @@
 @import "../scss-variables.scss";
 
+// General styles
 .Background {
   display: flex;
   flex-direction: column;
@@ -12,39 +13,31 @@
   overflow: hidden;
 }
 
-.GameNav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1.5rem;
-  font-size: $font-small;
-  background-color: $dark-blue;
-  a,
-  a:hover,
-  a:active {
-    text-decoration: none;
-    color: $white;
-  }
-}
 
+// Intro Page
+
+// Text Bubble
 .SpeechBubble {
-  background: $grey;
-  opacity: 0.85;
+  background: $white;
   display: inline-block;
   font-size: $font-medium;
   line-height: 3rem;
-  margin: 6rem;
-  padding: 2rem;
+  margin: 5rem;
+  padding: 1.5rem;
   position: relative;
   min-height: 35vh;
   width: 60vw;
-  border-radius: 3px;
+  border-radius: 3px; 
+  color: $dark-blue;
+  text-align: justify;
+  box-shadow: $box-shadow;
 }
 
 .SpeechBubble:after {
-  border: 3rem solid transparent;
-  border-top-color: $grey;
+  border: 2.5rem solid transparent;
+  border-top-color: $white;
   content: "";
-  margin-left: -2rem;
+  margin-left: -3rem;
   position: absolute;
   top: 100%;
   left: 25%;
@@ -52,61 +45,68 @@
   height: 0;
 }
 
-.Btn {
-  background: $dark-blue;
-  padding: 1.2rem;
-  border: 1px solid #fff;
-  color: $white;
-  font-size: $font-medium;
-  width: 10rem;
-  border-radius: 2rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+// Game Character 
 
-  &:focus {
-    outline: none;
-  }
+.Character {
+  height: 60rem;
+  width: 20rem;
 }
 
 // Result Page
 
+// Text bubble
 .ResultBubble {
-  background: $grey;
-  position: relative;
-  opacity: 0.85;
+  background: $white;
   display: inline-block;
   font-size: $font-medium;
-  line-height: 2rem;
-  margin-top: 2rem;
-  padding: 2rem;
-  width: 45vw;
-  border-radius: 3px;
+  line-height: 3rem;
+  margin: 3rem;
+  padding: 1.5rem;
+  position: relative;
+  min-height: 5rem;
+  width: 80vw;
+  border-radius: 3px; 
+  color: $dark-blue;
+  text-align: center;
+  box-shadow: $box-shadow;
 }
 
 .ResultBubble:after {
-  border: 2rem solid transparent;
-  border-top-color: $grey;
+  border: 2.5rem solid transparent;
+  border-top-color: $white;
   content: "";
-  margin-left: -4rem;
+  margin-left: -3rem;
   position: absolute;
-  top: 10%;
-  left: 0;
+  top: 100%;
+  left: 25%;
   width: 0;
   height: 0;
-  transform: rotate(90deg);
 }
 
 .ResultImg {
   margin-top: 1rem;
-  height: 20rem;
+  height: 15rem;
 }
 
-.ResultContent {
-  display: flex;
+.Text {
+  display: block;
+  color: $dark-blue;
+  font-size: $font-small;
+  line-height: 2.5rem;
+  margin: 3rem;
+  text-align: justify;
 }
 
 .ResultCharacter {
   margin-right: 3.5rem;
   height: 30rem;
   margin-top: 2rem;
+}
+
+.MarginRight {
+  margin-right: 1rem;
+}
+
+.MarginLeft {
+  margin-left: 1rem;
 }

@@ -1,18 +1,6 @@
 @import "../scss-variables.scss";
 
-.GameNav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1.5rem;
-  font-size: 1.2rem;
-  a,
-  a:hover,
-  a:active {
-    text-decoration: none;
-    color: $white;
-  }
-}
-
+// General styles and background
 .Container {
   display: flex;
   flex-direction: column;
@@ -20,7 +8,7 @@
 }
 
 .Background {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+  background-image: linear-gradient(rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)),
     url(../../images/low-carbon/Game_1_screen_1.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,11 +22,37 @@
   margin-top: 1rem;
 }
 
+// Game instructions
+
+.Instructions {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  background-color: $white;
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  color: $dark-blue;
+  padding: 0.5rem;
+  max-width: 40rem;
+
+  h3 {
+    font-size: $font-medium;
+  }
+
+  p {
+    font-size: $font-small;
+    margin: 1rem;
+  }
+}
+
+// Policy cards 
+
 .Box {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  margin-top: 3rem;
-  border-radius: 5px;
+  margin-top: 2rem;
   height: 10rem;
 }
 
@@ -53,27 +67,33 @@
   text-align: center;
 }
 
+
+// Policy card Info Box
+
 .Infobox {
   font-size: $font-small;
-  padding: 0.5rem;
-  margin-top: 3rem;
-  opacity: 0.8;
-  background-color: $grey;
+  padding: 0.3rem;
+  margin-top: 2.5rem;
+  background-color: $white;
   border-radius: 5px;
   width: 80%;
   display: flex;
   flex-direction: column;
+  color: $dark-blue;
+  max-width: 40rem;
+  box-shadow: $box-shadow;
 
   & > div {
     display: flex;
     align-items: center;
-    margin-left: 2.5rem;
-    margin-top: 0.5rem;
+    margin-left: 3rem;
+    margin-top: 1.5rem;
+    text-align: center;
   }
 
   & > div > img {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     margin-right: 1rem;
   }
 }
@@ -83,10 +103,18 @@
   &:active,
   &:focus {
     font-size: $font-extra-small;
-    color: $dark-blue;
+    color: $light-blue;
     text-decoration: none;
     align-self: flex-end;
+    margin-right: 0.5rem;
   }
+}
+
+// Selected options
+
+.Choices {
+  display: flex;
+  margin-top: 2rem;
 }
 
 .Selected {
@@ -97,54 +125,33 @@
   margin: 3px;
   border-radius: 2px;
   text-align: center;
+  border: 2px solid $dark-blue;
 
   & > .Card > img {
     transform: translate(-5%, -5%);
   }
 }
 
-.Instructions {
-  text-align: center;
-  opacity: 0.8;
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  background-color: $white;
-  border: 1px solid $grey;
-  border-radius: 5px;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
 
-  h3 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: $font-small;
-    color: $dark-grey;
-  }
-}
-
-.Choices {
-  display: flex;
-  margin-bottom: 3rem;
-  margin-top: 2rem;
-}
+// Speedometer
 
 .Speedometer {
   position: relative;
+  margin-top: 2rem;
 }
 
 .HalfCircle {
-  width: 92%;
-  height: 7rem; /* as the half of the width */
+  width: 23rem;
+  height: 9rem; /* as the half of the width */
   border-bottom: 0;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
   border: 1rem solid $dark-blue;
+  background: $white;
 }
 
 .Bottom {
   background: $dark-blue;
+  margin-top: -1px;
   height: 3rem;
   width: 25rem;
   display: flex;
@@ -161,30 +168,18 @@
 
 .Needle {
   position: absolute;
-  width: 0.5rem;
-  height: 7rem;
-  background: $white;
-  top: 40%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 60px solid $dark-blue;
+  top: 43%;
   left: 50%;
   transform-origin: bottom;
   border-radius: 2rem;
 }
 
-.Btn {
-  background: $dark-blue;
-  position: relative;
-  margin-top: 5rem;
-  padding: 1rem;
-  border: 1px solid $white;
-  color: $white;
-  font-size: 1.6rem;
-  min-width: 30%;
-  border-radius: 2rem;
 
-  &:focus {
-    outline: none;
-  }
-}
 
 // Result page
 
