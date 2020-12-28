@@ -50,10 +50,13 @@
 // Policy cards 
 
 .Box {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  // display: grid;
+  overflow: scroll;
+  display: flex;
+  width: 80%;
+  max-width: 40rem;
   margin-top: 2rem;
-  height: 10rem;
+  height: 7rem;
 }
 
 .Card {
@@ -73,14 +76,14 @@
 .Infobox {
   font-size: $font-small;
   padding: 0.3rem;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   background-color: $white;
   border-radius: 5px;
   width: 80%;
+  max-width: 40rem;
   display: flex;
   flex-direction: column;
   color: $dark-blue;
-  max-width: 40rem;
   box-shadow: $box-shadow;
 
   & > div {
