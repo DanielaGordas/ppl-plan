@@ -24,6 +24,7 @@ const App = () => {
             <>
             {loading === false ? (
                   <Router>
+                        <div className="Layout">
                               <Switch>
                                     <Route path="/" exact component={HomePage} />
                                     <Route path="/about" ></Route>
@@ -43,7 +44,8 @@ const App = () => {
                                     <Route>
                                           <NotFound />
                                     </Route>
-                              </Switch>     
+                              </Switch> 
+                        </div>    
                   </Router>
             ) : (
                   <Loader />
