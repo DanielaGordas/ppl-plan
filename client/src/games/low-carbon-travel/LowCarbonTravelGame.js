@@ -386,18 +386,17 @@ const LowCarbonTravelGame = () => {
                 <Intro text={game.intro} link='/lowcarbon/game' game='/lowcarbon' background={IntroBackground} />
             </Route>
             <Route path="/lowcarbon/game">
-                <div className={classes.Background}>   
-                    <div className="GameNav">
-                        <div>
-                            <BiArrowBack className={classes.MarginRight}/>
-                            <Link to='/lowcarbon/intro'> <a>Back</a></Link>
-                        </div>
-                        <div>
-                            <a className="" onClick={startOver} >Start over  </a>
-                            < BiRevision className={classes.MarginLeft}/>
-                        </div>
+                <div className="GameNav">
+                    <div className="NavLink">
+                        <BiArrowBack className="LeftIcon"/>
+                        <Link to='/lowcarbon/intro'> <a>Back</a></Link>
                     </div>
-                    
+                    <div className="NavLink">
+                        <a className="" onClick={startOver} >Start over  </a>
+                        < BiRevision className="RightIcon"/>
+                    </div>
+                </div>
+                <div className={classes.Background}>               
                     <div className={classes.Instructions}>
                         <h3>{game.title}</h3>
                         <p>{game.instructions}</p>

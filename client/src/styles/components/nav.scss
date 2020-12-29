@@ -92,3 +92,21 @@
     color: $dark-blue;
   }
 }
+
+.NavLink {
+  display: flex;
+  align-items: flex-end;
+}
+
+.LeftIcon, .RightIcon {
+  font-size: 2rem;
+}
+
+.LeftIcon {
+  margin-right: 0.5rem;
+}
+
+.RightIcon {
+  margin-left: 0.5rem;
+
+}
