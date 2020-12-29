@@ -1,30 +1,26 @@
 @import "../scss-variables.scss";
 
-.Home {
+.Background {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    background: linear-gradient(rgba(174, 220, 232, 1), rgba(235, 249, 253, 1)); 
+    height: 100vh;
+    width: 100%;
+    color: $dark-blue
 }
 
 .HomeLogo {
     width: 70%;
     height: 30%;
     align-self: center;
+    margin: 2rem;
 }
 
-.Carousel {
-    width: 100%;
+.Title {
+  font-size: $font-large;
 }
-
-
-.CarouselItem {
-  height: 30rem;
-  width: 100%;
+.SubTitle {
+  font-size: $font-medium;
 }
-
-.CarouselItem img {
-  object-fit: cover;
-  height: 100%;
-}
-

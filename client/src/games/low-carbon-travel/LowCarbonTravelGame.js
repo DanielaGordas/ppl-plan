@@ -3,32 +3,28 @@ import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
 import { Switch, Route, Link } from 'react-router-dom';
-import LowCarbonInfo from './LowCarbonInfo';
 import LowCarbonResult from './LowCarbonResult';
-import '../../styles/pages/circulareconomy.scss';
-import '../../styles/pages/circulareconomy.scss';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import classes from '../../styles/pages/lowcarbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
-import Modal from '../../components/Modal'
+import Modal from '../../components/Modal';
 
-import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg'
-import CarFreeZones from '../../images/low-carbon/Car-free_zones.svg'
-import ElectricBusNetwork from '../../images/low-carbon/Electric_bus_network.svg'
-import ElectricCarOwnership from '../../images/low-carbon/Electric_car_ownership.svg'
-import ElectricRailNetwork from '../../images/low-carbon/Electric_rail_network.svg'
-import EmployerCarSharingScheme from '../../images/low-carbon/Employer_car_sharing_scheme.svg'
-import EvChargingPoints from '../../images/low-carbon/EV_charging_points.svg'
-import ImproveExistingPublicTransport from '../../images/low-carbon/Improve_existing_public_transport.svg'
-import Mass_Transit from '../../images/low-carbon/Mass_Transit.svg'
-import NationalCyclingNetwork from '../../images/low-carbon/National_cycling_network.svg'
-import PurchaseGrants from '../../images/low-carbon/Purchase_grants.svg'
-import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg'
-import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa'
+// Icons and Images
+import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg';
+import CarFreeZones from '../../images/low-carbon/Car-free_zones.svg';
+import ElectricBusNetwork from '../../images/low-carbon/Electric_bus_network.svg';
+import ElectricRailNetwork from '../../images/low-carbon/Electric_rail_network.svg';
+import EmployerCarSharingScheme from '../../images/low-carbon/Employer_car_sharing_scheme.svg';
+import EvChargingPoints from '../../images/low-carbon/EV_charging_points.svg';
+import ImproveExistingPublicTransport from '../../images/low-carbon/Improve_existing_public_transport.svg';
+import NationalCyclingNetwork from '../../images/low-carbon/National_cycling_network.svg';
+import PurchaseGrants from '../../images/low-carbon/Purchase_grants.svg';
+import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg';
+import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg'
+import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
 import Guy from '../../images/low-carbon/Character_1_Final_screen.svg';
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
@@ -380,11 +376,8 @@ const LowCarbonTravelGame = () => {
 
     return(
         <Switch>
-            <Route exact path="/lowcarbon">
-                <LowCarbonInfo title={game.title} />
-            </Route>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.intro} link='/lowcarbon/game' game='/lowcarbon' background={IntroBackground} guy={Guy} />
+                <Intro text={game.intro} link='/lowcarbon/game' back='/intro' background={IntroBackground} guy={Guy} />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className="GameNav">

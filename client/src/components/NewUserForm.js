@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import classes from "../styles/pages/user.module.scss";
+import "../styles/components/button.scss";
 
 const NewUserForm = props => {
 
@@ -60,7 +61,7 @@ const NewUserForm = props => {
           <label>Post code</label>
           <input name="postal_code" className={classes.TextField}  ref={register({ required: true, pattern: /^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$/ })} />
           {errors.postal_code && <p className={classes.Error}>Please provide a valid post code in the format <em>SE5 0EG</em></p>}
-          <input type="submit" className="Btn Submit" />
+          <input type="submit" className="Btn-border" />
 
         </form>
     );

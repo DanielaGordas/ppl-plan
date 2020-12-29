@@ -70,14 +70,12 @@ const UserDataCollection = ()=> {
         <div>
             <NavBar />
             <div className={classes.UserPage}>
-                <img src={icon} alt="people's plan icon" className={classes.UserPageImg}/>
                 <div className={classes.UserPageContent}>
                     <h3>Add your voice and help make change happen.</h3>
                     <p>We just need some basic information to help ensure we are collecting data in a robust way.</p>
-                    <div>
                     <NewUserForm addUser={addUser} initialFormState={initialFormState}/>
-                    </div>
                 </div>
+                <a className={classes.PrivacyLink }>Privacy Policy</a>
             </div>
         </div>
     )
