@@ -26,7 +26,7 @@
 
 .Instructions {
   text-align: center;
-  width: 80%;
+  width: 90%;
   margin: auto;
   margin-top: 2rem;
   background-color: $white;
@@ -34,7 +34,7 @@
   border-radius: 5px;
   box-shadow: $box-shadow;
   color: $dark-blue;
-  padding: 0.5rem;
+  padding: 0.3rem;
   max-width: 40rem;
 
   h3 {
@@ -50,17 +50,18 @@
 // Policy cards 
 
 .Box {
-  // display: grid;
-  overflow: scroll;
-  display: flex;
-  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
   max-width: 40rem;
   margin-top: 2rem;
-  height: 7rem;
+  height: 13rem;
+  align-items: center;
+  justify-items: center;
 }
 
 .Card {
-  width: 5rem;
+  width: 5.5rem;
   height: 70%;
   flex-shrink: 0;
   padding: 0.3rem;
@@ -76,10 +77,10 @@
 .Infobox {
   font-size: $font-small;
   padding: 0.3rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   background-color: $white;
   border-radius: 5px;
-  width: 80%;
+  width: 90%;
   max-width: 40rem;
   display: flex;
   flex-direction: column;
@@ -118,20 +119,23 @@
 .Choices {
   display: flex;
   margin-top: 2rem;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 40rem;
 }
 
 .Selected {
   background-color: $grey;
-  width: 5rem;
-  height: 5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   padding: 0.3rem;
-  margin: 3px;
+  margin: auto;
   border-radius: 2px;
   text-align: center;
   border: 2px solid $dark-blue;
 
   & > .Card > img {
-    transform: translate(-5%, -5%);
+    transform: translate(-13%, -13%);
   }
 }
 
