@@ -29,6 +29,7 @@ import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg'
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa'
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg'
+import Guy from '../../images/low-carbon/Character_1_Final_screen.svg';
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -383,7 +384,7 @@ const LowCarbonTravelGame = () => {
                 <LowCarbonInfo title={game.title} />
             </Route>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.intro} link='/lowcarbon/game' game='/lowcarbon' background={IntroBackground} />
+                <Intro text={game.intro} link='/lowcarbon/game' game='/lowcarbon' background={IntroBackground} guy={Guy} />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className={classes.Background}>   

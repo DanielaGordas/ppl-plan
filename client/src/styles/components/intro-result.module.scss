@@ -13,7 +13,6 @@
   overflow: hidden;
 }
 
-
 // Intro Page
 
 // Text Bubble
@@ -27,10 +26,16 @@
   position: relative;
   min-height: 35vh;
   width: 60vw;
-  border-radius: 3px; 
+  border-radius: 3px;
   color: $dark-blue;
   text-align: justify;
   box-shadow: $box-shadow;
+}
+
+@media (max-width: 350px) {
+  .SpeechBubble {
+    font-size: $font-small;
+  }
 }
 
 .SpeechBubble:after {
@@ -40,16 +45,23 @@
   margin-left: -3rem;
   position: absolute;
   top: 100%;
-  left: 25%;
+  left: 50%;
   width: 0;
   height: 0;
 }
 
-// Game Character 
+// Flex Box
+.Flex {
+  display: flex;
+}
+
+// Game Character
 
 .Character {
   height: 60rem;
+  transform: translate(-35%, 0%) scale(1.2);
   width: 20rem;
+  z-index: 2;
 }
 
 // Result Page
@@ -65,7 +77,7 @@
   position: relative;
   min-height: 5rem;
   width: 80vw;
-  border-radius: 3px; 
+  border-radius: 3px;
   color: $dark-blue;
   text-align: center;
   box-shadow: $box-shadow;

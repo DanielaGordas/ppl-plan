@@ -5,7 +5,7 @@ import '../styles/components/button.scss';
 import '../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 
-const Intro = ({text, link, game, background}) => {
+const Intro = ({text, link, game, background, guy}) => {
   return (
     <>
       <div className="GameNav">
@@ -22,7 +22,10 @@ const Intro = ({text, link, game, background}) => {
         <div className={classes.SpeechBubble}>
           <p>{text}</p>
         </div>
-        <Link to={link} style={{textAlign: 'center', marginTop: '7rem'}}><button className="Btn-border">Begin!</button></Link>
+        <div className={classes.Flex}>
+          <img src={guy} alt="Character" className={classes.Character} />
+          <Link to={link} style={{position: 'absolute', top: '70%', left:'45%', zIndex: '3'}}><button className="Btn-border">Begin!</button></Link>
+        </div>
       </div>
     </>
   )

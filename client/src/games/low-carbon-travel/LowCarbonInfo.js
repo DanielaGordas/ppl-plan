@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import classes from '../../styles/components/infographics-carousel.module.scss'
+import classes from '../../styles/components/infographics-carousel.module.scss';
 import '../../styles/components/button.scss';
 
 const LowCarbonInfo = () => {
