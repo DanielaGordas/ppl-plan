@@ -37,7 +37,7 @@ const LowCarbonResult = () => {
             </div>
             <img src={badge} alt="transport trophy" className={classes.ResultImg}/>
             <p className={classes.Text}>{text}</p>
-            <Link to="/circulareconomy"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/outro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )

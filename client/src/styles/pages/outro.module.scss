@@ -11,24 +11,20 @@
 }
 
 .Content h1 {
-  margin-top: 10rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
   font-size: $font-large;
   line-height: 1.8rem;
   color: $dark-blue;
 }
 
 .Content p {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   font-size: $font-medium;
   line-height: 1.8rem;
   color: $dark-blue;
 }
 
-.Badges {
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  height: 50%;
+.Globe {
+  width: 70%;
+  height: 30%;
+  color: $dark-blue;
 }
