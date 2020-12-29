@@ -11,6 +11,12 @@
   color: $dark-blue;
 }
 
+@media (min-height: 600px) {
+  .Container {
+    height: 100vh;
+  }
+}
+
 .Content {
   margin: 2rem;
   margin-top: 7rem;

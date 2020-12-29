@@ -17,6 +17,12 @@
   height: 100%;
 }
 
+@media (min-height: 600px) {
+  .Background {
+    height: 100vh;
+  }
+}
+
 .BoxWrapper {
   text-align: center;
   margin-top: 1rem;

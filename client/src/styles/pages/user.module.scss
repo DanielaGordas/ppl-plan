@@ -11,6 +11,12 @@
   width: 100%;
 }
 
+@media (min-height: 570px) {
+  .UserPage {
+    height: 100vh;
+  }
+}
+
 .UserPageContent {
   margin: 2rem;
   text-align: center;
