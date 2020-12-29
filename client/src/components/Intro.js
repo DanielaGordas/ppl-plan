@@ -5,13 +5,13 @@ import '../styles/components/button.scss';
 import '../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 
-const Intro = ({text, link, game, background, guy}) => {
+const Intro = ({text, link, back, background, guy}) => {
   return (
     <>
       <div className="GameNav">
         <div className="NavLink">
           <BiArrowBack className="LeftIcon"/> 
-          <Link to={game}>Back</Link>
+          <Link to={back}>Back</Link>
         </div>
         <div className="NavLink">
           <Link to='/user'>Skip Game</Link>

@@ -27,7 +27,7 @@ const LowCarbonResult = () => {
             <Link to="/lowcarbon/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/circulareconomy">Next Game</Link>
+            <a href="">Next Game</a>
             <BiExit className="RightIcon"/>
           </div>
         </div>
