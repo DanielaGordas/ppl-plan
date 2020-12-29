@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
-import background from "../../images/low-carbon/Game_1_Final_screen_background.svg";
+import background from "../../images/low-carbon/Game_1_screen_1.svg";
 import badge from "../../images/low-carbon/Game_1_Bagde.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
@@ -22,16 +22,16 @@ const LowCarbonResult = () => {
     return (
       <>
         <div className="GameNav">
-          <div className={classes.NavButton}>
-            <BiArrowBack className={classes.MarginRight}/> 
+          <div className="NavLink">
+            <BiArrowBack className="LeftIcon"/> 
             <Link to="/lowcarbon/game">Back</Link>
           </div>
-          <div className={classes.NavButton}>
+          <div className="NavLink">
             <Link to="/circulareconomy">Next Game</Link>
-            <BiExit className={classes.MarginLeft}/>
+            <BiExit className="RightIcon"/>
           </div>
         </div>
-        <div className={classes.Background} style={{backgroundImage: `linear-gradient(rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)), url(${background})`}}>
+        <div className={classes.Background} style={{backgroundImage: `linear-gradient(rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.7)), url(${background})`}}>
             <div className={classes.ResultBubble}>
               Congratulations! You've earned the Transport Badge!
             </div>

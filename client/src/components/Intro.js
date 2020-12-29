@@ -9,13 +9,13 @@ const Intro = ({text, link, game, background, guy}) => {
   return (
     <>
       <div className="GameNav">
-        <div className={classes.NavButton}>
-          <BiArrowBack className={classes.MarginRight}/> 
+        <div className="NavLink">
+          <BiArrowBack className="LeftIcon"/> 
           <Link to={game}>Back</Link>
         </div>
-        <div className={classes.NavButton}>
-          <Link to='/user'>Exit Game</Link>
-          <BiExit className={classes.MarginLeft}/>
+        <div className="NavLink">
+          <Link to='/user'>Skip Game</Link>
+          <BiExit className="RightIcon"/>
         </div>
       </div>
       <div className={classes.Background} style={{backgroundImage: `linear-gradient(rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)), url(${background})`}}>
