@@ -3,6 +3,7 @@ import './App.scss';
 import HomePage from './pages/HomePage';
 import NotFound from './components/NotFound';
 import IntroPage from './pages/IntroPage';
+import OutroPage from './pages/OutroPage';
 import UserDataCollection from './pages/UserDataCollection';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LowCarbonTravelGame from './games/low-carbon-travel/LowCarbonTravelGame';
@@ -23,7 +24,6 @@ const App = () => {
             <>
             {loading === false ? (
                   <Router>
-                        <div className="Layout">
                               <Switch>
                                     <Route path="/" exact component={HomePage} />
                                     <Route path="/about" ></Route>
@@ -39,11 +39,11 @@ const App = () => {
                                     <Route path="/retrofithomes">
                                           <RetrofitHomesGame />
                                     </Route>
+                                    <Route path="/outro" component={OutroPage}/>
                                     <Route>
                                           <NotFound />
                                     </Route>
                               </Switch>     
-                        </div>
                   </Router>
             ) : (
                   <Loader />
