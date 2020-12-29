@@ -24,8 +24,8 @@
   margin: 5rem;
   padding: 1.5rem;
   position: relative;
-  min-height: 35vh;
-  width: 60vw;
+  min-height: 40vh;
+  width: 65vw;
   border-radius: 3px;
   color: $dark-blue;
   text-align: justify;
@@ -35,6 +35,11 @@
 @media (max-width: 350px) {
   .SpeechBubble {
     font-size: $font-small;
+  }
+}
+@media (min-width: 700px) {
+  .SpeechBubble {
+    font-size: $font-large;
   }
 }
 
