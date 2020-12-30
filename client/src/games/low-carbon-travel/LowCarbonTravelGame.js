@@ -383,7 +383,7 @@ const LowCarbonTravelGame = () => {
                 <div className="GameNav">
                     <div className="NavLink">
                         <BiArrowBack className="LeftIcon"/>
-                        <Link to='/lowcarbon/intro'> <a>Back</a></Link>
+                        <Link to='/lowcarbon/intro'>Back</Link>
                     </div>
                     <div className="NavLink">
                         <a className="" onClick={startOver} >Start over  </a>

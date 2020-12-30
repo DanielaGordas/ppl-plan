@@ -15,7 +15,7 @@ const NewUserForm = props => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>Gender</label>
-          <select name="gender" placeholder="Gender" className={classes.Select} ref={register({required: true})}>
+          <select name="gender" placeholder="gender" className={classes.Select} ref={register({required: true})}>
             <option></option>
             <option value="Man">Man</option>
             <option value="Woman">Woman</option>  
@@ -59,8 +59,8 @@ const NewUserForm = props => {
           </select>
           {errors.age && <p className={classes.Error}>Please select your ethnicity</p>}
           <label>Post code</label>
-          <input name="postal_code" className={classes.TextField}  ref={register({ required: true, pattern: /^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$/ })} />
-          {errors.postal_code && <p className={classes.Error}>Please provide a valid post code in the format <em>SE5 0EG</em></p>}
+          <input name="postal_code" placeholder="e.g. SE5 0EG" className={classes.TextField}  ref={register({ required: true, pattern: /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/ })} />
+          {errors.postal_code && <p className={classes.Error}>Please provide a valid post code</p>}
           <input type="submit" className="Btn-border" />
 
         </form>

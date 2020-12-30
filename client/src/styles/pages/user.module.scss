@@ -38,6 +38,8 @@
 form {
   margin: 0 auto;
   font-size: $font-small !important;
+  color: $dark-blue !important;
+  text-align: center !important;
 }
 
 
@@ -47,7 +49,7 @@ form {
   border: none;
   box-sizing: border-box;
   border-radius: 4px;
-  background-color: $white;
+  background-color: $white !important;
   margin-bottom: 1rem;
   font-size: $font-small;
   width: 100%;
