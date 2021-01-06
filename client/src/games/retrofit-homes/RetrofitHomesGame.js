@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
-import '../../styles/pages/circulareconomy.scss';
 import { Switch, Route, Link } from 'react-router-dom';
-import RetrofitHomesInfo from './RetrofitHomesInfo';
 import RetrofitHomesResult from './RetrofitHomesResult';
 import classes from '../../styles/pages/lowcarbon.module.scss'
 import Intro from '../../components/Intro';
 import styles from '../../styles/pages/retrofit.module.scss';
-
 
 
 const MovableItem = ({name, setItems, column, index}) => {
@@ -191,9 +188,6 @@ const RetrofitHomesGame = () => {
     
     return(
         <Switch>
-            <Route exact path="/retrofithomes">
-                <RetrofitHomesInfo title={game.title} />
-            </Route>
             <Route path="/retrofithomes/intro">
                 <Intro text={game.intro} link='/retrofithomes/game' game='/retrofithomes'/>
             </Route>
