@@ -24,7 +24,7 @@
   margin: 5rem;
   padding: 1.5rem;
   position: relative;
-  min-height: 40vh;
+  height: auto;
   width: 65vw;
   border-radius: 3px;
   color: $dark-blue;
@@ -32,16 +32,6 @@
   box-shadow: $box-shadow;
 }
 
-@media (max-width: 350px) {
-  .SpeechBubble {
-    font-size: $font-small;
-  }
-}
-@media (min-width: 700px) {
-  .SpeechBubble {
-    font-size: $font-large;
-  }
-}
 
 .SpeechBubble:after {
   border: 2.5rem solid transparent;
@@ -53,6 +43,17 @@
   left: 50%;
   width: 0;
   height: 0;
+}
+
+@media (max-width: 350px) {
+  .SpeechBubble {
+    font-size: $font-small;
+  }
+}
+@media (min-width: 700px) {
+  .SpeechBubble {
+    font-size: $font-large;
+  }
 }
 
 // Flex Box

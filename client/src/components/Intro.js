@@ -5,7 +5,7 @@ import '../styles/components/button.scss';
 import '../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 
-const Intro = ({text, link, back, background, guy}) => {
+const Intro = ({text, link, back, background, guy, gradient}) => {
   return (
     <>
       <div className="GameNav">
@@ -18,7 +18,7 @@ const Intro = ({text, link, back, background, guy}) => {
           <BiExit className="RightIcon"/>
         </div>
       </div>
-      <div className={classes.Background} style={{backgroundImage: `linear-gradient(rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)), url(${background})`}}>
+      <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient}), url(${background})`}}>
         <div className={classes.SpeechBubble}>
           <p>{text}</p>
         </div>

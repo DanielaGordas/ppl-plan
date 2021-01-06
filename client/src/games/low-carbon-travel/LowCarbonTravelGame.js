@@ -231,6 +231,7 @@ const LowCarbonTravelGame = () => {
     const [game, setGame] = useState(lowCarbonTravelGame);
     const [items, setItems] = useState(lowCarbonTravelAnswers);
     const [info, setInfo] = useState([lowCarbonTravelAnswers[0].name,lowCarbonTravelAnswers[0].svg, lowCarbonTravelAnswers[0].description])
+
     const isMobile = window.innerWidth < 600;
 
 
@@ -374,10 +375,12 @@ const LowCarbonTravelGame = () => {
         setItems(lowCarbonTravelAnswers)
     }
 
+    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
+
     return(
         <Switch>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.intro} link='/lowcarbon/game' back='/intro' background={IntroBackground} guy={Guy} />
+                <Intro text={game.intro} link='/lowcarbon/game' back='/intro' background={IntroBackground} guy={Guy} gradient={gradient} />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className="GameNav">

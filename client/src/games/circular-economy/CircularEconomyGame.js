@@ -4,10 +4,15 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
 import '../../styles/pages/circulareconomy.scss';
 import { Switch, Route, Link } from 'react-router-dom';
-import CircularEconomyInfo from './CircularEconomyInfo';
 import CircularEconomyResult from './CircularEconomyResult';
 import classes from '../../styles/pages/lowcarbon.module.scss'
 import Intro from '../../components/Intro';
+
+
+// images and icons
+
+import Guy from '../../images/circular-economy/Character_4.svg';
+import IntroBackground from '../../images/circular-economy/Game_4_Second_screen.svg';
 
 
 const MovableItem = ({name, setItems, column, index}) => {
@@ -186,14 +191,13 @@ const CircularEconomyGame = () => {
         ))
     }
 
+    const gradient = "rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7)";
+
     
     return(
         <Switch>
-            <Route exact path="/circulareconomy">
-                <CircularEconomyInfo title={game.title} />
-            </Route>
             <Route path="/circulareconomy/intro">
-                <Intro text={game.intro} link='/circulareconomy/game' game='/circulareconomy'/>
+                <Intro text={game.intro} link='/circulareconomy/game' back='/lowcarbon/result' background={IntroBackground} guy={Guy} gradient={gradient}/>
             </Route>
             <Route path="/circulareconomy/game">
                 <div className={classes.GameNav}>
