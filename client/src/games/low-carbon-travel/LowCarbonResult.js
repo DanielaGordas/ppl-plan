@@ -27,7 +27,7 @@ const LowCarbonResult = () => {
             <Link to="/lowcarbon/game">Back</Link>
           </div>
           <div className="NavLink">
-            <a href="">Next Game</a>
+            <Link to="/circulareconomy/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
@@ -37,7 +37,7 @@ const LowCarbonResult = () => {
             </div>
             <img src={badge} alt="transport trophy" className={classes.ResultImg}/>
             <p className={classes.Text}>{text}</p>
-            <Link to="/outro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/circulareconomy/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )
