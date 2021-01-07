@@ -380,7 +380,15 @@ const LowCarbonTravelGame = () => {
     return(
         <Switch>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.intro} link='/lowcarbon/game' back='/intro' background={IntroBackground} guy={Guy} gradient={gradient} />
+                <Intro
+                    text={game.intro}
+                    link='/lowcarbon/game'
+                    back='/intro'
+                    background={IntroBackground}
+                    guy={Guy}
+                    guyPosition="LowcarbonCharacter"
+                    gradient={gradient}
+                />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className="GameNav">
