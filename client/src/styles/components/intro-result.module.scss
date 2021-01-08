@@ -32,7 +32,6 @@
   box-shadow: $box-shadow;
 }
 
-
 .SpeechBubble:after {
   border: 2.5rem solid transparent;
   border-top-color: $white;
@@ -63,11 +62,26 @@
 
 // Game Character
 
-.Character {
+.LowcarbonCharacter {
   height: 60rem;
   transform: translate(-35%, 0%) scale(1.2);
   width: 20rem;
   z-index: 2;
+}
+
+.CircularCharacter {
+  height: 60rem;
+  transform: translate(-35%, 0%) scale(1.2);
+  width: 20rem;
+  z-index: 2;
+}
+
+.RetrofitCharacter {
+  height: 60rem;
+  transform: translate(-40%, -11%) scale(1.2);
+  width: 20rem;
+  z-index: 2;
+  opacity: 0.85;
 }
 
 // Result Page
