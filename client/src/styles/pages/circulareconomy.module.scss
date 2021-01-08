@@ -1,0 +1,100 @@
+@import "../scss-variables.scss";
+
+// General styles and background
+.Background {
+  background-image: linear-gradient(rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Game instructions
+
+.Instructions {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: $white;
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  color: $dark-blue;
+  padding: 0.3rem;
+  max-width: 40rem;
+
+  h3 {
+    font-size: $font-medium;
+  }
+
+  p {
+    font-size: $font-small;
+    margin: 1rem;
+  }
+} 
+
+// Game Columns
+
+.Choices {
+  display: flex;
+  justify-content: center;
+}
+
+.FirstColumn {
+  background-color: $white;
+  font-size: $font-small;
+  margin: 2rem;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  color: $dark-blue;
+  padding: 2rem;
+
+}
+
+.SecondColumn {
+  background-color: $white;
+  font-size: $font-small;
+  color: $dark-blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 5rem;
+  height: 6rem;
+}
+
+
+// Game cards 
+
+.Card {
+  width: 12rem;
+  height: 12rem; 
+  flex-shrink: 0;
+  padding: 0.3rem;
+  border-radius: 2px;
+  font-size: $font-small;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+   img {
+     width: 8rem;
+     height: 8rem;
+   }
+}

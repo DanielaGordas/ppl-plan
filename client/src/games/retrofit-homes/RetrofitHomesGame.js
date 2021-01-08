@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
-import '../../styles/pages/circulareconomy.scss';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { Switch, Route, Link } from 'react-router-dom';
@@ -14,6 +13,7 @@ import axios from 'axios';
 import Modal from '../../components/Modal';
 
 // images and icons
+
 
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";

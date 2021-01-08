@@ -25,7 +25,7 @@ import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg';
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
-import Guy from '../../images/low-carbon/Character_1_Final_screen.svg';
+import Guy from '../../images/low-carbon/Character_1_First_screen.svg';
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -243,7 +243,7 @@ const LowCarbonTravelGame = () => {
         ))
     }
 
-    // Style and logic for the needle in the speedometer 
+    // Style and logic for the needle in the speedometer and result 
     const massTransit = [];
     const electricCars = [];
 
@@ -363,13 +363,13 @@ const LowCarbonTravelGame = () => {
         }
     }
         
-            const handleRedirect = (res) => {
-                if(res.status === 201 || res.status === 200) {
-                    window.location = '/lowcarbon/result'
-                } else {
-                    window.location = '/lowcarbon/game'
-                }
-            }
+    const handleRedirect = (res) => {
+        if(res.status === 201 || res.status === 200) {
+            window.location = '/lowcarbon/result'
+        } else {
+            window.location = '/lowcarbon/game'
+        }
+    }
     
     const startOver = () => {
         setItems(lowCarbonTravelAnswers)
