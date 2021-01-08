@@ -1,8 +1,11 @@
 @import "../scss-variables.scss";
 
+.Background {
+  background: linear-gradient(rgba(156, 199, 66, 1), rgba(255, 255, 255, 0.7));
+}
+
 .RoundCard {
   border-radius: 50%;
-  background-color: $grey;
   width: 6rem;
   height: 6rem;
   text-align: center;
@@ -13,12 +16,12 @@
 
 .FirstColumn {
   border-radius: 50%;
-  margin: 2rem;
-  height: 14rem;
-  width: 14rem;
-  background-color: $grey;
+  top: 39% !important;
+  left: 39% !important;
+  height: 12rem !important;
+  width: 12rem !important;
+  display: flex !important;
   font-size: $font-extra-small;
-  display: flex;
   justify-content: center;
   align-content: center;
   overflow-x: auto;
@@ -67,15 +70,24 @@
 
       $rot: $rot + $angle;
     }
+
+    h4 {
+      transform: translateY(11px);
+    }
   }
 }
 
 .Choices {
-  @include on-circle($item-count: 9, $circle-size: 20rem, $item-size: 6rem);
-  margin: 5rem auto 1rem;
+  @include on-circle($item-count: 9, $circle-size: 26rem, $item-size: 6rem);
+  margin: 5rem auto 3rem;
   border: solid 5px $dark-blue;
 }
 
 .Translate {
-  transform: translate(0%, -65%);
+  transform: translate(0%, -67%);
+}
+
+.Icon {
+  height: 6rem;
+  width: 6rem;
 }

@@ -197,7 +197,15 @@ const CircularEconomyGame = () => {
     return(
         <Switch>
             <Route path="/circulareconomy/intro">
-                <Intro text={game.intro} link='/circulareconomy/game' back='/lowcarbon/result' background={IntroBackground} guy={Guy} gradient={gradient}/>
+                <Intro
+                    text={game.intro}
+                    link='/circulareconomy/game'
+                    back='/lowcarbon/result'
+                    background={IntroBackground}
+                    guy={Guy}
+                    guyPosition="CircularCharacter"
+                    gradient={gradient}
+                />
             </Route>
             <Route path="/circulareconomy/game">
                 <div className={classes.GameNav}>
