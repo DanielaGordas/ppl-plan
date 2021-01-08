@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
@@ -8,6 +8,8 @@ import classes from '../../styles/pages/circulareconomy.module.scss';
 import Intro from '../../components/Intro';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
+import Modal from '../../components/Modal';
+import axios from 'axios';
 
 
 // images and icons
@@ -31,7 +33,7 @@ import Electronics from '../../images/circular-economy/Electronics_icon.svg';
 
 
 
-const MovableItem = ({name, setItems, column, index, icon}) => {
+const MovableItem = ({name, setItems, column, index, icon, description}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -42,6 +44,10 @@ const MovableItem = ({name, setItems, column, index, icon}) => {
             })
         });
     }
+
+    const [show, setShow] = useState(false);
+    const openModal = () => setShow(true);  
+    const closeModal = () => setShow(false);
 
     const [{ isDragging }, drag] = useDrag({
         item: { name, type:'Our first type'},
@@ -73,10 +79,13 @@ const MovableItem = ({name, setItems, column, index, icon}) => {
     }
 
     return (
-        <div ref={drag} className={classes.Card} style={{  opacity, display: getDisplay() }}>
-            <img src={icon} alt={name}/>
-            <p>{name}</p>
-        </div>
+        <>
+            <div ref={drag} className={classes.Card} style={{  opacity, display: getDisplay() }} onClick={openModal}>
+                <img src={icon} alt={name}/>
+                <p>{name}</p>
+            </div>
+            { show? <Modal title={name} description={description} show={show} closeModal={closeModal} icon={icon}/> : null }
+        </>
     )
 }
 
@@ -89,12 +98,15 @@ const Column = ({children, className, title}) => {
         drop: () => ({name: title}),
     })
 
-
     return (
         <>
         <div ref={drop} className={className}>
-            <h4>{ title !== "All" ? children.length : null}</h4>
-            <h4> {title !== "All" ? title : null}</h4>
+            <div>
+                <h4>{ title !== "All" ? children.length : null}</h4>
+            </div>
+            <div>
+                <h4> {title !== "All" ? title : null}</h4>
+            </div>
             {children}
         </div>
         </>
@@ -108,7 +120,7 @@ const CircularEconomyGame = () => {
     const circularEconomyGame = {
         id: 2, 
         title: "Low waste / circular society",
-        intro: "In a low waste circular society, different responsibilities are shared among local people, the community, and the council. Your community centre is hosting a poll to decide who should take ownership for a variety of common issues. Select the issues and have your say. ",
+        intro: "In a low waste circular society, different responsibilities are shared among local people, the community, and the council. Your community centre is hosting a poll to decide who should take ownership for a variety of common issues. Select the issues and have your say.",
         instructions: "Tap the issues to find out more. Then drag them into the box which represents who you think should look after or own that issue, service or item."
     }
 
@@ -119,6 +131,7 @@ const CircularEconomyGame = () => {
             name: "Skills exchange events",
             description: "These events can build stronger communities and improve social equality by providing individuals with equal access to knowledge and skills, which will in turn boost local economies.",
             column: 'All',
+            game: "Circular Economy",
             svg: SkillsExchange
         },
         {
@@ -126,6 +139,7 @@ const CircularEconomyGame = () => {
             name: "Food shares",
             description: "£17 billion worth of food ends up in landfill each year in the UK - much of this could have been eaten by those in need. Food shares are set up to combat waste by sharing surplus or unwanted food with those in the community, helping to improve social and economic equality and building stronger communities.",
             column: 'All',
+            game: "Circular Economy",
             svg: FoodShares
         },
         {
@@ -133,6 +147,7 @@ const CircularEconomyGame = () => {
             name: "Clothes swaps",
             description: "Around 30% of clothing in wardrobes in the UK has not been worn for at least a year, and an estimated £140 million worth of used clothing also goes to landfill in the UK every year. Clothes swaps offer people the chance to exchange clothes, which helps build stronger communities and reduce clothing going to landfill, also saving you money!",
             column: 'All',
+            game: "Circular Economy",
             svg: ClothesSwaps
         },
         {
@@ -140,6 +155,7 @@ const CircularEconomyGame = () => {
             name: "Furniture swaps",
             description: "Furniture swaps and communal repairs/repair workshops could greatly extend the life of furniture and provide people with more sustainable options. 22 million small items of furniture are thrown away every year in the UK.",
             column: 'All',
+            game: "Circular Economy",
             svg: FurnitureSwaps
         },
         {
@@ -147,6 +163,7 @@ const CircularEconomyGame = () => {
             name: "Cleaning of parks/beaches/public spaces",
             description: "Could the local community manage this better and more effectively than the local council or a private company?",
             column: 'All',
+            game: "Circular Economy",
             svg: Cleaning
         },
         {
@@ -154,6 +171,7 @@ const CircularEconomyGame = () => {
             name: "Household waste and recycling collection",
             description: "Would you be happy for a community group to manage waste collection rather than the council?",
             column: 'All',
+            game: "Circular Economy",
             svg: HouseholdWaste
         },
         {
@@ -161,6 +179,7 @@ const CircularEconomyGame = () => {
             name: "Locally grown food",
             description: "Community allotments are an excellent way for children and young people to learn about growing food. Individual/family allotments offer great exercise and a regular supply of fruit and vegetables. A mixture of the two can benefit communities with sharing of surplus produce.",
             column: 'All',
+            game: "Circular Economy",
             svg: LocalFood
         },
         {
@@ -168,6 +187,7 @@ const CircularEconomyGame = () => {
             name: "Home and garden tools",
             description: "The average person spends almost £200 per year on tools and uses them infrequently. A shared approach could save huge amounts of resources and money.",
             column: 'All',
+            game: "Circular Economy",
             svg: HomeTools
         },
         {
@@ -175,6 +195,7 @@ const CircularEconomyGame = () => {
             name: "Cars",
             description: "Car sharing schemes help relieve local traffic congestion, saving up to £1,000 per year (on fuel costs, parking and other vehicle running costs).",
             column: 'All',
+            game: "Circular Economy",
             svg: Cars
         },
         {
@@ -182,6 +203,7 @@ const CircularEconomyGame = () => {
             name: "Bikes",
             description: "Bike sharing schemes enable users to access bikes 24/7 in urban areas, facilitating the use of cycling rather than other non-sustainable modes of transport.  A healthy, eco-friendly and fun way to travel!",
             column: 'All',
+            game: "Circular Economy",
             svg: Bikes
         },
         {
@@ -189,6 +211,7 @@ const CircularEconomyGame = () => {
             name: "Books and access to libraries",
             description: "Shared libraries/collections of books, as well as book swaps, can save the need to buy lots of books, especially textbooks that are often only used for a short while. Books can be borrowed, swapped or donated for communal use, saving paper, resources, and money.",
             column: 'All',
+            game: "Circular Economy",
             svg: Books
         },
         {
@@ -196,6 +219,7 @@ const CircularEconomyGame = () => {
             name: "Childrens’ or pets’ toys",
             description: "Every year in the UK, 8.5 million nearly new toys are thrown out as children and pets grow out of, or lose interest in, them. These can be redistributed to other children or pets as needed, reducing the amount in landfill.",
             column: 'All',
+            game: "Circular Economy",
             svg: Children
         },
         {
@@ -203,6 +227,7 @@ const CircularEconomyGame = () => {
             name: "Electronics",
             description: "The UK could save £370 million if all the old small electricals that are either thrown away or hoarded were recycled.",
             column: 'All',
+            game: "Circular Economy",
             svg: Electronics
         },
         
@@ -217,8 +242,91 @@ const CircularEconomyGame = () => {
         return items
         .filter((item) => item.column === columnName)
         .map((item, index) => (
-            <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} index={index} icon={item.svg}/>
+            <MovableItem key={item.id} name={item.name} description={item.description} column={item.column} setItems={setItems} index={index} icon={item.svg} />
         ))
+    }
+
+
+    // retrieves guest user details from localStorage
+    const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
+
+    // filters answers that are in the 5 selected columns
+    const finalItems = items.filter((item) => item.column !== "All")
+
+
+    const individualOwnership = [];
+    const communityOwnership = [];
+    const councilOwnership = [];
+
+
+    items.map(item => {
+        if (item.column === 'Individuals') {
+            individualOwnership.push(item);
+        } else if (item.column === "Community"){
+            communityOwnership.push(item);
+        } else if (item.column === "Council"){
+            councilOwnership.push(item);
+        }
+        return item;
+    })
+
+    // decides the result of the game 
+    const result = () => {
+        let result = ""
+        if(individualOwnership.length > communityOwnership.length && individualOwnership.length > councilOwnership.length) {
+            result = "individual ownership"
+        } else if (communityOwnership.length > individualOwnership.length && communityOwnership.length > councilOwnership.length) {
+            result = "community ownership";
+        } else if (councilOwnership.length > individualOwnership.length && councilOwnership.length > communityOwnership.length) {
+            result = "council ownership";
+        }
+
+        return result;
+    }
+
+    // retrieves result from Local Storage
+    const circularEconomyText = JSON.parse(window.localStorage.getItem('result4'));
+
+    const [circularEconomyResult, setCircularEconomyResult] = useState(circularEconomyText || "")
+    // save the result to Local Storage
+    useEffect(() => {
+        window.localStorage.setItem('result4', JSON.stringify(circularEconomyResult));
+    }, [circularEconomyResult])
+
+    // Logic for persisting the answers in the DB: 
+
+    // saves guest_answers to the DB     
+    const submitAnswers = () => {
+
+        const qs = require('qs');
+        
+        if(finalItems.length === 13 && guestDetails) {
+            finalItems.forEach(answer => {
+                axios.post('/api/answers', qs.stringify(
+                    {
+                        answer: {
+                            guest_id: guestDetails.id,
+                            name: answer.name,
+                            description: answer.description,
+                            column: answer.column,
+                            game: answer.game
+                    }
+                }))
+                .then(res => {
+                    setCircularEconomyResult(result())
+                    handleRedirect(res)
+                })
+                    .catch(err => console.log(err))
+                })
+        }
+    }
+        
+    const handleRedirect = (res) => {
+        if(res.status === 201 || res.status === 200) {
+            window.location = '/circulareconomy/result'
+        } else {
+            window.location = '/circulareconomy/game'
+        }
     }
 
     const startOver = () => {
@@ -226,7 +334,7 @@ const CircularEconomyGame = () => {
     }
 
     // gradient for the background
-    const gradient = "rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7)";
+    const gradient = "rgba(252, 149, 55, 1),rgba(255, 255, 255, 1)";
 
     
     return(
@@ -252,9 +360,13 @@ const CircularEconomyGame = () => {
                     </div>   
                     <div className={classes.Container}>            
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                            {
+                            (finalItems.length === 13) ? 
+                            <button className="Btn" style={{margin: '4rem 0'}} onClick={submitAnswers}>Complete!</button> :                  
                             <Column title='All' className={classes.FirstColumn}>
                                 {returnItemsForColumn('All')}
-                            </Column>
+                            </Column> 
+                            }
                             <div className={classes.Choices}>
                                 <Column title='Individuals' className={classes.SecondColumn}>
                                     {returnItemsForColumn('Individuals')}
@@ -266,13 +378,12 @@ const CircularEconomyGame = () => {
                                     {returnItemsForColumn('Council')}
                                 </Column>
                             </div>
-                            <button className="Btn">Complete!</button>
                         </DndProvider>
                     </div>
                 </div>
             </Route>
             <Route path="/circulareconomy/result">
-                <CircularEconomyResult />
+                <CircularEconomyResult gradient={gradient}/>
             </Route>
         </Switch>
     )

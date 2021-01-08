@@ -243,7 +243,7 @@ const LowCarbonTravelGame = () => {
         ))
     }
 
-    // Style and logic for the needle in the speedometer 
+    // Style and logic for the needle in the speedometer and result 
     const massTransit = [];
     const electricCars = [];
 
@@ -363,13 +363,13 @@ const LowCarbonTravelGame = () => {
         }
     }
         
-            const handleRedirect = (res) => {
-                if(res.status === 201 || res.status === 200) {
-                    window.location = '/lowcarbon/result'
-                } else {
-                    window.location = '/lowcarbon/game'
-                }
-            }
+    const handleRedirect = (res) => {
+        if(res.status === 201 || res.status === 200) {
+            window.location = '/lowcarbon/result'
+        } else {
+            window.location = '/lowcarbon/game'
+        }
+    }
     
     const startOver = () => {
         setItems(lowCarbonTravelAnswers)
