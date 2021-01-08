@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/components/button.scss'
 import classes from '../styles/pages/home.module.scss';
-import logo from '../images/logo-tagline.jpg'; 
 import NavBar from '../components/NavBar';
 import {GoGlobe} from "react-icons/go";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const HomePage = () => {
     return(
