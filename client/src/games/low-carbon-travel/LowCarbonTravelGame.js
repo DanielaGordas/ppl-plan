@@ -383,7 +383,7 @@ const LowCarbonTravelGame = () => {
                 <Intro
                     text={game.intro}
                     link='/lowcarbon/game'
-                    back='/intro'
+                    back='/user'
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="LowcarbonCharacter"

@@ -8,7 +8,6 @@
   border-radius: 50%;
   width: 6rem;
   height: 6rem;
-  background: $white;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -22,7 +21,6 @@
   height: 12rem !important;
   width: 12rem !important;
   display: flex !important;
-  background: $white;
   font-size: $font-extra-small;
   justify-content: center;
   align-content: center;
@@ -81,14 +79,15 @@
 
 .Choices {
   @include on-circle($item-count: 9, $circle-size: 26rem, $item-size: 6rem);
-  margin: 5rem auto 7rem;
+  margin: 5rem auto 3rem;
   border: solid 5px $dark-blue;
 }
 
 .Translate {
   transform: translate(0%, -67%);
+}
 
-  .Translate + h4 {
-    display: none;
-  }
+.Icon {
+  height: 6rem;
+  width: 6rem;
 }

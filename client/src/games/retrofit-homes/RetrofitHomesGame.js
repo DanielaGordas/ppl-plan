@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
@@ -10,6 +10,8 @@ import RetrofitHomesResult from './RetrofitHomesResult';
 import classes from '../../styles/pages/lowcarbon.module.scss'
 import Intro from '../../components/Intro';
 import styles from '../../styles/pages/retrofit.module.scss';
+import axios from 'axios';
+import Modal from '../../components/Modal';
 
 // images and icons
 
@@ -27,7 +29,7 @@ import SolarPanels from '../../images/retrofit-homes/Solar_panels_icon.svg';
 import GlazedWindows from '../../images/retrofit-homes/Triple_glazed_windows_icon.svg';
 import Energiesprong from '../../images/retrofit-homes/Whole_House_Energiesprong_icon.svg';
 
-const MovableItem = ({name, setItems, column, index, icon}) => {
+const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -88,11 +90,18 @@ const MovableItem = ({name, setItems, column, index, icon}) => {
       }
     }
 
-  return (
-      <div ref={drag} className={getClass()} style={{  opacity, display: getDisplay(), background: `${icon}` }}>
-          {name}
+    useEffect(()=> {
+        if(column === "All" && index === 0 ) {
+            setInfo([name, icon, description]);
+        }
+    }, [index])
+
+
+    return (
+      <div ref={drag} className={getClass()} style={{  opacity, display: getDisplay() }}>
+          <img src={icon} alt={name} className={styles.Icon}  />
       </div>
-  )
+    )
 }
 
 
@@ -123,13 +132,39 @@ const Column = ({children, className, title}) => {
     )
 }
 
+const Info = ({info, finalItems, submitAnswers}) => {
+    const [show, setShow] = useState(false);
+    const openModal = () => setShow(true);  
+    const closeModal = () => setShow(false);
+
+    
+
+    if (finalItems.length === 9)
+        return <button className="Btn-border" onClick={submitAnswers}>Complete!</button>
+    else
+        return(
+            <>
+            <div className={classes.Infobox}>
+                <div>
+                    <img src={info[1]} alt={info[0]}/>
+                    <p>{info[0]}</p>
+                </div>
+                <a href="#" className={classes.Link} onClick={openModal}>
+                    Read more <FaAngleDown fontSize="1.5rem"/>
+                </a>
+            </div>
+            { show? <Modal title={info[0]} description={info[2]} show={show} closeModal={closeModal} icon={info[1]}/> : null }
+            </>
+        )
+}
+
 const RetrofitHomesGame = () => {
 
     const retrofitHomesGame = {
         id: 3, 
         title: "Retrofit Homes",
-        intro: "You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. Choose your own home improvements, funded by the government. Pick from the 10 home improvement options and prioritise which you think are best for your home.",
-        instructions: "Swipe through each of the housing upgrades, review them and then drag them into the numbered circles to prioritise them. You can always swap them over if you’ve put them in the wrong order."
+        intro: "You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. Choose your own home improvements, funded by the government. Pick from the home improvement options and prioritise which you think are best for your home.",
+        instructions: "Drag the housing upgrades into the numbered circles to prioritise them. You can always swap them over if you wish."
     }
 
 
@@ -137,63 +172,63 @@ const RetrofitHomesGame = () => {
         {
             id: 1, 
             name: "Whole House",
-            icon: {Energiesprong},
+            icon: Energiesprong,
             description: "‘Energiesprong’, pioneered in the Netherlands, could transform 41% of UK housing to net zero emissions.",
             column: 'All'
         },
         {
             id: 2, 
             name: "Smart Hybrid Heat Pumps",
-            icon: {HybridPumps},
+            icon: HybridPumps,
             description: "Smart hybrid heat pumps are efficient at heating homes, easy to install and cost £5-10,000.",
             column: 'All'
         },
         {
             id: 3, 
             name: "Hydrogen Boilers",
-            icon: {HydrogenBoilers},
+            icon: HydrogenBoilers,
             description: "Hydrogen boilers are currently being developed and are a more sustainable alternative to natural gas boilers, producing neither carbon dioxide or carbon monoxide.",
             column: 'All'
         },
         {
             id: 4, 
             name: "Solar Panels",
-            icon: {SolarPanels},
+            icon: SolarPanels,
             description: "Solar panels have come down in cost by 70% since 2010, costing roughly between £4,000 and £6,000 for the average UK household.",
             column: 'All'
         },
         {
             id: 5, 
             name: "External or Internal Wall Insulation",
-            icon: {WallInsulation},
+            icon: WallInsulation,
             description: "External or internal wall insulation on average cost £15,000 and £7,400 respectively, with savings up to £455 per year.",
             column: 'All'
         },
         {
             id: 6, 
             name: "Rainwater Harvesting System",
-            icon: {RainwaterSystem},
+            icon: RainwaterSystem,
             description: "Rainwater harvesting system refers to the collection, storage and distribution of recycled rainwater for non-drinking purposes, such as flushing toilets.",
             column: 'All'
         },
         {
             id: 7, 
             name: "Triple Glazed Windows",
-            icon: {GlazedWindows},
+            icon: GlazedWindows,
             description: "Triple glazed windows can prevent the loss of 20% of heat in homes lost through windows.",
             column: 'All'
         },
         {
             id: 8, 
             name: "Draught-proofing of Floors",
-            icon: {DraughtProofing},
+            icon: DraughtProofing,
             description: "Draught-proofing of floors, windows and doors can be a quick and cost effective way of sealing homes.",
             column: 'All'
         },
         {
             id: 9, 
             name: "Smart Controls Aim",
-            icon: {SmartControls},
+            icon: SmartControls,
             description: "Smart controls aim to save energy by increasing and decreasing temperature with maximum efficiency. ",
             column: 'All'
         }
@@ -202,17 +237,83 @@ const RetrofitHomesGame = () => {
 
     const [game, setGame] = useState(retrofitHomesGame);
     const [items, setItems] = useState(retrofitHomesAnswers);
+    const [info, setInfo] = useState([retrofitHomesAnswers[0].name,retrofitHomesAnswers[0].icon, retrofitHomesAnswers[0].description])
+
     const isMobile = window.innerWidth < 600;
 
     const returnItemsForColumn = (columnName) => {
         return items
         .filter((item) => item.column === columnName)
         .map((item, index) => (
-            <MovableItem key={item.id} name={item.name} icon={item.icon} column={item.column} setItems={setItems} index={index} />
+            <MovableItem key={item.id} setInfo={setInfo} name={item.name} icon={item.icon} column={item.column} setItems={setItems} index={index} description={item.description}/>
         ))
     }
 
-    const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.7)";
+    // decides the result of the game based
+    const result = () => {
+        let result = ""
+        // if(massTransit.length > electricCars.length) {
+        //    result = "mass transit"
+        // } else {
+        //     result = "electric cars"
+        // }
+        return result;
+    }
+
+    // retrieves guest user details from localStorage
+    const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
+    
+    // filters answers that are in the 5 selected columns
+    const finalItems = items.filter((item) => item.column !== "All")
+
+    // retrieves result from Local Storage
+    const retrofitHomesText = JSON.parse(window.localStorage.getItem('result3'));
+
+    const [retrofitHomesResult, setRetrofitHomesResult] = useState(retrofitHomesText || "")
+    // save the result to Local Storage
+    useEffect(() => {
+        window.localStorage.setItem('result3', JSON.stringify(retrofitHomesResult));
+    }, [retrofitHomesResult])
+
+    // Logic for persisting the answers in the DB: 
+
+    // saves guest_answers to the DB     
+    const submitAnswers = () => {
+
+        const qs = require('qs');
+        
+        if(finalItems.length === 9 && guestDetails) {
+            finalItems.forEach(answer => {
+                axios.post('/api/answers', qs.stringify(
+                    {
+                        answer: {
+                            guest_id: guestDetails.id,
+                            name: answer.name,
+                            description: answer.description,
+                            column: answer.column,
+                            category: answer.category,
+                            game: answer.game
+                    }
+                }))
+                .then(res => {
+                    setRetrofitHomesResult(result())
+                    handleRedirect(res)
+                })
+                    .catch(err => console.log(err))
+                })
+        }
+    }
+
+    const handleRedirect = (res) => {
+        if(res.status === 201 || res.status === 200) {
+            window.location = '/retrofithomes/result'
+        } else {
+            window.location = '/retrofithomes/game'
+        }
+    }
+
+
+    const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 1)";
 
     const startOver = () => {
         setItems(retrofitHomesAnswers)
@@ -281,7 +382,7 @@ const RetrofitHomesGame = () => {
                             {returnItemsForColumn('All')}
                         </Column>
                         </div>
-                        <button className="Btn">Complete!</button>
+                        <Info info={info} finalItems={finalItems} submitAnswers={submitAnswers} />
                     </DndProvider>
                 </div>
                 </div>
