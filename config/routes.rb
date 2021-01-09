@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :guests, only: [:index, :show, :create, :update]
     resources :answers, only: [:index, :show, :create]
+    resources :questions, only: [:index, :show, :create]
   end
 
   get '*path', to: "application#fallback_index_html", constraints: ->(request) do

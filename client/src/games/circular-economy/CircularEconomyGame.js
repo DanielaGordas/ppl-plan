@@ -342,6 +342,7 @@ const CircularEconomyGame = () => {
             <Route path="/circulareconomy/intro">
                 <Intro
                     text={game.intro}
+                    skip='/retrofithomes/intro'
                     link='/circulareconomy/game'
                     back='/lowcarbon/result'
                     background={IntroBackground}
