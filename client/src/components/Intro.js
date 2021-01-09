@@ -5,7 +5,7 @@ import '../styles/components/button.scss';
 import '../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 
-const Intro = ({text, link, back, background, guy, gradient, guyPosition}) => {
+const Intro = ({text, link, back, skip, background, guy, gradient, guyPosition}) => {
   return (
     <>
       <div className="GameNav">
@@ -14,7 +14,7 @@ const Intro = ({text, link, back, background, guy, gradient, guyPosition}) => {
           <Link to={back}>Back</Link>
         </div>
         <div className="NavLink">
-          <Link to='/user'>Skip Game</Link>
+          <Link to={skip}>Skip Game</Link>
           <BiExit className="RightIcon"/>
         </div>
       </div>

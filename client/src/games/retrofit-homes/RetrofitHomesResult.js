@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
-import background from '../../images/retrofit-homes/Game_3_Background_Screen.svg';
+import background from '../../images/retrofit-homes/Game_3_new_screen.svg';
 import badge from '../../images/retrofit-homes/Game_3_Bagde.svg';
 
 
@@ -21,7 +21,7 @@ const RetrofitHomesResult = () => {
             <BiExit className="RightIcon"/>
           </div>
         </div>
-        <div className={classes.Background} style={{backgroundImage: `linear-gradient(rgba(156, 199, 66, 1),rgba(255, 255, 255, 1)), url(${background})`}}>
+        <div className={classes.Background} style={{backgroundImage: `linear-gradient(rgba(19, 213, 255, .8),rgba(255, 255, 255, .7)), url(${background})`}}>
             <div className={classes.ResultBubble}>
               Congratulations! You've earned the Net Zero Home Badge!
             </div>
