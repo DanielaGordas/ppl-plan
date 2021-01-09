@@ -14,7 +14,7 @@ import axios from 'axios';
 
 // images and icons
 
-import Guy from '../../images/circular-economy/Character_4.svg';
+import Guy from '../../images/circular-economy/Character_Game_4.svg';
 import IntroBackground from '../../images/circular-economy/Game_4_First_Screen.svg';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import SkillsExchange from '../../images/circular-economy/Skills_exchange_events_blue_icon.svg';
