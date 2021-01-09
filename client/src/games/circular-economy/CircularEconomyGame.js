@@ -101,12 +101,14 @@ const Column = ({children, className, title}) => {
     return (
         <>
         <div ref={drop} className={className}>
-            <div className={classes.Top}>
+            <div className={classes.TopBorder}>
+                <div className={classes.Top}>
+                </div>
             </div>
             <div className={classes.Bottom}>
                 <h4> {title !== "All" ? title : null}</h4>
                 <p>{ title !== "All" ? children.length : null}</p>
-            </div >
+            </div>
             {children}
         </div>
         </>
