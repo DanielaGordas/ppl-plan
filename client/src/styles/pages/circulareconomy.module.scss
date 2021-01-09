@@ -2,7 +2,7 @@
 
 // General styles and background
 .Background {
-  background-image: linear-gradient(rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7));
+  background-image: linear-gradient(rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7)), url(../../images/circular-economy/Game_4_First_Screen.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -46,44 +46,53 @@
 .Choices {
   display: flex;
   justify-content: center;
+  max-width: 40rem;
 }
 
 .FirstColumn {
-  background-color: $white;
   font-size: $font-small;
-  margin: 2rem;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
+  margin-top: 2rem;
   color: $dark-blue;
-  padding: 2rem;
-
+  display: flex;
 }
 
 .SecondColumn {
-  background-color: $white;
+  background-color: $medium-grey;
   font-size: $font-small;
-  color: $dark-blue;
+  color: $white;
+  padding: 2rem;
+  margin: 1rem;
+  margin-top: 2rem;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 6rem;
+  height: 8rem;
+}
+
+.Top {
+  height: 5%;
+  background: $grey;
+
+}
+
+.Bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  margin: 1rem;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  width: 5rem;
-  height: 6rem;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
 }
 
 
 // Game cards 
 
 .Card {
-  width: 12rem;
+  background: $white;
+  width: 10rem;
   height: 12rem; 
   flex-shrink: 0;
-  padding: 0.3rem;
+  padding: 3rem;
   border-radius: 2px;
   font-size: $font-small;
   text-align: center;
@@ -92,9 +101,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 1rem;
+  box-shadow: $box-shadow;
 
    img {
-     width: 8rem;
-     height: 8rem;
+     width: 6rem;
+     height: 6rem;
    }
 }

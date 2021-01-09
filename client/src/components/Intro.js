@@ -24,7 +24,7 @@ const Intro = ({text, link, back, background, guy, gradient, guyPosition}) => {
         </div>
         <div className={classes.Flex}>
           <img src={guy} alt="Character" className={classes[guyPosition]} />
-          <Link to={link} style={{position: 'absolute', top: '80%', left:'45%', zIndex: '3'}}><button className="Btn-border">Begin!</button></Link>
+          <Link to={link} style={{position: 'absolute', top: '80%', left:'40%', zIndex: '3'}}><button className="Btn-border">Begin!</button></Link>
         </div>
       </div>
     </>

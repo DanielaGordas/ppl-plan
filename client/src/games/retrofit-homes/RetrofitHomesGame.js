@@ -163,7 +163,7 @@ const RetrofitHomesGame = () => {
     const retrofitHomesGame = {
         id: 3, 
         title: "Retrofit Homes",
-        intro: "You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. Choose your own home improvements, funded by the government. Pick from the home improvement options and prioritise which you think are best for your home.",
+        intro: "You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. Choose your own home improvements, funded by the government.",
         instructions: "Drag the housing upgrades into the numbered circles to prioritise them. You can always swap them over if you wish."
     }
 
