@@ -123,6 +123,10 @@
 .Text {
   display: block;
   color: $dark-blue;
+  background-color: $white;
+  border-radius: 3px;
+  box-shadow: $box-shadow;
+  padding: 1rem;
   font-size: $font-small;
   line-height: 2.5rem;
   margin: 3rem;

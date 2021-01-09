@@ -18,16 +18,16 @@ import Modal from '../../components/Modal';
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import Guy from '../../images/retrofit-homes/Character 3a.svg';
-import IntroBackground from '../../images/retrofit-homes/Game_3_Background_Screen.svg';
-import DraughtProofing from '../../images/retrofit-homes/Draught_proofing_icon.svg';
-import WallInsulation from '../../images/retrofit-homes/External_internal_wall_insulation_icon.svg';
-import HydrogenBoilers from '../../images/retrofit-homes/Hydrogen_boilers_icon.svg';
-import RainwaterSystem from '../../images/retrofit-homes/Rainwater_harvesting_system_icon.svg';
-import SmartControls from '../../images/retrofit-homes/Smart_controls_icon.svg';
-import HybridPumps from '../../images/retrofit-homes/Smart_hybrid_heat_pumps_icon.svg';
-import SolarPanels from '../../images/retrofit-homes/Solar_panels_icon.svg';
-import GlazedWindows from '../../images/retrofit-homes/Triple_glazed_windows_icon.svg';
-import Energiesprong from '../../images/retrofit-homes/Whole_House_Energiesprong_icon.svg';
+import IntroBackground from '../../images/retrofit-homes/Game_3_new_screen.svg';
+import DraughtProofing from '../../images/retrofit-homes/Draught_proofing_blue_icon.svg';
+import WallInsulation from '../../images/retrofit-homes/External_internal_wall_insulation_blue_icon.svg';
+import HydrogenBoilers from '../../images/retrofit-homes/Hydrogen_boilers_Blue_icon.svg';
+import RainwaterSystem from '../../images/retrofit-homes/Rainwater_harvesting_system_blue_icon.svg';
+import SmartControls from '../../images/retrofit-homes/Smart_controls_blue_icon.svg';
+import HybridPumps from '../../images/retrofit-homes/Smart_hybrid_heat_pumps_blue_icon.svg';
+import SolarPanels from '../../images/retrofit-homes/Solar_panels_blue_icon.svg';
+import GlazedWindows from '../../images/retrofit-homes/Triple_glazed_windows_blue_icon.svg';
+import Energiesprong from '../../images/retrofit-homes/Whole_House_Energiesprong_blue_icon.svg';
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -313,7 +313,7 @@ const RetrofitHomesGame = () => {
     }
 
 
-    const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 1)";
+    const gradient = "rgba(19, 213, 255, .8),rgba(255, 255, 255, .7)";
 
     const startOver = () => {
         setItems(retrofitHomesAnswers)
@@ -326,7 +326,8 @@ const RetrofitHomesGame = () => {
                     text={game.intro}
                     link='/retrofithomes/game'
                     game='/retrofithomes'
-                    back="/circulareconomy/outro"
+                    back="/circulareconomy/result"
+                    skip="/outro"
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="RetrofitCharacter"
@@ -382,7 +383,9 @@ const RetrofitHomesGame = () => {
                             {returnItemsForColumn('All')}
                         </Column>
                         </div>
-                        <Info info={info} finalItems={finalItems} submitAnswers={submitAnswers} />
+                        <div className={styles.Flex}>
+                            <Info info={info} finalItems={finalItems} submitAnswers={submitAnswers} />
+                        </div>
                     </DndProvider>
                 </div>
                 </div>
