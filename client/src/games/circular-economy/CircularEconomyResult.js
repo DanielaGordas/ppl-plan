@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
-import background from "../../images/circular-economy/Game_4_Second_screen.svg";
+import background from "../../images/circular-economy/Game_4_First_Screen.svg";
 import badge from "../../images/circular-economy/Game_4_Bagde.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
@@ -23,6 +23,7 @@ const CircularEconomyResult = ({gradient}) => {
     } else {
       text = "You chose a future low waste circular society in which the responsibility for most issues is shared among the local people, the community, and the council."
     };
+
     return (
       <>
         <div className="GameNav">

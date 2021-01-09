@@ -15,21 +15,21 @@ import axios from 'axios';
 // images and icons
 
 import Guy from '../../images/circular-economy/Character_4.svg';
-import IntroBackground from '../../images/circular-economy/Game_4_Second_screen.svg';
+import IntroBackground from '../../images/circular-economy/Game_4_First_Screen.svg';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import SkillsExchange from '../../images/circular-economy/Skills_exchange_events_icon.svg';
-import FoodShares from '../../images/circular-economy/Food_shares_icon.svg';
-import ClothesSwaps from '../../images/circular-economy/Clothes_swaps_icon.svg';
-import FurnitureSwaps from '../../images/circular-economy/Furniture_swaps_icon.svg';
-import Cleaning from '../../images/circular-economy/Cleaning_public_spaces_icon.svg';
-import HouseholdWaste from '../../images/circular-economy/Household_waste_recycling_collection_icon.svg';
-import LocalFood from '../../images/circular-economy/Locally_grown_food_icon.svg';
-import HomeTools from '../../images/circular-economy/Home_and_garden_tools_icon.svg';
-import Cars from '../../images/circular-economy/Cars_icon.svg';
-import Bikes from '../../images/circular-economy/Bikes_icon.svg';
-import Books from '../../images/circular-economy/Books_access_libraries_icon.svg';
-import Children from '../../images/circular-economy/Childrens_pets_toys_icon.svg';
-import Electronics from '../../images/circular-economy/Electronics_icon.svg';
+import SkillsExchange from '../../images/circular-economy/Skills_exchange_events_blue_icon.svg';
+import FoodShares from '../../images/circular-economy/Food_shares_blue_icon.svg';
+import ClothesSwaps from '../../images/circular-economy/Clothes_swaps_blue_icon.svg';
+import FurnitureSwaps from '../../images/circular-economy/Furniture_swaps_blue_icon.svg';
+import Cleaning from '../../images/circular-economy/Cleaning_public_spaces_blue_icon.svg';
+import HouseholdWaste from '../../images/circular-economy/Household_waste_recycling_collection_blue_icon.svg';
+import LocalFood from '../../images/circular-economy/Locally_grown_food_blue_icon.svg';
+import HomeTools from '../../images/circular-economy/Home_and_garden_tools_blue_icon.svg';
+import Cars from '../../images/circular-economy/Cars_blue_icon.svg';
+import Bikes from '../../images/circular-economy/Bikes_blue_icon.svg';
+import Books from '../../images/circular-economy/Books_access_libraries_blue_icon.svg';
+import Children from '../../images/circular-economy/Childrens_pets_toys_blue_icon.svg';
+import Electronics from '../../images/circular-economy/Electronics_blue_icon.svg';
 
 
 
@@ -101,12 +101,12 @@ const Column = ({children, className, title}) => {
     return (
         <>
         <div ref={drop} className={className}>
-            <div>
-                <h4>{ title !== "All" ? children.length : null}</h4>
+            <div className={classes.Top}>
             </div>
-            <div>
+            <div className={classes.Bottom}>
                 <h4> {title !== "All" ? title : null}</h4>
-            </div>
+                <p>{ title !== "All" ? children.length : null}</p>
+            </div >
             {children}
         </div>
         </>
@@ -120,8 +120,8 @@ const CircularEconomyGame = () => {
     const circularEconomyGame = {
         id: 2, 
         title: "Low waste / circular society",
-        intro: "In a low waste circular society, different responsibilities are shared among local people, the community, and the council. Your community centre is hosting a poll to decide who should take ownership for a variety of common issues. Select the issues and have your say.",
-        instructions: "Tap the issues to find out more. Then drag them into the box which represents who you think should look after or own that issue, service or item."
+        intro: "In a low waste circular society, different responsibilities are shared among local people, the community, and the council. Your community centre is hosting a poll to decide who should take ownership for a variety of common issues.",
+        instructions: "Tap the issues to find out more. Drag the policies into the ballot which represents who you think should look after or own that issue."
     }
 
 
@@ -137,7 +137,7 @@ const CircularEconomyGame = () => {
         {
             id: 2, 
             name: "Food shares",
-            description: "£17 billion worth of food ends up in landfill each year in the UK - much of this could have been eaten by those in need. Food shares are set up to combat waste by sharing surplus or unwanted food with those in the community, helping to improve social and economic equality and building stronger communities.",
+            description: "£17 billion worth of food ends up in landfill each year in the UK - much of this could have been eaten by those in need. Food shares are set up to combat waste by sharing surplus or unwanted food with those in the community.",
             column: 'All',
             game: "Circular Economy",
             svg: FoodShares
@@ -145,7 +145,7 @@ const CircularEconomyGame = () => {
         {
             id: 3, 
             name: "Clothes swaps",
-            description: "Around 30% of clothing in wardrobes in the UK has not been worn for at least a year, and an estimated £140 million worth of used clothing also goes to landfill in the UK every year. Clothes swaps offer people the chance to exchange clothes, which helps build stronger communities and reduce clothing going to landfill, also saving you money!",
+            description: "Around 30% of clothing in wardrobes in the UK has not been worn for at least a year, and an estimated £140 million worth of used clothing also goes to landfill in the UK every year.",
             column: 'All',
             game: "Circular Economy",
             svg: ClothesSwaps
@@ -177,7 +177,7 @@ const CircularEconomyGame = () => {
         {
             id: 7, 
             name: "Locally grown food",
-            description: "Community allotments are an excellent way for children and young people to learn about growing food. Individual/family allotments offer great exercise and a regular supply of fruit and vegetables. A mixture of the two can benefit communities with sharing of surplus produce.",
+            description: "Community allotments are an excellent way for children and young people to learn about growing food. Individual/family allotments offer great exercise and a regular supply of fruit and vegetables.",
             column: 'All',
             game: "Circular Economy",
             svg: LocalFood
@@ -300,7 +300,7 @@ const CircularEconomyGame = () => {
 
         const qs = require('qs');
         
-        if(finalItems.length === 13 && guestDetails) {
+        if(finalItems.length >= 5 && guestDetails) {
             finalItems.forEach(answer => {
                 axios.post('/api/answers', qs.stringify(
                     {
@@ -334,7 +334,7 @@ const CircularEconomyGame = () => {
     }
 
     // gradient for the background
-    const gradient = "rgba(252, 149, 55, 1),rgba(255, 255, 255, 1)";
+    const gradient = "rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7)";
 
     
     return(
@@ -367,13 +367,14 @@ const CircularEconomyGame = () => {
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            
-                        <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                        <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>               
                             {
-                            (finalItems.length === 13) ? 
-                            <button className="Btn" style={{margin: '4rem 0'}} onClick={submitAnswers}>Complete!</button> :                  
-                            <Column title='All' className={classes.FirstColumn}>
-                                {returnItemsForColumn('All')}
-                            </Column> 
+                                (finalItems.length === 13) ? 
+                                <button className="Btn" style={{margin: '4rem 0'}} onClick={submitAnswers}>Complete!</button> 
+                                :                  
+                                <Column title='All' className={classes.FirstColumn}>
+                                    {returnItemsForColumn('All')}
+                                </Column> 
                             }
                             <div className={classes.Choices}>
                                 <Column title='Individuals' className={classes.SecondColumn}>
