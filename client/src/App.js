@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './App.scss';
 import HomePage from './pages/HomePage';
 import NotFound from './components/NotFound';
-import IntroPage from './pages/IntroPage';
 import OutroPage from './pages/OutroPage';
+import PrivacyPage from './pages/PrivacyPage';
 import UserDataCollection from './pages/UserDataCollection';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LowCarbonTravelGame from './games/low-carbon-travel/LowCarbonTravelGame';
@@ -28,9 +28,10 @@ const App = () => {
                               <Switch>
                                     <Route path="/" exact component={HomePage} />
                                     <Route path="/about" ></Route>
-                                    <Route path="/privacy" ></Route>
+                                    <Route path="/privacy" >
+                                          <PrivacyPage />
+                                    </Route>
                                     <Route path="/user" component={UserDataCollection}/>
-                                    <Route path="/intro" component={IntroPage}/>
                                     <Route path="/lowcarbon">
                                           <LowCarbonTravelGame />
                                     </Route>

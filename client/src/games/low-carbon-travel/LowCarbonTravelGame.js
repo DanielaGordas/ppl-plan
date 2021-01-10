@@ -25,7 +25,7 @@ import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg';
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
-import Guy from '../../images/low-carbon/Character_1_Final_screen.svg';
+import Guy from '../../images/low-carbon/Character_1_First_screen.svg';
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -63,7 +63,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
     });
 
 
-    const opacity = isDragging ? 0.4 : 1;
+    // const opacity = isDragging ? 0.4 : 1;
 
     const handleClick = () => {
         if(column === "All" ) {
@@ -71,7 +71,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
         }
     }
     return (
-        <div ref={drag} className={classes.Card} style={{  opacity}} >
+        <div ref={drag} className={classes.Card} >
             <img src={icon} alt={name} onClick={handleClick}/>
         </div>
     )
@@ -231,6 +231,7 @@ const LowCarbonTravelGame = () => {
     const [game, setGame] = useState(lowCarbonTravelGame);
     const [items, setItems] = useState(lowCarbonTravelAnswers);
     const [info, setInfo] = useState([lowCarbonTravelAnswers[0].name,lowCarbonTravelAnswers[0].svg, lowCarbonTravelAnswers[0].description])
+
     const isMobile = window.innerWidth < 600;
 
 
@@ -242,7 +243,7 @@ const LowCarbonTravelGame = () => {
         ))
     }
 
-    // Style and logic for the needle in the speedometer 
+    // Style and logic for the needle in the speedometer and result 
     const massTransit = [];
     const electricCars = [];
 
@@ -362,22 +363,33 @@ const LowCarbonTravelGame = () => {
         }
     }
         
-            const handleRedirect = (res) => {
-                if(res.status === 201 || res.status === 200) {
-                    window.location = '/lowcarbon/result'
-                } else {
-                    window.location = '/lowcarbon/game'
-                }
-            }
+    const handleRedirect = (res) => {
+        if(res.status === 201 || res.status === 200) {
+            window.location = '/lowcarbon/result'
+        } else {
+            window.location = '/lowcarbon/game'
+        }
+    }
     
     const startOver = () => {
         setItems(lowCarbonTravelAnswers)
     }
 
+    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
+
     return(
         <Switch>
             <Route path="/lowcarbon/intro">
-                <Intro text={game.intro} link='/lowcarbon/game' back='/intro' background={IntroBackground} guy={Guy} />
+                <Intro
+                    text={game.intro}
+                    link='/lowcarbon/game'
+                    back='/user'
+                    skip='/circulareconomy/intro'
+                    background={IntroBackground}
+                    guy={Guy}
+                    guyPosition="LowcarbonCharacter"
+                    gradient={gradient}
+                />
             </Route>
             <Route path="/lowcarbon/game">
                 <div className="GameNav">

@@ -1,0 +1,132 @@
+@import "../scss-variables.scss";
+
+// General styles and background
+.Background {
+  background-image: linear-gradient(
+      rgba(252, 149, 55, 1),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url(../../images/circular-economy/Game_4_First_Screen.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Game instructions
+
+.Instructions {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: $white;
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  color: $dark-blue;
+  padding: 0.3rem;
+  max-width: 40rem;
+
+  h3 {
+    font-size: $font-medium;
+  }
+
+  p {
+    font-size: $font-small;
+    margin: 1rem;
+  }
+}
+
+// Game Columns
+
+.Choices {
+  display: flex;
+  justify-content: center;
+  max-width: 40rem;
+}
+
+.FirstColumn {
+  font-size: $font-small;
+  margin-top: 2rem;
+  color: $dark-blue;
+  display: flex;
+}
+
+.SecondColumn {
+  background-color: $medium-grey;
+  font-size: $font-small;
+  color: $white;
+  margin: 1rem;
+  margin-top: 2rem;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 8rem;
+  height: 10rem;
+}
+
+.TopBorder {
+  height: 35%;
+  width: 100%;
+  background: #5c5c5c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.Top {
+  height: 5%;
+  width: 50%;
+  background: $white;
+}
+
+.Bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+
+  h4 {
+    padding-top: 1.5rem;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+// Game cards
+
+.Card {
+  background: $white;
+  width: 10rem;
+  height: 12rem;
+  flex-shrink: 0;
+  padding: 3rem;
+  border-radius: 2px;
+  font-size: $font-small;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  box-shadow: $box-shadow;
+
+  img {
+    width: 6rem;
+    height: 6rem;
+  }
+}

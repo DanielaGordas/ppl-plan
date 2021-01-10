@@ -1,0 +1,23 @@
+@import "../scss-variables.scss";
+
+.Background {
+    background: linear-gradient(rgba(174, 220, 232, 1), rgba(235, 249, 253, 1)); 
+    height: 100%;
+    width: 100%;
+    color: $dark-blue
+}
+
+.Content {
+    margin: 8rem 2rem;
+     p, li {
+         font-size: $font-small;
+     }
+}
+
+.Title {
+  font-size: $font-large;
+  text-align: center;
+}
+.SubTitle {
+  font-size: $font-medium;
+}

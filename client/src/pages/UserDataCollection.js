@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/components/button.scss';
+import { Link } from 'react-router-dom';
 import NewUserForm from '../components/NewUserForm';
 import NavBar from '../components/NavBar';
 import classes from '../styles/pages/user.module.scss';
@@ -58,7 +59,7 @@ const UserDataCollection = ()=> {
 
     const handleRedirect  = (res) => {
         if(res.status === 201 || res.status === 200) {
-            window.location = '/intro'
+            window.location = '/lowcarbon/intro'
         } else {
             window.location = '/user'
         }
@@ -75,7 +76,7 @@ const UserDataCollection = ()=> {
                     <p>We just need some basic information to help ensure we are collecting data in a robust way.</p>
                     <NewUserForm addUser={addUser} initialFormState={initialFormState}/>
                 </div>
-                <a className={classes.PrivacyLink }>Privacy Policy</a>
+                <Link to="/privacy" className={classes.PrivacyLink}>Privacy Policy</Link>
             </div>
         </div>
     )
