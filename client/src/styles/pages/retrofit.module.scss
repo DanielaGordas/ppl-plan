@@ -9,6 +9,12 @@
   width: 100%;
 }
 
+@media (min-height: 615px) {
+  .Background {
+    height: 100vh;
+  }
+}
+
 .RoundCard {
   border-radius: 50%;
   width: 6rem;

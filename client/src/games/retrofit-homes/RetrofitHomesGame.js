@@ -140,7 +140,7 @@ const Info = ({info, finalItems, submitAnswers}) => {
     
 
     if (finalItems.length === 9)
-        return <button className="Btn-border" onClick={submitAnswers}>Complete!</button>
+        return <button className="Btn-border" onClick={submitAnswers} style={{marginTop: "2rem"}}>Complete!</button>
     else
         return(
             <>

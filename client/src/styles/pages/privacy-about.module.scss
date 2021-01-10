@@ -9,9 +9,23 @@
 
 .Content {
   margin: 8rem 2rem;
+  line-height: 2rem;
+  padding: 2rem;
   p,
   li {
     font-size: $font-small;
+  }
+}
+
+.AboutContent {
+  margin: 8rem 3rem;
+  text-align: center;
+  line-height: 3rem;
+  padding: 2rem;
+  p,
+  li {
+    font-size: $font-small;
+    text-align: left;
   }
 }
 
