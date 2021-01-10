@@ -15,7 +15,7 @@ import Modal from '../../components/Modal';
 // images and icons
 
 
-import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
+import {FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import Guy from '../../images/retrofit-homes/Character 3a.svg';
 import IntroBackground from '../../images/retrofit-homes/Game_3_new_screen.svg';
@@ -72,7 +72,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
         }),
     });
 
-    const opacity = isDragging ? 0.4 : 1;
+    // const opacity = isDragging ? 0.4 : 1;
 
     const getDisplay = () => {
       if(column === "All" && index === 0 || column === "1" || column === "2" || column === "3" || column === "4" || column === "5" || column === "6" || column === "7" || column === "8" || column === "9" ) {
@@ -98,7 +98,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
 
 
     return (
-      <div ref={drag} className={getClass()} style={{  opacity, display: getDisplay() }}>
+      <div ref={drag} className={getClass()} style={{  display: getDisplay() }}>
           <img src={icon} alt={name} className={styles.Icon}  />
       </div>
     )

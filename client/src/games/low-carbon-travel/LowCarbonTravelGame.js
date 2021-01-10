@@ -63,7 +63,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
     });
 
 
-    const opacity = isDragging ? 0.4 : 1;
+    // const opacity = isDragging ? 0.4 : 1;
 
     const handleClick = () => {
         if(column === "All" ) {
@@ -71,7 +71,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
         }
     }
     return (
-        <div ref={drag} className={classes.Card} style={{  opacity}} >
+        <div ref={drag} className={classes.Card} >
             <img src={icon} alt={name} onClick={handleClick}/>
         </div>
     )
