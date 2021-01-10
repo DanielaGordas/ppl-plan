@@ -1,7 +1,7 @@
 @import "../scss-variables.scss";
 
 .Background {
-  background: linear-gradient(rgba(19, 213, 255, .8), rgba(255, 255, 255, 1));
+  background-image: linear-gradient(rgba(19, 213, 255, 1), rgba(255, 255, 255, 0.7)), url('../../images/retrofit-homes/Game_3_new_screen.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
