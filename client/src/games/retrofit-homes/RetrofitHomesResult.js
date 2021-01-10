@@ -27,7 +27,7 @@ const RetrofitHomesResult = () => {
             </div>
             <img src={badge} alt="retrofit trophy" className={classes.ResultImg}/>
             <p className={classes.Text}>Housing is a huge part of where we can make a difference for the climate, the economy and your wallet. It’s a win win win!</p>
-            <Link to="/outro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/outro"> <button className="Btn-border" >Continue</button></Link>
         </div>
       </>
     )

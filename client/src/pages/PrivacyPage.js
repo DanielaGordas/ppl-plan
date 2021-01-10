@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/components/button.scss'
-import classes from '../styles/pages/privacy.module.scss';
+import classes from '../styles/pages/privacy-about.module.scss';
 import NavBar from '../components/NavBar';
 
 
