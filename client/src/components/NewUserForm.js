@@ -59,7 +59,7 @@ const NewUserForm = props => {
           </select>
           {errors.age && <p className={classes.Error}>Please select your ethnicity</p>}
           <label>Post code</label>
-          <input name="postal_code" placeholder="e.g. SE5 0EG" className={classes.TextField}  ref={register({ required: true, pattern: /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/ })} />
+          <input name="postal_code" className={classes.TextField}  ref={register({ required: true, pattern: /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/ })} />
           {errors.postal_code && <p className={classes.Error}>Please provide a valid post code</p>}
           <input type="submit" className="Btn-border" />
 
