@@ -77,7 +77,7 @@ const OutroPage = () => {
       <NavBar />
       <div className={classes.Container} >
           <div className={classes.Content}>
-              <h1>Thank you for playing through the 8 scenarios!</h1>
+              <h1>Thank you for playing through the scenarios!</h1>
 
               { answer1 && answer2 ? 
                 <h1>Thank you for your answers!</h1>

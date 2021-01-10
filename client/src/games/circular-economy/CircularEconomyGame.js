@@ -14,7 +14,7 @@ import axios from 'axios';
 
 // images and icons
 
-import Guy from '../../images/circular-economy/Character_4.svg';
+import Guy from '../../images/circular-economy/Character_Game_4.svg';
 import IntroBackground from '../../images/circular-economy/Game_4_First_Screen.svg';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import SkillsExchange from '../../images/circular-economy/Skills_exchange_events_blue_icon.svg';
@@ -68,7 +68,7 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
         }),
     });
 
-    const opacity = isDragging ? 0.4 : 1;
+    // const opacity = isDragging ? 0.4 : 1;
 
     const getDisplay = () => {
         if(column === "All" && index === 0) {
@@ -80,7 +80,7 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
 
     return (
         <>
-            <div ref={drag} className={classes.Card} style={{  opacity, display: getDisplay() }} onClick={openModal}>
+            <div ref={drag} className={classes.Card} style={{ display: getDisplay() }} onClick={openModal}>
                 <img src={icon} alt={name}/>
                 <p>{name}</p>
             </div>

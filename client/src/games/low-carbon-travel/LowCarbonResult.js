@@ -16,7 +16,7 @@ const LowCarbonResult = () => {
     if(result === "mass transit"){
       text = "You chose a future which focuses on an efficient, affordable, and clean public transport system. This will help generate more than 230,000 jobs and significantly improve public health whilst reducing transport emissions."
     } else {
-      text = "You chose a future which focuses on improving accessibility, affordability and infrastructure for personal electric vehicles. This will help create approximately 27,000 new jobs, save up to 75% on running costs, and redue emissions down to zero!"
+      text = "You chose a future which focuses on improving accessibility, affordability and infrastructure for personal electric vehicles. This will help create approximately 27,000 new jobs, save up to 75% on running costs, and reduce emissions down to zero!"
     };
 
     return (
