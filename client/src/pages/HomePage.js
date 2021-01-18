@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import '../styles/components/button.scss'
 import classes from '../styles/pages/home.module.scss';
 import NavBar from '../components/NavBar';
-import {GoGlobe} from "react-icons/go";
 import megaphone from '../images/megaphone.svg';
 
 const HomePage = () => {

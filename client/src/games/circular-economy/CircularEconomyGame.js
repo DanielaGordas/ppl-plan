@@ -120,7 +120,7 @@ const Column = ({children, className, title}) => {
 const CircularEconomyGame = () => {
 
     const circularEconomyGame = {
-        id: 2, 
+        id: 4, 
         title: "Low waste / circular society",
         intro: "In a low waste circular society, different responsibilities are shared among local people, the community, and the council. Your community centre is hosting a poll to decide who should take ownership for a variety of common issues.",
         instructions: "Tap the issues to find out more. Drag the policies into the ballot which represents who you think should look after or own that issue."

@@ -9,6 +9,9 @@ import badge from '../../images/retrofit-homes/Game_3_Bagde.svg';
 
 
 const RetrofitHomesResult = () => {
+    // retrieves result from Local Storage
+    const text  = JSON.parse(window.localStorage.getItem('result3'));
+    
     return (
       <>
         <div className="GameNav">
@@ -17,7 +20,7 @@ const RetrofitHomesResult = () => {
             <Link to="/retrofithomes/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/outro">Next Game</Link>
+            <Link to="/nature/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
@@ -26,8 +29,8 @@ const RetrofitHomesResult = () => {
               Congratulations! You've earned the Net Zero Home Badge!
             </div>
             <img src={badge} alt="retrofit trophy" className={classes.ResultImg}/>
-            <p className={classes.Text}>Housing is a huge part of where we can make a difference for the climate, the economy and your wallet. It’s a win win win!</p>
-            <Link to="/outro"> <button className="Btn-border" >Continue</button></Link>
+            <p className={classes.Text}>{text}</p>
+            <Link to="/nature/intro"> <button className="Btn-border" >Continue</button></Link>
         </div>
       </>
     )
