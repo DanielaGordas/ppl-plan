@@ -15,6 +15,7 @@ import axios from 'axios';
 // images and icons
 
 import { BiArrowBack, BiRevision } from "react-icons/bi";
+import Guy from '../../images/retrofit-homes/Character 3a.svg';
 
 
 const MovableItem = ({name, setItems, column, index, icon, description}) => {
@@ -267,6 +268,8 @@ const NatureGame = () => {
                     link='/nature/game'
                     back='/retrofithomes/result'
                     gradient={gradient}
+                    guy={Guy}
+                    guyPosition="RetrofitCharacter"
                 />
             </Route>
             <Route path="/nature/game">
