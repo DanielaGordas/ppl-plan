@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import NewUserForm from '../components/NewUserForm';
 import NavBar from '../components/NavBar';
 import classes from '../styles/pages/user.module.scss';
-import icon from '../images/icon.png'; 
 import axios from 'axios';
 
 const UserDataCollection = ()=> {
