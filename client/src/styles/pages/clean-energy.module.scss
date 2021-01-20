@@ -1,0 +1,99 @@
+@import "../scss-variables.scss";
+
+// General styles and background
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Background {
+  background: linear-gradient(rgba(156, 199, 66, 1), rgba(255, 255, 255, 0.6));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-height: 600px) {
+  .Background {
+    height: 100vh;
+  }
+}
+
+// Game instructions
+
+.Instructions {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: $white;
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  color: $dark-blue;
+  padding: 0.3rem;
+  max-width: 40rem;
+
+  h3 {
+    font-size: $font-medium;
+  }
+
+  p {
+    font-size: $font-small;
+    margin: 1rem;
+  }
+}
+
+// Cards
+
+.Box {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1rem;
+  row-gap: 1rem;
+  width: 100%;
+  max-width: 35rem;
+  margin-top: 2rem;
+  height: 10rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.Card {
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  padding: 0.3rem;
+  border-radius: 20px;
+  color: $white;
+  background-color: $dark-blue;
+  font-size: $font-extra-small;
+  text-align: center;
+}
+
+// Selected options
+
+.Choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2rem;
+  justify-items: center;
+  align-items: center;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.Selected {
+  background-color: $white;
+  width: 10rem;
+  height: 2rem;
+  padding: 0.3rem;
+  margin: auto;
+  border-radius: 20px;
+  text-align: center;
+  border: 2px solid $dark-blue;
+  margin-bottom: 1rem;
+}
