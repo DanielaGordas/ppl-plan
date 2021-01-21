@@ -16,7 +16,7 @@ Creates the database, adds the tables and populates it with data
 
 Runs the backend app in development mode.<br />
 Open [http://localhost:3001](http://localhost:3001) to view it in the browser.<br />
-To view the backend data you need to add the api endpoint e.g: [http://localhost:3001/api/games](http://localhost:3001/api/games) 
+To view the backend data you need to add the api endpoint e.g: [http://localhost:3001/api/games](http://localhost:3001/api/answers) 
 
 ## Frontend app:
 
