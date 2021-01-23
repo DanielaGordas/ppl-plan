@@ -1,4 +1,4 @@
-## PEOPLE'S PLAN
+## THE PEOPLE'S PLAN
 
 This project contains one Ruby on Rails API backend app and one React front-end app bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
