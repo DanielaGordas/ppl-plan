@@ -10,6 +10,8 @@ import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import Modal from '../../components/Modal';
 import axios from 'axios';
+import itemTypes from '../../components/ItemTypes';
+import MyPreview from '../../components/MyPreview';
 
 
 // images and icons
@@ -44,7 +46,7 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
     const closeModal = () => setShow(false);
 
     const [{ isDragging }, drag] = useDrag({
-        item: { name, type:'Our first type'},
+        item: { name, type: itemTypes.CARD},
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){
@@ -91,7 +93,7 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
 const Column = ({children, className, title}) => {
 
     const [, drop] = useDrop({
-        accept: 'Our first type',
+        accept: itemTypes.CARD,
         drop: () => ({name: title}),
         collect: (monitor) => ({
           isOver: monitor.isOver(),
@@ -299,7 +301,8 @@ const NatureGame = () => {
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            
-                        <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>               
+                        <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                            <MyPreview classes={classes} />               
                             {
                                 (finalItems.length === 5) ? 
                                 <button className="Btn" style={{margin: '4rem 0'}} onClick={submitAnswers}>Complete!</button> 

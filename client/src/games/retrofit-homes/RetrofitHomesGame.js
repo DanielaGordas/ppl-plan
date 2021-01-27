@@ -11,6 +11,9 @@ import Intro from '../../components/Intro';
 import styles from '../../styles/pages/retrofit.module.scss';
 import axios from 'axios';
 import Modal from '../../components/Modal';
+import itemTypes from '../../components/ItemTypes';
+import MyPreview from '../../components/MyPreview';
+
 
 // images and icons
 
@@ -42,7 +45,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
     }
 
     const [{ isDragging }, drag] = useDrag({
-        item: { name, column, type:'Our first type'},
+        item: { name, column, type: itemTypes.CARD },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){
@@ -108,7 +111,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
 const Column = ({children, className, title}) => {
 
     const [{isOver, canDrop}, drop] = useDrop({
-        accept: 'Our first type',
+        accept: itemTypes.CARD,
         drop: () => ({name: title}),
         collect: (monitor) => ({
           isOver: monitor.isOver(),
@@ -349,6 +352,7 @@ const RetrofitHomesGame = () => {
                 </div>   
                 <div className="Container">            
                     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                        <MyPreview classes={classes} />
                         <div className={styles.Choices}>
                           <Column title='1' className={styles.SecondColumn}>
                               {returnItemsForColumn('1')}
