@@ -45,7 +45,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
     }
 
     const [{ isDragging }, drag] = useDrag({
-        item: { name, column, type: itemTypes.CARD },
+        item: { name, column, icon, type: itemTypes.CARD },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){

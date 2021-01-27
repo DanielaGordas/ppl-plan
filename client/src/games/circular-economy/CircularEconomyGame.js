@@ -52,7 +52,7 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
     const closeModal = () => setShow(false);
 
     const [{ isDragging }, drag] = useDrag({
-        item: { name, type: itemTypes.CARD },
+        item: { name, icon, type: itemTypes.CARD },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){

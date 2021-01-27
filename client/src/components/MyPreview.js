@@ -8,7 +8,7 @@ const MyPreview = ({classes, icon}) => {
   }
   return (
     <div class={classes.Card} style={style}>
-      {item.name}
+      {item.icon ? <img src={item.icon} alt=""/> : item.name}
     </div>
   )
 };
