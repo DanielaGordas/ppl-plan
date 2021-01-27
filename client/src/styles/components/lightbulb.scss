@@ -1,0 +1,124 @@
+$bg: #88a2aa;
+$off: #8c8f99;
+$on: #fff35c;
+$bottom: #e5e5e5;
+
+%transition {
+  transition: all ease 0.3s;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lightbulb {
+  &:hover {
+    .bulb-top {
+      background-color: $on;
+      box-shadow: inset 0px 10px 15px -5px rgba(10, 30, 60, 0.1), 0 0 0 0 $on;
+      animation: 0;
+    }
+
+    .bulb-middle-1,
+    .bulb-middle-2,
+    .bulb-middle-3 {
+      border-top-color: $on;
+    }
+
+    .line {
+      background-color: darken($bottom, 70%);
+    }
+
+    .bottom {
+      border-color: darken($bottom, 70%);
+    }
+  }
+}
+
+.bulb-top {
+  position: relative;
+  border: 0;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 76px;
+  background-color: $off;
+  box-shadow: inset 0px 10px 15px -5px rgba(10, 30, 60, 0.1),
+    0 0 120px 20px $off;
+  transition: box-shadow ease 0.5s, background-color ease 0.3s;
+  z-index: -1;
+  animation: shine 1.5s linear infinite alternate;
+}
+
+@keyframes shine {
+  from {
+    box-shadow: inset 0px 10px 15px -5px rgba(10, 30, 60, 0.1),
+      0 0 120px 20px $off;
+  }
+  to {
+    box-shadow: inset 0px 10px 15px -5px rgba(10, 30, 60, 0.1),
+      0 0 80px 20px $off;
+  }
+}
+
+.bulb-middle-1 {
+  margin: -15px auto 0 auto;
+  width: 50px;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 25px solid $off;
+  @extend %transition;
+}
+
+.bulb-middle-2 {
+  margin: -42px auto 0 auto;
+  width: 38px;
+  height: 0;
+  border-left: 19px solid transparent;
+  border-right: 19px solid transparent;
+  border-top: 50px solid $off;
+  @extend %transition;
+}
+
+.bulb-middle-3 {
+  margin: -40px auto 0 auto;
+  width: 40px;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 50px solid $off;
+  border-radius: 100% 0% 25% 25% / 0% 0% 50% 50%;
+  @extend %transition;
+}
+
+.bulb-bottom {
+  .line {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 5px;
+    background-color: $bottom;
+    border-radius: 5px;
+    margin-top: 5px;
+
+    + .line {
+      width: 35%;
+    }
+  }
+  .bottom {
+    width: 25%;
+    height: 10px;
+    margin: 5px auto 0;
+    border-top: 5px solid $bottom;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    height: 0;
+    border-radius: 0 0 5px 5px;
+    @extend %transition;
+  }
+}
