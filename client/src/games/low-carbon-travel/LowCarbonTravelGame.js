@@ -29,7 +29,8 @@ import { BiArrowBack, BiRevision } from "react-icons/bi";
 import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
 import Guy from '../../images/low-carbon/Character_1_First_screen.svg';
 
-const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
+
+const MovableItem = ({name, setItems, column, description, setInfo, index, icon, active, setActive}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -65,15 +66,18 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
     });
 
 
-    // const opacity = isDragging ? 0.4 : 1;
+    const opacity = isDragging ? 0.4 : 1;
 
     const handleClick = () => {
         if(column === "All" ) {
             setInfo([name, icon, description]);
+            setActive([name]);
         }
     }
+    
+
     return (
-        <div ref={drag} className={classes.Card} >
+        <div ref={drag} className={active[0] === name ? classes.ActiveCard : classes.Card} style={{opacity: opacity}}>
             <img src={icon} alt={name} onClick={handleClick}/>
         </div>
     )
@@ -102,6 +106,7 @@ const Column = ({children, className, title}) => {
     )
 
 }
+
 
 const Info = ({info, finalItems, submitAnswers}) => {
     const [show, setShow] = useState(false);
@@ -233,6 +238,7 @@ const LowCarbonTravelGame = () => {
     const [game, setGame] = useState(lowCarbonTravelGame);
     const [items, setItems] = useState(lowCarbonTravelAnswers);
     const [info, setInfo] = useState([lowCarbonTravelAnswers[0].name,lowCarbonTravelAnswers[0].svg, lowCarbonTravelAnswers[0].description])
+    const [active, setActive] = useState([lowCarbonTravelAnswers[0].name]);
 
     const isMobile = window.innerWidth < 600;
 
@@ -241,7 +247,7 @@ const LowCarbonTravelGame = () => {
         return items
         .filter((item) => item.column === columnName)
         .map((item, index) => (
-            <MovableItem key={item.id} name={item.name} description={item.description} column={item.column} setItems={setItems} index={index} setInfo={setInfo} icon={item.svg} />
+            <MovableItem key={item.id} name={item.name} description={item.description} column={item.column} setItems={setItems} index={index} setInfo={setInfo} active={active} setActive={setActive} icon={item.svg} />
         ))
     }
 

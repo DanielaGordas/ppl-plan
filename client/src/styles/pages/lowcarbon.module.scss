@@ -80,6 +80,17 @@
   text-align: center;
 }
 
+.ActiveCard {
+  width: 5.5rem;
+  height: 70%;
+  flex-shrink: 0;
+  padding: 0.3rem;
+  border-radius: 2px;
+  color: $white;
+  font-size: $font-extra-small;
+  text-align: center;
+  border-bottom: 2px solid red;
+}
 // Policy card Info Box
 
 .Infobox {
@@ -193,16 +204,4 @@
   left: 50%;
   transform-origin: bottom;
   border-radius: 2rem;
-}
-
-// Result page
-
-.ResultTitle {
-  font-size: 2rem;
-}
-.ResultText {
-  font-size: 1.5rem;
-}
-.ResultIcon {
-  font-size: 10rem;
 }
