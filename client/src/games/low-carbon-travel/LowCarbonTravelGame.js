@@ -10,6 +10,8 @@ import classes from '../../styles/pages/lowcarbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
 import Modal from '../../components/Modal';
+import itemTypes from '../../components/ItemTypes';
+import MyPreview from '../../components/MyPreview';
 
 // Icons and Images
 import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg';
@@ -40,7 +42,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
     }
 
     const [{ isDragging }, drag] = useDrag({
-        item: { name, column, type:'Our first type'},
+        item: { name, column, type: itemTypes.CARD },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){
@@ -81,7 +83,7 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon}
 const Column = ({children, className, title}) => {
 
     const [{isOver, canDrop}, drop] = useDrop({
-        accept: 'Our first type',
+        accept: itemTypes.CARD,
         drop: () => ({name: title}),
         collect: (monitor) => ({
           isOver: monitor.isOver(),
@@ -409,6 +411,7 @@ const LowCarbonTravelGame = () => {
                     </div>   
                     <div className={classes.Container}>            
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                            <MyPreview classes={classes} />
                             <Column title='All' className={classes.Box}>
                                 {returnItemsForColumn('All')}
                             </Column>

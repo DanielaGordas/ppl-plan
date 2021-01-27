@@ -10,12 +10,15 @@ import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import Modal from '../../components/Modal';
 import axios from 'axios';
+import itemTypes from '../../components/ItemTypes';
+import MyPreview from '../../components/MyPreview';
 
 
 // images and icons
 
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import Guy from '../../images/retrofit-homes/Character 3a.svg';
+import {GoLightBulb} from 'react-icons/go';
 
 
 const MovableItem = ({name, setItems, column}) => {
@@ -31,7 +34,7 @@ const MovableItem = ({name, setItems, column}) => {
     }
 
     const [{ isDragging }, drag] = useDrag({
-        item: { name, type:'Our first type'},
+        item: { name, type: itemTypes.CARD },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){
@@ -80,7 +83,7 @@ const MovableItem = ({name, setItems, column}) => {
 const Column = ({children, className, title, description, icon}) => {
 
     const [, drop] = useDrop({
-        accept: 'Our first type',
+        accept: itemTypes.CARD,
         drop: () => ({name: title}),
         collect: (monitor) => ({
           isOver: monitor.isOver(),
@@ -96,13 +99,14 @@ const Column = ({children, className, title, description, icon}) => {
     const closeModal = () => setShow(false);
 
     return (
-      <>
+      <div className={classes.gridItem}>
+        { title !== "All" ? <GoLightBulb style={ {width: "3rem", height: "5rem", fill: "#102773"} } /> : null }
         <div ref={drop} className={className} onClick={openModal}>
             { title !== "All" ? title : null }
             {children}        
         </div>
         { show ? <Modal title={title} description={description} show={show} closeModal={closeModal} icon={icon}/> : null }
-      </>
+      </div>
     )
 }
 
@@ -302,8 +306,9 @@ const CleanEnergyGame = () => {
                         <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
-                    <div className={classes.Container}>            
-                        <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>                
+                    <div className={classes.Container}>           
+                        <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
+                            <MyPreview classes={classes} />            
                             <div className={classes.Choices}>
                                 <Column title='Solar'  className={classes.Selected} description={items[0].description} icon={items[0].svg}>
                                     {returnItemsForColumn('Solar')}
@@ -327,7 +332,7 @@ const CleanEnergyGame = () => {
                             {
                                 (finalItems.length === 10) ? 
                                 <button className="Btn" style={{margin: '4rem 0'}} onClick={submitAnswers}>Complete!</button> 
-                                :                  
+                                :                 
                                 <Column title='All' className={classes.Box}>
                                     {returnItemsForColumn('All')}
                                 </Column> 
