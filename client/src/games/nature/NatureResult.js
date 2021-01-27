@@ -6,7 +6,7 @@ import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 
-const NatureResult = ({gradient}) => {
+const NatureResult = ({gradient, background}) => {
 
     // retrieves result from Local Storage
     const text = JSON.parse(window.localStorage.getItem('result6'));
@@ -23,7 +23,7 @@ const NatureResult = ({gradient}) => {
             <BiExit className="RightIcon"/>
           </div>
         </div>
-        <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient})`}}>
+        <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient}), url(${background})`}}>
             <div className={classes.ResultBubble}>
               Congratulations! You've earned the Mossy Medallion!
             </div>

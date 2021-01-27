@@ -8,7 +8,7 @@
 }
 
 .Background {
-  background: linear-gradient(rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.6));
+  background: linear-gradient(rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.5)), url('../../images/nature/Game_6_First_Screen.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -52,26 +52,27 @@
 .Box {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 1rem;
-  row-gap: 1rem;
   width: 100%;
-  max-width: 35rem;
+  max-width: 40rem;
   margin-top: 2rem;
-  height: 15rem;
+  height: 16rem;
   align-items: center;
   justify-items: center;
 }
 
 .Card {
   width: 10rem;
-  height: 3rem;
+  height: 4rem;
   flex-shrink: 0;
   padding: 0.3rem;
   border-radius: 20px;
-  color: $white;
-  background-color: $dark-blue;
+  color: $dark-blue;;
+  background-color: $white;
   font-size: $font-extra-small;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  font-weight: bold;
 }
 
 // Selected options
@@ -93,7 +94,6 @@
   margin: auto;
   border-radius: 20px;
   text-align: center;
-  border: 2px solid $dark-blue;
   margin-bottom: 1rem;
 
   & > .Card {

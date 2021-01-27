@@ -15,8 +15,17 @@ import axios from 'axios';
 // images and icons
 
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import Guy from '../../images/retrofit-homes/Character 3a.svg';
-
+import Character from '../../images/nature/Character 6.svg';
+import Background from '../../images/nature/Game_6_First_Screen.svg';
+import GreenRoofs from '../../images/nature/Game_6_Green_roofs_walls_icon.svg';
+import WildRoad from '../../images/nature/Game_6_Wild_road_verges_icon.svg';
+import GreenBridges from '../../images/nature/Game_6_Green_bridges_icon.svg';
+import PublicParks from '../../images/nature/Game_6_Public_parks_icon.svg';
+import UrbanRewilding from '../../images/nature/Game_6_Urban_rewilding_schemes_icon.svg';
+import CommunityGardens from '../../images/nature/Game_6_Community_gardens_icon.svg';
+import RewildedAreas from '../../images/nature/Game_6_Rewilded_areas_town_icon.svg';
+import WoodlandAreas from '../../images/nature/Game_6_Woodland_areas_icon.svg';
+import Ponds from '../../images/nature/Game_6_Ponds_icon.svg';
 
 const MovableItem = ({name, setItems, column, index, icon, description}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -69,8 +78,8 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
 
     return (
         <>
-            <div ref={drag} className={classes.Card} style={{ opacity: opacity, display: getDisplay() }} onClick={openModal}>
-                {name}
+            <div ref={drag} className={classes.Card} style={{ opacity: opacity, display: getDisplay() }} onClick={openModal} >
+                <p>{name}</p>
             </div>
             { show? <Modal title={name} description={description} show={show} closeModal={closeModal} icon={icon}/> : null }
         </>
@@ -119,7 +128,7 @@ const NatureGame = () => {
             description: "Roof gardens help reduce the heating of buildings and energy costs up to 50%. It creates habitats for wildlife, captures and harvests rainwater, and when deployed at scale can help cool the entire city down during increasingly hot summers.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: GreenRoofs
         },
         {
             id: 2, 
@@ -127,7 +136,7 @@ const NatureGame = () => {
             description: "Road sides can accommodate billions of plants and wildflowers, creating an important habitat for many of the UK's threatened animal species. This practice also saves thousands of pounds on grass cutting and upkeep.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: WildRoad
         },
         {
             id: 3, 
@@ -135,7 +144,7 @@ const NatureGame = () => {
             description: "Green bridges provide safe road crossings for animals and will help to connect ecosystems around the UK. More connected green spaces enable a greater diversity of wildlife to thrive in our country.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: GreenBridges
         },
         {
             id: 4, 
@@ -143,7 +152,7 @@ const NatureGame = () => {
             description: "Good access to quality green spaces such as parks and wild meadows significantly improves our physical health and mental wellbeing. It’s even estimated that better provision of parks could save an £2.1 billion in healthcare costs.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: PublicParks
         },
         {
             id: 5, 
@@ -151,7 +160,7 @@ const NatureGame = () => {
             description: "Recently introduced urban rewilding, such as in churchyards and retail parks, will help to clean air and capture carbon emissions produced in built up areas. It also sees our underutilised assets turned into natural havens, bringing even more life back to the town.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: UrbanRewilding
         },
         {
             id: 6, 
@@ -159,7 +168,7 @@ const NatureGame = () => {
             description: "Wildflowers in gardens have huge potential to help pollinators such as bees. A network of small patches could help bees thrive in urban areas.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: CommunityGardens
         },
         {
             id: 7, 
@@ -167,7 +176,7 @@ const NatureGame = () => {
             description: "Setting land aside for nature, connected with pathways to allow free movement of species, would improve climate resilience and capture carbon emissions. If these are located near to towns they can also act as educational spaces for learning about nature.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: RewildedAreas
         },
         {
             id: 8, 
@@ -175,7 +184,7 @@ const NatureGame = () => {
             description: "Woodland plays a vital role in recycling carbon dioxide and water vapour, as well as regulating water flow into rivers and helping to prevent flood risk.",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: WoodlandAreas
         },
         {
             id: 9, 
@@ -183,7 +192,7 @@ const NatureGame = () => {
             description: "Ponds support local wildlife and can improve biodiversity. They also have a secondary function as a flood defence, providing storage for if there are more flood events in future. ",
             column: 'All',
             game: "Nature",
-            svg: ""
+            svg: Ponds
         },
     ]
 
@@ -268,8 +277,9 @@ const NatureGame = () => {
                     link='/nature/game'
                     back='/retrofithomes/result'
                     gradient={gradient}
-                    guy={Guy}
-                    guyPosition="RetrofitCharacter"
+                    guy={Character}
+                    background={Background}
+                    guyPosition="NatureCharacter"
                 />
             </Route>
             <Route path="/nature/game">
@@ -320,7 +330,7 @@ const NatureGame = () => {
                 </div>
             </Route>
             <Route path="/nature/result">
-                <NatureResult gradient={gradient}/>
+                <NatureResult gradient={gradient} background={Background}/>
             </Route>
         </Switch>
     )
