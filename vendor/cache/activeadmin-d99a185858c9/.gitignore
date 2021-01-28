@@ -1,0 +1,10 @@
+/tmp
+/tasks/tmp
+/coverage
+/.yardoc
+/.ruby-version
+/pkg
+.bundle
+/.rspec_failures
+/node_modules
+/src

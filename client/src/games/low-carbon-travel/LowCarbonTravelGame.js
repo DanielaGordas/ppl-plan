@@ -417,7 +417,9 @@ const LowCarbonTravelGame = () => {
                     </div>   
                     <div className={classes.Container}>            
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
-                            <MyPreview classes={classes} />
+                            <div>
+                                <MyPreview classes={classes} />
+                            </div>
                             <Column title='All' className={classes.Box}>
                                 {returnItemsForColumn('All')}
                             </Column>
