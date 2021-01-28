@@ -1,0 +1,8 @@
+<%
+  std_opts = "--format progress --order random"
+  default_opts = std_opts + " --format ParallelTests::Gherkin::RuntimeLogger --out tmp/parallel_runtime_cucumber.log"
+%>
+
+default: <%= default_opts %> --require features/support/simplecov_regular_env.rb --tags 'not @changes-filesystem' --tags 'not @requires-reloading'
+filesystem-changes: <%= std_opts %> --require features/support/simplecov_changes_env.rb --tags @changes-filesystem --tags 'not @requires-reloading'
+class-reloading: CLASS_RELOADING=true <%= std_opts %> --require features/support/simplecov_reload_env.rb --tags @requires-reloading

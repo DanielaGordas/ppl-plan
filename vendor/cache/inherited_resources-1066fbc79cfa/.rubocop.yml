@@ -1,0 +1,47 @@
+---
+
+AllCops:
+  DisabledByDefault: true
+
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+
+  TargetRubyVersion: 2.4
+
+Metrics:
+  Enabled: false
+
+Layout/CommentIndentation:
+  Enabled: true
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+  Enabled: true
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: true
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: indented_internal_methods
+
+Layout/IndentationWidth:
+  Enabled: true
+
+Layout/IndentationStyle:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+Style/HashSyntax:
+  Enabled: true
