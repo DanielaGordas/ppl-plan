@@ -16,12 +16,14 @@
     width: 20rem;
     max-width: 25rem;
     align-self: center;
-    // margin: 2rem;
+    // margin-bottom: 2rem;
 }
 
 .Title {
   font-size: $font-large;
+  margin: $margin-small;
 }
 .SubTitle {
   font-size: $font-medium;
+  margin: $margin-small;
 }

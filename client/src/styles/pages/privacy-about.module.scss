@@ -1,10 +1,16 @@
 @import "../scss-variables.scss";
 
-.Background {
+.BackgroundAbout, .BackgroundPolicy {
   background: linear-gradient(rgba(174, 220, 232, 1), rgba(235, 249, 253, 1));
   height: 100%;
   width: 100%;
   color: $dark-blue;
+}
+
+@media (min-height: 570px) {
+  .Background-About {
+    height: 100vh;
+  }
 }
 
 .Content {
@@ -26,6 +32,7 @@
   li {
     font-size: $font-small;
     text-align: left;
+    margin-bottom: 3rem;
   }
 }
 

@@ -18,11 +18,10 @@
 }
 
 .UserPageContent {
-  margin: 2rem;
+  margin: $margin-small;
   text-align: center;
   text-justify: center;
-  margin-top: 5rem;
-  margin-bottom: 3rem;
+  margin-top: $margin-big;
 }
 
 .UserPageContent h3 {
@@ -40,6 +39,7 @@ form {
   font-size: $font-small !important;
   color: $dark-blue !important;
   text-align: center !important;
+  max-width: 40rem;
 }
 
 
@@ -67,5 +67,5 @@ form {
   color: $light-blue;
   font-size: $font-small !important;
   text-align: right;
-  margin: 3rem;
+  margin: $margin-small;
 }

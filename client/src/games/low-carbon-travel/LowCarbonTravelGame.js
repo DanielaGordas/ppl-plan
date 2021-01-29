@@ -30,7 +30,7 @@ import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
 import Guy from '../../images/low-carbon/Character_1_First_screen.svg';
 
 
-const MovableItem = ({name, setItems, column, description, setInfo, index, icon, active, setActive}) => {
+const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -71,13 +71,12 @@ const MovableItem = ({name, setItems, column, description, setInfo, index, icon,
     const handleClick = () => {
         if(column === "All" ) {
             setInfo([name, icon, description]);
-            setActive([name]);
         }
     }
     
 
     return (
-        <div ref={drag} className={active[0] === name ? classes.ActiveCard : classes.Card} style={{opacity: opacity}}>
+        <div ref={drag} className={classes.Card} style={{opacity: opacity}}>
             <img src={icon} alt={name} onClick={handleClick}/>
         </div>
     )

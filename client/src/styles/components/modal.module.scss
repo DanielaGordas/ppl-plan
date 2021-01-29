@@ -3,12 +3,13 @@
 .ModalWrapper {
   background: $white;
   width: 90%;
-  height: 40rem;
+  height: 50rem;
   margin: 0 auto;
   padding: 1rem;
   position: absolute;
   top: 6rem;
   left: 1rem;
+  right: 1rem;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -22,6 +23,16 @@
     margin-right: 1rem;
     margin-bottom: 2rem;
     align-self: flex-end;
+  }
+}
+
+@media (min-width: 800px) {
+  .ModalWrapper {
+    width: 60%;
+    top: 6rem;
+    left: 15rem;
+    right: 15rem;
+    height: 40rem;
   }
 }
 

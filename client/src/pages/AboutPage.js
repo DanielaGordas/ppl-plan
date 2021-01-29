@@ -8,7 +8,7 @@ const AboutPage = () => {
     return(
         <>
             <NavBar />
-            <div className={classes.Background}> 
+            <div className={classes.BackgroundAbout}> 
                 <div className={classes.AboutContent}>
                     <h1 className={classes.Title}>About us</h1>
                     <p >The People's Plan is a not-for-profit community interest company dedicated to putting people's voices at the heart of our national and global transition to a net zero economy.</p>
