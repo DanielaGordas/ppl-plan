@@ -8,7 +8,8 @@
 }
 
 .Background {
-  background: linear-gradient(rgba(156, 199, 66, 1), rgba(255, 255, 255, 0.6));
+  background: linear-gradient(rgba(156, 199, 66, 1), rgba(255, 255, 255, 0.5)),
+    url("../../images/clean-energy/Game_7_First_Screen.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -72,6 +73,8 @@
   background-color: $dark-blue;
   font-size: $font-extra-small;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 // Selected options
@@ -87,10 +90,15 @@
 }
 
 .Selected {
+  display: flex;
+  color: $dark-blue;
+  font-size: $font-extra-small;
+  align-items: center;
+  justify-content: center;
   position: relative;
   background-color: $white;
-  width: 8rem;
-  height: 2rem;
+  width: 9rem;
+  height: 4rem;
   padding: 0.3rem;
   margin: auto;
   border-radius: 20px;
@@ -104,4 +112,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.Icon {
+  width: 3rem;
+  height: 3rem;
+  fill: $white;
 }

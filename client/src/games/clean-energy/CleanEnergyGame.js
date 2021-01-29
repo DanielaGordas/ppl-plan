@@ -17,11 +17,18 @@ import MyPreview from '../../components/MyPreview';
 // images and icons
 
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import Guy from '../../images/retrofit-homes/Character 3a.svg';
-import {GoLightBulb} from 'react-icons/go';
+import { GiElectric } from 'react-icons/gi';
+import Electric from '../../images/clean-energy/electric.svg';
+import Guy from '../../images/clean-energy/Character_7.svg';
+import Background from '../../images/clean-energy/Game_7_First_Screen.svg';
+import Bulb from '../../images/clean-energy/bulb.svg';
+import Bulb1 from '../../images/clean-energy/bulb_1.svg';
+import Bulb2 from '../../images/clean-energy/bulb_2.svg';
+import Bulb3 from '../../images/clean-energy/bulb_3.svg';
 
 
-const MovableItem = ({name, setItems, column}) => {
+
+const MovableItem = ({name, setItems, column, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
             return prevState.map(e => {
@@ -34,7 +41,7 @@ const MovableItem = ({name, setItems, column}) => {
     }
 
     const [{ isDragging }, drag] = useDrag({
-        item: { name, type: itemTypes.CARD },
+        item: { name, icon, type: itemTypes.CARD },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){
@@ -71,7 +78,7 @@ const MovableItem = ({name, setItems, column}) => {
     return (
         <>
             <div ref={drag} className={classes.Card} style={{ opacity: opacity, display: getDisplay(),}}>
-                {name}
+                <GiElectric style={{ width: '3rem', height: '3rem', fill: "#fff" }} />
             </div>
             
         </>
@@ -90,7 +97,7 @@ const Column = ({children, className, title, description, icon}) => {
           canDrop: monitor.canDrop(),
         }),
         canDrop: () => {
-          return children.length <= 3;
+          return children.length < 3;
         }
     })
 
@@ -98,9 +105,22 @@ const Column = ({children, className, title, description, icon}) => {
     const openModal = () => setShow(true);  
     const closeModal = () => setShow(false);
 
+    const getLightBulb = () => {
+       if (children.length == 0) {
+           return Bulb
+       } else if (children.length == 1) {
+           return Bulb1
+       } else if (children.length == 2) {
+           return Bulb2
+       } else if (children.length == 3) {
+            return Bulb3
+        }
+    };
+
+
     return (
       <div className={classes.gridItem}>
-        { title !== "All" ? <GoLightBulb style={ {width: "3rem", height: "5rem", fill: "#102773"} } /> : null }
+        { title !== "All" ? <img src={getLightBulb()} style={ {width: "6rem", height: "6rem", fill: "#102773"} } /> : null }
         <div ref={drop} className={className} onClick={openModal}>
             { title !== "All" ? title : null }
             {children}        
@@ -129,7 +149,7 @@ const CleanEnergyGame = () => {
             description: "Solar energy is one of the cheapest renewables to harness, and will help boost the economy by creating 200,000 jobs in the solar industry by 2030. Batteries can store surplus energy generated in the daytime to be used at night. Solar energy is likely to become 20-50% cheaper than previously estimated with annual electricity bill savings in the region of £270 for the average family home.",
             column: 'All',
             game: "Clean Energy",
-            svg: ""
+            svg: GiElectric
         },
         {
             id: 2, 
@@ -213,7 +233,7 @@ const CleanEnergyGame = () => {
         return items
         .filter((item) => item.column === columnName)
         .map((item, index) => (
-            <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} index={index} />
+            <MovableItem key={item.id} name={item.name} column={item.column} setItems={setItems} index={index} icon={Electric} />
         ))
     }
 
@@ -285,6 +305,7 @@ const CleanEnergyGame = () => {
                     skip='/outro'
                     link='/clean-energy/game'
                     back='/nature/result'
+                    background={Background}
                     gradient={gradient}
                     guy={Guy}
                     guyPosition="RetrofitCharacter"
@@ -342,7 +363,7 @@ const CleanEnergyGame = () => {
                 </div>
             </Route>
             <Route path="/clean-energy/result">
-                <CleanEnergyResult gradient={gradient}/>
+                <CleanEnergyResult gradient={gradient} background={Background} />
             </Route>
         </Switch>
     )
