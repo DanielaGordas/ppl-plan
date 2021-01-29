@@ -35,29 +35,6 @@ const NewUserForm = props => {
             <option value="Prefer not to disclose">Prefer not to disclose</option>
           </select>
           {errors.age && <p className={classes.Error}>Please select your current age group</p>}
-          <label>Ethnicity</label>
-          <select name="ethnicity" className={classes.Select}  placeholder="Ethnicity" ref={register({required: true})}>
-            <option></option>
-            <option value="White: English, Welsh, Scottish, Northern Irish or British">White: English, Welsh, Scottish, Northern Irish or British</option>
-            <option value="White: Irish">White: Irish</option>
-            <option value="White: Gypsy or Irish Traveller">White: Gypsy or Irish Traveller</option>
-            <option value="Any other White background">Any other White background</option>
-            <option value="Mixed: White and Black Caribbean">Mixed: White and Black Caribbean</option>
-            <option value="Mixed: White and Black African">Mixed: White and Black African</option>
-            <option value="Mixed: White and Asian">Mixed: White and Asian</option>
-            <option value="Any other Mixed or Multiple ethnic background">Any other Mixed or Multiple ethnic background</option>
-            <option value="Indian">Indian</option>
-            <option value="Pakistani">Pakistani</option>
-            <option value="Bangladeshi">Bangladeshi</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Any other Asian background">Any other Asian background</option>
-            <option value="African">African</option>
-            <option value="Caribbean">Caribbean</option>
-            <option value="Any other Black, African or Caribbean background">Any other Black, African or Caribbean background</option>
-            <option value="Arab">Arab</option>
-            <option value="Any other ethnic group">Any other ethnic group</option>
-          </select>
-          {errors.age && <p className={classes.Error}>Please select your ethnicity</p>}
           <label>Post code</label>
           <input name="postal_code" className={classes.TextField}  ref={register({ required: true, pattern: /^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$/ })} />
           {errors.postal_code && <p className={classes.Error}>Please provide a valid post code</p>}

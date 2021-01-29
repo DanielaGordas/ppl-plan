@@ -44,7 +44,6 @@ const UserDataCollection = ()=> {
                 age: guest.age,
                 gender: guest.gender,
                 postal_code: guest.postal_code,
-                ethnicity: guest.ethnicity,
                 council: council
                 }
             }))

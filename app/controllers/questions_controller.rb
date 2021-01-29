@@ -20,6 +20,6 @@ class QuestionsController < ApiController
       private
     
       def question_params
-        params.require(:question).permit(:answer, :question)
+        params.require(:question).permit(:answer, :question, :guest_id)
       end
 end

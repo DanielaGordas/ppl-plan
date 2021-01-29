@@ -21,11 +21,12 @@
   display: inline-block;
   font-size: $font-medium;
   line-height: 3rem;
-  margin: 5rem;
+  margin: $margin-big;
   padding: 1.5rem;
   position: relative;
   height: auto;
   width: 70vw;
+  max-width: 40rem;
   border-radius: 3px;
   color: $dark-blue;
   text-align: justify;
@@ -103,6 +104,7 @@
   position: relative;
   min-height: 5rem;
   width: 80vw;
+  max-width: 40rem;
   border-radius: 3px;
   color: $dark-blue;
   text-align: center;
@@ -133,6 +135,7 @@
   border-radius: 3px;
   box-shadow: $box-shadow;
   padding: 1rem;
+  max-width: 40rem;
   font-size: $font-small;
   line-height: 2.5rem;
   margin: 3rem;
