@@ -74,7 +74,6 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-
 // GAME NAV
 
 .GameNav {
@@ -98,7 +97,8 @@
   align-items: flex-end;
 }
 
-.LeftIcon, .RightIcon {
+.LeftIcon,
+.RightIcon {
   font-size: 2rem;
 }
 
@@ -113,6 +113,5 @@
 .NavBarLogo {
   height: 6rem;
   width: 6rem;
-  background: url('../../images/mainlogo.svg')
-
+  background: url("../../images/mainlogo.svg");
 }
