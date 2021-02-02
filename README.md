@@ -4,7 +4,7 @@ This project contains one Ruby on Rails API backend app and one React front-end 
 
 ## Available Scripts
 
-In the project directory, you can start by: 
+In the project main directory, you can start by: 
 
 ## Backend app: 
 
