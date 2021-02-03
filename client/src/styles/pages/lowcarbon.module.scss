@@ -34,7 +34,7 @@
 // Game instructions
 
 .Instructions {
-  text-align: center;
+  text-align: left;
   width: 90%;
   margin: auto;
   margin-top: 2rem;
@@ -45,10 +45,6 @@
   color: $dark-blue;
   padding: 0.3rem;
   max-width: 40rem;
-
-  h3 {
-    font-size: $font-medium;
-  }
 
   p {
     font-size: $font-small;

@@ -118,7 +118,7 @@ const NatureGame = () => {
     const natureGame = {
         id: 6, 
         title: "Nature",
-        intro: "You’re a teacher in charge of the upcoming class field trip. You plan to show the students some of the best examples of urban nature.Pick your favourite 5 from the wide selection your town has to offer.",
+        intro: "You’re a teacher from your town in 2035 in charge of the upcoming class field trip. You plan to show the students some of the best examples of urban nature. Pick your favourite 5 from the wide selection your town has to offer.",
         instructions: "Go through the options and select the top 5 places you want to visit to show off to the students how green their town is. Tap to read more, and drag into the numbered list once you’ve come to your decision."
     }
 
@@ -218,14 +218,11 @@ const NatureGame = () => {
     const finalItems = items.filter((item) => item.column !== "All")
 
 
-    // retrieves result from Local Storage
-    const natureText = JSON.parse(window.localStorage.getItem('result6'));
-
-    const [natureResult, setNatureResult] = useState(natureText || "The benefits of nature are so clear! Well done, you earn the Mossy Medallion.")
+    const natureResult = "Nature is important for removing pollution, protecting against flooding and helps improve everyone’s mental and physical health. For taking a peek into the future we think you’ve earned the Mossy Medallion. "
     // save the result to Local Storage
     useEffect(() => {
         window.localStorage.setItem('result6', JSON.stringify(natureResult));
-    }, [natureResult])
+    })
 
     // Logic for persisting the answers in the DB: 
 
@@ -275,7 +272,7 @@ const NatureGame = () => {
             <Route path="/nature/intro">
                 <Intro
                     text={game.intro}
-                    skip='/outro'
+                    skip='/clean-energy/intro'
                     link='/nature/game'
                     back='/retrofithomes/result'
                     gradient={gradient}
@@ -297,7 +294,6 @@ const NatureGame = () => {
                 </div>
                 <div className={classes.Background}>
                     <div className={classes.Instructions}>
-                        <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            
