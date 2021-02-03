@@ -329,7 +329,7 @@ const CleanEnergyGame = () => {
                     </div>   
                     <div className={classes.Container}>           
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
-                            <MyPreview classes={classes} />            
+                        {isMobile ?  <MyPreview classes={classes} /> : null }          
                             <div className={classes.Choices}>
                                 <Column title='Solar'  className={classes.Selected} description={items[0].description} icon={items[0].svg}>
                                     {returnItemsForColumn('Solar')}
