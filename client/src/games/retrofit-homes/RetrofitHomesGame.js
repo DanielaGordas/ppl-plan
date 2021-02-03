@@ -352,7 +352,7 @@ const RetrofitHomesGame = () => {
                 </div>   
                 <div className="Container">            
                     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
-                        <MyPreview classes={classes} />
+                    {isMobile ?  <MyPreview classes={classes} /> : null }
                         <div className={styles.Choices}>
                           <Column title='1' className={styles.SecondColumn}>
                               {returnItemsForColumn('1')}

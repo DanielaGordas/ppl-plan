@@ -373,7 +373,7 @@ const CircularEconomyGame = () => {
                     </div>   
                     <div className={classes.Container}>            
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
-                            <MyPreview classes={classes} />               
+                            {isMobile ?  <MyPreview classes={classes} /> : null }         
                             {
                                 (finalItems.length === 13) ? 
                                 <button className="Btn" style={{margin: '4rem 0'}} onClick={submitAnswers}>Complete!</button> 

@@ -11,6 +11,7 @@ import LowCarbonTravelGame from './games/low-carbon-travel/LowCarbonTravelGame';
 import CircularEconomyGame from './games/circular-economy/CircularEconomyGame';
 import RetrofitHomesGame from './games/retrofit-homes/RetrofitHomesGame';
 import NatureGame from './games/nature/NatureGame';
+import SustainableFoodGame from './games/sustainable-food-system/SustainableFoodGame';
 import CleanEnergyGame from './games/clean-energy/CleanEnergyGame';
 import Loader from './components/Loader';
 
@@ -52,6 +53,9 @@ const App = () => {
                                     </Route>
                                     <Route path="/clean-energy">
                                           <CleanEnergyGame />
+                                    </Route>
+                                    <Route path="/sustainable-food-system">
+                                          <SustainableFoodGame />
                                     </Route>
                                     <Route path="/outro" component={OutroPage}/>
                                     <Route>
