@@ -1,0 +1,21 @@
+@import "../scss-variables.scss";
+
+.Wrapper {
+    background: $white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    padding: 1.5rem;
+    height: auto;
+    width: 80vw;
+    max-width: 40rem;
+    border-radius: 3px;
+    box-shadow: $box-shadow;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: $margin-small;
+}
+
+.Badge {
+    height: 6rem;
+}

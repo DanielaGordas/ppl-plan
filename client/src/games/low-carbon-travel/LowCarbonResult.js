@@ -6,6 +6,7 @@ import badge from "../../images/low-carbon/Game_1_Bagde.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
+import BadgeBox from '../../components/BadgeBox';
 
 const LowCarbonResult = () => {
     // retrieves result from Local Storage
@@ -36,6 +37,7 @@ const LowCarbonResult = () => {
               <h3>{result}</h3>
               <p>{text}</p>
             </div>
+            < BadgeBox />
             <Link to="/circulareconomy/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>

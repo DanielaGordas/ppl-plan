@@ -6,6 +6,7 @@ import badge from "../../images/circular-economy/Game_4_Bagde.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
+import BadgeBox from '../../components/BadgeBox';
 
 const CircularEconomyResult = ({gradient}) => {
 
@@ -41,6 +42,7 @@ const CircularEconomyResult = ({gradient}) => {
               <h3>The sharing economy can help reduce waste!</h3>
               <p>{text}</p>
             </div>
+            < BadgeBox />
             <Link to="/retrofithomes/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
