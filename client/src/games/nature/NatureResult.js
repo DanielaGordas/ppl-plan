@@ -19,17 +19,13 @@ const NatureResult = ({gradient, background}) => {
             <Link to="/nature/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/outro">Next Game</Link>
+            <Link to="/clean-energy/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
         <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient}), url(${background})`}}>
-            <div className={classes.ResultBubble}>
-              Congratulations! You've earned the Mossy Medallion!
-            </div>
-            <img src={badge} alt="circular economy trophy" className={classes.ResultImg}/>
             <p className={classes.Text}>{text}</p>
-            <Link to="/outro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/clean-energy/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )

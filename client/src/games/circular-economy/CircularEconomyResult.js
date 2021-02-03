@@ -14,14 +14,14 @@ const CircularEconomyResult = ({gradient}) => {
 
     // sets the result text based on the result of the game
     let text = "";
-    if(result === "individual ownership"){
-      text = "You chose a future low waste circular society in which the responsibility for most issues falls on the individual citizens."
-    } else if (result === "community ownership"){
-      text = "You chose a future low waste circular society in which the responsibility for most issues falls on the community."
-    } else if (result === "council ownership"){
-      text = "You chose a future low waste circular society in which the responsibility for most issues falls on the council."
+    if(result === "now"){
+      text = "Wow! You’re really progressive. Wow! You’re really progressive."
+    } else if (result === "future"){
+      text = "Great choices, you’ve selected a mix of acting now and making changes in the future. You’ve earned your Sharing Economy Badge"
+    } else if (result === "never"){
+      text = "It looks like you’re happy with the way things are. This might cause some waste issues…You need to make some more ambitious choices before we can award you the badge."
     } else {
-      text = "You chose a future low waste circular society in which the responsibility for most issues is shared among the local people, the community, and the council."
+      text = "Great choices, you’ve selected a mix of acting now and making changes in the future. You’ve earned your Sharing Economy Badge"
     };
 
     return (
@@ -37,11 +37,10 @@ const CircularEconomyResult = ({gradient}) => {
           </div>
         </div>
         <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient}), url(${background})`}}>
-            <div className={classes.ResultBubble}>
-              Congratulations! You've earned the Circular Economy Badge!
+            <div className={classes.Text}>
+              <h3>The sharing economy can help reduce waste!</h3>
+              <p>{text}</p>
             </div>
-            <img src={badge} alt="circular economy trophy" className={classes.ResultImg}/>
-            <p className={classes.Text}>{text}</p>
             <Link to="/retrofithomes/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>

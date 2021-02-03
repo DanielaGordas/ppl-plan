@@ -135,8 +135,8 @@ const LowCarbonTravelGame = () => {
     const lowCarbonTravelGame = {
         id: 1, 
         title: "Low Carbon Travel",
-        intro: "You’re stuck in traffic on your way to work again and daydreaming of a future where UK commuters don’t waste 115 hours sitting in traffic annually. What does that future look like?",
-        instructions: "Drag the 5 most important travel policies into the empty boxes below. Tap on each policy to see more info."
+        intro: "The UK is dominated by gas-guzzling cars. They are warming the planet, pollute our air and most commuters waste 115 hours sitting in traffic every year... What do you think the future of transport looks like?",
+        instructions: "Transport is complex. Choose 5 of the 10 low carbon travel options to shape the future of transport by dragging them into the boxes below. The gauge below shows you if your future is more electric vehicle or public transit focused."
     }
 
 
@@ -180,7 +180,7 @@ const LowCarbonTravelGame = () => {
         {
             id: 5, 
             name: "Purchase grants",
-            description: "Introduce Purchase Grants to give people money to buy electric vehicles, making them more financially accessible to low income households.",
+            description: "Introduce Purchase Grants to give people money to buy electric vehicles, making them more financially accessible to lower income households.",
             column: 'All',
             category: 'electric car ownership',
             game: "Low Carbon Travel",
@@ -215,8 +215,8 @@ const LowCarbonTravelGame = () => {
         },
         {
             id: 9, 
-            name: "Car-free zones",
-            description: "Car-free school zones and residential areas make it safer for children to walk and cycle to school, while reducing congestion and air pollution and improving public health.",
+            name: "Work from home",
+            description: "Fit high speed broadband and encourage those who can to keep working from home. This could alleviate traffic and pollution.",
             column: 'All',
             category: 'mass transit',
             game: "Low Carbon Travel",
@@ -319,9 +319,9 @@ const LowCarbonTravelGame = () => {
     const result = () => {
         let result = ""
         if(massTransit.length > electricCars.length) {
-           result = "mass transit"
+           result = "Mass Transit future"
         } else {
-            result = "electric cars"
+            result = "Electric car future"
         }
         return result;
     }
@@ -411,7 +411,6 @@ const LowCarbonTravelGame = () => {
                 </div>
                 <div className={classes.Background}>               
                     <div className={classes.Instructions}>
-                        <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            

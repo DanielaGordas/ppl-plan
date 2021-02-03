@@ -57,12 +57,12 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
             const dropResult = monitor.getDropResult();
             if(dropResult && dropResult.name === 'All'){
                 changeItemColumn(item, 'All')
-            } else if (dropResult && dropResult.name === 'Individuals'){
-                changeItemColumn(item, 'Individuals')
-            } else if (dropResult && dropResult.name === 'Community') {
-                changeItemColumn(item, 'Community')
+            } else if (dropResult && dropResult.name === 'Now'){
+                changeItemColumn(item, 'Now')
+            } else if (dropResult && dropResult.name === 'Future') {
+                changeItemColumn(item, 'Future')
             } else {
-                changeItemColumn(item, 'Council')
+                changeItemColumn(item, 'Never')
             }
         },
         collect: (monitor) => ({
@@ -124,38 +124,29 @@ const CircularEconomyGame = () => {
     const circularEconomyGame = {
         id: 4, 
         title: "Low waste / circular society",
-        intro: "In a low waste circular society, different responsibilities are shared among local people, the community, and the council. Your community centre is hosting a poll to decide who should take ownership for a variety of common issues.",
-        instructions: "Tap the issues to find out more. Drag the policies into the ballot which represents who you think should look after or own that issue."
+        intro: "Cutting waste and creating resilient communities is more important than ever. Our local community is voting on some ideas to implement. Do you think they should happen now, in the future or never?",
+        instructions: "Tap the proposals to find out more. Then drag them into the box to vote when/if you think we should implement them."
     }
-
 
     const circularEconomyAnswers = [
         {
             id: 1, 
-            name: "Skills exchange events",
-            description: "These events can build stronger communities and improve social equality by providing individuals with equal access to knowledge and skills, which will in turn boost local economies.",
-            column: 'All',
-            game: "Circular Economy",
-            svg: SkillsExchange
-        },
-        {
-            id: 2, 
-            name: "Food shares",
-            description: "£17 billion worth of food ends up in landfill each year in the UK - much of this could have been eaten by those in need. Food shares are set up to combat waste by sharing surplus or unwanted food with those in the community.",
+            name: "Food sharing",
+            description: "£17 billion worth of food ends up in landfill each year in the UK - much of this could have been eaten by those in need. Individuals currently are responsible for this. Food sharing events combat waste by sharing surplus or unwanted food with those in the community, helping to improve social and economic equality and building stronger communities.",
             column: 'All',
             game: "Circular Economy",
             svg: FoodShares
         },
         {
-            id: 3, 
+            id: 2, 
             name: "Clothes swaps",
-            description: "Around 30% of clothing in wardrobes in the UK has not been worn for at least a year, and an estimated £140 million worth of used clothing also goes to landfill in the UK every year.",
+            description: "Around 30% of clothing in wardrobes in the UK has not been worn for at least a year, and an estimated £140 million worth of used clothing also goes to landfill in the UK every year. Clothes swaps offer people the chance to exchange clothes, which helps build stronger communities and reduce clothing going to landfill, also saving you money!",
             column: 'All',
             game: "Circular Economy",
             svg: ClothesSwaps
         },
         {
-            id: 4, 
+            id: 3, 
             name: "Furniture swaps",
             description: "Furniture swaps and communal repairs/repair workshops could greatly extend the life of furniture and provide people with more sustainable options. 22 million small items of furniture are thrown away every year in the UK.",
             column: 'All',
@@ -163,39 +154,23 @@ const CircularEconomyGame = () => {
             svg: FurnitureSwaps
         },
         {
-            id: 5, 
-            name: "Cleaning of parks/beaches/public spaces",
-            description: "Could the local community manage this better and more effectively than the local council or a private company?",
-            column: 'All',
-            game: "Circular Economy",
-            svg: Cleaning
-        },
-        {
-            id: 6, 
-            name: "Household waste and recycling collection",
-            description: "Would you be happy for a community group to manage waste collection rather than the council?",
-            column: 'All',
-            game: "Circular Economy",
-            svg: HouseholdWaste
-        },
-        {
-            id: 7, 
+            id: 4, 
             name: "Locally grown food",
-            description: "Community allotments are an excellent way for children and young people to learn about growing food. Individual/family allotments offer great exercise and a regular supply of fruit and vegetables.",
+            description: "Community allotments are an excellent way for children and young people to learn about growing food. Individual/family allotments offer great exercise and a regular supply of fruit and vegetables. You can use household food waste to compost too!",
             column: 'All',
             game: "Circular Economy",
             svg: LocalFood
         },
         {
-            id: 8, 
+            id: 5, 
             name: "Home and garden tools",
-            description: "The average person spends almost £200 per year on tools and uses them infrequently. A shared approach could save huge amounts of resources and money.",
+            description: "The average person spends almost £200 per year on tools and uses them infrequently. A shared approach could save huge amounts of resources and money. Maybe it operates like the library?",
             column: 'All',
             game: "Circular Economy",
             svg: HomeTools
         },
         {
-            id: 9, 
+            id: 6, 
             name: "Cars",
             description: "Car sharing schemes help relieve local traffic congestion, saving up to £1,000 per year (on fuel costs, parking and other vehicle running costs).",
             column: 'All',
@@ -203,7 +178,7 @@ const CircularEconomyGame = () => {
             svg: Cars
         },
         {
-            id: 10, 
+            id: 7, 
             name: "Bikes",
             description: "Bike sharing schemes enable users to access bikes 24/7 in urban areas, facilitating the use of cycling rather than other non-sustainable modes of transport.  A healthy, eco-friendly and fun way to travel!",
             column: 'All',
@@ -211,15 +186,7 @@ const CircularEconomyGame = () => {
             svg: Bikes
         },
         {
-            id: 11, 
-            name: "Books and access to libraries",
-            description: "Shared libraries/collections of books, as well as book swaps, can save the need to buy lots of books, especially textbooks that are often only used for a short while. Books can be borrowed, swapped or donated for communal use, saving paper, resources, and money.",
-            column: 'All',
-            game: "Circular Economy",
-            svg: Books
-        },
-        {
-            id: 12, 
+            id: 8, 
             name: "Childrens’ or pets’ toys",
             description: "Every year in the UK, 8.5 million nearly new toys are thrown out as children and pets grow out of, or lose interest in, them. These can be redistributed to other children or pets as needed, reducing the amount in landfill.",
             column: 'All',
@@ -227,15 +194,13 @@ const CircularEconomyGame = () => {
             svg: Children
         },
         {
-            id: 13, 
+            id: 9, 
             name: "Electronics",
             description: "The UK could save £370 million if all the old small electricals that are either thrown away or hoarded were recycled.",
             column: 'All',
             game: "Circular Economy",
             svg: Electronics
-        },
-        
-
+        },  
     ]
 
     const [game, setGame] = useState(circularEconomyGame);
@@ -258,18 +223,18 @@ const CircularEconomyGame = () => {
     const finalItems = items.filter((item) => item.column !== "All")
 
 
-    const individualOwnership = [];
-    const communityOwnership = [];
-    const councilOwnership = [];
+    const now = [];
+    const future = [];
+    const never= [];
 
 
     items.map(item => {
-        if (item.column === 'Individuals') {
-            individualOwnership.push(item);
-        } else if (item.column === "Community"){
-            communityOwnership.push(item);
-        } else if (item.column === "Council"){
-            councilOwnership.push(item);
+        if (item.column === 'Now') {
+            now.push(item);
+        } else if (item.column === "Future"){
+            future.push(item);
+        } else if (item.column === "Never"){
+            never.push(item);
         }
         return item;
     })
@@ -277,14 +242,13 @@ const CircularEconomyGame = () => {
     // decides the result of the game 
     const result = () => {
         let result = ""
-        if(individualOwnership.length > communityOwnership.length && individualOwnership.length > councilOwnership.length) {
-            result = "individual ownership"
-        } else if (communityOwnership.length > individualOwnership.length && communityOwnership.length > councilOwnership.length) {
-            result = "community ownership";
-        } else if (councilOwnership.length > individualOwnership.length && councilOwnership.length > communityOwnership.length) {
-            result = "council ownership";
+        if(now.length > future.length && now.length > never.length) {
+            result = "now"
+        } else if (future.length > now.length && future.length > never.length) {
+            result = "future";
+        } else if (never.length > now.length && never.length > future.length) {
+            result = "never"
         }
-
         return result;
     }
 
@@ -368,14 +332,13 @@ const CircularEconomyGame = () => {
                 </div>
                 <div className={classes.Background}>
                     <div className={classes.Instructions}>
-                        <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
                             {isMobile ?  <MyPreview classes={classes} /> : null }         
                             {
-                                (finalItems.length === 13) ? 
+                                ( finalItems.length === 9 ) ? 
                                 <button className="Btn" style={{margin: '4rem 0'}} onClick={submitAnswers}>Complete!</button> 
                                 :                  
                                 <Column title='All' className={classes.FirstColumn}>
@@ -383,14 +346,14 @@ const CircularEconomyGame = () => {
                                 </Column> 
                             }
                             <div className={classes.Choices}>
-                                <Column title='Individuals' className={classes.SecondColumn}>
-                                    {returnItemsForColumn('Individuals')}
+                                <Column title='Now' className={classes.SecondColumn}>
+                                    {returnItemsForColumn('Now')}
                                 </Column>
-                                <Column title='Community' className={classes.SecondColumn}>
-                                    {returnItemsForColumn('Community')}
+                                <Column title='Future' className={classes.SecondColumn}>
+                                    {returnItemsForColumn('Future')}
                                 </Column>
-                                <Column title='Council' className={classes.SecondColumn}>
-                                    {returnItemsForColumn('Council')}
+                                <Column title='Never' className={classes.SecondColumn}>
+                                    {returnItemsForColumn('Never')}
                                 </Column>
                             </div>
                         </DndProvider>

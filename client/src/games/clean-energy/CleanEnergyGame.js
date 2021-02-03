@@ -146,7 +146,7 @@ const CleanEnergyGame = () => {
         {
             id: 1, 
             name: "One",
-            description: "Solar energy is one of the cheapest renewables to harness, and will help boost the economy by creating 200,000 jobs in the solar industry by 2030. Batteries can store surplus energy generated in the daytime to be used at night. Solar energy is likely to become 20-50% cheaper than previously estimated with annual electricity bill savings in the region of £270 for the average family home.",
+            description: "Solar energy is one of the cheapest renewables to harness, and will help boost the economy by creating 200,000 jobs in the solar industry by 2030. Solar energy is likely to become 20-50% cheaper than previously estimated with annual electricity bill savings in the region of £270 for the average family home.",
             column: 'All',
             game: "Clean Energy",
             svg: GiElectric
@@ -162,7 +162,7 @@ const CleanEnergyGame = () => {
         {
             id: 3, 
             name: "Three",
-            description: "Hydrogen is still a technology in development, but could be a good solution for storing the energy produced by renewables as it can be stored like petrol in a tank, and used at source. So could be useful for moving the emission free cars of the future. It can also be stored in the long term so is important for times when other renewable sources aren’t running (e.g. less solar power in winter).",
+            description: "Hydrogen is still a technology in development, but could be a good solution for storing energy produced by renewables as it can be stored like petrol in a tank. It might even be used in cars one day! Because it can be stored long term it could be important for when it’s not windy or sunny.",
             column: 'All',
             game: "Clean Energy",
             svg: ""
@@ -170,7 +170,7 @@ const CleanEnergyGame = () => {
         {
             id: 4, 
             name: "Four",
-            description: "This is a fuel that uses chemical processes like burning or using bacteria to create methane. This is just another form of the sun’s energy and is often what becomes of the food waste some local council collect. Biomass provided 11% of the UK’s electricity in 2019. Crucially, biomass is much more sustainable when created as a product of waste, rather than produced from crops grown specifically for bioenergy.",
+            description: "This is just another form of the sun’s energy and is often what becomes of the food waste some local council collect. Biomass provided 11% of the UK’s electricity in 2019! Crucially, biomass is much more sustainable when created as a product of waste, rather than produced from crops grown specifically for bioenergy.",
             column: 'All',
             game: "Clean Energy",
             svg: ""
@@ -178,7 +178,7 @@ const CleanEnergyGame = () => {
         {
             id: 5, 
             name: "Five",
-            description: "This form of energy harnesses power from water in motion, such as rivers. The process does not produce greenhouse gas emissions but can require large areas to be flooded to make room for the dam holding back the water. Hydroelectric power plants can supply electricity to remote communities and attract industry and commerce, boosting the local economy.",
+            description: "New battery technology is needed to store the energy from renewables. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - in Germany, small household battery storage prices have fallen by over 60% since late 2014.",
             column: 'All',
             game: "Clean Energy",
             svg: ""
@@ -245,14 +245,11 @@ const CleanEnergyGame = () => {
     const finalItems = items.filter((item) => item.column !== "All")
 
 
-    // retrieves result from Local Storage
-    const cleanEnergyText = JSON.parse(window.localStorage.getItem('result7'));
-
-    const [cleanEnergyResult, setCleanEnergyResult] = useState(cleanEnergyText || "Amazing! You and your town have got some sound policies in place. You have earned the Buzz Badge.")
+    const cleanEnergyResult = "Amazing! You and your town have got some sound policies in place, more power to you! You have earned the Buzz Badge."
     // save the result to Local Storage
     useEffect(() => {
         window.localStorage.setItem('result7', JSON.stringify(cleanEnergyResult));
-    }, [cleanEnergyResult])
+    })
 
     // Logic for persisting the answers in the DB: 
 
@@ -324,7 +321,6 @@ const CleanEnergyGame = () => {
                 </div>
                 <div className={classes.Background}>
                     <div className={classes.Instructions}>
-                        <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>           

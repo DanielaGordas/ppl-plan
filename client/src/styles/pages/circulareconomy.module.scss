@@ -23,7 +23,7 @@
 // Game instructions
 
 .Instructions {
-  text-align: center;
+  text-align: left;
   width: 90%;
   margin: auto;
   margin-top: 2rem;
@@ -55,21 +55,21 @@
 
 .FirstColumn {
   font-size: $font-small;
-  margin-top: 2rem;
+  margin-top: $margin-medium;
   color: $dark-blue;
   display: flex;
 }
 
 .SecondColumn {
   background-color: $medium-grey;
-  font-size: $font-small;
+  font-size: $font-medium;
   color: $white;
   margin: 1rem;
-  margin-top: 2rem;
+  margin-top: $margin-medium;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
-  width: 8rem;
-  height: 10rem;
+  width: 10rem;
+  height: 14rem;
 }
 
 .TopBorder {
@@ -110,8 +110,8 @@
 
 .Card {
   background: $white;
-  width: 10rem;
-  height: 12rem;
+  width: 6rem;
+  height: 6rem;
   flex-shrink: 0;
   padding: 3rem;
   border-radius: 2px;
@@ -122,11 +122,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
   box-shadow: $box-shadow;
+  border-radius: 50%;
 
   img {
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
   }
 }
