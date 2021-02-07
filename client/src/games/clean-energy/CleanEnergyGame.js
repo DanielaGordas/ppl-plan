@@ -27,7 +27,6 @@ import Bulb2 from '../../images/clean-energy/bulb_2.svg';
 import Bulb3 from '../../images/clean-energy/bulb_3.svg';
 
 
-
 const MovableItem = ({name, setItems, column, icon}) => {
     const changeItemColumn = (currentItem, columnName) => {
         setItems((prevState) => {
@@ -106,13 +105,13 @@ const Column = ({children, className, title, description, icon}) => {
     const closeModal = () => setShow(false);
 
     const getLightBulb = () => {
-       if (children.length == 0) {
+       if (children.length === 0) {
            return Bulb
-       } else if (children.length == 1) {
+       } else if (children.length === 1) {
            return Bulb1
-       } else if (children.length == 2) {
+       } else if (children.length === 2) {
            return Bulb2
-       } else if (children.length == 3) {
+       } else if (children.length === 3) {
             return Bulb3
         }
     };
@@ -120,7 +119,7 @@ const Column = ({children, className, title, description, icon}) => {
 
     return (
       <div className={classes.gridItem}>
-        { title !== "All" ? <img src={getLightBulb()} style={ {width: "6rem", height: "6rem", fill: "#102773"} } /> : null }
+        { title !== "All" ? <img src={getLightBulb()} alt={title} style={ {width: "6rem", height: "6rem", fill: "#102773"} } /> : null }
         <div ref={drop} className={className} onClick={openModal}>
             { title !== "All" ? title : null }
             {children}        
@@ -244,8 +243,12 @@ const CleanEnergyGame = () => {
     // filters answers that are in the 5 selected columns
     const finalItems = items.filter((item) => item.column !== "All")
 
+    // retrieves result from Local Storage
+    const cleanEnergyText = JSON.parse(window.localStorage.getItem('result7'));
 
-    const cleanEnergyResult = "Amazing! You and your town have got some sound policies in place, more power to you! You have earned the Buzz Badge."
+    const resultText = "Amazing! You and your town have got some sound policies in place, more power to you! You have earned the Buzz Badge."
+
+    const [ cleanEnergyResult, setCleanEnergyResult ] = useState(cleanEnergyText || "") 
     // save the result to Local Storage
     useEffect(() => {
         window.localStorage.setItem('result7', JSON.stringify(cleanEnergyResult));
@@ -258,7 +261,7 @@ const CleanEnergyGame = () => {
 
         const qs = require('qs');
         
-        if(finalItems.length == 10 && guestDetails) {
+        if(finalItems.length === 10 && guestDetails) {
             finalItems.forEach(answer => {
                 axios.post('/api/answers', qs.stringify(
                     {
@@ -271,6 +274,7 @@ const CleanEnergyGame = () => {
                     }
                 }))
                 .then(res => {
+                    setCleanEnergyResult(resultText)
                     handleRedirect(res)
                 })
                     .catch(err => console.log(err))

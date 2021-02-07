@@ -4,7 +4,7 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
 import { Switch, Route, Link } from 'react-router-dom';
 import CircularEconomyResult from './CircularEconomyResult';
-import classes from '../../styles/pages/circulareconomy.module.scss';
+import classes from '../../styles/pages/circular-economy.module.scss';
 import Intro from '../../components/Intro';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
@@ -14,22 +14,18 @@ import itemTypes from '../../components/ItemTypes';
 import MyPreview from '../../components/MyPreview';
 
 
-// images and icons
+// Images and icons
 
 import Guy from '../../images/circular-economy/Character_Game_4.svg';
 import IntroBackground from '../../images/circular-economy/Game_4_First_Screen.svg';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import SkillsExchange from '../../images/circular-economy/Skills_exchange_events_blue_icon.svg';
 import FoodShares from '../../images/circular-economy/Food_shares_blue_icon.svg';
 import ClothesSwaps from '../../images/circular-economy/Clothes_swaps_blue_icon.svg';
 import FurnitureSwaps from '../../images/circular-economy/Furniture_swaps_blue_icon.svg';
-import Cleaning from '../../images/circular-economy/Cleaning_public_spaces_blue_icon.svg';
-import HouseholdWaste from '../../images/circular-economy/Household_waste_recycling_collection_blue_icon.svg';
 import LocalFood from '../../images/circular-economy/Locally_grown_food_blue_icon.svg';
 import HomeTools from '../../images/circular-economy/Home_and_garden_tools_blue_icon.svg';
 import Cars from '../../images/circular-economy/Cars_blue_icon.svg';
 import Bikes from '../../images/circular-economy/Bikes_blue_icon.svg';
-import Books from '../../images/circular-economy/Books_access_libraries_blue_icon.svg';
 import Children from '../../images/circular-economy/Childrens_pets_toys_blue_icon.svg';
 import Electronics from '../../images/circular-economy/Electronics_blue_icon.svg';
 
@@ -239,7 +235,7 @@ const CircularEconomyGame = () => {
         return item;
     })
 
-    // decides the result of the game 
+    // decides the result of the game   
     const result = () => {
         let result = ""
         if(now.length > future.length && now.length > never.length) {
@@ -248,6 +244,8 @@ const CircularEconomyGame = () => {
             result = "future";
         } else if (never.length > now.length && never.length > future.length) {
             result = "never"
+        } else {
+            result = "equal"
         }
         return result;
     }
@@ -255,7 +253,8 @@ const CircularEconomyGame = () => {
     // retrieves result from Local Storage
     const circularEconomyText = JSON.parse(window.localStorage.getItem('result4'));
 
-    const [circularEconomyResult, setCircularEconomyResult] = useState(circularEconomyText || "")
+    const [circularEconomyResult, setCircularEconomyResult] = useState(circularEconomyText || "");
+
     // save the result to Local Storage
     useEffect(() => {
         window.localStorage.setItem('result4', JSON.stringify(circularEconomyResult));

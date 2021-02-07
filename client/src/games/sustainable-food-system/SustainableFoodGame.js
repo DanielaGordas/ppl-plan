@@ -6,7 +6,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import SustainableFoodResult from './SustainableFoodResult';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
-import classes from '../../styles/pages/lowcarbon.module.scss';
+import classes from '../../styles/pages/low-carbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
 import Modal from '../../components/Modal';
@@ -15,7 +15,7 @@ import MyPreview from '../../components/MyPreview';
 
 // Icons and Images
 import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg';
-import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
+import { FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
 import Guy from '../../images/low-carbon/Character_1_First_screen.svg';

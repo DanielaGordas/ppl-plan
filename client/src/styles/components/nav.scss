@@ -1,5 +1,17 @@
 @import "../scss-variables.scss";
 
+// Nav 
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Logo {
+  height: 5rem;
+  top: 0;
+}
 // BURGER MENU
 /* Position and sizing of burger button */
 .bm-burger-button {
@@ -37,8 +49,9 @@
   Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
   */
 .bm-menu-wrap {
-  position: fixed;
+  position: relative;
   height: 100%;
+  top: 0;
 }
 
 /* General sidebar styles */

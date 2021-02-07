@@ -2,7 +2,6 @@ import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
 import background from "../../images/circular-economy/Game_4_First_Screen.svg";
-import badge from "../../images/circular-economy/Game_4_Bagde.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
@@ -16,7 +15,7 @@ const CircularEconomyResult = ({gradient}) => {
     // sets the result text based on the result of the game
     let text = "";
     if(result === "now"){
-      text = "Wow! You’re really progressive. Wow! You’re really progressive."
+      text = "Wow! You’re really progressive.We’re happy to award you with the Sharing Economy Badge"
     } else if (result === "future"){
       text = "Great choices, you’ve selected a mix of acting now and making changes in the future. You’ve earned your Sharing Economy Badge"
     } else if (result === "never"){

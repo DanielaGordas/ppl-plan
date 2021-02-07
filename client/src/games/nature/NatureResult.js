@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
-import badge from "../../images/nature/Game_6_Bagde.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
+import BadgeBox from '../../components/BadgeBox';
 
 const NatureResult = ({gradient, background}) => {
 
@@ -24,7 +24,10 @@ const NatureResult = ({gradient, background}) => {
           </div>
         </div>
         <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient}), url(${background})`}}>
-            <p className={classes.Text}>{text}</p>
+            <div className={classes.Text}>
+              <p>{text}</p>
+            </div>
+            < BadgeBox />
             <Link to="/clean-energy/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
