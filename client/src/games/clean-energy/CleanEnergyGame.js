@@ -119,8 +119,8 @@ const Column = ({children, className, title, description, icon}) => {
 
     return (
       <div className={classes.gridItem}>
-        { title !== "All" ? <img src={getLightBulb()} alt={title} style={ {width: "6rem", height: "6rem", fill: "#102773"} } /> : null }
-        <div ref={drop} className={className} onClick={openModal}>
+        { title !== "All" ? <img src={getLightBulb()} alt={title} onClick={openModal} style={ {width: "6rem", height: "6rem", fill: "#102773"} } /> : null }
+        <div ref={drop} className={className}>
             { title !== "All" ? title : null }
             {children}        
         </div>
@@ -331,22 +331,22 @@ const CleanEnergyGame = () => {
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
                         {isMobile ?  <MyPreview classes={classes} /> : null }          
                             <div className={classes.Choices}>
-                                <Column title='Solar'  className={classes.Selected} description={items[0].description} icon={items[0].svg}>
+                                <Column title='Solar'  className={classes.Selected} description={items[0].description} >
                                     {returnItemsForColumn('Solar')}
                                 </Column>
-                                <Column title='Onshore Wind' className={classes.Selected} description={items[1].description} icon={items[2].svg}>
+                                <Column title='Onshore Wind' className={classes.Selected} description={items[1].description} >
                                     {returnItemsForColumn('Onshore Wind')}
                                 </Column>
-                                <Column title='Investing in Hydrogen' className={classes.Selected} description={items[2].description} icon={items[2].svg}>
+                                <Column title='Investing in Hydrogen' className={classes.Selected} description={items[2].description} >
                                     {returnItemsForColumn('Investing in Hydrogen')}
                                 </Column>
-                                <Column title='Biomass' className={classes.Selected} description={items[3].description} icon={items[3].svg}>
+                                <Column title='Biomass' className={classes.Selected} description={items[3].description} >
                                     {returnItemsForColumn('Biomass')}
                                 </Column>
-                                <Column title='Hydroelectric Power' className={classes.Selected} description={items[4].description} icon={items[4].svg}>
+                                <Column title='Hydroelectric Power' className={classes.Selected} description={items[4].description} >
                                     {returnItemsForColumn('Hydroelectric Power')}
                                 </Column>
-                                <Column title='Investment in Battery Storage Technologies' className={classes.Selected} description={items[5].description} icon={items[5].svg}>
+                                <Column title='Investment in Battery Storage Technologies' className={classes.Selected} description={items[5].description} >
                                     {returnItemsForColumn('Investment in Battery Storage Technologies')}
                                 </Column>
                             </div>
