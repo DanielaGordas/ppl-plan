@@ -5,7 +5,7 @@ import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 import background from '../../images/retrofit-homes/Game_3_new_screen.svg';
-import badge from '../../images/retrofit-homes/Game_3_Bagde.svg';
+import BadgeBox from '../../components/BadgeBox';
 
 
 const RetrofitHomesResult = () => {
@@ -26,7 +26,10 @@ const RetrofitHomesResult = () => {
           </div>
         </div>
         <div className={classes.Background} style={{backgroundImage: `linear-gradient(rgba(19, 213, 255, .8),rgba(255, 255, 255, .7)), url(${background})`}}>
-            <p className={classes.Text}>{text}</p>
+            <div className={classes.Text}>
+              <p>{text}</p>
+            </div>
+            < BadgeBox />
             <Link to="/nature/intro"> <button className="Btn-border" >Continue</button></Link>
         </div>
       </>

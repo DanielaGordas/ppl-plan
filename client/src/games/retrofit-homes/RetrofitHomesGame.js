@@ -6,7 +6,7 @@ import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { Switch, Route, Link } from 'react-router-dom';
 import RetrofitHomesResult from './RetrofitHomesResult';
-import classes from '../../styles/pages/lowcarbon.module.scss'
+import classes from '../../styles/pages/low-carbon.module.scss'
 import Intro from '../../components/Intro';
 import styles from '../../styles/pages/retrofit.module.scss';
 import axios from 'axios';
@@ -166,7 +166,7 @@ const RetrofitHomesGame = () => {
     const retrofitHomesGame = {
         id: 3, 
         title: "Retrofit Homes",
-        intro: "Congratulations! You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. You get to choose your own home improvements, funded by the government. Pick from the 10 home improvement options and prioritise which you think are best for your home. ",
+        intro: "Congratulations! You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. Pick from the 10 home improvement options and prioritise which you think are best for your home.",
         instructions: "Review each housing upgrade and then drag them into the numbered circles to prioritise them. You can always swap them over if you’ve put them in the wrong order."
     }
 
@@ -267,8 +267,13 @@ const RetrofitHomesGame = () => {
     // filters answers that are in the 5 selected columns
     const finalItems = items.filter((item) => item.column !== "All")
 
+     // retrieves result from Local Storage
+     const retrofitHomesText = JSON.parse(window.localStorage.getItem('result3'));
 
-    const retrofitHomesResult = "It’s estimated the UK has 28 million homes badly in need of energy efficiency improvements!  Thanks for helping prioritise the changes we should make first. Now you can collect your Net Zero Home Badge!"
+
+    const resultText = "It’s estimated the UK has 28 million homes badly in need of energy efficiency improvements!  Thanks for helping prioritise the changes we should make first. Now you can collect your Net Zero Home Badge!"
+
+    const [retrofitHomesResult, setRetrofitHomesResult] = useState(retrofitHomesText || "")
 
     // save the result to Local Storage
     useEffect(() => {
@@ -296,6 +301,7 @@ const RetrofitHomesGame = () => {
                     }
                 }))
                 .then(res => {
+                    setRetrofitHomesResult(resultText)
                     handleRedirect(res)
                 })
                     .catch(err => console.log(err))

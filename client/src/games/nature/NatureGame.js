@@ -68,7 +68,7 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
         }),
     });
 
-    const opacity = isDragging ? 0.4 : 1;
+    // const opacity = isDragging ? 0.4 : 1;
 
     const getDisplay = () => {
         if(column === "All") {
@@ -80,7 +80,7 @@ const MovableItem = ({name, setItems, column, index, icon, description}) => {
 
     return (
         <>
-            <div ref={drag} className={classes.Card} style={{ opacity: opacity, display: getDisplay() }} onClick={openModal} >
+            <div ref={drag} className={classes.Card} style={{ display: getDisplay() }} onClick={openModal} >
                 <p>{name}</p>
             </div>
             { show? <Modal title={name} description={description} show={show} closeModal={closeModal} icon={icon}/> : null }
@@ -217,12 +217,17 @@ const NatureGame = () => {
     // filters answers that are in the 5 selected columns
     const finalItems = items.filter((item) => item.column !== "All")
 
+    // retrieves result text from Local Storage
+    const natureText = JSON.parse(window.localStorage.getItem('result6'));
 
-    const natureResult = "Nature is important for removing pollution, protecting against flooding and helps improve everyone’s mental and physical health. For taking a peek into the future we think you’ve earned the Mossy Medallion. "
-    // save the result to Local Storage
+    const [ natureResult, setNatureResult ] = useState(natureText || "") 
+
+    // saves the result to Local Storage
     useEffect(() => {
         window.localStorage.setItem('result6', JSON.stringify(natureResult));
     })
+
+    const resultText = "Nature is important for removing pollution, protecting against flooding and helps improve everyone’s mental and physical health. For taking a peek into the future we think you’ve earned the Mossy Medallion."
 
     // Logic for persisting the answers in the DB: 
 
@@ -244,6 +249,7 @@ const NatureGame = () => {
                     }
                 }))
                 .then(res => {
+                    setNatureResult(resultText)
                     handleRedirect(res)
                 })
                     .catch(err => console.log(err))

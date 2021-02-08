@@ -12,11 +12,8 @@
 }
 
 .HomeLogo {
-    height: 20rem;
-    width: 20rem;
-    max-width: 25rem;
+    height: 15rem;
     align-self: center;
-    // margin-bottom: 2rem;
 }
 
 .Title {
@@ -26,4 +23,21 @@
 .SubTitle {
   font-size: $font-medium;
   margin: $margin-small;
+}
+
+.BadgeWrapper {
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 1rem;
+  margin: $margin-small;
+  height: auto;
+  max-width: 40rem;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: $margin-small;
+  align-self: center;
+}
+
+.Badge {
+  height: 5rem;
 }

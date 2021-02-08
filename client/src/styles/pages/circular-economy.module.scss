@@ -110,7 +110,7 @@
 
 .Card {
   background: $white;
-  width: 6rem;
+  width: 5rem;
   height: 6rem;
   flex-shrink: 0;
   padding: 3rem;
@@ -123,7 +123,6 @@
   align-items: center;
   justify-content: center;
   box-shadow: $box-shadow;
-  border-radius: 50%;
 
   img {
     width: 4rem;

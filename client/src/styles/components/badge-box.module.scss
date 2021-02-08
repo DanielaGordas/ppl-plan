@@ -2,8 +2,8 @@
 
 .Wrapper {
     background: $white;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    justify-content: space-between;
     grid-gap: 1rem;
     padding: 1.5rem;
     height: auto;
@@ -17,5 +17,5 @@
 }
 
 .Badge {
-    height: 6rem;
+    height: 5rem;
 }

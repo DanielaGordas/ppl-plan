@@ -6,7 +6,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import LowCarbonResult from './LowCarbonResult';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
-import classes from '../../styles/pages/lowcarbon.module.scss';
+import classes from '../../styles/pages/low-carbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
 import Modal from '../../components/Modal';

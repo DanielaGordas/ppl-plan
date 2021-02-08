@@ -21,7 +21,7 @@
   margin: $margin-small;
   text-align: center;
   text-justify: center;
-  margin-top: $margin-big;
+  margin-top: 8rem;
 }
 
 .UserPageContent h3 {
@@ -30,6 +30,7 @@
 
 .UserPageContent p {
   font-size: $font-medium;
+  margin-bottom: $margin-medium;
 }
 
 // Form styles
