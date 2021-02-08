@@ -8,9 +8,13 @@ const Modal = ({title, description, show, closeModal, icon}) => {
                         X
             </span>
             <div className={classes.ModalContent}>
-                <div className={classes.ModalFlex}>
-                    <img src={icon} alt={title} className={classes.ModalIcon} />
-                </div>
+                {icon ?
+                    <div className={classes.ModalFlex}>
+                        <img src={icon} alt={title} className={classes.ModalIcon} /> 
+                    </div>
+                    :
+                    null
+                }
                 <h4>{title}</h4>
                 <p>{description}</p>
             </div>
