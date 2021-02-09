@@ -13,6 +13,7 @@ import RetrofitHomesGame from './games/retrofit-homes/RetrofitHomesGame';
 import NatureGame from './games/nature/NatureGame';
 import SustainableFoodGame from './games/sustainable-food-system/SustainableFoodGame';
 import CleanEnergyGame from './games/clean-energy/CleanEnergyGame';
+import ResearchDevelopmentGame from './games/research-development/ResearchDevelopmentGame';
 import Loader from './components/Loader';
 
 
@@ -39,13 +40,13 @@ const App = () => {
                                           <PrivacyPage />
                                     </Route>
                                     <Route path="/user" component={UserDataCollection}/>
-                                    <Route path="/lowcarbon">
+                                    <Route path="/low-carbon">
                                           <LowCarbonTravelGame />
                                     </Route>
-                                    <Route path="/circulareconomy">
+                                    <Route path="/circular-economy">
                                           <CircularEconomyGame />
                                     </Route>
-                                    <Route path="/retrofithomes">
+                                    <Route path="/retrofit-homes">
                                           <RetrofitHomesGame />
                                     </Route>
                                     <Route path="/nature">
@@ -56,6 +57,9 @@ const App = () => {
                                     </Route>
                                     <Route path="/sustainable-food-system">
                                           <SustainableFoodGame />
+                                    </Route>
+                                    <Route path="/research-development">
+                                          <ResearchDevelopmentGame />
                                     </Route>
                                     <Route path="/outro" component={OutroPage}/>
                                     <Route>

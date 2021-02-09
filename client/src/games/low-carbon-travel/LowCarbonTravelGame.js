@@ -319,9 +319,9 @@ const LowCarbonTravelGame = () => {
     const result = () => {
         let result = ""
         if(massTransit.length > electricCars.length) {
-           result = "Mass Transit future"
+           result = "Mass Transit Future"
         } else {
-            result = "Electric car future"
+            result = "Electric Car Future"
         }
         return result;
     }
@@ -372,9 +372,9 @@ const LowCarbonTravelGame = () => {
         
     const handleRedirect = (res) => {
         if(res.status === 201 || res.status === 200) {
-            window.location = '/lowcarbon/result'
+            window.location = '/low-carbon/result'
         } else {
-            window.location = '/lowcarbon/game'
+            window.location = '/low-carbon/game'
         }
     }
     
@@ -386,23 +386,23 @@ const LowCarbonTravelGame = () => {
 
     return(
         <Switch>
-            <Route path="/lowcarbon/intro">
+            <Route path="/low-carbon/intro">
                 <Intro
                     text={game.intro}
-                    link='/lowcarbon/game'
+                    link='/low-carbon/game'
                     back='/user'
-                    skip='/circulareconomy/intro'
+                    skip='/circular-economy/intro'
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="LowcarbonCharacter"
                     gradient={gradient}
                 />
             </Route>
-            <Route path="/lowcarbon/game">
+            <Route path="/low-carbon/game">
                 <div className="GameNav">
                     <div className="NavLink">
                         <BiArrowBack className="LeftIcon"/>
-                        <Link to='/lowcarbon/intro'>Back</Link>
+                        <Link to='/low-carbon/intro'>Back</Link>
                     </div>
                     <div className="NavLink">
                         <a className="" onClick={startOver} >Start over  </a>
@@ -449,7 +449,7 @@ const LowCarbonTravelGame = () => {
                     </div>
                 </div>
             </Route>
-            <Route path="/lowcarbon/result">
+            <Route path="/low-carbon/result">
                 <LowCarbonResult />
             </Route>
         </Switch>

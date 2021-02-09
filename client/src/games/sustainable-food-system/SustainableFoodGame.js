@@ -294,11 +294,18 @@ const SustainableFoodGame = () => {
     // filters answers that are in the 6 selected columns
     const finalItems = items.filter((item) => item.column !== "food waste" && item.column !== "animal agriculture & diet" && item.column !== "localised food system")
 
-    const sustainableFoodResult = "Thank you for helping Gill! The UK throws away £17 billion of food every year..Going plant based could prevent 45,000 excess deaths each year.. Local food vs food transported by plane carries 100 times less emissions..."
-    // save the result to Local Storage
+
+    // retrieves result text from Local Storage
+    const sustainableFoodText = JSON.parse(window.localStorage.getItem('result2'));
+
+    const [ sustainableFoodResult, setSustainableFoodResult ] = useState(sustainableFoodText || "") 
+
+    // saves the result to Local Storage
     useEffect(() => {
         window.localStorage.setItem('result2', JSON.stringify(sustainableFoodResult));
     })
+ 
+     const resultText = "Thank you for helping Gill! The UK throws away £17 billion of food every year..Going plant based could prevent 45,000 excess deaths each year.. Local food vs food transported by plane carries 100 times less emissions..."
 
     // Logic for persisting the answers in the DB: 
 
