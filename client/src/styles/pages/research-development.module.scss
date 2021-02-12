@@ -61,44 +61,39 @@
 }
 
 .Card {
-  width: 10rem;
-  height: 4rem;
-  flex-shrink: 0;
-  padding: 0.3rem;
-  border-radius: 20px;
-  color: $dark-blue;;
+  text-align: left;
+  width: 90%;
+  height: 30%;
+  margin: auto;
+  margin-top: 2rem;
   background-color: $white;
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  color: $dark-blue;
+  padding: 0.3rem;
+  max-width: 40rem;
   font-size: $font-small;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
 }
 
-// Selected options
-
-.Choices {
+.Result {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  text-align: center;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 40rem;
 }
 
-.Selected {
-  background-color: $white;
-  width: 25rem;
-  height: 4rem;
-  padding: 0.3rem;
-  margin: auto;
-  border-radius: 20px;
+.ResultText {
   text-align: center;
-  margin-bottom: 1rem;
+  font-size: $font-large;
+  color: $dark-blue;
+  margin: $margin-medium;
+}
 
-  & > .Card {
-    transform: translate(-1%, -8%);
-    height: 100%;
-    width: 100%;
-  }
+.Title {
+  text-align: center;
+  font-size: $font-large;
+  color: $dark-blue;
+  margin: $margin-small;
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Intro from '../../components/Intro';
 import { Switch, Route, Link } from 'react-router-dom';
-import Modal from '../../components/Modal';
 import ResearchDevelopmentResult from './ResearchDevelopmentResult';
 import classes from '../../styles/pages/research-development.module.scss';
 import axios from 'axios';
@@ -20,7 +19,7 @@ const ResearchDevelopmentGame = () => {
         id: 8, 
         title: "Research and Development",
         intro: "The most famous climate lab in the world has been given some funding for an amazing new R&D project. All the scientists in the lab are competing for this money. The R&D projects are going head to head, and you decide which project wins!",
-        instructions: "Play each battle to decide winners, eventually leading to the grand final and an overall winner."
+        instructions: "Play each battle and decide the winner by swipping left. You will play 2 rounds leading to the grand final and an overall winner."
     }
 
     const researchDevelopmentAnswers = [
@@ -81,7 +80,7 @@ const ResearchDevelopmentGame = () => {
         {
             id: 7, 
             name: "Create Smart Cities",
-            description: "Cities are responsible for 75% of the world’s energy demand, research into smart tech could accelerate the shift toward a cleaner and less polluted urban space. Smart tech includes AI and data gathered from sensors, cameras, solar panels, apps, smart-meters, and even bins. The potential benefits are enormous. For example, a smart streetlight project in France is expected to reduce energy for public lighting by 66% by 2025, whilst New York’s smart traffic lights have already decreased traffic congestion by 10% in some areas.",
+            description: "Cities are responsible for 75% of the world’s energy demand, research into smart tech could accelerate the shift toward a cleaner and less polluted urban space. Smart tech includes AI and data gathered from sensors, cameras, solar panels, apps, smart-meters, and even bins. The potential benefits are enormous.",
             column: 'All',
             game: "Research and Development",
             svg: "",
@@ -90,7 +89,7 @@ const ResearchDevelopmentGame = () => {
         {
             id: 8, 
             name: "Better Biofuel",
-            description: "Biofuels, although not the cleanest option, have potential to replace fossil fuels until longer term solutions are put in place. It does not require expensive adjustments or infrastructure to aid the transition and has already made great leaps in development. For example, through research we have already developed advanced biofuels, and can now produce biohydrogen which fuels vehicles with zero emissions. R&D in this area can help maximise efficiency while reducing emissions and costs.",
+            description: "Biofuels, although not the cleanest option, have potential to replace fossil fuels until longer term solutions are put in place. It does not require expensive adjustments or infrastructure to aid the transition and has already made great leaps in development. For example, through research we have already developed advanced biofuels, and can now produce biohydrogen which fuels vehicles with zero emissions.",
             column: 'All',
             game: "Research and Development",
             svg: "",
@@ -100,7 +99,6 @@ const ResearchDevelopmentGame = () => {
 
     const [game, setGame] = useState(researchDevelopmentGame);
     const [items, setItems] = useState(researchDevelopmentAnswers);
-    console.log(items);
 
     // decides if device is mobile or desktop for touch/click events
     const isMobile = window.innerWidth < 600;
@@ -121,15 +119,373 @@ const ResearchDevelopmentGame = () => {
      const resultText = "Research and development is a fantastic way to create new jobs and solve big problems! For helping pick the winning project you earn the Lab Badge!"
 
 
+
     const startOver = () => {
-        setItems(researchDevelopmentAnswers);
+        setAnswerOne();
+        setAnswerTwo();
+        setAnswerThree();
+        setAnswerFour();
+        setAnswerFive();
+        setAnswerSix();
+        setAnswerSeven();
+    }
+
+    const [answerOne, setAnswerOne] = useState()
+    const [answerTwo, setAnswerTwo] = useState()
+    const [answerThree, setAnswerThree] = useState()
+    const [answerFour, setAnswerFour] = useState()
+    const [answerFive, setAnswerFive] = useState()
+    const [answerSix, setAnswerSix] = useState()
+    const [answerSeven, setAnswerSeven] = useState()
+
+
+        // saves guest_answers to the DB     
+        const submitAnswers = () => {
+
+            const qs = require('qs');
+            
+            if(answerSeven && guestDetails) {
+                axios.post('/api/answers', qs.stringify(
+                    {
+                        answer: {
+                            guest_id: guestDetails.id,
+                            name: answerSeven.name,
+                            description: answerSeven.description,
+                            column: answerSeven.column,
+                            category: answerSeven.category,
+                            game: answerSeven.game
+                    }
+                }))
+                .then(res => {
+                    setResearchDevelopmentResult(resultText)
+                    handleRedirect(res)
+                })
+                    .catch(err => console.log(err))
+            }
+        }
+            
+        const handleRedirect = (res) => {
+            if(res.status === 201 || res.status === 200) {
+                window.location = '/research-development/result'
+            } else {
+                window.location = '/research-development/game'
+            }
+        }
+
+
+    const [show, setShow] = useState(false);
+    const openModal = () => setShow(true);  
+    const closeModal = () => setShow(false);
+
+    const displayItems = () => {
+
+        if (!answerOne && !answerTwo && !answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
+            return(
+                <>
+                    <h1 className={classes.Title}>First Round</h1>
+                    <SwipeableList>
+                    {({ className, ...rest }) => (
+                        <>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerOne(items[0])
+                                    }}
+                                    {...rest}
+
+                                >
+                                <div>
+                                    <h3>{items[0].name}</h3>
+                                    <p>{items[0].description}</p>
+                                </div>
+                                </SwipeableListItem>
+                            </div>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerOne(items[1])
+                                    }}
+                                    {...rest}
+                                
+                                    >
+                                    <div>
+                                        <h3>{items[1].name}</h3>
+                                        <p>{items[1].description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                        </>
+                    )}
+                    </SwipeableList>
+                </>
+            )
+        } else if (answerOne && !answerTwo && !answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
+            return(
+                <>
+                    <h1 className={classes.Title}>First Round</h1>
+                    <SwipeableList>
+                    {({ className, ...rest }) => (
+                        <>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerTwo(items[2])
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{items[2].name}</h3>
+                                        <p>{items[2].description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerTwo(items[3])
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{items[3].name}</h3>
+                                        <p>{items[3].description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                        </>
+                    )}
+                    </SwipeableList>
+                </>
+            )
+        } else if (answerOne && answerTwo && !answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
+            return(
+                <>  
+                    <h1 className={classes.Title}>First Round</h1>
+                    <SwipeableList>
+                    {({ className, ...rest }) => (
+                        <>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerThree(items[4])
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{items[4].name}</h3>
+                                        <p>{items[4].description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerThree(items[5])
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{items[5].name}</h3>
+                                        <p>{items[5].description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                        </>
+                    )}
+                    </SwipeableList>
+                </>
+            )
+        } else if (answerOne && answerTwo && answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
+            return(
+                <>
+                    <h1 className={classes.Title}>First Round</h1>
+                    <SwipeableList>
+                    {({ className, ...rest }) => (
+                        <>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerFour(items[6])
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{items[6].name}</h3>
+                                        <p>{items[6].description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerFour(items[7])
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{items[7].name}</h3>
+                                        <p>{items[7].description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                        </>
+                    )}
+                    </SwipeableList>
+                </>
+            )
+        } else if (answerOne && answerTwo && answerThree && answerFour && !answerFive && !answerSix && !answerSeven) {
+            return(
+                <>
+                    <h1 className={classes.Title}>Second Round</h1>
+                    <SwipeableList>
+                    {({ className, ...rest }) => (
+                        <>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerFive(answerOne)
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{answerOne.name}</h3>
+                                        <p>{answerOne.description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerFive(answerTwo)
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{answerTwo.name}</h3>
+                                        <p>{answerTwo.description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                        </>
+                    )}
+                    </SwipeableList>
+                </>
+            )
+        } else if (answerOne && answerTwo && answerThree && answerFour && answerFive && !answerSix && !answerSeven) {
+            return(
+                <>
+                    <h1 className={classes.Title}>Second Round</h1>
+                    <SwipeableList>
+                    {({ className, ...rest }) => (
+                        <>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerSix(answerThree)
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{answerThree.name}</h3>
+                                        <p>{answerThree.description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerSix(answerFour)
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{answerFour.name}</h3>
+                                        <p>{answerFour.description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                        </>
+                    )}
+                    </SwipeableList>
+                </>
+            )
+        } else if (answerOne && answerTwo && answerThree && answerFour && answerFive && answerSix && !answerSeven) {
+            return(
+                <>
+                <h1 className={classes.Title}>Final Round</h1>
+                    <SwipeableList>
+                    {({ className, ...rest }) => (
+                        <>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerSeven(answerFive)
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{answerFive.name}</h3>
+                                        <p>{answerFive.description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                            <div className={classes.Card}>
+                                <SwipeableListItem
+                                    swipeLeft={{
+                                    content: <div>Winner</div>,
+                                    action: () => setAnswerSeven(answerSix)
+                                    }}
+                                    {...rest}
+                                    
+                                >
+                                    <div>
+                                        <h3>{answerSix.name}</h3>
+                                        <p>{answerSix.description}</p>
+                                    </div>
+                                </SwipeableListItem>
+                            </div>
+                        </>
+                    )}
+                    </SwipeableList>
+                </>
+            )
+        } else if (answerOne && answerTwo && answerThree && answerFour && answerFive && answerSix && answerSeven) {
+            return(
+                <div className={classes.Result}>
+                    <div className={classes.ResultText}>Congrats! The winner is {answerSeven.name}</div>
+                    <button className="Btn-border" onClick={submitAnswers}>Complete!</button>
+                </div>
+            )
+        }
     }
 
 
     // gradient for the background
     const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.6)";
-
-
 
 
     return(
@@ -161,35 +517,7 @@ const ResearchDevelopmentGame = () => {
                     <div className={classes.Instructions}>
                         <p>{game.instructions}</p>
                     </div>
-                    <SwipeableList>
-                        {({ className, ...rest }) => (
-                        <>
-                            <div className={classes.Instructions}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: <div>Revealed content during swipe</div>,
-                                    action: () => items[0].selected = true
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div>{items[0].name}</div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Instructions}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: <div>Revealed content during swipe</div>,
-                                    action: () => items[1].selected = true
-                                    }}
-                                    {...rest}      
-                                >
-                                    <div>{items[1].name}</div>
-                                </SwipeableListItem>
-                            </div>
-                        </>
-                        )}
-                    </SwipeableList>
+                    {displayItems()}
                 </div>
             </Route>
             <Route path="/research-development/result">

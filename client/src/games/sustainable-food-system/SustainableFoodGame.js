@@ -328,6 +328,7 @@ const SustainableFoodGame = () => {
                     }
                 }))
                 .then(res => {
+                    setSustainableFoodResult(resultText)
                     handleRedirect(res)
                 })
                     .catch(err => console.log(err))
