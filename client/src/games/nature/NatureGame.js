@@ -280,7 +280,7 @@ const NatureGame = () => {
                     text={game.intro}
                     skip='/clean-energy/intro'
                     link='/nature/game'
-                    back='/retrofithomes/result'
+                    back='/retrofit-homes/result'
                     gradient={gradient}
                     guy={Character}
                     background={Background}

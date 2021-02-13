@@ -29,10 +29,10 @@ const CircularEconomyResult = ({gradient}) => {
         <div className="GameNav">
           <div className="NavLink">
             <BiArrowBack className="LeftIcon"/> 
-            <Link to="/circulareconomy/game">Back</Link>
+            <Link to="/circular-economy/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/retrofithomes/intro">Next Game</Link>
+            <Link to="/retrofit-homes/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
@@ -42,7 +42,7 @@ const CircularEconomyResult = ({gradient}) => {
               <p>{text}</p>
             </div>
             < BadgeBox />
-            <Link to="/retrofithomes/intro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/retrofit-homes/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )

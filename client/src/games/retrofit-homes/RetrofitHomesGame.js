@@ -311,9 +311,9 @@ const RetrofitHomesGame = () => {
 
     const handleRedirect = (res) => {
         if(res.status === 201 || res.status === 200) {
-            window.location = '/retrofithomes/result'
+            window.location = '/retrofit-homes/result'
         } else {
-            window.location = '/retrofithomes/game'
+            window.location = '/retrofit-homes/game'
         }
     }
 
@@ -326,23 +326,23 @@ const RetrofitHomesGame = () => {
 
     return(
         <Switch>
-            <Route path="/retrofithomes/intro">
+            <Route path="/retrofit-homes/intro">
                 <Intro 
                     text={game.intro}
-                    link='/retrofithomes/game'
-                    game='/retrofithomes'
-                    back="/circulareconomy/result"
+                    link='/retrofit-homes/game'
+                    game='/retrofit-homes'
+                    back="/circular-economy/result"
                     skip="/nature/intro"
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="RetrofitCharacter"
                     gradient={gradient} />
             </Route>
-            <Route path="/retrofithomes/game">
+            <Route path="/retrofit-homes/game">
                 <div className="GameNav">
                     <div className="NavLink">
                         <BiArrowBack className="LeftIcon"/>
-                        <Link to='/retrofithomes/intro'>Back</Link>
+                        <Link to='/retrofit-homes/intro'>Back</Link>
                     </div>
                     <div className="NavLink">
                         <a className="" onClick={startOver} >Start over  </a>
@@ -395,7 +395,7 @@ const RetrofitHomesGame = () => {
                 </div>
                 </div>
             </Route>
-            <Route path="/retrofithomes/result">
+            <Route path="/retrofit-homes/result">
                 <RetrofitHomesResult />
             </Route>
         </Switch>

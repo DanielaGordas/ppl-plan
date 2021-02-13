@@ -237,15 +237,15 @@ const CircularEconomyGame = () => {
 
     // decides the result of the game   
     const result = () => {
-        let result = ""
+        let result = "";
         if(now.length > future.length && now.length > never.length) {
-            result = "now"
+            result = "now";
         } else if (future.length > now.length && future.length > never.length) {
             result = "future";
         } else if (never.length > now.length && never.length > future.length) {
-            result = "never"
+            result = "never";
         } else {
-            result = "equal"
+            result = "equal";
         }
         return result;
     }
@@ -290,9 +290,9 @@ const CircularEconomyGame = () => {
         
     const handleRedirect = (res) => {
         if(res.status === 201 || res.status === 200) {
-            window.location = '/circulareconomy/result'
+            window.location = '/circular-economy/result'
         } else {
-            window.location = '/circulareconomy/game'
+            window.location = '/circular-economy/game'
         }
     }
 
@@ -306,23 +306,23 @@ const CircularEconomyGame = () => {
     
     return(
         <Switch>
-            <Route path="/circulareconomy/intro">
+            <Route path="/circular-economy/intro">
                 <Intro
                     text={game.intro}
-                    skip='/retrofithomes/intro'
-                    link='/circulareconomy/game'
-                    back='/lowcarbon/result'
+                    skip='/retrofit-homes/intro'
+                    link='/circular-economy/game'
+                    back='/low-carbon/result'
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="CircularCharacter"
                     gradient={gradient}
                 />
             </Route>
-            <Route path="/circulareconomy/game">
+            <Route path="/circular-economy/game">
                 <div className="GameNav">
                     <div className="NavLink">
                         <BiArrowBack className="LeftIcon"/>
-                        <Link to='/circulareconomy/intro'>Back</Link>
+                        <Link to='/circular-economy/intro'>Back</Link>
                     </div>
                     <div className="NavLink">
                         <a className="" onClick={startOver} >Start over</a>
@@ -359,7 +359,7 @@ const CircularEconomyGame = () => {
                     </div>
                 </div>
             </Route>
-            <Route path="/circulareconomy/result">
+            <Route path="/circular-economy/result">
                 <CircularEconomyResult gradient={gradient}/>
             </Route>
         </Switch>
