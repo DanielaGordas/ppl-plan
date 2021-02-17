@@ -246,7 +246,7 @@ const CleanEnergyGame = () => {
     // retrieves result from Local Storage
     const cleanEnergyText = JSON.parse(window.localStorage.getItem('result7'));
 
-    const resultText = "Amazing! You and your town have got some sound policies in place, more power to you! You have earned the Buzz Badge."
+    const resultText = "Amazing! You and your town have got some sound policies in place, more power to you!"
 
     const [ cleanEnergyResult, setCleanEnergyResult ] = useState(cleanEnergyText || "") 
     // save the result to Local Storage

@@ -25,6 +25,7 @@ const NatureResult = ({gradient, background}) => {
         </div>
         <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient}), url(${background})`}}>
             <div className={classes.Text}>
+            {text ? <h3>You've earned the <strong> MOSSY BADGE</strong>!</h3> : null}
               <p>{text}</p>
             </div>
             < BadgeBox />

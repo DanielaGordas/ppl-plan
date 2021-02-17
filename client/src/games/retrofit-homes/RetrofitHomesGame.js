@@ -271,7 +271,7 @@ const RetrofitHomesGame = () => {
      const retrofitHomesText = JSON.parse(window.localStorage.getItem('result3'));
 
 
-    const resultText = "It’s estimated the UK has 28 million homes badly in need of energy efficiency improvements!  Thanks for helping prioritise the changes we should make first. Now you can collect your Net Zero Home Badge!"
+    const resultText = "It’s estimated the UK has 28 million homes badly in need of energy efficiency improvements!  Thanks for helping prioritise the changes we should make first."
 
     const [retrofitHomesResult, setRetrofitHomesResult] = useState(retrofitHomesText || "")
 
