@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
-import background from "../../images/low-carbon/Game_1_screen_1.svg";
+import background from "../../images/sustainable-food-system/Game_2_background_scene.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";

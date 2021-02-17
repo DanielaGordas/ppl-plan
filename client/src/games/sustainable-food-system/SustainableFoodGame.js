@@ -6,7 +6,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import SustainableFoodResult from './SustainableFoodResult';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
-import classes from '../../styles/pages/low-carbon.module.scss';
+import classes from '../../styles/pages/sustainable-food-system.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
 import Modal from '../../components/Modal';
@@ -14,11 +14,29 @@ import itemTypes from '../../components/ItemTypes';
 import MyPreview from '../../components/MyPreview';
 
 // Icons and Images
-import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg';
+import AnimalAgricultureDiet from '../../images/sustainable-food-system/Animal_agriculture_diets_icon.svg'
+import EdibleFoodWaste from '../../images/sustainable-food-system/Ban_edible_food_waste_icon.svg'
+import BetterFoodLabels from '../../images/sustainable-food-system/Better_food_labels_icon.svg'
+import CommunityAllotments from '../../images/sustainable-food-system/Community_allotments_icon.svg'
+import CommunityComposting from '../../images/sustainable-food-system/Community_composting_icon.svg'
+import EducationOnPlantBased from '../../images/sustainable-food-system/Education_on_plant-based_diets_icon.svg'
+import EnvironmentalFoodLabels from '../../images/sustainable-food-system/Environmental_food_labels_icon.svg'
+import FoodWaste from '../../images/sustainable-food-system/Food_waste_icon.svg'
+import HouseholdFoodWaste from '../../images/sustainable-food-system/Household_food_waste_collection_icon.svg'
+import IntroduceEductational from '../../images/sustainable-food-system/Introduce_educational_programmes_on_growing_food_sustainably_icon.svg'
+import CommunityGrowingProjects from '../../images/sustainable-food-system/Invest_community_growing_projects_icon.svg'
+import LocalSupplierContracts from '../../images/sustainable-food-system/Local supplier contracts_icon.svg'
+import LocalisedFoodSystem from '../../images/sustainable-food-system/Localised_food_system_icon.svg'
+import PetitionSchools from '../../images/sustainable-food-system/Petition_schools_hospitals__offer_more_plant-based_options_icon.svg'
+import EatingUgly from '../../images/sustainable-food-system/Promote_eating_‘ugly’_fruits_icon.svg'
+import EatingSeasonsal from '../../images/sustainable-food-system/Promote_eating_seasonally_icon.svg'
+import SustainableFarming from '../../images/sustainable-food-system/Promote_sustainable_farming_icon.svg'
+import Repurpose from '../../images/sustainable-food-system/Repurpose_farmland_icon.svg'
+import TakePart from '../../images/sustainable-food-system/Take_part_plant-based_research_development_icon.svg'
 import { FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
-import Guy from '../../images/low-carbon/Character_1_First_screen.svg';
+import IntroBackground from '../../images/sustainable-food-system/Game_2_background_scene.svg';
+import Guy from '../../images/sustainable-food-system/Character 2.svg';
 
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
@@ -141,7 +159,7 @@ const SustainableFoodGame = () => {
             column: 'food waste',
             category: 'food waste',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: EdibleFoodWaste
         },
         {
             id: 2, 
@@ -150,7 +168,7 @@ const SustainableFoodGame = () => {
             column: 'food waste',
             category: 'food waste',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: EatingUgly
         },
         {
             id: 3, 
@@ -159,7 +177,7 @@ const SustainableFoodGame = () => {
             column: 'food waste',
             category: 'food waste',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: CommunityComposting
         },
         {
             id: 4, 
@@ -168,7 +186,7 @@ const SustainableFoodGame = () => {
             column: 'food waste',
             category: 'food waste',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: HouseholdFoodWaste
         },
         {
             id: 5, 
@@ -177,7 +195,7 @@ const SustainableFoodGame = () => {
             column: 'food waste',
             category: 'food waste',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: BetterFoodLabels
         },
         {
             id: 6, 
@@ -186,7 +204,7 @@ const SustainableFoodGame = () => {
             column: 'animal agriculture & diet',
             category: 'animal agriculture & diet',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: EnvironmentalFoodLabels
         },
         {
             id: 7, 
@@ -195,7 +213,7 @@ const SustainableFoodGame = () => {
             column: 'animal agriculture & diet',
             category: 'animal agriculture & diet',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: EducationOnPlantBased
         },
         {
             id: 8, 
@@ -204,7 +222,7 @@ const SustainableFoodGame = () => {
             column: 'animal agriculture & diet',
             category: 'animal agriculture & diet',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: PetitionSchools
         },
         {
             id: 9, 
@@ -213,7 +231,7 @@ const SustainableFoodGame = () => {
             column: 'animal agriculture & diet',
             category: 'animal agriculture & diet',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: SustainableFarming
         },
         {
             id: 10, 
@@ -222,7 +240,7 @@ const SustainableFoodGame = () => {
             column: 'animal agriculture & diet',
             category: 'animal agriculture & diet',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: TakePart
         },
         {
             id: 11, 
@@ -231,7 +249,7 @@ const SustainableFoodGame = () => {
             column: 'localised food system',
             category: 'localised food system',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: LocalSupplierContracts
         },
         {
             id: 12, 
@@ -240,7 +258,7 @@ const SustainableFoodGame = () => {
             column: 'localised food system',
             category: 'localised food system',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: EatingSeasonsal
         },
         {
             id: 13, 
@@ -249,7 +267,7 @@ const SustainableFoodGame = () => {
             column: 'localised food system',
             category: 'localised food system',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: CommunityGrowingProjects
         },
         {
             id: 14, 
@@ -258,7 +276,7 @@ const SustainableFoodGame = () => {
             column: 'localised food system',
             category: 'localised food system',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: EducationOnPlantBased
         },
         {
             id: 15, 
@@ -267,7 +285,7 @@ const SustainableFoodGame = () => {
             column: 'localised food system',
             category: 'localised food system',
             game: "Sustainable Food System",
-            svg: CarScrappageScheme
+            svg: Repurpose
         }
       
     ]
@@ -351,21 +369,31 @@ const SustainableFoodGame = () => {
     const displayColumn = () => {
         if (finalItems.length >= 0 && finalItems.length < 2) {
             return (
-                <Column title='food waste' className={classes.Box}>
-                    {returnItemsForColumn('food waste')}
-                </Column>
+                <>
+                    <h3 className={classes.Category}>Food Waste</h3>
+                    <Column title='food waste' className={classes.Box}>
+                        
+                        {returnItemsForColumn('food waste')}
+                    </Column>
+                </>
             )
         } else if (finalItems.length >= 2 && finalItems.length < 4) {
             return (
-                <Column title='animal agriculture & diet' className={classes.Box}>
-                    {returnItemsForColumn('animal agriculture & diet')}
-                </Column>
+                <>
+                    <h3 className={classes.Category}>Animal Agriculture & Diet</h3>
+                    <Column title='animal agriculture & diet' className={classes.Box}>
+                        {returnItemsForColumn('animal agriculture & diet')}
+                    </Column>
+                </>
             )
         } else if (finalItems.length >= 4) {
             return (
-                <Column title='localised food system' className={classes.Box}>
-                    {returnItemsForColumn('localised food system')}
-                </Column>
+                <>
+                    <h3 className={classes.Category}>Localised Food System</h3>
+                    <Column title='localised food system' className={classes.Box}>
+                        {returnItemsForColumn('localised food system')}
+                    </Column>
+                </>
             )
         }
     }
@@ -382,7 +410,7 @@ const SustainableFoodGame = () => {
                     skip='/circulareconomy/intro'
                     background={IntroBackground}
                     guy={Guy}
-                    guyPosition="LowcarbonCharacter"
+                    guyPosition="SustainableFoodCharacter"
                     gradient={gradient}
                 />
             </Route>
@@ -394,12 +422,11 @@ const SustainableFoodGame = () => {
                     </div>
                     <div className="NavLink">
                         <a className="" onClick={startOver} >Start over  </a>
-                        < BiRevision className="RightIcon"/>
+                        <BiRevision className="RightIcon"/>
                     </div>
                 </div>
                 <div className={classes.Background}>               
                     <div className={classes.Instructions}>
-                        <h3>{game.title}</h3>
                         <p>{game.instructions}</p>
                     </div>   
                     <div className={classes.Container}>            
@@ -423,7 +450,7 @@ const SustainableFoodGame = () => {
                             <Column title='5' className={classes.Selected}>
                                 {returnItemsForColumn('5')}
                             </Column>
-                            <Column title='5' className={classes.Selected}>
+                            <Column title='6' className={classes.Selected}>
                                 {returnItemsForColumn('6')}
                             </Column>
                             </div>
