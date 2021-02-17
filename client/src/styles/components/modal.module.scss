@@ -3,7 +3,8 @@
 .ModalWrapper {
   background: $white;
   width: 90%;
-  height: 50rem;
+  height: auto;
+  min-height: 40rem;
   margin: 0 auto;
   padding: 1rem;
   position: absolute;

@@ -382,7 +382,7 @@ const LowCarbonTravelGame = () => {
         setItems(lowCarbonTravelAnswers)
     }
 
-    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
+    const gradient = "rgba(169, 219, 232, 1), rgba(255, 255, 255, 0.6)";
 
     return(
         <Switch>
@@ -450,7 +450,7 @@ const LowCarbonTravelGame = () => {
                 </div>
             </Route>
             <Route path="/low-carbon/result">
-                <LowCarbonResult />
+                <LowCarbonResult gradient={gradient}/>
             </Route>
         </Switch>
     )
