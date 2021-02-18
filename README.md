@@ -1,6 +1,6 @@
 ## THE PEOPLE'S PLAN
 
-This project contains one Ruby on Rails API backend app and one React front-end app bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project contains one Ruby 2.6.6 on Rails 6.0.3 API backend app and one React front-end app bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
