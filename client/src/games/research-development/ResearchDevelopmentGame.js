@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Intro from '../../components/Intro';
 import { Switch, Route, Link } from 'react-router-dom';
 import ResearchDevelopmentResult from './ResearchDevelopmentResult';
+import Modal from '../../components/Modal';
 import classes from '../../styles/pages/research-development.module.scss';
 import axios from 'axios';
 import { SwipeableList, SwipeableListItem } from '@sandstreamdev/react-swipeable-list';
@@ -9,9 +10,10 @@ import '@sandstreamdev/react-swipeable-list/dist/styles.css';
 
 // Images and icons
 
-import { BiArrowBack, BiRevision } from "react-icons/bi";
-import Character from '../../images/nature/Character 6.svg';
-import Background from '../../images/nature/Game_6_First_Screen.svg';
+import { BiArrowBack, BiRevision, BiTrophy } from "react-icons/bi";
+import { IoIosArrowForward } from "react-icons/io";
+import Character from '../../images/research-development/Character_8.svg';
+import Background from '../../images/research-development/Game_8.svg';
 
 const ResearchDevelopmentGame = () => {
 
@@ -19,7 +21,7 @@ const ResearchDevelopmentGame = () => {
         id: 8, 
         title: "Research and Development",
         intro: "The most famous climate lab in the world has been given some funding for an amazing new R&D project. All the scientists in the lab are competing for this money. The R&D projects are going head to head, and you decide which project wins!",
-        instructions: "Play each battle and decide the winner by swipping left. You will play 2 rounds leading to the grand final and an overall winner."
+        instructions: "Play each battle and decide the winner by swiping left. You will play 2 rounds leading to the grand final and an overall winner."
     }
 
     const researchDevelopmentAnswers = [
@@ -100,8 +102,7 @@ const ResearchDevelopmentGame = () => {
     const [game, setGame] = useState(researchDevelopmentGame);
     const [items, setItems] = useState(researchDevelopmentAnswers);
 
-    // decides if device is mobile or desktop for touch/click events
-    const isMobile = window.innerWidth < 600;
+    const [info, setInfo] = useState([researchDevelopmentAnswers[0].name, researchDevelopmentAnswers[0].description])
 
     // retrieves guest user details from localStorage
     const guestDetails =JSON.parse(window.localStorage.getItem('guest'));
@@ -173,46 +174,65 @@ const ResearchDevelopmentGame = () => {
         }
 
 
-    const [show, setShow] = useState(false);
-    const openModal = () => setShow(true);  
-    const closeModal = () => setShow(false);
+    // const [show, setShow] = useState(false);
+    // const openModal = () => setShow(true);  
+    // const closeModal = () => setShow(false);
+
 
     const displayItems = () => {
 
         if (!answerOne && !answerTwo && !answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
             return(
                 <>
-                    <h1 className={classes.Title}>First Round</h1>
+                    <h1 className={classes.Title}>First Round - Battle 1</h1>
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerOne(items[0])
                                     }}
                                     {...rest}
 
                                 >
-                                <div>
-                                    <h3>{items[0].name}</h3>
-                                    <p>{items[0].description}</p>
+                                <div className={classes.Content}>
+                                    <div>
+                                        <h3>{items[0].name}</h3>
+                                        <p>{items[0].description}</p>  
+                                    </div>
+                                    <div>
+                                        < IoIosArrowForward fontSize="5rem"/>
+                                    </div>
                                 </div>
                                 </SwipeableListItem>
                             </div>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerOne(items[1])
                                     }}
                                     {...rest}
                                 
                                     >
-                                    <div>
-                                        <h3>{items[1].name}</h3>
-                                        <p>{items[1].description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{items[1].name}</h3>
+                                            <p>{items[1].description}</p>  
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
@@ -224,37 +244,56 @@ const ResearchDevelopmentGame = () => {
         } else if (answerOne && !answerTwo && !answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
             return(
                 <>
-                    <h1 className={classes.Title}>First Round</h1>
+                    <h1 className={classes.Title}>First Round - Battle 2</h1>
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content:
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerTwo(items[2])
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{items[2].name}</h3>
-                                        <p>{items[2].description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{items[2].name}</h3>
+                                            <p>{items[2].description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerTwo(items[3])
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{items[3].name}</h3>
-                                        <p>{items[3].description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{items[3].name}</h3>
+                                            <p>{items[3].description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
+
                                     </div>
                                 </SwipeableListItem>
                             </div>
@@ -266,37 +305,55 @@ const ResearchDevelopmentGame = () => {
         } else if (answerOne && answerTwo && !answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
             return(
                 <>  
-                    <h1 className={classes.Title}>First Round</h1>
+                    <h1 className={classes.Title}>First Round - Battle 3</h1>
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerThree(items[4])
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{items[4].name}</h3>
-                                        <p>{items[4].description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{items[4].name}</h3>
+                                            <p>{items[4].description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerThree(items[5])
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{items[5].name}</h3>
-                                        <p>{items[5].description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{items[5].name}</h3>
+                                            <p>{items[5].description}</p> 
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
@@ -308,37 +365,55 @@ const ResearchDevelopmentGame = () => {
         } else if (answerOne && answerTwo && answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
             return(
                 <>
-                    <h1 className={classes.Title}>First Round</h1>
+                    <h1 className={classes.Title}>First Round - Battle 4</h1>
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerFour(items[6])
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{items[6].name}</h3>
-                                        <p>{items[6].description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{items[6].name}</h3>
+                                            <p>{items[6].description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerFour(items[7])
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{items[7].name}</h3>
-                                        <p>{items[7].description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{items[7].name}</h3>
+                                            <p>{items[7].description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
@@ -350,37 +425,55 @@ const ResearchDevelopmentGame = () => {
         } else if (answerOne && answerTwo && answerThree && answerFour && !answerFive && !answerSix && !answerSeven) {
             return(
                 <>
-                    <h1 className={classes.Title}>Second Round</h1>
+                    <h1 className={classes.Title}>Second Round - Battle 1</h1>
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerFive(answerOne)
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{answerOne.name}</h3>
-                                        <p>{answerOne.description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{answerOne.name}</h3>
+                                            <p>{answerOne.description}</p> 
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerFive(answerTwo)
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{answerTwo.name}</h3>
-                                        <p>{answerTwo.description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{answerTwo.name}</h3>
+                                            <p>{answerTwo.description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
@@ -392,37 +485,55 @@ const ResearchDevelopmentGame = () => {
         } else if (answerOne && answerTwo && answerThree && answerFour && answerFive && !answerSix && !answerSeven) {
             return(
                 <>
-                    <h1 className={classes.Title}>Second Round</h1>
+                    <h1 className={classes.Title}>Second Round - Battle 2</h1>
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerSix(answerThree)
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{answerThree.name}</h3>
-                                        <p>{answerThree.description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{answerThree.name}</h3>
+                                            <p>{answerThree.description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerSix(answerFour)
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{answerFour.name}</h3>
-                                        <p>{answerFour.description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{answerFour.name}</h3>
+                                            <p>{answerFour.description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
@@ -441,30 +552,48 @@ const ResearchDevelopmentGame = () => {
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerSeven(answerFive)
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{answerFive.name}</h3>
-                                        <p>{answerFive.description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{answerFive.name}</h3>
+                                            <p>{answerFive.description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
                             <div className={classes.Card}>
                                 <SwipeableListItem
                                     swipeLeft={{
-                                    content: <div>Winner</div>,
+                                    content: 
+                                        <div className={classes.SwipeContent}>
+                                            <BiTrophy />
+                                            <span>Winner</span>
+                                        </div>,
                                     action: () => setAnswerSeven(answerSix)
                                     }}
                                     {...rest}
                                     
                                 >
-                                    <div>
-                                        <h3>{answerSix.name}</h3>
-                                        <p>{answerSix.description}</p>
+                                    <div className={classes.Content}>
+                                        <div>
+                                            <h3>{answerSix.name}</h3>
+                                            <p>{answerSix.description}</p>
+                                        </div>
+                                        <div>
+                                            < IoIosArrowForward fontSize="5rem"/>
+                                        </div>
                                     </div>
                                 </SwipeableListItem>
                             </div>
@@ -476,7 +605,11 @@ const ResearchDevelopmentGame = () => {
         } else if (answerOne && answerTwo && answerThree && answerFour && answerFive && answerSix && answerSeven) {
             return(
                 <div className={classes.Result}>
-                    <div className={classes.ResultText}>Congrats! The winner is {answerSeven.name}</div>
+
+                    <div className={classes.ResultText}>
+                        <BiTrophy className={classes.WinnerIcon}/>
+                        <h3>Congrats! The winner is {answerSeven.name}</h3>
+                    </div>
                     <button className="Btn-border" onClick={submitAnswers}>Complete!</button>
                 </div>
             )
@@ -499,7 +632,7 @@ const ResearchDevelopmentGame = () => {
                     gradient={gradient}
                     guy={Character}
                     background={Background}
-                    guyPosition="NatureCharacter"
+                    guyPosition="ResearchCharacter"
                 />
             </Route>
             <Route path="/research-development/game">
