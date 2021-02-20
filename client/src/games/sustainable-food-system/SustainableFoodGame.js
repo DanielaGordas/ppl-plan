@@ -406,8 +406,8 @@ const SustainableFoodGame = () => {
                 <Intro
                     text={game.intro}
                     link='/sustainable-food-system/game'
-                    back='/user'
-                    skip='/circulareconomy/intro'
+                    back='/retrofit-homes/result'
+                    skip='/outro'
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="SustainableFoodCharacter"
@@ -459,7 +459,7 @@ const SustainableFoodGame = () => {
                 </div>
             </Route>
             <Route path="/sustainable-food-system/result">
-                <SustainableFoodResult />
+                <SustainableFoodResult gradient={gradient}/>
             </Route>
         </Switch>
     )

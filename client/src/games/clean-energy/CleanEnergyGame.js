@@ -303,9 +303,9 @@ const CleanEnergyGame = () => {
             <Route path="/clean-energy/intro">
                 <Intro
                     text={game.intro}
-                    skip='/outro'
+                    skip='/nature/intro'
                     link='/clean-energy/game'
-                    back='/nature/result'
+                    back='/low-carbon/result'
                     background={Background}
                     gradient={gradient}
                     guy={Guy}

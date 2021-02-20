@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-@media (min-height: 600px) {
+@media (min-height: 450px) {
   .Background {
     height: 100vh;
   }
@@ -85,13 +85,20 @@
 
 .Content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 1rem;
+  width: 100%;
+
+  svg {
+    align-self: right;
+  }
 }
 
 .SwipeContent {
-  background: $green;
+  background: $light-blue;
   font-size: $font-large;
+  font-weight: 700;
   text-transform: uppercase;
   height: 6rem;
   width: 100%;
@@ -103,6 +110,34 @@
 
   span {
     margin-left: 1rem;
+  }
+}
+
+.CollapsibleHead {
+  font-size: $font-small !important;
+  font-family: 'Comfortaa', cursive !important;
+  background: none !important;
+  color: $light-blue !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+
+}
+
+.CollapsibleHead:active, .CollapsibleHead:hover, .CollapsibleHead:focus {
+  background: none !important;
+  outline: none !important;
+}
+
+.CollapsibleContent {
+  font-size: $font-small !important;
+  font-family: 'Comfortaa', cursive !important;
+  background: none !important;
+  color: $dark-blue !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+
+  p {
+    margin: 0 !important;
   }
 }
 

@@ -19,7 +19,7 @@ const CleanEnergyResult = ({gradient, background}) => {
             <Link to="/clean-energy/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/outro">Next Game</Link>
+            <Link to="/nature/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
@@ -29,7 +29,7 @@ const CleanEnergyResult = ({gradient, background}) => {
               <p>{text}</p>
             </div>
             < BadgeBox />
-            <Link to="/outro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/nature/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )

@@ -332,7 +332,7 @@ const RetrofitHomesGame = () => {
                     link='/retrofit-homes/game'
                     game='/retrofit-homes'
                     back="/circular-economy/result"
-                    skip="/nature/intro"
+                    skip="/sustainable-food-system/intro"
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="RetrofitCharacter"
@@ -396,7 +396,7 @@ const RetrofitHomesGame = () => {
                 </div>
             </Route>
             <Route path="/retrofit-homes/result">
-                <RetrofitHomesResult />
+                <RetrofitHomesResult gradient={gradient}/>
             </Route>
         </Switch>
     )

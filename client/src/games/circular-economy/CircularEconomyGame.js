@@ -311,7 +311,7 @@ const CircularEconomyGame = () => {
                     text={game.intro}
                     skip='/retrofit-homes/intro'
                     link='/circular-economy/game'
-                    back='/low-carbon/result'
+                    back='/research-development/result'
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="CircularCharacter"

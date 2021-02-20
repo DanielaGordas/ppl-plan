@@ -27,7 +27,7 @@ const LowCarbonResult = ({gradient}) => {
             <Link to="/low-carbon/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/circular-economy/intro">Next Game</Link>
+            <Link to="/clean-energy/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
@@ -37,7 +37,7 @@ const LowCarbonResult = ({gradient}) => {
               <p>{text}</p>
             </div>
             < BadgeBox />
-            <Link to="/circular-economy/intro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/clean-energy/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )

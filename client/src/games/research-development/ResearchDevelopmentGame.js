@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Intro from '../../components/Intro';
 import { Switch, Route, Link } from 'react-router-dom';
 import ResearchDevelopmentResult from './ResearchDevelopmentResult';
-import Modal from '../../components/Modal';
 import classes from '../../styles/pages/research-development.module.scss';
 import axios from 'axios';
 import { SwipeableList, SwipeableListItem } from '@sandstreamdev/react-swipeable-list';
 import '@sandstreamdev/react-swipeable-list/dist/styles.css';
+import { CollapsibleComponent, CollapsibleHead, CollapsibleContent} from "react-collapsible-component";
 
 // Images and icons
 
 import { BiArrowBack, BiRevision, BiTrophy } from "react-icons/bi";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 import Character from '../../images/research-development/Character_8.svg';
 import Background from '../../images/research-development/Game_8.svg';
 
@@ -174,11 +174,6 @@ const ResearchDevelopmentGame = () => {
         }
 
 
-    // const [show, setShow] = useState(false);
-    // const openModal = () => setShow(true);  
-    // const closeModal = () => setShow(false);
-
-
     const displayItems = () => {
 
         if (!answerOne && !answerTwo && !answerThree && !answerFour && !answerFive && !answerSix && !answerSeven) {
@@ -187,55 +182,59 @@ const ResearchDevelopmentGame = () => {
                     <h1 className={classes.Title}>First Round - Battle 1</h1>
                     <SwipeableList>
                     {({ className, ...rest }) => (
-                        <>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerOne(items[0])
-                                    }}
-                                    {...rest}
+                        <>  
+                            <CollapsibleComponent>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerOne(items[0])
+                                        }}
+                                        {...rest}
 
-                                >
-                                <div className={classes.Content}>
-                                    <div>
-                                        <h3>{items[0].name}</h3>
-                                        <p>{items[0].description}</p>  
-                                    </div>
-                                    <div>
-                                        < IoIosArrowForward fontSize="5rem"/>
-                                    </div>
-                                </div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerOne(items[1])
-                                    }}
-                                    {...rest}
-                                
                                     >
                                     <div className={classes.Content}>
                                         <div>
-                                            <h3>{items[1].name}</h3>
-                                            <p>{items[1].description}</p>  
+                                            <h3>{items[0].name}</h3>
+                                            <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                            <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[0].description}</p>  </CollapsibleContent>
                                         </div>
                                         <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
+                                            < IoIosArrowBack fontSize="5rem"/>
                                         </div>
                                     </div>
-                                </SwipeableListItem>
-                            </div>
+                                    </SwipeableListItem>
+                                </div>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerOne(items[1])
+                                        }}
+                                        {...rest}
+                                    
+                                        >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{items[1].name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[1].description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
+                                        </div>
+                                    </SwipeableListItem>
+                                </div>
+                            </CollapsibleComponent>
                         </>
                     )}
                     </SwipeableList>
@@ -248,55 +247,59 @@ const ResearchDevelopmentGame = () => {
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content:
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerTwo(items[2])
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{items[2].name}</h3>
-                                            <p>{items[2].description}</p>
+                            <CollapsibleComponent>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content:
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerTwo(items[2])
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{items[2].name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[2].description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
-                                        </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerTwo(items[3])
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{items[3].name}</h3>
-                                            <p>{items[3].description}</p>
-                                        </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
-                                        </div>
+                                    </SwipeableListItem>
+                                </div>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerTwo(items[3])
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{items[3].name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[3].description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
 
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
+                                        </div>
+                                    </SwipeableListItem>
+                                </div>
+                            </CollapsibleComponent>
                         </>
                     )}
                     </SwipeableList>
@@ -309,54 +312,58 @@ const ResearchDevelopmentGame = () => {
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerThree(items[4])
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{items[4].name}</h3>
-                                            <p>{items[4].description}</p>
+                            <CollapsibleComponent>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerThree(items[4])
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{items[4].name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[4].description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
+                                    </SwipeableListItem>
+                                </div>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerThree(items[5])
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{items[5].name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[5].description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerThree(items[5])
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{items[5].name}</h3>
-                                            <p>{items[5].description}</p> 
-                                        </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
-                                        </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
+                                    </SwipeableListItem>
+                                </div>
+                            </CollapsibleComponent>
                         </>
                     )}
                     </SwipeableList>
@@ -369,54 +376,58 @@ const ResearchDevelopmentGame = () => {
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerFour(items[6])
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{items[6].name}</h3>
-                                            <p>{items[6].description}</p>
+                            <CollapsibleComponent>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerFour(items[6])
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{items[6].name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[6].description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
+                                    </SwipeableListItem>
+                                </div>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerFour(items[7])
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{items[7].name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{items[7].description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerFour(items[7])
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{items[7].name}</h3>
-                                            <p>{items[7].description}</p>
-                                        </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
-                                        </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
+                                    </SwipeableListItem>
+                                </div>
+                            </CollapsibleComponent>
                         </>
                     )}
                     </SwipeableList>
@@ -429,54 +440,58 @@ const ResearchDevelopmentGame = () => {
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerFive(answerOne)
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{answerOne.name}</h3>
-                                            <p>{answerOne.description}</p> 
+                            <CollapsibleComponent>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerFive(answerOne)
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{answerOne.name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{answerOne.description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
+                                    </SwipeableListItem>
+                                </div>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerFive(answerTwo)
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{answerTwo.name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{answerTwo.description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerFive(answerTwo)
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{answerTwo.name}</h3>
-                                            <p>{answerTwo.description}</p>
-                                        </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
-                                        </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
+                                    </SwipeableListItem>
+                                </div>
+                            </CollapsibleComponent>
                         </>
                     )}
                     </SwipeableList>
@@ -489,54 +504,58 @@ const ResearchDevelopmentGame = () => {
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerSix(answerThree)
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{answerThree.name}</h3>
-                                            <p>{answerThree.description}</p>
+                            <CollapsibleComponent>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerSix(answerThree)
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{answerThree.name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{answerThree.description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
+                                    </SwipeableListItem>
+                                </div>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerSix(answerFour)
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{answerFour.name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{answerFour.description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerSix(answerFour)
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{answerFour.name}</h3>
-                                            <p>{answerFour.description}</p>
-                                        </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
-                                        </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
+                                    </SwipeableListItem>
+                                </div>
+                            </CollapsibleComponent>
                         </>
                     )}
                     </SwipeableList>
@@ -549,54 +568,58 @@ const ResearchDevelopmentGame = () => {
                     <SwipeableList>
                     {({ className, ...rest }) => (
                         <>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerSeven(answerFive)
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{answerFive.name}</h3>
-                                            <p>{answerFive.description}</p>
+                            <CollapsibleComponent>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerSeven(answerFive)
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{answerFive.name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{answerFive.description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
+                                    </SwipeableListItem>
+                                </div>
+                                <div className={classes.Card}>
+                                    <SwipeableListItem
+                                        swipeLeft={{
+                                        content: 
+                                            <div className={classes.SwipeContent}>
+                                                <BiTrophy />
+                                                <span>Winner</span>
+                                            </div>,
+                                        action: () => setAnswerSeven(answerSix)
+                                        }}
+                                        {...rest}
+                                        
+                                    >
+                                        <div className={classes.Content}>
+                                            <div>
+                                                <h3>{answerSix.name}</h3>
+                                                <CollapsibleHead className={classes.CollapsibleHead}>Read More</CollapsibleHead>
+                                                <CollapsibleContent className={classes.CollapsibleContent}> <p>{answerSix.description}</p>  </CollapsibleContent>
+                                            </div>
+                                            <div>
+                                                < IoIosArrowBack fontSize="5rem"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
-                            <div className={classes.Card}>
-                                <SwipeableListItem
-                                    swipeLeft={{
-                                    content: 
-                                        <div className={classes.SwipeContent}>
-                                            <BiTrophy />
-                                            <span>Winner</span>
-                                        </div>,
-                                    action: () => setAnswerSeven(answerSix)
-                                    }}
-                                    {...rest}
-                                    
-                                >
-                                    <div className={classes.Content}>
-                                        <div>
-                                            <h3>{answerSix.name}</h3>
-                                            <p>{answerSix.description}</p>
-                                        </div>
-                                        <div>
-                                            < IoIosArrowForward fontSize="5rem"/>
-                                        </div>
-                                    </div>
-                                </SwipeableListItem>
-                            </div>
+                                    </SwipeableListItem>
+                                </div>
+                            </CollapsibleComponent>
                         </>
                     )}
                     </SwipeableList>
@@ -626,9 +649,9 @@ const ResearchDevelopmentGame = () => {
             <Route path="/research-development/intro">
                 <Intro
                     text={game.intro}
-                    skip='/outro'
+                    skip='/circular-economy/intro'
                     link='/research-development/game'
-                    back='/sustainable-food-system/result'
+                    back='/nature/result'
                     gradient={gradient}
                     guy={Character}
                     background={Background}

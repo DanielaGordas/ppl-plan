@@ -391,7 +391,7 @@ const LowCarbonTravelGame = () => {
                     text={game.intro}
                     link='/low-carbon/game'
                     back='/user'
-                    skip='/circular-economy/intro'
+                    skip='/clean-energy/intro'
                     background={IntroBackground}
                     guy={Guy}
                     guyPosition="LowcarbonCharacter"

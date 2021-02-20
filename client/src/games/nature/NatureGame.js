@@ -227,7 +227,7 @@ const NatureGame = () => {
         window.localStorage.setItem('result6', JSON.stringify(natureResult));
     })
 
-    const resultText = "Nature is important for removing pollution, protecting against flooding and helps improve everyone’s mental and physical health. For taking a peek into the future we think you’ve earned the Mossy Medallion."
+    const resultText = "Nature is important for removing pollution, protecting against flooding and helps improve everyone’s mental and physical health."
 
     // Logic for persisting the answers in the DB: 
 
@@ -278,9 +278,9 @@ const NatureGame = () => {
             <Route path="/nature/intro">
                 <Intro
                     text={game.intro}
-                    skip='/clean-energy/intro'
+                    skip='/research-development/intro'
                     link='/nature/game'
-                    back='/retrofit-homes/result'
+                    back='/clean-energy/result'
                     gradient={gradient}
                     guy={Character}
                     background={Background}
