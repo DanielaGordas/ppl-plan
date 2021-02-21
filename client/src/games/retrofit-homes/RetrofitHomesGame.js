@@ -318,7 +318,7 @@ const RetrofitHomesGame = () => {
     }
 
 
-    const gradient = "rgba(19, 213, 255, .8),rgba(255, 255, 255, .7)";
+    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
 
     const startOver = () => {
         setItems(retrofitHomesAnswers)

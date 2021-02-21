@@ -93,14 +93,14 @@
 
 .NatureCharacter {
   height: 50rem;
-  transform: translate(38%, 0%) scale(2.5);
+  transform: translate(-38%, 0%) scale(2.5);
   width: 24rem;
   z-index: 2;
 }
 
 .ResearchCharacter {
   height: 50rem;
-  transform: translate(-38%, 0%) scale(2.5);
+  transform: translate(38%, 0%) scale(2.5);
   width: 24rem;
   z-index: 2;
 }

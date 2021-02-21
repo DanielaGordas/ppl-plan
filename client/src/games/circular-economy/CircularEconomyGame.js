@@ -301,7 +301,7 @@ const CircularEconomyGame = () => {
     }
 
     // gradient for the background
-    const gradient = "rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7)";
+    const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.6)";
 
     
     return(

@@ -397,7 +397,7 @@ const SustainableFoodGame = () => {
         }
     }
 
-    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
+    const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.6)";
 
     return(
         <Switch>
