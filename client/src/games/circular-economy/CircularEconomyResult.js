@@ -1,13 +1,12 @@
 import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
-import background from "../../images/circular-economy/Game_4_First_Screen.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 import BadgeBox from '../../components/BadgeBox';
 
-const CircularEconomyResult = ({gradient}) => {
+const CircularEconomyResult = ({gradient, background}) => {
 
     // retrieves result from Local Storage
     const result = JSON.parse(window.localStorage.getItem('result4'));

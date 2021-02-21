@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
-import background from '../../images/retrofit-homes/Game_3_new_screen.svg';
 import BadgeBox from '../../components/BadgeBox';
 
 
-const RetrofitHomesResult = ({gradient}) => {
+const RetrofitHomesResult = ({gradient, background}) => {
   
     // retrieves result from Local Storage
     const text  = JSON.parse(window.localStorage.getItem('result3'));

@@ -1,13 +1,12 @@
 import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
-import background from "../../images/sustainable-food-system/Game_2_background_scene.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 import BadgeBox from '../../components/BadgeBox';
 
-const SustainableFoodResult = ({gradient}) => {
+const SustainableFoodResult = ({gradient, background}) => {
 
   const text = JSON.parse(window.localStorage.getItem('result2'));
 

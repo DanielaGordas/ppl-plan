@@ -5,7 +5,7 @@ import '../styles/components/button.scss';
 import '../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 
-const Intro = ({text, link, back, skip, background, guy, gradient, guyPosition}) => {
+const Intro = ({text, link, back, skip, background, character, gradient, characterPosition}) => {
   return (
     <>
       <div className="GameNav">
@@ -23,7 +23,7 @@ const Intro = ({text, link, back, skip, background, guy, gradient, guyPosition})
           <p>{text}</p>
         </div>
         <div className={classes.Flex}>
-          <img src={guy} alt="Character" className={classes[guyPosition]} />
+          <img src={character} alt="Character" className={classes[characterPosition]} />
           <Link to={link} style={{position: 'absolute', top: '90%', left:'45%', zIndex: '3'}}><button className="Btn-border">Begin!</button></Link>
         </div>
       </div>

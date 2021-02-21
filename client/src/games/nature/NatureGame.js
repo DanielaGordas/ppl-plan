@@ -282,9 +282,9 @@ const NatureGame = () => {
                     link='/nature/game'
                     back='/clean-energy/result'
                     gradient={gradient}
-                    guy={Character}
+                    character={Character}
                     background={Background}
-                    guyPosition="NatureCharacter"
+                    characterPosition="NatureCharacter"
                 />
             </Route>
             <Route path="/nature/game">

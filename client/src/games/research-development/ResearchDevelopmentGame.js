@@ -653,9 +653,9 @@ const ResearchDevelopmentGame = () => {
                     link='/research-development/game'
                     back='/nature/result'
                     gradient={gradient}
-                    guy={Character}
+                    character={Character}
                     background={Background}
-                    guyPosition="ResearchCharacter"
+                    characterPosition="ResearchCharacter"
                 />
             </Route>
             <Route path="/research-development/game">
