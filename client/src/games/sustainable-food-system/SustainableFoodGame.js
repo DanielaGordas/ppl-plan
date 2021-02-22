@@ -17,7 +17,6 @@ import MyPreview from '../../components/MyPreview';
 import AnimalAgricultureDiet from '../../images/sustainable-food-system/Animal_agriculture_diets_icon.svg'
 import EdibleFoodWaste from '../../images/sustainable-food-system/Ban_edible_food_waste_icon.svg'
 import BetterFoodLabels from '../../images/sustainable-food-system/Better_food_labels_icon.svg'
-import CommunityAllotments from '../../images/sustainable-food-system/Community_allotments_icon.svg'
 import CommunityComposting from '../../images/sustainable-food-system/Community_composting_icon.svg'
 import EducationOnPlantBased from '../../images/sustainable-food-system/Education_on_plant-based_diets_icon.svg'
 import EnvironmentalFoodLabels from '../../images/sustainable-food-system/Environmental_food_labels_icon.svg'
@@ -35,8 +34,8 @@ import Repurpose from '../../images/sustainable-food-system/Repurpose_farmland_i
 import TakePart from '../../images/sustainable-food-system/Take_part_plant-based_research_development_icon.svg'
 import { FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import IntroBackground from '../../images/sustainable-food-system/Game_2_background_scene.svg';
-import Guy from '../../images/sustainable-food-system/Character 2.svg';
+import Background from '../../images/sustainable-food-system/Game_2_background_scene.svg';
+import Character from '../../images/sustainable-food-system/Character 2.svg';
 
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
@@ -398,7 +397,7 @@ const SustainableFoodGame = () => {
         }
     }
 
-    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
+    const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.6)";
 
     return(
         <Switch>
@@ -406,11 +405,11 @@ const SustainableFoodGame = () => {
                 <Intro
                     text={game.intro}
                     link='/sustainable-food-system/game'
-                    back='/user'
-                    skip='/circulareconomy/intro'
-                    background={IntroBackground}
-                    guy={Guy}
-                    guyPosition="SustainableFoodCharacter"
+                    back='/retrofit-homes/result'
+                    skip='/outro'
+                    background={Background}
+                    character={Character}
+                    characterPosition="SustainableFoodCharacter"
                     gradient={gradient}
                 />
             </Route>
@@ -459,7 +458,7 @@ const SustainableFoodGame = () => {
                 </div>
             </Route>
             <Route path="/sustainable-food-system/result">
-                <SustainableFoodResult />
+                <SustainableFoodResult gradient={gradient} background={Background}/>
             </Route>
         </Switch>
     )

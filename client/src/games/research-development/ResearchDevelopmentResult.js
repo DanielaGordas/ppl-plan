@@ -19,7 +19,7 @@ const ResearchDevelopmentResult = ({gradient, background}) => {
             <Link to="/research-development/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/outro">Next Game</Link>
+            <Link to="/circular-economy/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
@@ -29,7 +29,7 @@ const ResearchDevelopmentResult = ({gradient, background}) => {
               <p>{text}</p>
             </div>
             < BadgeBox />
-            <Link to="/outro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/circular-economy/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )

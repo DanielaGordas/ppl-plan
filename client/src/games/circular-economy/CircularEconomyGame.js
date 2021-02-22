@@ -16,8 +16,8 @@ import MyPreview from '../../components/MyPreview';
 
 // Images and icons
 
-import Guy from '../../images/circular-economy/Character_Game_4.svg';
-import IntroBackground from '../../images/circular-economy/Game_4_First_Screen.svg';
+import Character from '../../images/circular-economy/Character_Game_4.svg';
+import Background from '../../images/circular-economy/Game_4_First_Screen.svg';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import FoodShares from '../../images/circular-economy/Food_shares_blue_icon.svg';
 import ClothesSwaps from '../../images/circular-economy/Clothes_swaps_blue_icon.svg';
@@ -301,7 +301,7 @@ const CircularEconomyGame = () => {
     }
 
     // gradient for the background
-    const gradient = "rgba(252, 149, 55, 1),rgba(255, 255, 255, 0.7)";
+    const gradient = "rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.6)";
 
     
     return(
@@ -311,10 +311,10 @@ const CircularEconomyGame = () => {
                     text={game.intro}
                     skip='/retrofit-homes/intro'
                     link='/circular-economy/game'
-                    back='/low-carbon/result'
-                    background={IntroBackground}
-                    guy={Guy}
-                    guyPosition="CircularCharacter"
+                    back='/research-development/result'
+                    background={Background}
+                    character={Character}
+                    characterPosition="CircularCharacter"
                     gradient={gradient}
                 />
             </Route>
@@ -360,7 +360,7 @@ const CircularEconomyGame = () => {
                 </div>
             </Route>
             <Route path="/circular-economy/result">
-                <CircularEconomyResult gradient={gradient}/>
+                <CircularEconomyResult gradient={gradient} background={Background}/>
             </Route>
         </Switch>
     )

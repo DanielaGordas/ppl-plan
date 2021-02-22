@@ -19,7 +19,7 @@ import MyPreview from '../../components/MyPreview';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import { GiElectric } from 'react-icons/gi';
 import Electric from '../../images/clean-energy/electric.svg';
-import Guy from '../../images/clean-energy/Character_7.svg';
+import Character from '../../images/clean-energy/Character_7.svg';
 import Background from '../../images/clean-energy/Game_7_First_Screen.svg';
 import Bulb from '../../images/clean-energy/bulb.svg';
 import Bulb1 from '../../images/clean-energy/bulb_1.svg';
@@ -303,13 +303,13 @@ const CleanEnergyGame = () => {
             <Route path="/clean-energy/intro">
                 <Intro
                     text={game.intro}
-                    skip='/outro'
+                    skip='/nature/intro'
                     link='/clean-energy/game'
-                    back='/nature/result'
+                    back='/low-carbon/result'
                     background={Background}
                     gradient={gradient}
-                    guy={Guy}
-                    guyPosition="RetrofitCharacter"
+                    character={Character}
+                    characterPosition="RetrofitCharacter"
                 />
             </Route>
             <Route path="/clean-energy/game">

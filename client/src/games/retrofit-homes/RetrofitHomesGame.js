@@ -20,8 +20,8 @@ import MyPreview from '../../components/MyPreview';
 
 import {FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import Guy from '../../images/retrofit-homes/Character 3a.svg';
-import IntroBackground from '../../images/retrofit-homes/Game_3_new_screen.svg';
+import Character from '../../images/retrofit-homes/Character 3a.svg';
+import Background from '../../images/retrofit-homes/Game_3_new_screen.svg';
 import DraughtProofing from '../../images/retrofit-homes/Draught_proofing_blue_icon.svg';
 import WallInsulation from '../../images/retrofit-homes/External_internal_wall_insulation_blue_icon.svg';
 import HydrogenBoilers from '../../images/retrofit-homes/Hydrogen_boilers_Blue_icon.svg';
@@ -318,7 +318,7 @@ const RetrofitHomesGame = () => {
     }
 
 
-    const gradient = "rgba(19, 213, 255, .8),rgba(255, 255, 255, .7)";
+    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
 
     const startOver = () => {
         setItems(retrofitHomesAnswers)
@@ -332,10 +332,10 @@ const RetrofitHomesGame = () => {
                     link='/retrofit-homes/game'
                     game='/retrofit-homes'
                     back="/circular-economy/result"
-                    skip="/nature/intro"
-                    background={IntroBackground}
-                    guy={Guy}
-                    guyPosition="RetrofitCharacter"
+                    skip="/sustainable-food-system/intro"
+                    background={Background}
+                    character={Character}
+                    characterPosition="RetrofitCharacter"
                     gradient={gradient} />
             </Route>
             <Route path="/retrofit-homes/game">
@@ -396,7 +396,7 @@ const RetrofitHomesGame = () => {
                 </div>
             </Route>
             <Route path="/retrofit-homes/result">
-                <RetrofitHomesResult />
+                <RetrofitHomesResult gradient={gradient} background={Background}/>
             </Route>
         </Switch>
     )

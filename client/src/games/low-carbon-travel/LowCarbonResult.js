@@ -1,13 +1,12 @@
 import React from 'react';
 import classes from '../../styles/components/intro-result.module.scss';
 import { Link } from 'react-router-dom';
-import background from "../../images/low-carbon/Game_1_screen_1.svg";
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import { BiArrowBack, BiExit } from "react-icons/bi";
 import BadgeBox from '../../components/BadgeBox';
 
-const LowCarbonResult = ({gradient}) => {
+const LowCarbonResult = ({gradient, background}) => {
     // retrieves result from Local Storage
     const result = JSON.parse(window.localStorage.getItem('result1'));
 
@@ -27,7 +26,7 @@ const LowCarbonResult = ({gradient}) => {
             <Link to="/low-carbon/game">Back</Link>
           </div>
           <div className="NavLink">
-            <Link to="/circular-economy/intro">Next Game</Link>
+            <Link to="/clean-energy/intro">Next Game</Link>
             <BiExit className="RightIcon"/>
           </div>
         </div>
@@ -37,7 +36,7 @@ const LowCarbonResult = ({gradient}) => {
               <p>{text}</p>
             </div>
             < BadgeBox />
-            <Link to="/circular-economy/intro"> <button className="Btn-border">Continue</button></Link>
+            <Link to="/clean-energy/intro"> <button className="Btn-border">Continue</button></Link>
         </div>
       </>
     )
