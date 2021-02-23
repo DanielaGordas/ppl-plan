@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 162 162" style="enable-background:new 0 0 162 162;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#102773;stroke:#102773;stroke-width:0.9813;stroke-miterlimit:10;}
+	.st1{fill:#102773;}
+	.st2{fill:#F9F9F9;}
+	.st3{fill:#F9F9F9;stroke:#102773;stroke-width:3.4825;stroke-miterlimit:10;}
+	.st4{fill:#FCFCFC;stroke:#102773;stroke-width:3.4825;stroke-miterlimit:10;}
+	.st5{fill:none;stroke:#102773;stroke-width:3.4825;stroke-miterlimit:10;}
+	.st6{fill:none;stroke:#102773;stroke-miterlimit:10;}
+	.st7{fill:none;stroke:#102773;stroke-width:1.1362;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1">
+	<ellipse class="st0" cx="81" cy="81" rx="78.5" ry="79.5"/>
+	<ellipse class="st1" cx="81" cy="81.1" rx="73.5" ry="74.4"/>
+	<ellipse class="st2" cx="81" cy="81" rx="72" ry="73"/>
+</g>
+<g id="color">
+</g>
+<g id="icon">
+	<polygon class="st3" points="93.5,28.1 93.5,100.8 126,126.5 126,43.8 	"/>
+	<polygon class="st3" points="75.4,27 75.4,99.7 107.9,125.4 107.9,42.7 	"/>
+	<polygon class="st4" points="58.5,28.1 58.5,100.8 91,126.5 91,43.8 	"/>
+	<line class="st5" x1="58.5" y1="66.1" x2="91" y2="85.1"/>
+	<line class="st5" x1="73" y1="34.8" x2="73" y2="113.1"/>
+	<circle class="st6" cx="43" cy="64" r="8.5"/>
+	<g>
+		<line class="st7" x1="42.5" y1="81" x2="42.5" y2="103"/>
+		<line class="st7" x1="52" y1="92.3" x2="33" y2="92.3"/>
+		<line class="st7" x1="35.1" y1="83.6" x2="49.8" y2="100"/>
+		<line class="st7" x1="35.7" y1="100.6" x2="49.8" y2="83.4"/>
+	</g>
+</g>
+</svg>
