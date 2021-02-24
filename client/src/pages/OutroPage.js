@@ -155,7 +155,7 @@ const OutroPage = () => {
 
 
               <p>We appreciate your feedback. Which improvements would you like to see?</p>
-              <a className={classes.Link} href="https://forms.gle/f67hrPtsz9jZdDvYA">Leave some Feedback!</a>
+              <a className={classes.Link} href="https://forms.gle/f67hrPtsz9jZdDvYA">Leave some Feedback</a>
           </div>
       </div>
     </>

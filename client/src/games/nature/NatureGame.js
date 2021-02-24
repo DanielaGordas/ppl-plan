@@ -5,29 +5,20 @@ import {TouchBackend} from 'react-dnd-touch-backend';
 import { Switch, Route, Link } from 'react-router-dom';
 import classes from '../../styles/pages/nature.module.scss';
 import Intro from '../../components/Intro';
-import NatureResult from './NatureResult';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
 import Modal from '../../components/Modal';
 import axios from 'axios';
 import itemTypes from '../../components/ItemTypes';
 import MyPreview from '../../components/MyPreview';
-
+import { natureGame, natureAnswers} from './Data';
+import Result from '../../components/Result';
 
 // images and icons
 
 import { BiArrowBack, BiRevision } from "react-icons/bi";
 import Character from '../../images/nature/Character 6.svg';
 import Background from '../../images/nature/Game_6_First_Screen.svg';
-import GreenRoofs from '../../images/nature/Game_6_Green_roofs_walls_icon.svg';
-import WildRoad from '../../images/nature/Game_6_Wild_road_verges_icon.svg';
-import GreenBridges from '../../images/nature/Game_6_Green_bridges_icon.svg';
-import PublicParks from '../../images/nature/Game_6_Public_parks_icon.svg';
-import UrbanRewilding from '../../images/nature/Game_6_Urban_rewilding_schemes_icon.svg';
-import CommunityGardens from '../../images/nature/Game_6_Community_gardens_icon.svg';
-import RewildedAreas from '../../images/nature/Game_6_Rewilded_areas_town_icon.svg';
-import WoodlandAreas from '../../images/nature/Game_6_Woodland_areas_icon.svg';
-import Ponds from '../../images/nature/Game_6_Ponds_icon.svg';
 
 const MovableItem = ({name, setItems, column, index, icon, description}) => {
     const changeItemColumn = (currentItem, columnName) => {
@@ -115,90 +106,7 @@ const Column = ({children, className, title}) => {
 
 const NatureGame = () => {
 
-    const natureGame = {
-        id: 6, 
-        title: "Nature",
-        intro: "You’re a teacher from your town in 2035 in charge of the upcoming class field trip. You plan to show the students some of the best examples of urban nature. Pick your favourite 5 from the wide selection your town has to offer.",
-        instructions: "Go through the options and select the top 5 places you want to visit to show off to the students how green their town is. Tap to read more, and drag into the numbered list once you’ve come to your decision."
-    }
-
-
-    const natureAnswers = [
-        {
-            id: 1, 
-            name: "Green roofs and walls",
-            description: "Roof gardens help reduce the heating of buildings and energy costs up to 50%. It creates habitats for wildlife, captures and harvests rainwater, and when deployed at scale can help cool the entire city down during increasingly hot summers.",
-            column: 'All',
-            game: "Nature",
-            svg: GreenRoofs
-        },
-        {
-            id: 2, 
-            name: "Wild road verges",
-            description: "Road sides can accommodate billions of plants and wildflowers, creating an important habitat for many of the UK's threatened animal species. This practice also saves thousands of pounds on grass cutting and upkeep.",
-            column: 'All',
-            game: "Nature",
-            svg: WildRoad
-        },
-        {
-            id: 3, 
-            name: "Green bridges",
-            description: "Green bridges provide safe road crossings for animals and will help to connect ecosystems around the UK. More connected green spaces enable a greater diversity of wildlife to thrive in our country.",
-            column: 'All',
-            game: "Nature",
-            svg: GreenBridges
-        },
-        {
-            id: 4, 
-            name: "Public parks",
-            description: "Good access to quality green spaces such as parks and wild meadows significantly improves our physical health and mental wellbeing. It’s even estimated that better provision of parks could save an £2.1 billion in healthcare costs.",
-            column: 'All',
-            game: "Nature",
-            svg: PublicParks
-        },
-        {
-            id: 5, 
-            name: "Urban rewilding schemes",
-            description: "Recently introduced urban rewilding, such as in churchyards and retail parks, will help to clean air and capture carbon emissions produced in built up areas. It also sees our underutilised assets turned into natural havens, bringing even more life back to the town.",
-            column: 'All',
-            game: "Nature",
-            svg: UrbanRewilding
-        },
-        {
-            id: 6, 
-            name: "Community gardens",
-            description: "Wildflowers in gardens have huge potential to help pollinators such as bees. A network of small patches could help bees thrive in urban areas.",
-            column: 'All',
-            game: "Nature",
-            svg: CommunityGardens
-        },
-        {
-            id: 7, 
-            name: "Rewilded areas near the town",
-            description: "Setting land aside for nature, connected with pathways to allow free movement of species, would improve climate resilience and capture carbon emissions. If these are located near to towns they can also act as educational spaces for learning about nature.",
-            column: 'All',
-            game: "Nature",
-            svg: RewildedAreas
-        },
-        {
-            id: 8, 
-            name: "Woodland areas",
-            description: "Woodland plays a vital role in recycling carbon dioxide and water vapour, as well as regulating water flow into rivers and helping to prevent flood risk.",
-            column: 'All',
-            game: "Nature",
-            svg: WoodlandAreas
-        },
-        {
-            id: 9, 
-            name: "Ponds",
-            description: "Ponds support local wildlife and can improve biodiversity. They also have a secondary function as a flood defence, providing storage for if there are more flood events in future. ",
-            column: 'All',
-            game: "Nature",
-            svg: Ponds
-        },
-    ]
-
-    const [game, setGame] = useState(natureGame);
+    const game  = natureGame;
     const [items, setItems] = useState(natureAnswers);
     const isMobile = window.innerWidth < 600;
 
@@ -335,7 +243,14 @@ const NatureGame = () => {
                 </div>
             </Route>
             <Route path="/nature/result">
-                <NatureResult gradient={gradient} background={Background}/>
+                <Result 
+                    gradient={gradient} 
+                    background={Background} 
+                    text={natureText} 
+                    badge="You've earned the NATURE BADGE"
+                    back="/nature/game"
+                    next="/research-development/intro"
+                />
             </Route>
         </Switch>
     )
