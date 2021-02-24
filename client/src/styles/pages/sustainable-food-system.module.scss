@@ -62,22 +62,24 @@
 .Box {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  width: 100%;
+  width: 90%;
   max-width: 40rem;
   height: 8rem;
   align-items: center;
   justify-items: center;
+  margin-bottom: 2rem;
 }
 
 .Card {
   width: 4.5rem;
-  height: 70%;
+  height: 4.5rem;
   flex-shrink: 0;
   padding: 0.3rem;
   border-radius: 2px;
   color: $white;
   font-size: $font-extra-small;
   text-align: center;
+  background-color: $white;
 }
 
 
@@ -105,8 +107,8 @@
   }
 
   & > div > img {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
     margin-right: 1rem;
   }
 }
@@ -126,24 +128,25 @@
 // Selected options
 
 .Choices {
-  display: flex;
-  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 2rem;
   justify-content: space-between;
   width: 90%;
   max-width: 40rem;
+  margin-top: 3rem;
 }
 
 .Selected {
   background-color: $grey;
-  width: 4rem;
-  height: 4rem;
-  padding: 0.3rem;
+  width: 5rem;
+  height: 5rem;
   margin: auto;
   border-radius: 2px;
   text-align: center;
   border: 2px solid $dark-blue;
 
-  & > .Card > img {
-    transform: translate(-13%, -13%);
+  & > .Card {
+    transform: translate(-1%, -1%);
   }
 }
