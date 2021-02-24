@@ -77,7 +77,7 @@ const MovableItem = ({name, setItems, column, icon}) => {
     return (
         <>
             <div ref={drag} className={classes.Card} style={{ opacity: opacity, display: getDisplay(),}}>
-                <GiElectric style={{ width: '3rem', height: '3rem', fill: "#fff" }} />
+                <GiElectric style={{ width: '4rem', height: '4rem', fill: "#fff" }} />
             </div>
             
         </>
@@ -119,8 +119,8 @@ const Column = ({children, className, title, description, icon}) => {
 
     return (
       <div className={classes.gridItem}>
-        { title !== "All" ? <img src={getLightBulb()} alt={title} onClick={openModal} style={ {width: "6rem", height: "6rem", fill: "#102773"} } /> : null }
-        <div ref={drop} className={className}>
+        { title !== "All" ? <img src={getLightBulb()} alt={title} onClick={openModal} style={ {width: "8rem", height: "8rem", fill: "#102773"} } /> : null }
+        <div ref={drop} className={className} onClick={openModal}>
             { title !== "All" ? title : null }
             {children}        
         </div>

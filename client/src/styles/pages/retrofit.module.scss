@@ -89,18 +89,18 @@
 }
 
 .Choices {
-  @include on-circle($item-count: 9, $circle-size: 26rem, $item-size: 6rem);
+  @include on-circle($item-count: 9, $circle-size: 29rem, $item-size: 6rem);
   margin: 5rem auto 3rem;
   border: solid 5px $dark-blue;
 }
 
 .Translate {
-  transform: translate(0%, -67%);
+  transform: translate(0%, -64%) scale(0.6);
 }
 
 .Icon {
-  height: 6rem;
-  width: 6rem;
+  height: 10rem;
+  width: 10rem;
 }
 
 .Flex {
