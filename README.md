@@ -28,7 +28,7 @@ To view the backend data you need to add the api endpoint e.g: [http://localhost
 
 ## Frontend app:
 
-Designed mobile first and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Designed for mobile first and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 * React 16.13.1
 * Sass
