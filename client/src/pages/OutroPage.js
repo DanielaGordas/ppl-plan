@@ -101,10 +101,10 @@ const OutroPage = () => {
       <div className={classes.Container} >
           <div className={classes.Content}>
               { answer1 && answer2 && answer3 ? 
-                <h1>Thank you for playing and helping shape your local climate policy!</h1>
+                <a href="https://peoplesplan.org/eco-toolkit/" target="_blank" className={classes.Toolkit}>Eco Toolkit</a>
                 :
                 <>
-                  <h1>One last thing...</h1>
+                  <h1>One last thing before you can unlock the Eco-Toolkit!</h1>
                   <form onSubmit={handleSubmit(onSubmit)}>
 
                   <label>Have you ever engaged with a policy consultation run by your council before?</label>
@@ -125,8 +125,8 @@ const OutroPage = () => {
                   </select>
                   {errors.question2 && <p className={styles.Error}>Please provide an answer</p>}
 
-                  <label>What is your ethnicity?</label>
-                  <select name="question3" className={styles.TextField}  ref={register({ required: true,})} >
+                  <label>What is your ethnicity? <em>(optional)</em></label>
+                  <select name="question3" className={styles.TextField}  ref={register()} >
                     <option></option>
                     <option value="White: English, Welsh, Scottish, Northern Irish or British">White: English, Welsh, Scottish, Northern Irish or British</option>
                     <option value="White: Irish">White: Irish</option>
@@ -146,6 +146,7 @@ const OutroPage = () => {
                     <option value="Any other Black, African or Caribbean background">Any other Black, African or Caribbean background</option>
                     <option value="Arab">Arab</option>
                     <option value="Any other ethnic group">Any other ethnic group</option>
+                    <option value="I prefer to not disclose">I prefer to not disclose</option>
                   </select>
                   {errors.question3 && <p className={styles.Error}>Please provide an answer</p>}
                   <input type="submit" className="Btn-border" />
@@ -155,7 +156,7 @@ const OutroPage = () => {
 
 
               <p>We appreciate your feedback. Which improvements would you like to see?</p>
-              <a className={classes.Link} href="https://forms.gle/f67hrPtsz9jZdDvYA">Leave some Feedback</a>
+              <a className={classes.Link} href="https://forms.gle/f67hrPtsz9jZdDvYA" target="_blank">Leave some Feedback</a>
           </div>
       </div>
     </>

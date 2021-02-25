@@ -158,7 +158,7 @@ const SustainableFoodGame = () => {
         window.localStorage.setItem('result2', JSON.stringify(sustainableFoodResult));
     })
  
-     const resultText = "Thank you for helping Gill! The UK throws away £17 billion of food every year..Going plant based could prevent 45,000 excess deaths each year. Local food vs food transported by plane carries 100 times less emissions."
+     const resultText = "Thank you for helping Gill! The UK throws away £17 billion of food every year. Going plant based could prevent 45,000 excess deaths each year. Local food vs food transported by plane carries 100 times less emissions."
 
     // Logic for persisting the answers in the DB: 
 

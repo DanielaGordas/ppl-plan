@@ -19,12 +19,21 @@
 
 .Content h1 {
   font-size: $font-large;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .Content p {
   font-size: $font-medium;
   margin-bottom: 3rem;
+}
+
+.Toolkit {
+  text-decoration: none;
+  color: $green;
+  font-size: $font-large;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .Link {
