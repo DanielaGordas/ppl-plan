@@ -23,7 +23,7 @@ const Result = ({gradient, background, text, badge, back, next}) => {
         </div>
         <div className={classes.Background} style={{backgroundImage: `linear-gradient(${gradient}), url(${background})`}}>
             <div className={classes.Text}>
-              {text ? <h3>{badge}!</h3> : null}
+              {text ? <h3>{badge}</h3> : null}
               <p>{text}</p>
             </div>
             < BadgeBox />

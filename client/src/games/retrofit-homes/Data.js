@@ -12,7 +12,7 @@ export const retrofitHomesGame = {
     id: 3, 
     title: "Retrofit Homes",
     intro: "Congratulations! You’ve been selected to take part in a new housing retrofitting scheme, which will help make UK homes more energy efficient. Pick from the 10 home improvement options and prioritise which you think are best for your home.",
-    instructions: "Review each housing upgrade and then drag them into the numbered circles to prioritise them. You can always swap them over if you’ve put them in the wrong order."
+    instructions: "Review each housing upgrade and then drag them into the numbered circles to prioritise them (1 being the most important). You can always swap them over if you’ve put them in the wrong order."
 }
 
 

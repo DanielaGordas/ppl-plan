@@ -32,16 +32,16 @@
 }
 
 /* Position and sizing of clickable cross button */
-// .bm-cross-button {
-// }
+.bm-cross-button {
+  margin-right: 3rem;
+  margin-top: 1rem;
+}
 
 /* Color/shape of close button cross */
 .bm-cross {
   background: $dark-blue;
   width: 0.3rem !important;
   height: 2.2rem !important;
-  right: 2.2rem;
-  top: 1rem;
 }
 
 /*
@@ -58,7 +58,7 @@
 .bm-menu {
   background: $white;
   padding: 4rem 1.5rem 0;
-  font-size: $font-large;
+  font-size: $font-medium;
   text-align: center;
 }
 
