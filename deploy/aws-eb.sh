@@ -55,6 +55,13 @@ if [ "$?" != 0 ]; then
   exit 7
 fi
 
+git merge master
+
+if [ "$?" != 0 ]; then
+  echo "'git merge master' failed "
+  exit 9
+fi
+
 yarn build && yarn deploy
 
 if [ ! -d public/static ]; then
