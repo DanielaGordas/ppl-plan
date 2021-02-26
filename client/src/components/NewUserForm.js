@@ -19,7 +19,7 @@ const NewUserForm = props => {
             <option></option>
             <option value="Man">Man</option>
             <option value="Woman">Woman</option>  
-            <option value="prefer to self-describe">Prefer to self-describe</option>
+            <option value="Prefer to self-describe">Prefer to self-describe</option>
             <option value="Prefer not to disclose">Prefer not to disclose</option>
           </select>
           {errors.gender && <p className={classes.Error}>Please choose one of the options</p>}
