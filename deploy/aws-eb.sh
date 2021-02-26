@@ -1,20 +1,18 @@
 #!/bin/bash
-# A simple deployment script for Elastic Beanstalk to get the test environment up and running.
-# May be used as the basis for creating the production environment later (with modifications).
-# The production environment will require a load balancer rather than single instance install,
-# plus the database should be set up separately from the Beanstalk configuration, so that it
+# A simple deployment script for Elastic Beanstalk to get the test or production environment up and running.
+
+# The production environment uses a load balancer rather than single instance install,
+# plus the database has been set up separately from the Beanstalk configuration, so that it
 # will persist if the EB environment is terminated for any reason.
-# RDS database will need to be created separately, by hand, with appropriate security groups.
-# The DB host, username and password will need to be used to set up the environment in this
-# script, preferably requested in the script one time as using something like
-#     RDS_PASSWORD=$(read -s)
-# or pulling from an encrypted file (gpg for example)
+# RDS database was created separately, by hand, with appropriate security groups.
+# For production a gpg key is required to decrypt the production-envs.sh file, which contains
+# all the private environment variables required to run.
 
 EB_PROFILE=ppl-plan
 
 EB_PLATFORM="ruby-2.6"
 
-SERVERSIZE=t2.small
+SERVERSIZE=t2.micro
 
 SETUP_DEV=${SETUP_DEV:=false}
 
@@ -48,6 +46,24 @@ else
   ENV_FLAGS="${ENV_FLAGS} --vpc.dbsubnets subnet-0ca858a5a97e7b9f4,subnet-06ce1cab0ec6db9d6,subnet-0e28cb8715f47a3ed,subnet-0259f8e1ab3f8482d"
   ENV_FLAGS="${ENV_FLAGS} --vpc.elbpublic --vpc.elbsubnets subnet-0f6f49ad3067f7d95,subnet-0f9212ad3ec233590"
 fi
+
+echo "Yarn build and deploy"
+git checkout release
+
+if [ "$?" != 0 ]; then
+  echo "'git checkout release' failed to checkout release branch"
+  exit 7
+fi
+
+yarn build && yarn deploy
+
+if [ ! -d public/static ]; then
+  echo 'static directory does not exist'
+  exit 8
+fi
+
+git add -f public
+git commit -a -m "Build yarn for deployment"
 
 got_profile=$(grep 'profile ppl-plan' ~/.aws/config)
 if [ ! "${got_profile}" ]; then
@@ -87,3 +103,5 @@ if [ "$?" == 4 ]; then
 else
   eb deploy ${EB_ENV} --profile ${EB_PROFILE}
 fi
+
+git checkout master
