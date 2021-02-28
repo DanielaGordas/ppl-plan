@@ -240,22 +240,22 @@ const CleanEnergyGame = () => {
                         <DndProvider backend={isMobile ? TouchBackend : HTML5Backend }>
                         {isMobile ?  <MyPreview classes={classes} /> : null }          
                             <div className={classes.Choices}>
-                                <Column title='Solar'  className={classes.Selected} description={items[0].description} >
+                                <Column title='Solar'  className={classes.Selected} description="Solar energy is one of the cheapest renewables to harness, and will help boost the economy by creating 200,000 jobs in the solar industry by 2030. Solar energy is likely to become 20-50% cheaper than previously estimated with annual electricity bill savings in the region of £270 for the average family home." >
                                     {returnItemsForColumn('Solar')}
                                 </Column>
-                                <Column title='Onshore Wind' className={classes.Selected} description={items[1].description} >
+                                <Column title='Onshore Wind' className={classes.Selected} description="Onshore wind is the cheapest form of energy and one of the fastest growing sustainable sources of energy. It can have enormous social and economic benefits in local areas by creating jobs. Wind already generates clean power to meet the annual needs of more than 7.25 million homes in the UK and produced 9% of the UK’s power needs in 2017." >
                                     {returnItemsForColumn('Onshore Wind')}
                                 </Column>
-                                <Column title='Investing in Hydrogen' className={classes.Selected} description={items[2].description} >
+                                <Column title='Investing in Hydrogen' className={classes.Selected} description="Hydrogen is still a technology in development, but could be a good solution for storing energy produced by renewables as it can be stored like petrol in a tank. It might even be used in cars one day! Because it can be stored long term it could be important for when it’s not windy or sunny." >
                                     {returnItemsForColumn('Investing in Hydrogen')}
                                 </Column>
-                                <Column title='Biomass' className={classes.Selected} description={items[3].description} >
+                                <Column title='Biomass' className={classes.Selected} description="This is just another form of the sun’s energy and is often what becomes of the food waste some local council collect. Biomass provided 11% of the UK’s electricity in 2019! Crucially, biomass is much more sustainable when created as a product of waste, rather than produced from crops grown specifically for bioenergy." >
                                     {returnItemsForColumn('Biomass')}
                                 </Column>
-                                <Column title='Hydroelectric Power' className={classes.Selected} description={items[4].description} >
+                                <Column title='Hydroelectric Power' className={classes.Selected} description="This form of energy harnesses power from water in motion, such as rivers. The process does not produce greenhouse gas emissions but can require large areas to be flooded to make room for the dam holding back the water. Hydroelectric power plants can supply electricity to remote communities and attract industry and commerce, boosting the local economy." >
                                     {returnItemsForColumn('Hydroelectric Power')}
                                 </Column>
-                                <Column title='Investment in Battery Storage Technologies' className={classes.Selected} description={items[5].description} >
+                                <Column title='Investment in Battery Storage Technologies' className={classes.Selected} description="To make renewable energy supply consistently accessible to areas with intermittent wind and solar power, investment in new storage methods will be necessary. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - for example in Germany, small-scale household lithium-ion battery prices have fallen by over 60% since late 2014." >
                                     {returnItemsForColumn('Investment in Battery Storage Technologies')}
                                 </Column>
                             </div>

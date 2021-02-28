@@ -12,7 +12,7 @@ import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg';
 export const lowCarbonTravelGame = {
     id: 1, 
     title: "Low Carbon Travel",
-    intro: "The UK is dominated by gas-guzzling cars. They are warming the planet, pollute our air and most commuters waste 115 hours sitting in traffic every year... What do you think the future of transport looks like?",
+    intro: "The UK is dominated by gas-guzzling cars. They are warming the planet, pollute our air and most commuters waste 115 hours sitting in traffic every year. What do you think the future of transport looks like?",
     instructions: "Transport is complex. Choose 5 of the 10 low carbon travel options to shape the future of transport by dragging them into the boxes below. The gauge below shows you if your future is more electric vehicle or public transit focused."
 }
 
@@ -83,8 +83,8 @@ export const lowCarbonTravelAnswers = [
     },
     {
         id: 8, 
-        name: "National cycling network",
-        description: "Boost the economy by £5 million annually by investing in a National Cycle Network with dedicated city cycle lanes, making it safer for cyclists and improving public health as a result of regular exercise and cleaner air.",
+        name: "Improve national cycling network",
+        description: "Boost the economy by £5 billion annually by investing in a National Cycle Network with dedicated city cycle lanes, making it safer for cyclists and improving public health as a result of regular exercise and cleaner air.",
         column: 'All',
         category: 'mass transit',
         game: "Low Carbon Travel",

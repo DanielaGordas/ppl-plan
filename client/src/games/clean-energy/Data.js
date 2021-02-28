@@ -10,7 +10,7 @@ export const cleanEnergyAnswers = [
     {
         id: 1, 
         name: "One",
-        description: "Solar energy is one of the cheapest renewables to harness, and will help boost the economy by creating 200,000 jobs in the solar industry by 2030. Solar energy is likely to become 20-50% cheaper than previously estimated with annual electricity bill savings in the region of £270 for the average family home.",
+        description: "",
         column: 'All',
         game: "Clean Energy",
         svg: ""
@@ -34,7 +34,7 @@ export const cleanEnergyAnswers = [
     {
         id: 4, 
         name: "Four",
-        description: "This is just another form of the sun’s energy and is often what becomes of the food waste some local council collect. Biomass provided 11% of the UK’s electricity in 2019! Crucially, biomass is much more sustainable when created as a product of waste, rather than produced from crops grown specifically for bioenergy.",
+        description: "",
         column: 'All',
         game: "Clean Energy",
         svg: ""
@@ -42,7 +42,7 @@ export const cleanEnergyAnswers = [
     {
         id: 5, 
         name: "Five",
-        description: "New battery technology is needed to store the energy from renewables. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - in Germany, small household battery storage prices have fallen by over 60% since late 2014.",
+        description: "",
         column: 'All',
         game: "Clean Energy",
         svg: ""
@@ -50,7 +50,7 @@ export const cleanEnergyAnswers = [
     {
         id: 6, 
         name: "Six",
-        description: "To make renewable energy supply consistently accessible to areas with intermittent wind and solar power, investment in new storage methods will be necessary. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - for example in Germany, small-scale household lithium-ion battery prices have fallen by over 60% since late 2014.",
+        description: "",
         column: 'All',
         game: "Clean Energy",
         svg: ""
@@ -58,7 +58,7 @@ export const cleanEnergyAnswers = [
     {
       id: 7, 
       name: "Seven",
-      description: "To make renewable energy supply consistently accessible to areas with intermittent wind and solar power, investment in new storage methods will be necessary. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - for example in Germany, small-scale household lithium-ion battery prices have fallen by over 60% since late 2014.",
+      description: "",
       column: 'All',
       game: "Clean Energy",
       svg: ""
@@ -66,7 +66,7 @@ export const cleanEnergyAnswers = [
     {
       id: 8, 
       name: "Eight",
-      description: "To make renewable energy supply consistently accessible to areas with intermittent wind and solar power, investment in new storage methods will be necessary. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - for example in Germany, small-scale household lithium-ion battery prices have fallen by over 60% since late 2014.",
+      description: "",
       column: 'All',
       game: "Clean Energy",
       svg: ""
@@ -74,7 +74,7 @@ export const cleanEnergyAnswers = [
     {
       id: 9, 
       name: "Nine",
-      description: "To make renewable energy supply consistently accessible to areas with intermittent wind and solar power, investment in new storage methods will be necessary. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - for example in Germany, small-scale household lithium-ion battery prices have fallen by over 60% since late 2014.",
+      description: "",
       column: 'All',
       game: "Clean Energy",
       svg: ""
@@ -82,7 +82,7 @@ export const cleanEnergyAnswers = [
     {
       id: 10, 
       name: "Ten",
-      description: "To make renewable energy supply consistently accessible to areas with intermittent wind and solar power, investment in new storage methods will be necessary. If the UK introduces battery storage on a large scale we could save at least £8 billion per year up to 2030 and create many jobs in research and development. Costs will rapidly fall - for example in Germany, small-scale household lithium-ion battery prices have fallen by over 60% since late 2014.",
+      description: "",
       column: 'All',
       game: "Clean Energy",
       svg: ""
