@@ -2,7 +2,7 @@
   "name": "ppl-plan",
   "license": "MIT",
   "engines": {
-    "node": "^15.3.0",
+    "node": "^12.16.1",
     "yarn": "^1.22.10"
   },
   "scripts": {
