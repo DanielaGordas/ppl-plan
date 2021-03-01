@@ -87,7 +87,7 @@ if [ "$?" != 0 ]; then
   exit 7
 fi
 
-git merge -s ours master
+git merge -X theirs master
 
 if [ "$?" != 0 ]; then
   echo "'git merge master' failed "
