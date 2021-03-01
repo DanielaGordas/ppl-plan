@@ -18,24 +18,44 @@ SERVERSIZE=t2.small
 
 SETUP_DEV=${SETUP_DEV:=false}
 
-if [ "${SETUP_DEV}" == 'true' ]; then
-  # These are development settings only. Do not use in production
-  echo "Deploying to development"
-  EB_ENV=ppl-plan
-  SECRET_KEY_BASE=31293bb4adaf2e3a046c030554799a57efee9f0d08943b6b26e393d718fb64fdab86c4677d1627c29c0eff871672e198575d697d1d615821021509a8e327e3f3
-  RDS_DB_NAME=ppl_plan
-  RDS_USERNAME=ebdb
-  RDS_PASSWORD=test-ebrails-password
-  RDS_HOSTNAME=
-  ENV_FLAGS="-p ${EB_PLATFORM}"
-  DEV_FLAGS="-s -db -db.engine postgres -db.user ${RDS_USERNAME} -db.pass ${RDS_PASSWORD}"
-else
-  echo "Deploying to production. Provide gpg key to unlock production secrets."
-  gpg deploy/production-vars.sh.gpg
+function setup_deploy_env() {
+  if [ "${SETUP_DEV}" == 'true' ]; then
+    EB_ENV=ppl-plan
+  else
+    EB_ENV=ppl-plan-prod
+  fi
+}
 
-  if [ ! -f deploy/production-vars.sh ]; then
-    echo 'production-vars.sh was not decrypted. Incorrect gpg key used?'
-    exit 5
+function setup_env_vars() {
+  if [ "${SETUP_DEV}" == 'true' ]; then
+    # These are development settings only. Do not use in production
+    echo "Deploying to development"
+    EB_ENV=ppl-plan
+    SECRET_KEY_BASE=31293bb4adaf2e3a046c030554799a57efee9f0d08943b6b26e393d718fb64fdab86c4677d1627c29c0eff871672e198575d697d1d615821021509a8e327e3f3
+    RDS_DB_NAME=ppl_plan
+    RDS_USERNAME=ebdb
+    RDS_PASSWORD=test-ebrails-password
+    RDS_HOSTNAME=
+    ENV_FLAGS="-p ${EB_PLATFORM}"
+    DEV_FLAGS="-s -db -db.engine postgres -db.user ${RDS_USERNAME} -db.pass ${RDS_PASSWORD}"
+  else
+    echo "Deploying to production. Provide gpg key to unlock production secrets."
+    gpg deploy/production-vars.sh.gpg
+
+    if [ ! -f deploy/production-vars.sh ]; then
+      echo 'production-vars.sh was not decrypted. Incorrect gpg key used?'
+      exit 5
+    fi
+
+    source deploy/production-vars.sh
+    rm -f deploy/production-vars.sh
+
+    EB_ENV=ppl-plan-prod
+    ENV_FLAGS="-p ${EB_PLATFORM} --scale 2 -pr --vpc.publicip"
+    ENV_FLAGS="${ENV_FLAGS} --vpc.id vpc-0ae947ca3485d3fb0 --vpc.securitygroups sg-0a38b3e8689f621ef"
+    ENV_FLAGS="${ENV_FLAGS} --vpc.ec2subnets subnet-0259f8e1ab3f8482d,subnet-0e28cb8715f47a3ed"
+    ENV_FLAGS="${ENV_FLAGS} --vpc.dbsubnets subnet-0ca858a5a97e7b9f4,subnet-06ce1cab0ec6db9d6,subnet-0e28cb8715f47a3ed,subnet-0259f8e1ab3f8482d"
+    ENV_FLAGS="${ENV_FLAGS} --vpc.elbpublic --vpc.elbsubnets subnet-0f6f49ad3067f7d95,subnet-0f9212ad3ec233590"
   fi
 
   source deploy/production-vars.sh
@@ -104,11 +124,16 @@ eb status ${EB_ENV} --profile ${EB_PROFILE}
 if [ "$?" == 4 ]; then
   echo "The EB environment has not been set up. Starting the configuration"
 
+  setup_env_vars create
+
   eb create ${EB_ENV} \
     --profile ${EB_PROFILE} ${DEV_FLAGS} ${ENV_FLAGS} \
     --instance_type=${SERVERSIZE} \
     --envvars RAILS_SERVE_STATIC_FILES=true,BUNDLER_DEPLOYMENT_MODE=true,BUNDLE_WITHOUT=test:development,RACK_ENV=production,RAILS_ENV=production,RAILS_SKIP_ASSET_COMPILATION=false,RAILS_SKIP_MIGRATIONS=false,RDS_DB_NAME=${RDS_DB_NAME},RDS_HOSTNAME=${RDS_HOSTNAME},RDS_PASSWORD=${RDS_PASSWORD},RDS_PORT=5432,RDS_USERNAME=${RDS_USERNAME},SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
 else
+
+  setup_deploy_env
+
   eb deploy ${EB_ENV} --profile ${EB_PROFILE}
 fi
