@@ -16,6 +16,14 @@ SERVERSIZE=t2.micro
 
 SETUP_DEV=${SETUP_DEV:=false}
 
+function setup_deploy_env() {
+  if [ "${SETUP_DEV}" == 'true' ]; then
+    EB_ENV=ppl-plan
+  else
+    EB_ENV=ppl-plan-prod
+  fi
+}
+
 function setup_env_vars() {
   if [ "${SETUP_DEV}" == 'true' ]; then
     # These are development settings only. Do not use in production
@@ -112,7 +120,7 @@ eb status ${EB_ENV} --profile ${EB_PROFILE}
 if [ "$?" == 4 ]; then
   echo "The EB environment has not been set up. Starting the configuration"
 
-  setup_env_vars
+  setup_env_vars create
 
   eb create ${EB_ENV} \
     --profile ${EB_PROFILE} ${DEV_FLAGS} ${ENV_FLAGS} \
@@ -120,6 +128,9 @@ if [ "$?" == 4 ]; then
     --envvars RAILS_SERVE_STATIC_FILES=true,BUNDLER_DEPLOYMENT_MODE=true,BUNDLE_WITHOUT=test:development,RACK_ENV=production,RAILS_ENV=production,RAILS_SKIP_ASSET_COMPILATION=false,RAILS_SKIP_MIGRATIONS=false,RDS_DB_NAME=${RDS_DB_NAME},RDS_HOSTNAME=${RDS_HOSTNAME},RDS_PASSWORD=${RDS_PASSWORD},RDS_PORT=5432,RDS_USERNAME=${RDS_USERNAME},SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
 else
+
+  setup_deploy_env
+
   eb deploy ${EB_ENV} --profile ${EB_PROFILE}
 fi
 
