@@ -71,7 +71,32 @@ aws_secret_access_key = ???
 
 EOF
 
-  exit 2
+    exit 2
+  fi
+
+}
+
+echo "Yarn build and deploy"
+git fetch origin release
+git checkout release
+
+if [ "$?" != 0 ]; then
+  echo "'git checkout release' failed to checkout release branch"
+  exit 7
+fi
+
+git merge -X theirs master
+
+if [ "$?" != 0 ]; then
+  echo "'git merge master' failed "
+  exit 9
+fi
+
+yarn build && yarn deploy
+
+if [ ! -d public/static ]; then
+  echo 'static directory does not exist'
+  exit 8
 fi
 
 eb status ${EB_ENV} --profile ${EB_PROFILE}
