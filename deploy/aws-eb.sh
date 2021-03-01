@@ -119,6 +119,13 @@ if [ ! -d public/static ]; then
   exit 8
 fi
 
+git add -f public
+git commit -a -m "Build yarn for deployment"
+git push -f
+
+check_aws_credentials
+
+setup_deploy_env
 eb status ${EB_ENV} --profile ${EB_PROFILE}
 
 if [ "$?" == 4 ]; then
@@ -132,8 +139,5 @@ if [ "$?" == 4 ]; then
     --envvars RAILS_SERVE_STATIC_FILES=true,BUNDLER_DEPLOYMENT_MODE=true,BUNDLE_WITHOUT=test:development,RACK_ENV=production,RAILS_ENV=production,RAILS_SKIP_ASSET_COMPILATION=false,RAILS_SKIP_MIGRATIONS=false,RDS_DB_NAME=${RDS_DB_NAME},RDS_HOSTNAME=${RDS_HOSTNAME},RDS_PASSWORD=${RDS_PASSWORD},RDS_PORT=5432,RDS_USERNAME=${RDS_USERNAME},SECRET_KEY_BASE=${SECRET_KEY_BASE}
 
 else
-
-  setup_deploy_env
-
   eb deploy ${EB_ENV} --profile ${EB_PROFILE}
 fi
