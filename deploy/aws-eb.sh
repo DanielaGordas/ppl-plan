@@ -31,7 +31,7 @@ function setup_env_vars() {
     # These are development settings only. Do not use in production
     echo "Deploying to development"
     EB_ENV=ppl-plan
-    SECRET_KEY_BASE=31293bb4adaf2e3a046c030554799a57efee9f0d08943b6b26e393d718fb64fdab86c4677d1627c29c0eff871672e198575d697d1d615821021509a8e327e3f3
+    SECRET_KEY_BASE=T3n9PxP%qeX$q%x!rh9jmmt43MFf@NY$G5PpAimS!6gEg!o@2boutoKf@8yPrFg
     RDS_DB_NAME=ppl_plan
     RDS_USERNAME=ebdb
     RDS_PASSWORD=test-ebrails-password
