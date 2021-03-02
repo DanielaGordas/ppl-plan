@@ -89,6 +89,7 @@ EOF
 echo "Yarn build and deploy"
 git fetch origin release
 git checkout release
+git pull
 
 if [ "$?" != 0 ]; then
   echo "'git checkout release' failed to checkout release branch"
