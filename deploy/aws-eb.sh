@@ -103,6 +103,8 @@ if [ "$?" != 0 ]; then
   exit 9
 fi
 
+git add .
+
 yarn build && yarn deploy
 
 if [ ! -d public/static ]; then
