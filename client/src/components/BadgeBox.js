@@ -34,11 +34,11 @@ const BadgeBox = () => {
     return(
         <div className={classes.Wrapper}>
             <img src={result1? BadgeCarbonColour : BadgeCarbonGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
-            <img src={result4 && result4 !== "never" ? BadgeCircularColour : BadgeCircularGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
-            <img src={result3? BadgeRetroColour : BadgeRetroGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
-            <img src={result6? BadgeNatureColour : BadgeNatureGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
             <img src={result7? BadgeEnergyColour : BadgeEnergyGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
+            <img src={result6? BadgeNatureColour : BadgeNatureGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
             <img src={result8? BadgeResearchColour : BadgeResearchGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
+            <img src={result4 && result4 !== "It looks like you’re happy with the way things are. This might cause some waste issues. You need to make some more ambitious choices before we can award you the badge." ? BadgeCircularColour : BadgeCircularGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
+            <img src={result3? BadgeRetroColour : BadgeRetroGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
             <img src={result2? BadgeFoodColour : BadgeFoodGrey} alt="BadgeCarbonColour" className={classes.Badge}/>
         </div>
     )

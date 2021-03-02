@@ -1,7 +1,7 @@
 @import "../scss-variables.scss";
 
 .Background {
-  background-image: linear-gradient(rgba(19, 213, 255, 1), rgba(255, 255, 255, 0.7)), url('../../images/retrofit-homes/Game_3_new_screen.svg');
+  background-image: linear-gradient(rgba(169, 219, 232, 1), rgba(255, 255, 255, 0.7)), url('../../images/retrofit-homes/Game_3_new_screen.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -89,18 +89,18 @@
 }
 
 .Choices {
-  @include on-circle($item-count: 9, $circle-size: 26rem, $item-size: 6rem);
+  @include on-circle($item-count: 9, $circle-size: 29rem, $item-size: 6rem);
   margin: 5rem auto 3rem;
   border: solid 5px $dark-blue;
 }
 
 .Translate {
-  transform: translate(0%, -67%);
+  transform: translate(0%, -64%) scale(0.6);
 }
 
 .Icon {
-  height: 6rem;
-  width: 6rem;
+  height: 10rem;
+  width: 10rem;
 }
 
 .Flex {

@@ -8,7 +8,7 @@
 }
 
 .Background {
-  background: linear-gradient(rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.5)), url('../../images/nature/Game_6_First_Screen.svg');
+  background: linear-gradient(rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)), url('../../images/nature/Game_6_First_Screen.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -64,7 +64,7 @@
   width: 10rem;
   height: 4rem;
   flex-shrink: 0;
-  padding: 0.3rem;
+  padding: 0.4rem;
   border-radius: 20px;
   color: $dark-blue;;
   background-color: $white;

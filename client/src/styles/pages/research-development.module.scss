@@ -8,7 +8,7 @@
 }
 
 .Background {
-  background: linear-gradient(rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.5)), url('../../images/nature/Game_6_First_Screen.svg');
+  background: linear-gradient(rgba(156, 199, 66, 1),rgba(255, 255, 255, 0.5)), url('../../images/research-development/Game_8.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-@media (min-height: 600px) {
+@media (min-height: 450px) {
   .Background {
     height: 100vh;
   }
@@ -63,17 +63,82 @@
 .Card {
   text-align: left;
   width: 90%;
-  height: 30%;
+  max-width: 40rem;
+  height: auto;
   margin: auto;
   margin-top: 2rem;
   background-color: $white;
-  border: 1px solid $dark-blue;
   border-radius: 5px;
   box-shadow: $box-shadow;
   color: $dark-blue;
   padding: 0.3rem;
-  max-width: 40rem;
   font-size: $font-small;
+
+  h3 {
+    margin: 1rem;
+  }
+
+  p {
+    margin: 1rem;
+  }
+}
+
+.Content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+
+  svg {
+    align-self: right;
+  }
+}
+
+.SwipeContent {
+  background: $light-blue;
+  font-size: $font-large;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem;
+  user-select: none;
+
+  span {
+    margin-left: 1rem;
+  }
+}
+
+.CollapsibleHead {
+  font-size: $font-small !important;
+  font-family: 'Comfortaa', cursive !important;
+  background: none !important;
+  color: $light-blue !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+
+}
+
+.CollapsibleHead:active, .CollapsibleHead:hover, .CollapsibleHead:focus {
+  background: none !important;
+  outline: none !important;
+}
+
+.CollapsibleContent {
+  font-size: $font-small !important;
+  font-family: 'Comfortaa', cursive !important;
+  background: none !important;
+  color: $dark-blue !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+
+  p {
+    margin: 0 !important;
+  }
 }
 
 .Result {
@@ -88,7 +153,16 @@
   text-align: center;
   font-size: $font-large;
   color: $dark-blue;
-  margin: $margin-medium;
+  margin: $margin-small;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.WinnerIcon {
+  font-size: 5rem;
 }
 
 .Title {
