@@ -9,7 +9,8 @@ const NavBar = () => {
             <Menu right width={'100%'}>
                 <a id="home" className="menu-item" href="/">Home</a>
                 <a id="about" className="menu-item" href="/about">About</a>
-                <a id="contact" className="menu-item" href="/privacy">Privacy Policy</a>
+                <a id="privacy" className="menu-item" href="/privacy">Privacy Policy</a>
+                <a id="sources" className="menu-item" href="/sources">Sources</a>
             </Menu>
         </div>
     )

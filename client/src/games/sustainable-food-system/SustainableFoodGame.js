@@ -105,7 +105,7 @@ const Info = ({info, finalItems, submitAnswers}) => {
     const openModal = () => setShow(true);  
     const closeModal = () => setShow(false);
     if (finalItems.length === 6)
-        return <button className="Btn-border" onClick={submitAnswers}>Complete!</button>
+        return <button className="Btn-border" style={{marginTop: "5rem",}} onClick={submitAnswers}>Complete!</button>
     else
         return(
             <>
@@ -221,7 +221,7 @@ const SustainableFoodGame = () => {
                     </Column>
                 </>
             )
-        } else if (finalItems.length >= 4) {
+        } else if (finalItems.length >= 4 && finalItems.length < 6) {
             return (
                 <>
                     <h3 className={classes.Category}>Localised Food System</h3>
@@ -230,6 +230,8 @@ const SustainableFoodGame = () => {
                     </Column>
                 </>
             )
+        } else if (finalItems.length === 6) {
+            return <div></div>;
         }
     }
 
@@ -270,24 +272,24 @@ const SustainableFoodGame = () => {
                             {displayColumn()}
                             <Info info={info} finalItems={finalItems} submitAnswers={submitAnswers} />
                             <div className={classes.Choices}>
-                            <Column title='1' className={classes.Selected}>
-                                {returnItemsForColumn('1')}
-                            </Column>
-                            <Column title='2' className={classes.Selected}>
-                                {returnItemsForColumn('2')}
-                            </Column>
-                            <Column title='3' className={classes.Selected}>
-                                {returnItemsForColumn('3')}
-                            </Column>
-                            <Column title='4' className={classes.Selected}>
-                                {returnItemsForColumn('4')}
-                            </Column>
-                            <Column title='5' className={classes.Selected}>
-                                {returnItemsForColumn('5')}
-                            </Column>
-                            <Column title='6' className={classes.Selected}>
-                                {returnItemsForColumn('6')}
-                            </Column>
+                                <Column title='1' className={classes.Selected}>
+                                    {returnItemsForColumn('1')}
+                                </Column>
+                                <Column title='2' className={classes.Selected}>
+                                    {returnItemsForColumn('2')}
+                                </Column>
+                                <Column title='3' className={classes.Selected}>
+                                    {returnItemsForColumn('3')}
+                                </Column>
+                                <Column title='4' className={classes.Selected}>
+                                    {returnItemsForColumn('4')}
+                                </Column>
+                                <Column title='5' className={classes.Selected}>
+                                    {returnItemsForColumn('5')}
+                                </Column>
+                                <Column title='6' className={classes.Selected}>
+                                    {returnItemsForColumn('6')}
+                                </Column>
                             </div>
                         </DndProvider>
                     </div>

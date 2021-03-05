@@ -1,44 +1,35 @@
 @import "../scss-variables.scss";
 
-.BackgroundAbout, .BackgroundPolicy {
+.Background {
   background: linear-gradient(rgba(174, 220, 232, 1), rgba(235, 249, 253, 1));
   height: 100%;
+  min-height: 100vh;
   width: 100%;
   color: $dark-blue;
 }
 
-@media (min-height: 570px) {
-  .Background-About {
-    height: 100vh;
-  }
-}
 
 .Content {
-  margin: 8rem 2rem;
+  margin: 5rem 1rem;
   line-height: 2rem;
   padding: 2rem;
-  p,
-  li {
+  p, li, a {
     font-size: $font-small;
-  }
-}
-
-.AboutContent {
-  margin: 8rem 3rem;
-  text-align: center;
-  line-height: 3rem;
-  padding: 2rem;
-  p,
-  li {
-    font-size: $font-small;
+    margin-bottom: 2rem;
     text-align: left;
-    margin-bottom: 3rem;
   }
+
+  h2 {
+    text-align: left;
+    font-size: $font-medium;
+  }
+
 }
 
 .Title {
   font-size: $font-large;
   text-align: center;
+  margin-bottom: $margin-medium;
 }
 .SubTitle {
   font-size: $font-medium;
