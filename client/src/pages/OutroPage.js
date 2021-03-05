@@ -106,7 +106,7 @@ const OutroPage = () => {
         
           <div className={classes.Content}>
               { answer1 && answer2 && answer3 ? 
-                <a href="https://peoplesplan.org/eco-toolkit/" target="_blank" className={classes.Toolkit}>Eco Toolkit</a>
+                <a href="https://peoplesplan.org/eco-toolkit/" className={classes.Toolkit}>Eco Toolkit</a>
                 :
                 <>
                   <h1>One last thing before you can unlock the Eco-Toolkit!</h1>
@@ -160,7 +160,7 @@ const OutroPage = () => {
               }
 
               <p>We appreciate your feedback. Which improvements would you like to see?</p>
-              <a className={classes.Link} href="https://forms.gle/f67hrPtsz9jZdDvYA" target="_blank">Leave some Feedback</a>
+              <a className={classes.Link} href="https://forms.glef67hrPtsz9jZdDvYA">Leave some Feedback</a>
 
               <div className={classes.Socials}> 
                 <p>Share</p>  
