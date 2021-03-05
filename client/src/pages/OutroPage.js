@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import classes from '../styles/pages/outro.module.scss';
 import styles from "../styles/pages/user.module.scss";
 import axios from 'axios';
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, EmailShareButton, EmailIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const OutroPage = () => {
 
@@ -93,12 +94,16 @@ const OutroPage = () => {
   const onSubmit = data => {
       addQuestions(data)
     }; 
+  
+  const shareUrl = "https://game.peoplesplan.org/"
 
 
   return(
     <>
       <NavBar />
+      
       <div className={classes.Container} >
+        
           <div className={classes.Content}>
               { answer1 && answer2 && answer3 ? 
                 <a href="https://peoplesplan.org/eco-toolkit/" target="_blank" className={classes.Toolkit}>Eco Toolkit</a>
@@ -154,9 +159,27 @@ const OutroPage = () => {
               </>
               }
 
-
               <p>We appreciate your feedback. Which improvements would you like to see?</p>
               <a className={classes.Link} href="https://forms.gle/f67hrPtsz9jZdDvYA" target="_blank">Leave some Feedback</a>
+
+              <div className={classes.Socials}> 
+                <p>Share</p>  
+                <div>
+                  < FacebookShareButton url={shareUrl}> 
+                    <FacebookIcon size={32} round />
+                  </ FacebookShareButton>
+                  < TwitterShareButton url={shareUrl}> 
+                    <TwitterIcon size={32} round />
+                  </ TwitterShareButton>
+                  < WhatsappShareButton url={shareUrl}> 
+                    <WhatsappIcon size={32} round />
+                  </ WhatsappShareButton>
+                  < EmailShareButton url={shareUrl}> 
+                    <EmailIcon size={32} round />
+                  </ EmailShareButton>
+                </div>
+              </div>
+
           </div>
       </div>
     </>
