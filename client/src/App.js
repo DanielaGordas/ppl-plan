@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import NotFound from './components/NotFound';
 import OutroPage from './pages/OutroPage';
 import PrivacyPage from './pages/PrivacyPage';
+import SourcesPage from './pages/SourcesPage';
 import AboutPage from './pages/AboutPage';
 import UserDataCollection from './pages/UserDataCollection';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -38,6 +39,9 @@ const App = () => {
                                     </Route>
                                     <Route path="/privacy" >
                                           <PrivacyPage />
+                                    </Route>
+                                    <Route path="/sources" >
+                                          <SourcesPage />
                                     </Route>
                                     <Route path="/user" component={UserDataCollection}/>
                                     <Route path="/low-carbon">

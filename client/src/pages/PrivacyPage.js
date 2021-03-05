@@ -9,7 +9,7 @@ const PrivacyPage = () => {
     return(
         <>
             <NavBar />
-            <div className={classes.BackgroundPolicy}> 
+            <div className={classes.Background}> 
                 <div className={classes.Content}>
                     <h1 className={classes.Title}>Privacy Policy</h1>
                     <h2 className={classes.SubTitle}>Principles</h2>
