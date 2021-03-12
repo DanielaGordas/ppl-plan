@@ -7,9 +7,9 @@ import PrivacyPage from './pages/PrivacyPage'
 import SourcesPage from './pages/SourcesPage'
 import AboutPage from './pages/AboutPage'
 import UserDataCollection from './pages/UserDataCollection'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
+import { Router, Switch, Route } from 'react-router-dom'
 import ReactGA from 'react-ga'
+import { createBrowserHistory } from 'history'
 import LowCarbonTravelGame from './games/low-carbon-travel/LowCarbonTravelGame'
 import CircularEconomyGame from './games/circular-economy/CircularEconomyGame'
 import RetrofitHomesGame from './games/retrofit-homes/RetrofitHomesGame'
@@ -19,12 +19,20 @@ import CleanEnergyGame from './games/clean-energy/CleanEnergyGame'
 import ResearchDevelopmentGame from './games/research-development/ResearchDevelopmentGame'
 import Loader from './components/Loader'
 
+export const initGA = () => {
+	ReactGA.initialize('UA-191743567-1') // put your tracking id here
+}
+
+export const GApageView = (page) => {
+	ReactGA.pageview(page)
+}
+
 const App = () => {
+	useEffect(() => {
+		initGA()
+	}, [])
 	// Use React Router History to track pages
 	const history = createBrowserHistory()
-
-	const trackingId = 'UA-191743567-1'
-	ReactGA.initialize(trackingId)
 
 	// Initialize google analytics page view tracking
 	history.listen((location) => {
