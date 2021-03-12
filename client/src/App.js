@@ -21,10 +21,7 @@ import Loader from './components/Loader'
 
 export const initGA = () => {
 	ReactGA.initialize('UA-191743567-1') // put your tracking id here
-}
-
-export const GApageView = (page) => {
-	ReactGA.pageview(page)
+	ReactGA.pageview(window.location.pathname)
 }
 
 const App = () => {
