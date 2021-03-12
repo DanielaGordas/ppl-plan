@@ -14,6 +14,9 @@ import NatureGame from './games/nature/NatureGame';
 import SustainableFoodGame from './games/sustainable-food-system/SustainableFoodGame';
 import CleanEnergyGame from './games/clean-energy/CleanEnergyGame';
 import Loader from './components/Loader';
+import Dashboard from "./data-dashboard/Dashboard";
+
+
 
 
 const App = () => {
@@ -58,6 +61,9 @@ const App = () => {
                                           <SustainableFoodGame />
                                     </Route>
                                     <Route path="/outro" component={OutroPage}/>
+                                    <Route path="/data-dashboard">
+                                          <Dashboard />
+                                    </Route>
                                     <Route>
                                           <NotFound />
                                     </Route>
