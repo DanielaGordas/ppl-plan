@@ -25,7 +25,7 @@
   padding: 1.5rem;
   position: relative;
   height: auto;
-  width: 70vw;
+  width: 80vw;
   max-width: 40rem;
   border-radius: 3px;
   color: $dark-blue;
@@ -70,6 +70,13 @@
   z-index: 2;
 }
 
+.SustainableFoodCharacter {
+  height: 50rem;
+  transform: translate(-38%, 0%) scale(2.1);
+  width: 28rem;
+  z-index: 2;
+}
+
 .CircularCharacter {
   height: 50rem;
   transform: translate(-38%, 0%) scale(2.5);
@@ -85,6 +92,13 @@
 }
 
 .NatureCharacter {
+  height: 50rem;
+  transform: translate(-38%, 0%) scale(2.5);
+  width: 24rem;
+  z-index: 2;
+}
+
+.ResearchCharacter {
   height: 50rem;
   transform: translate(38%, 0%) scale(2.5);
   width: 24rem;
@@ -140,7 +154,7 @@
   font-size: $font-small;
   line-height: 2.5rem;
   margin: 3rem;
-  text-align: justify;
+  text-align: left;
 }
 
 .ResultCharacter {

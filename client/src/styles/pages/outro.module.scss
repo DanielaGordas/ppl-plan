@@ -6,28 +6,36 @@
   align-items: center;
   text-align: center;
   background: linear-gradient(rgba(174, 220, 232, 1), rgba(235, 249, 253, 1));
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 .Content {
   margin: 5rem;
   margin-top: 10rem;
+  text-align: center;
+  line-height: 2rem;
+  color: $dark-blue;
 }
 
 .Content h1 {
   font-size: $font-large;
-  line-height: 1.8rem;
-  color: $dark-blue;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .Content p {
-  padding: 1rem;
   font-size: $font-medium;
-  line-height: 1.8rem;
-  color: $dark-blue;
-  text-align: justify;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.Toolkit {
+  text-decoration: none;
+  color: $green;
+  font-size: $font-large;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .Link {
@@ -42,5 +50,18 @@
 
   &:focus {
     outline: none;
+  }
+}
+
+.Socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: $margin-small;
+
+  button {
+    margin-right: 1rem;
+    margin-top: -1rem;
   }
 }

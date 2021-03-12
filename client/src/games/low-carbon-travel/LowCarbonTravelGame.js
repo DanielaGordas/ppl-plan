@@ -3,31 +3,23 @@ import { DndProvider , useDrag, useDrop } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {TouchBackend} from 'react-dnd-touch-backend';
 import { Switch, Route, Link } from 'react-router-dom';
-import LowCarbonResult from './LowCarbonResult';
 import '../../styles/components/button.scss';
 import '../../styles/components/nav.scss';
-import classes from '../../styles/pages/lowcarbon.module.scss';
+import classes from '../../styles/pages/low-carbon.module.scss';
 import Intro from '../../components/Intro';
 import axios from 'axios';
 import Modal from '../../components/Modal';
 import itemTypes from '../../components/ItemTypes';
 import MyPreview from '../../components/MyPreview';
+import { lowCarbonTravelGame, lowCarbonTravelAnswers} from './Data';
+import Result from '../../components/Result';
 
 // Icons and Images
-import CarScrappageScheme from '../../images/low-carbon/Car_scrappage_scheme.svg';
-import CarFreeZones from '../../images/low-carbon/Car-free_zones.svg';
-import ElectricBusNetwork from '../../images/low-carbon/Electric_bus_network.svg';
-import ElectricRailNetwork from '../../images/low-carbon/Electric_rail_network.svg';
-import EmployerCarSharingScheme from '../../images/low-carbon/Employer_car_sharing_scheme.svg';
-import EvChargingPoints from '../../images/low-carbon/EV_charging_points.svg';
-import ImproveExistingPublicTransport from '../../images/low-carbon/Improve_existing_public_transport.svg';
-import NationalCyclingNetwork from '../../images/low-carbon/National_cycling_network.svg';
-import PurchaseGrants from '../../images/low-carbon/Purchase_grants.svg';
-import TaxBenefits from '../../images/low-carbon/Tax_benefits.svg';
+
 import {FaTrain, FaCar, FaAngleDown} from 'react-icons/fa';
 import { BiArrowBack, BiRevision } from "react-icons/bi";
-import IntroBackground from '../../images/low-carbon/Game_1_screen_1.svg';
-import Guy from '../../images/low-carbon/Character_1_First_screen.svg';
+import Background from '../../images/low-carbon/Game_1_screen_1.svg';
+import Character from '../../images/low-carbon/Character_1_First_screen.svg';
 
 
 const MovableItem = ({name, setItems, column, description, setInfo, index, icon}) => {
@@ -132,109 +124,7 @@ const Info = ({info, finalItems, submitAnswers}) => {
 
 const LowCarbonTravelGame = () => {
 
-    const lowCarbonTravelGame = {
-        id: 1, 
-        title: "Low Carbon Travel",
-        intro: "The UK is dominated by gas-guzzling cars. They are warming the planet, pollute our air and most commuters waste 115 hours sitting in traffic every year... What do you think the future of transport looks like?",
-        instructions: "Transport is complex. Choose 5 of the 10 low carbon travel options to shape the future of transport by dragging them into the boxes below. The gauge below shows you if your future is more electric vehicle or public transit focused."
-    }
-
-
-    const lowCarbonTravelAnswers = [
-        {
-            id: 1, 
-            name: "EV charging points",
-            description: "Invest in a network of car charging stations, with fast chargers every 50km along motorways, and provide better subsidies for home charging points.",
-            column: 'All',
-            category: 'electric car ownership',
-            game: "Low Carbon Travel",
-            svg: EvChargingPoints
-        },
-        {
-            id: 2, 
-            name: "Work based car sharing scheme",
-            description: "Employees carpooling could save up to £1000 on fuel and vehicle running costs, reduce pollution, and reduce demand for car parking spaces by 50%.",
-            column: 'All',
-            category: 'electric car ownership',
-            game: "Low Carbon Travel",
-            svg: EmployerCarSharingScheme
-        },
-        {
-            id: 3, 
-            name: "Car scrappage scheme",
-            description: "Individuals receive money towards an electric vehicle for scrapping their old polluting car, which will boost the UK’s car manufacturing industry, reduce air pollution and reduce emissions.",
-            column: 'All',
-            category: 'electric car ownership',
-            game: "Low Carbon Travel",
-            svg: CarScrappageScheme
-        },
-        {
-            id: 4, 
-            name: "Tax benefits",
-            description: "Make new electric vehicles more affordable for individuals and businesses by increasing benefits, such as purchase tax and VAT.",
-            column: 'All',
-            category: 'electric car ownership',
-            game: "Low Carbon Travel",
-            svg: TaxBenefits
-        },
-        {
-            id: 5, 
-            name: "Purchase grants",
-            description: "Introduce Purchase Grants to give people money to buy electric vehicles, making them more financially accessible to lower income households.",
-            column: 'All',
-            category: 'electric car ownership',
-            game: "Low Carbon Travel",
-            svg: PurchaseGrants
-        },
-        {
-            id: 6, 
-            name: "Electric bus network",
-            description: "Electrify the bus network resulting in cheaper and more reliable public transport, as well as improvements in local air quality and public health.",
-            column: 'All',
-            category: 'mass transit',
-            game: "Low Carbon Travel",
-            svg: ElectricBusNetwork
-        },
-        {
-            id: 7, 
-            name: "Electric rail network",
-            description: "Enjoy smoother, quieter, more reliable journeys with an electrified rail network. Boost the economy by potentially doubling the number of jobs in this sector, as well as saving money on maintenance and running costs.",
-            column: 'All',
-            category: 'mass transit',
-            game: "Low Carbon Travel",
-            svg: ElectricRailNetwork
-        },
-        {
-            id: 8, 
-            name: "National cycling network",
-            description: "Boost the economy by £5 million annually by investing in a National Cycle Network with dedicated city cycle lanes, making it safer for cyclists and improving public health as a result of regular exercise and cleaner air.",
-            column: 'All',
-            category: 'mass transit',
-            game: "Low Carbon Travel",
-            svg: NationalCyclingNetwork
-        },
-        {
-            id: 9, 
-            name: "Work from home",
-            description: "Fit high speed broadband and encourage those who can to keep working from home. This could alleviate traffic and pollution.",
-            column: 'All',
-            category: 'mass transit',
-            game: "Low Carbon Travel",
-            svg: CarFreeZones
-        },
-        {
-            id: 10, 
-            name: "Improve existing public transport",
-            description: "Improve public transport efficiency and reliability by optimising bus routes and reclaiming roads for dedicated bus/tram lanes in cities.",
-            column: 'All',
-            category: 'mass transit',
-            game: "Low Carbon Travel",
-            svg: ImproveExistingPublicTransport
-        }
-      
-    ]
-
-    const [game, setGame] = useState(lowCarbonTravelGame);
+    const game = lowCarbonTravelGame;
     const [items, setItems] = useState(lowCarbonTravelAnswers);
     const [info, setInfo] = useState([lowCarbonTravelAnswers[0].name,lowCarbonTravelAnswers[0].svg, lowCarbonTravelAnswers[0].description])
     const [active, setActive] = useState([lowCarbonTravelAnswers[0].name]);
@@ -319,9 +209,9 @@ const LowCarbonTravelGame = () => {
     const result = () => {
         let result = ""
         if(massTransit.length > electricCars.length) {
-           result = "Mass Transit future"
+           result = "You chose a future which is focused on an efficient, affordable, and clean public transport system. With an electrified rail and bus network, and vastly improved cycling infrastructure, we can generate more than 230,000 jobs and significantly improve public health whilst reducing transport emissions."
         } else {
-            result = "Electric car future"
+            result = "You chose a future which focuses on improving accessibility, affordability and infrastructure, helping more people to own electric vehicles. Benefits include the creation of approximately 27,000 new jobs, savings of up to 75% on running costs, and reducing emissions down to zero!"
         }
         return result;
     }
@@ -372,9 +262,9 @@ const LowCarbonTravelGame = () => {
         
     const handleRedirect = (res) => {
         if(res.status === 201 || res.status === 200) {
-            window.location = '/lowcarbon/result'
+            window.location = '/low-carbon/result'
         } else {
-            window.location = '/lowcarbon/game'
+            window.location = '/low-carbon/game'
         }
     }
     
@@ -382,27 +272,27 @@ const LowCarbonTravelGame = () => {
         setItems(lowCarbonTravelAnswers)
     }
 
-    const gradient = "rgba(169, 219, 232, 1),rgba(255, 255, 255, 0.6)";
+    const gradient = "rgba(169, 219, 232, 1), rgba(255, 255, 255, 0.6)";
 
     return(
         <Switch>
-            <Route path="/lowcarbon/intro">
+            <Route path="/low-carbon/intro">
                 <Intro
                     text={game.intro}
-                    link='/lowcarbon/game'
+                    link='/low-carbon/game'
                     back='/user'
-                    skip='/circulareconomy/intro'
-                    background={IntroBackground}
-                    guy={Guy}
-                    guyPosition="LowcarbonCharacter"
+                    skip='/clean-energy/intro'
+                    background={Background}
+                    character={Character}
+                    characterPosition="LowcarbonCharacter"
                     gradient={gradient}
                 />
             </Route>
-            <Route path="/lowcarbon/game">
+            <Route path="/low-carbon/game">
                 <div className="GameNav">
                     <div className="NavLink">
                         <BiArrowBack className="LeftIcon"/>
-                        <Link to='/lowcarbon/intro'>Back</Link>
+                        <Link to='/low-carbon/intro'>Back</Link>
                     </div>
                     <div className="NavLink">
                         <a className="" onClick={startOver} >Start over  </a>
@@ -449,8 +339,15 @@ const LowCarbonTravelGame = () => {
                     </div>
                 </div>
             </Route>
-            <Route path="/lowcarbon/result">
-                <LowCarbonResult />
+            <Route path="/low-carbon/result">
+                <Result 
+                    gradient={gradient} 
+                    background={Background} 
+                    text={lowCarbonText} 
+                    badge="You've earned the TRANSPORT BADGE"
+                    back="/low-carbon/game"
+                    next="/clean-energy/intro"
+                />
             </Route>
         </Switch>
     )

@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import classes from '../styles/pages/outro.module.scss';
 import styles from "../styles/pages/user.module.scss";
 import axios from 'axios';
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, EmailShareButton, EmailIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const OutroPage = () => {
 
@@ -93,18 +94,22 @@ const OutroPage = () => {
   const onSubmit = data => {
       addQuestions(data)
     }; 
+  
+  const shareUrl = "https://game.peoplesplan.org/"
 
 
   return(
     <>
       <NavBar />
+      
       <div className={classes.Container} >
+        
           <div className={classes.Content}>
               { answer1 && answer2 && answer3 ? 
-                <h1>Thank you for playing and helping shape your local climate policy!</h1>
+                <a href="https://peoplesplan.org/eco-toolkit/" className={classes.Toolkit}>Eco Toolkit</a>
                 :
                 <>
-                  <h1>One last thing...</h1>
+                  <h1>One last thing before you can unlock the Eco-Toolkit!</h1>
                   <form onSubmit={handleSubmit(onSubmit)}>
 
                   <label>Have you ever engaged with a policy consultation run by your council before?</label>
@@ -125,8 +130,8 @@ const OutroPage = () => {
                   </select>
                   {errors.question2 && <p className={styles.Error}>Please provide an answer</p>}
 
-                  <label>What is your ethnicity?</label>
-                  <select name="question3" className={styles.TextField}  ref={register({ required: true,})} >
+                  <label>What is your ethnicity? <em>(optional)</em></label>
+                  <select name="question3" className={styles.TextField}  ref={register()} >
                     <option></option>
                     <option value="White: English, Welsh, Scottish, Northern Irish or British">White: English, Welsh, Scottish, Northern Irish or British</option>
                     <option value="White: Irish">White: Irish</option>
@@ -146,6 +151,7 @@ const OutroPage = () => {
                     <option value="Any other Black, African or Caribbean background">Any other Black, African or Caribbean background</option>
                     <option value="Arab">Arab</option>
                     <option value="Any other ethnic group">Any other ethnic group</option>
+                    <option value="I prefer to not disclose">I prefer to not disclose</option>
                   </select>
                   {errors.question3 && <p className={styles.Error}>Please provide an answer</p>}
                   <input type="submit" className="Btn-border" />
@@ -153,9 +159,27 @@ const OutroPage = () => {
               </>
               }
 
-
               <p>We appreciate your feedback. Which improvements would you like to see?</p>
-              <a className={classes.Link} href="https://forms.gle/f67hrPtsz9jZdDvYA">Leave some Feedback!</a>
+              <a className={classes.Link} href="https://forms.glef67hrPtsz9jZdDvYA">Leave some Feedback</a>
+
+              <div className={classes.Socials}> 
+                <p>Share</p>  
+                <div>
+                  < FacebookShareButton url={shareUrl}> 
+                    <FacebookIcon size={32} round />
+                  </ FacebookShareButton>
+                  < TwitterShareButton url={shareUrl}> 
+                    <TwitterIcon size={32} round />
+                  </ TwitterShareButton>
+                  < WhatsappShareButton url={shareUrl}> 
+                    <WhatsappIcon size={32} round />
+                  </ WhatsappShareButton>
+                  < EmailShareButton url={shareUrl}> 
+                    <EmailIcon size={32} round />
+                  </ EmailShareButton>
+                </div>
+              </div>
+
           </div>
       </div>
     </>

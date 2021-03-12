@@ -1,34 +1,47 @@
-## THE PEOPLE'S PLAN
+## THE PEOPLE'S PLAN GAMIFIED MOBILE SURVEY
 
-This project contains one Ruby on Rails API backend app and one React front-end app bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project was built for the [Climate Venture Collective](https://thecvcollective.com/), a global collaborative community finding innovative solutions to the climate crisis. The main goal of the app is to use gamification to inform and engage people on climate related policies.
 
-## Available Scripts
+This project is made of a Ruby on Rails API backend and a React front-end. 
 
-In the project main directory, you can start by: 
 
 ## Backend app: 
 
-### `rails db:create db:migrate db:seed`
+* Ruby 2.6.6
+* Rails 6.0.3
+* PostgreSQL
 
+From the main directory run the following commands to setup the development environment:
+
+### `bundle install`
+### `yarn install`
+Installs gems and dependencies
+
+### `rails db:create db:migrate db:seed`
 Creates the database, adds the tables and populates it with data
 
 ### `rails s -p 3001`
+Starts the backend development server
 
-Runs the backend app in development mode.<br />
 Open [http://localhost:3001](http://localhost:3001) to view it in the browser.<br />
-To view the backend data you need to add the api endpoint e.g: [http://localhost:3001/api/games](http://localhost:3001/api/answers) 
+To view the backend data you need to add the api endpoint e.g: [http://localhost:3001/api/answers](http://localhost:3001/api/answers) 
 
 ## Frontend app:
 
-### `yarn install`
+Designed for mobile first and bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Installs project's dependencies
+* React 16.13.1
+* Sass
+* [React DND](https://react-dnd.github.io/react-dnd/docs/overview)
 
 ### `yarn --cwd client start`
+Starts the frontend development server
 
-Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+## Deployment to Elastic Beanstalk
+
+See [deploy/how_to_deploy.md](deploy/how_to_deploy.md)
