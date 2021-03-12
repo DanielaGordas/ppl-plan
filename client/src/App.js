@@ -19,14 +19,14 @@ import CleanEnergyGame from './games/clean-energy/CleanEnergyGame'
 import ResearchDevelopmentGame from './games/research-development/ResearchDevelopmentGame'
 import Loader from './components/Loader'
 
-export const initGA = (page) => {
+export const initGA = () => {
 	ReactGA.initialize('UA-191743567-1') // put your tracking id here
-	ReactGA.pageview(page)
+	ReactGA.pageview(window.location.pathname)
 }
 
 const App = () => {
 	useEffect(() => {
-		initGA(window.location.pathname)
+		initGA()
 	}, [])
 	// Use React Router History to track pages
 	const history = createBrowserHistory()
