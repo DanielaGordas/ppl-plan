@@ -7,7 +7,7 @@ import PrivacyPage from './pages/PrivacyPage'
 import SourcesPage from './pages/SourcesPage'
 import AboutPage from './pages/AboutPage'
 import UserDataCollection from './pages/UserDataCollection'
-import { Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ReactGA from 'react-ga'
 import { createBrowserHistory } from 'history'
 import LowCarbonTravelGame from './games/low-carbon-travel/LowCarbonTravelGame'
@@ -19,14 +19,14 @@ import CleanEnergyGame from './games/clean-energy/CleanEnergyGame'
 import ResearchDevelopmentGame from './games/research-development/ResearchDevelopmentGame'
 import Loader from './components/Loader'
 
-export const initGA = () => {
+export const initGA = (page) => {
 	ReactGA.initialize('UA-191743567-1') // put your tracking id here
-	ReactGA.pageview(window.location.pathname)
+	ReactGA.pageview(page)
 }
 
 const App = () => {
 	useEffect(() => {
-		initGA()
+		initGA(window.location.pathname)
 	}, [])
 	// Use React Router History to track pages
 	const history = createBrowserHistory()
