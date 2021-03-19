@@ -18,7 +18,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'devise'
-
+gem 'cancan'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
