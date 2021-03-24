@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Dashboard.css"
-import axios from "axios";
 
-const FilterForm = ({
+const FilterFormGameData = ({
   callAnswersWithNoFilters,
   fetchUsersThatComplyWithFilters,
+  councils
 }) => {
-  const [councils, setCouncils] = useState("");
   const [filters, setFilters] = useState({});
   const games = [
     "Low Carbon Travel",
@@ -14,28 +13,11 @@ const FilterForm = ({
     "Retrofit Homes",
     "Nature",
     "Clean Energy",
-    "Sustainable Food System"
+    "Sustainable Food System - Food Waste",
+    "Sustainable Food System - Animal Agriculture & Diet",
+    "Sustainable Food System - Localised Food System",
+    "Research and Development"
   ];
-
-  useEffect(() => {
-    axios
-      .get("http://people-s-plan.herokuapp.com/api/guests")
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        let arrayOfCouncils = [];
-        data.forEach((guest) => {
-          if (arrayOfCouncils.includes(guest.council) == false) {
-            if (guest.council !== null) {
-              arrayOfCouncils.push(guest.council);
-            }
-          }
-        });
-        arrayOfCouncils.sort();
-        setCouncils(arrayOfCouncils);
-      });
-  }, []);
 
   const filterAssignment = (value, filter) => {
     setFilters((prevState) => {
@@ -61,7 +43,7 @@ const FilterForm = ({
         filters.hasOwnProperty("council") ||
         filters.hasOwnProperty("age") ||
         filters.hasOwnProperty("gender") ||
-        filters.hasOwnProperty("ethnicity")
+        filters.hasOwnProperty("ethnicity") 
       ) {
         fetchUsersThatComplyWithFilters(filters)
       }
@@ -71,12 +53,8 @@ const FilterForm = ({
     }
   };
 
-  useEffect(() => {
-    console.log(filters);
-  }, [filters]);
-
   return (
-      <form style={{display: "flex", flexDirection: "column", height: "100vh", width: "20vw"}}>
+      <form style={{display: "flex", flexDirection: "column", height: "100vh", width: "20vw", marginRight: "10px"}}>
         <select
           onChange={(event) => filterAssignment(event.target.value, "game")}
           className="filterForm"
@@ -210,10 +188,10 @@ const FilterForm = ({
         }}
       >
         {" "}
-        View Data
+        View Game Data
       </button>
       </form>
   );
 };
 
-export default FilterForm;
+export default FilterFormGameData;
