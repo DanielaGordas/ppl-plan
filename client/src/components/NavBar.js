@@ -1,7 +1,6 @@
 import { slide as Menu } from 'react-burger-menu'
 import React from 'react'
 import '../styles/components/nav.scss'
-import AuthenticationButton from '../auth/AuthenticationButton'
 
 const NavBar = () => {
 	return (
@@ -19,7 +18,6 @@ const NavBar = () => {
 				<a id='sources' className='menu-item' href='/sources'>
 					Sources
 				</a>
-				<AuthenticationButton />
 			</Menu>
 		</div>
 	)

@@ -85,6 +85,7 @@ const App = () => {
 									<ResearchDevelopmentGame />
 								</Route>
 								<Route path='/outro' component={OutroPage} />
+								<ProtectedRoute path='/dashboard' component={AboutPage} />
 								<Route>
 									<NotFound />
 								</Route>
