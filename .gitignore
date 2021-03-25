@@ -40,4 +40,4 @@
 
 #env files
 /client/.env
-.env
+.env.env
