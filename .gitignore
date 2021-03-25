@@ -39,4 +39,5 @@
 
 
 #env files
+/client/.env
 .env
