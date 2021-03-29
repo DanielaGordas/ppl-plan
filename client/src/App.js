@@ -18,6 +18,8 @@ import SustainableFoodGame from './games/sustainable-food-system/SustainableFood
 import CleanEnergyGame from './games/clean-energy/CleanEnergyGame'
 import ResearchDevelopmentGame from './games/research-development/ResearchDevelopmentGame'
 import Loader from './components/Loader'
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history'
+import ProtectedRoute from './auth/ProtectedRoute'
 
 export const initGA = () => {
 	ReactGA.initialize('UA-191743567-1') // put your tracking id here
@@ -47,46 +49,49 @@ const App = () => {
 		<>
 			{loading === false ? (
 				<Router history={history}>
-					<div className='Layout'>
-						<Switch>
-							<Route path='/' exact component={HomePage} />
-							<Route path='/about'>
-								<AboutPage />
-							</Route>
-							<Route path='/privacy'>
-								<PrivacyPage />
-							</Route>
-							<Route path='/sources'>
-								<SourcesPage />
-							</Route>
-							<Route path='/user' component={UserDataCollection} />
-							<Route path='/low-carbon'>
-								<LowCarbonTravelGame />
-							</Route>
-							<Route path='/circular-economy'>
-								<CircularEconomyGame />
-							</Route>
-							<Route path='/retrofit-homes'>
-								<RetrofitHomesGame />
-							</Route>
-							<Route path='/nature'>
-								<NatureGame />
-							</Route>
-							<Route path='/clean-energy'>
-								<CleanEnergyGame />
-							</Route>
-							<Route path='/sustainable-food-system'>
-								<SustainableFoodGame />
-							</Route>
-							<Route path='/research-development'>
-								<ResearchDevelopmentGame />
-							</Route>
-							<Route path='/outro' component={OutroPage} />
-							<Route>
-								<NotFound />
-							</Route>
-						</Switch>
-					</div>
+					<Auth0ProviderWithHistory>
+						<div className='Layout'>
+							<Switch>
+								<Route path='/' exact component={HomePage} />
+								<Route path='/about'>
+									<AboutPage />
+								</Route>
+								<Route path='/privacy'>
+									<PrivacyPage />
+								</Route>
+								<Route path='/sources'>
+									<SourcesPage />
+								</Route>
+								<Route path='/user' component={UserDataCollection} />
+								<Route path='/low-carbon'>
+									<LowCarbonTravelGame />
+								</Route>
+								<Route path='/circular-economy'>
+									<CircularEconomyGame />
+								</Route>
+								<Route path='/retrofit-homes'>
+									<RetrofitHomesGame />
+								</Route>
+								<Route path='/nature'>
+									<NatureGame />
+								</Route>
+								<Route path='/clean-energy'>
+									<CleanEnergyGame />
+								</Route>
+								<Route path='/sustainable-food-system'>
+									<SustainableFoodGame />
+								</Route>
+								<Route path='/research-development'>
+									<ResearchDevelopmentGame />
+								</Route>
+								<Route path='/outro' component={OutroPage} />
+								<ProtectedRoute path='/dashboard' component={AboutPage} />
+								<Route>
+									<NotFound />
+								</Route>
+							</Switch>
+						</div>
+					</Auth0ProviderWithHistory>
 				</Router>
 			) : (
 				<Loader />
