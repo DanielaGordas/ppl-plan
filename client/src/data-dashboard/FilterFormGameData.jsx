@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./Dashboard.css"
 
 const FilterFormGameData = ({
-  callAnswersWithNoFilters,
-  fetchUsersThatComplyWithFilters,
+  gameDataRequestHandler,
   councils
 }) => {
   const [filters, setFilters] = useState({});
@@ -39,17 +38,7 @@ const FilterFormGameData = ({
 
   const handleClick = (filters) => {
     if (filters.hasOwnProperty("game")) {
-      if (
-        filters.hasOwnProperty("council") ||
-        filters.hasOwnProperty("age") ||
-        filters.hasOwnProperty("gender") ||
-        filters.hasOwnProperty("ethnicity") 
-      ) {
-        fetchUsersThatComplyWithFilters(filters)
-      }
-      else {
-        callAnswersWithNoFilters(filters["game"])
-      }
+      gameDataRequestHandler(filters)
     }
   };
 

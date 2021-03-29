@@ -1,12 +1,8 @@
-import React from 'react';
-import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+import * as am4core from "@amcharts/amcharts4/core";
 
-const CircularEconomyBC = ({chartData}) => {
-    // Create chart instance
-    let chart = am4core.create("chartdiv", am4charts.XYChart);
-    
-    // Create pie series
+export const configureCircularEconomyChart = (chartData, chart)=>{
+    // Create series
     let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "Answer";
     categoryAxis.fontSize = 10;
@@ -44,12 +40,4 @@ const CircularEconomyBC = ({chartData}) => {
     
     // And, for a good measure, let's add a legend
     chart.legend = new am4charts.Legend();
-    
-        return (
-            <div>
-                <div id="chartdiv" style={{height: "50vh", fontSize: "20px", width: "75vw"}} ></div>
-            </div>
-        );
-};
-
-export default CircularEconomyBC;
+    }

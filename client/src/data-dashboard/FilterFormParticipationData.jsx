@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./Dashboard.css";
 
 const FilterFormParticipationData = ({
-  participationDataNationWide,
-  participationDataSpecificCouncil,
+  participationDataRequestHandler,
   councils,
 }) => {
   const [filters, setFilters] = useState({});
@@ -31,11 +30,7 @@ const FilterFormParticipationData = ({
 
   const handleClick = (filters) => {
     if (filters.hasOwnProperty("participationFilter")) {
-      if (filters.hasOwnProperty("council")) {
-        participationDataSpecificCouncil(filters)
-      } else {
-        participationDataNationWide(filters["participationFilter"])
-      }
+      participationDataRequestHandler(filters)
     }
   };
 

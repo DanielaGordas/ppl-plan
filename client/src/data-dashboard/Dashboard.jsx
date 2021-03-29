@@ -2,67 +2,82 @@ import React, { useEffect, useState } from "react";
 import FilterFormGameData from "./FilterFormGameData";
 import FilterFormParticipationData from "./FilterFormParticipationData";
 import BarChart from "./BarChart";
-import CircularEconomyBC from "./CircularEconomyBC";
 import Description from "./Description";
 import "./Dashboard.css";
 import classes from "../styles/pages/home.module.scss";
 import axios from "axios";
 import answerData from "./answerData";
-import * as am4core from "@amcharts/amcharts4/core";
 
 const Dashboard = () => {
   const [dataForChart, setDataForChart] = useState([]);
-  const [totalNumberOfUsers, setTotalNumberOfUsers] = useState();
   const [game, setGame] = useState("");
-  const [guests, setGuests] = useState();
-  const [answers, setAnswers] = useState();
-  const [questions, setQuestions] = useState();
-  const [councils, setCouncils] = useState();
+  const [guests, setGuests] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const [councils, setCouncils] = useState([]);
+  const [everyUniqueGuestID, setEveryUniqueGuestID] = useState([]);
+  const [totalNumberOfUsers, setTotalNumberOfUsers] = useState(null);
 
   //CALL DATA AND SAVE TO STATE ON PAGE LOAD
   useEffect(() => {
-    axios
-      .get("https://game.peoplesplan.org/api/guests")
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        setGuests(data);
-        let arrayOfCouncils = [];
-        data.forEach((guest) => {
-          if (arrayOfCouncils.includes(guest.council) === false) {
-            if (guest.council !== null) {
-              arrayOfCouncils.push(guest.council);
-            }
-          }
-        });
-        arrayOfCouncils.sort();
-        setCouncils(arrayOfCouncils);
-      });
-    axios
-      .get("https://game.peoplesplan.org/api/answers")
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        setAnswers(data);
-      });
-    axios
-      .get("https://game.peoplesplan.org/api/questions")
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        setQuestions(data);
-      });
+    const fetchData = async (url, hook) => {
+      try {
+        const response = await axios.get(url);
+        hook(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData("https://game.peoplesplan.org/api/guests", setGuests);
+    fetchData("https://game.peoplesplan.org/api/answers", setAnswers);
+    fetchData("https://game.peoplesplan.org/api/questions", setQuestions);
+
+    axios.get("http://api.tracmobility.com/test/vehicles?page=0&size=10")
+    .then((response) => {
+      console.log(response.data)
+    })
   }, []);
 
+  useEffect(() => {
+    let arrayOfCouncils = [];
+    let arrayOfEveryUniqueGuestID = [];
+    guests.forEach((guest) => {
+      if (arrayOfCouncils.includes(guest.council) === false) {
+        if (guest.council !== null) {
+          arrayOfCouncils.push(guest.council);
+        }
+      }
+      if (arrayOfEveryUniqueGuestID.includes(guest["id"]) === false) {
+        arrayOfEveryUniqueGuestID.push(guest["id"]);
+      }
+    });
+    arrayOfCouncils.sort();
+    setCouncils(arrayOfCouncils);
+    setEveryUniqueGuestID(arrayOfEveryUniqueGuestID);
+  }, [guests]);
+
   //SORTING DATA AND APPLYING FILTERS
-  const fetchUsersThatComplyWithFilters = (filters) => {
+  const gameDataRequestHandler = (filters) => {
     setGame(filters["game"]);
+    if (
+      filters.hasOwnProperty("council") ||
+      filters.hasOwnProperty("age") ||
+      filters.hasOwnProperty("gender") ||
+      filters.hasOwnProperty("ethnicity")
+    ) {
+      const userIDs = fetchRequestedUsers(filters);
+      callCorrectChart(userIDs, filters["game"]);
+    } else {
+      callCorrectChart(everyUniqueGuestID, filters["game"]);
+    }
+  };
+
+  const fetchRequestedUsers = (filters) => {
     const filtersInUse = { ...filters };
     delete filtersInUse["game"];
     delete filtersInUse["ethnicity"];
+    delete filtersInUse["participationFilter"];
     const arrayOfFilters = Object.keys(filtersInUse);
     const desiredUserIds = [];
     guests.forEach((guest) => {
@@ -84,8 +99,7 @@ const Dashboard = () => {
             arrayOfUsersWithFilteredEthnicity.push(guestObject["guest_id"]);
           }
         });
-        setTotalNumberOfUsers(arrayOfUsersWithFilteredEthnicity.length);
-        callCorrectChart(arrayOfUsersWithFilteredEthnicity, filters["game"]);
+        return arrayOfUsersWithFilteredEthnicity;
       } else {
         const arrayOfUsersWithFilteredEthnicity = [];
         questions.forEach((guestObject) => {
@@ -96,41 +110,39 @@ const Dashboard = () => {
             arrayOfUsersWithFilteredEthnicity.push(guestObject["guest_id"]);
           }
         });
-        setTotalNumberOfUsers(arrayOfUsersWithFilteredEthnicity.length);
-        callCorrectChart(arrayOfUsersWithFilteredEthnicity, filters["game"]);
+        return arrayOfUsersWithFilteredEthnicity;
       }
     } else {
-      setTotalNumberOfUsers(desiredUserIds.length);
-      callCorrectChart(desiredUserIds, filters["game"]);
+      return desiredUserIds;
     }
   };
 
-  const callCorrectChart = (desiredUserIds, game) => {
-    setTotalNumberOfUsers(desiredUserIds.length);
+  const callCorrectChart = (userIds, game) => {
     if (
       game === "Low Carbon Travel" ||
       game === "Nature" ||
       game === "Research and Development"
     ) {
-      simpleBarChartWithFilters(desiredUserIds, game);
+      simpleBarChart(userIds, game);
     } else if (game === "Retrofit Homes") {
-      retrofitBarChartWithFilters(desiredUserIds);
+      retrofitBarChart(userIds);
     } else if (game === "Clean Energy") {
-      cleanEnergyWithFilters(desiredUserIds);
+      cleanEnergy(userIds);
     } else if (
       game === "Sustainable Food System - Food Waste" ||
       game === "Sustainable Food System - Animal Agriculture & Diet" ||
       game === "Sustainable Food System - Localised Food System"
     ) {
-      sustainableFoodSystemWithFilters(desiredUserIds, game);
+      sustainableFoodSystem(userIds, game);
     } else if (game === "Circular Economy") {
-      circularEconomyWithFilters(desiredUserIds);
+      circularEconomy(userIds);
     }
   };
 
-  const simpleBarChartWithFilters = (userIds, game) => {
+  const simpleBarChart = (userIds, game) => {
     const answerObject = { ...answerData[game] };
     const answersKeys = Object.keys(answerObject);
+    const totalNumberOfUsers = [];
     answers.forEach((answer) => {
       if (
         answer["game"] === game &&
@@ -138,14 +150,19 @@ const Dashboard = () => {
         answersKeys.includes(answer["name"])
       ) {
         answerObject[answer["name"]] = answerObject[answer["name"]] + 1;
+        if (totalNumberOfUsers.includes(answer["guest_id"]) === false) {
+          totalNumberOfUsers.push(answer["guest_id"]);
+        }
       }
     });
+    setTotalNumberOfUsers(totalNumberOfUsers.length);
     formatAnswers(answerObject);
   };
 
-  const retrofitBarChartWithFilters = (userIds) => {
+  const retrofitBarChart = (userIds) => {
     const answerObject = { ...answerData["Retrofit Homes"] };
     const answerObjectKeys = Object.keys(answerObject);
+    const totalNumberOfUsers = [];
     answers.forEach((answer) => {
       if (
         answer["game"] === "Retrofit Homes" &&
@@ -154,14 +171,19 @@ const Dashboard = () => {
       ) {
         let points = 10 - parseInt(answer["column"]);
         answerObject[answer["name"]] = answerObject[answer["name"]] + points;
+        if (totalNumberOfUsers.includes(answer["guest_id"]) === false) {
+          totalNumberOfUsers.push(answer["guest_id"]);
+        }
       }
     });
+    setTotalNumberOfUsers(totalNumberOfUsers.length);
     formatAnswers(answerObject);
   };
 
-  const cleanEnergyWithFilters = (userIds) => {
+  const cleanEnergy = (userIds) => {
     const answerObject = { ...answerData["Clean Energy"] };
     const answerObjectKeys = Object.keys(answerObject);
+    const totalNumberOfUsers = [];
     answers.forEach((answer) => {
       if (
         answer["game"] === "Clean Energy" &&
@@ -169,28 +191,29 @@ const Dashboard = () => {
         answerObjectKeys.includes(answer["column"])
       ) {
         answerObject[answer["column"]] = answerObject[answer["column"]] + 1;
+        if (totalNumberOfUsers.includes(answer["guest_id"]) === false) {
+          totalNumberOfUsers.push(answer["guest_id"]);
+        }
       }
     });
+    setTotalNumberOfUsers(totalNumberOfUsers.length);
     formatAnswers(answerObject);
   };
 
-  const sustainableFoodSystemWithFilters = (userIds, game) => {
-    const sustainableFSSubCategory = (game) => {
-      if (game === "Sustainable Food System - Food Waste") {
-        return "food waste";
-      } else if (
-        game === "Sustainable Food System - Animal Agriculture & Diet"
-      ) {
-        return "animal agriculture & diet";
-      } else if (game === "Sustainable Food System - Localised Food System") {
-        return "localised food system";
-      }
+  const sustainableFoodSystem = (userIds, game) => {
+    const sustainableFSSubCategory = {
+      "Sustainable Food System - Food Waste": "food waste",
+      "Sustainable Food System - Animal Agriculture & Diet":
+        "animal agriculture & diet",
+      "Sustainable Food System - Localised Food System":
+        "localised food system",
     };
-    const subCategory = sustainableFSSubCategory(game);
+    const subCategory = sustainableFSSubCategory[game];
     const answerObject = {
       ...answerData["Sustainable Food System"][subCategory],
     };
     const answerObjectKeys = Object.keys(answerObject);
+    const totalNumberOfUsers = [];
     answers.forEach((answer) => {
       if (
         answer["game"] === "Sustainable Food System" &&
@@ -199,14 +222,19 @@ const Dashboard = () => {
         answer["category"] === subCategory
       ) {
         answerObject[answer["name"]] = answerObject[answer["name"]] + 1;
+        if (totalNumberOfUsers.includes(answer["guest_id"]) === false) {
+          totalNumberOfUsers.push(answer["guest_id"]);
+        }
       }
     });
+    setTotalNumberOfUsers(totalNumberOfUsers.length);
     formatAnswers(answerObject);
   };
 
-  const circularEconomyWithFilters = (userIds) => {
+  const circularEconomy = (userIds) => {
     const answerObject = { ...answerData["Circular Economy"] };
     const answerObjectKeys = Object.keys(answerObject);
+    const totalNumberOfUsers = [];
     answers.forEach((answer) => {
       if (
         answer["game"] === "Circular Economy" &&
@@ -217,154 +245,30 @@ const Dashboard = () => {
         const answerName = answer["name"];
         answerObject[answerName][nowFutureOrNever] =
           answerObject[answerName][nowFutureOrNever] + 1;
+        if (totalNumberOfUsers.includes(answer["guest_id"]) === false) {
+          totalNumberOfUsers.push(answer["guest_id"]);
+        }
       }
     });
-    formatCircularEconomyAnswers(answerObject);
-  };
-
-  //SORTING DATA WITHOUT APPLYING FILTERS
-  const callAnswersWithNoFilters = (game) => {
-    setGame(game);
-    if (
-      game === "Low Carbon Travel" ||
-      game === "Nature" ||
-      game === "Research and Development"
-    ) {
-      simpleBarChartWithoutFilters(game);
-    } else if (game === "Retrofit Homes") {
-      retrofitBarChartWithoutFilters();
-    } else if (game === "Clean Energy") {
-      cleanEnergyWithoutFilters();
-    } else if (
-      game === "Sustainable Food System - Food Waste" ||
-      game === "Sustainable Food System - Animal Agriculture & Diet" ||
-      game === "Sustainable Food System - Localised Food System"
-    ) {
-      sustainableFoodSystemWithoutFilters(game);
-    } else if (game === "Circular Economy") {
-      circularEconomyWithoutFilters("Circular Economy");
-    }
-  };
-
-  const simpleBarChartWithoutFilters = (game) => {
-    const listOfTotalUsers = [];
-    const answerObject = { ...answerData[game] };
-    const answerObjectKeys = Object.keys(answerObject);
-    answers.forEach((answer) => {
-      if (listOfTotalUsers.includes(answer["guest_id"]) === false) {
-        listOfTotalUsers.push(answer["guest_id"]);
-      }
-      if (
-        answer["game"] === game &&
-        answerObjectKeys.includes(answer["name"])
-      ) {
-        answerObject[answer["name"]] = answerObject[answer["name"]] + 1;
-      }
-    });
-    setTotalNumberOfUsers(listOfTotalUsers.length);
-    formatAnswers(answerObject);
-  };
-
-  const retrofitBarChartWithoutFilters = () => {
-    const listOfTotalUsers = [];
-    const answerObject = { ...answerData["Retrofit Homes"] };
-    const answerObjectKeys = Object.keys(answerObject);
-    answers.forEach((answer) => {
-      if (listOfTotalUsers.includes(answer["guest_id"]) === false) {
-        listOfTotalUsers.push(answer["guest_id"]);
-      }
-      if (
-        answer["game"] === "Retrofit Homes" &&
-        answerObjectKeys.includes(answer["name"])
-      ) {
-        let points = 10 - parseInt(answer["column"]);
-        answerObject[answer["name"]] = answerObject[answer["name"]] + points;
-      }
-    });
-    setTotalNumberOfUsers(listOfTotalUsers.length);
-    formatAnswers(answerObject);
-  };
-
-  const cleanEnergyWithoutFilters = () => {
-    const listOfTotalUsers = [];
-    const answerObject = { ...answerData["Clean Energy"] };
-    const answerObjectKeys = Object.keys(answerObject);
-    answers.forEach((answer) => {
-      if (listOfTotalUsers.includes(answer["guest_id"]) === false) {
-        listOfTotalUsers.push(answer["guest_id"]);
-      }
-      if (
-        answer["game"] === "Clean Energy" &&
-        answerObjectKeys.includes(answer["column"])
-      ) {
-        answerObject[answer["column"]] = answerObject[answer["column"]] + 1;
-      }
-    });
-    setTotalNumberOfUsers(listOfTotalUsers.length);
-    formatAnswers(answerObject);
-  };
-
-  const sustainableFoodSystemWithoutFilters = (game) => {
-    const sustainableFSSubCategory = (game) => {
-      if (game === "Sustainable Food System - Food Waste") {
-        return "food waste";
-      } else if (
-        game === "Sustainable Food System - Animal Agriculture & Diet"
-      ) {
-        return "animal agriculture & diet";
-      } else if (game === "Sustainable Food System - Localised Food System") {
-        return "localised food system";
-      }
-    };
-    const subCategory = sustainableFSSubCategory(game);
-    const listOfTotalUsers = [];
-    const answerObject = {
-      ...answerData["Sustainable Food System"][subCategory],
-    };
-    const answerObjectKeys = Object.keys(answerObject);
-    answers.forEach((answer) => {
-      if (listOfTotalUsers.includes(answer["guest_id"]) === false) {
-        listOfTotalUsers.push(answer["guest_id"]);
-      }
-      if (
-        answer["game"] === "Sustainable Food System" &&
-        answerObjectKeys.includes(answer["name"]) &&
-        answer["category"] === subCategory
-      ) {
-        answerObject[answer["name"]] = answerObject[answer["name"]] + 1;
-      }
-    });
-    setTotalNumberOfUsers(listOfTotalUsers.length);
-    formatAnswers(answerObject);
-  };
-
-  const circularEconomyWithoutFilters = () => {
-    const listOfTotalUsers = [];
-    const answerObject = { ...answerData["Circular Economy"] };
-    const answerObjectKeys = Object.keys(answerObject);
-    answers.forEach((answer) => {
-      if (listOfTotalUsers.includes(answer["guest_id"]) === false) {
-        listOfTotalUsers.push(answer["guest_id"]);
-      }
-      if (
-        answer["game"] === "Circular Economy" &&
-        answerObjectKeys.includes(answer["name"])
-      ) {
-        const nowFutureOrNever = answer["column"];
-        const answerName = answer["name"];
-        answerObject[answerName][nowFutureOrNever] =
-          answerObject[answerName][nowFutureOrNever] + 1;
-      }
-    });
+    setTotalNumberOfUsers(totalNumberOfUsers.length);
     formatCircularEconomyAnswers(answerObject);
   };
 
   //PARTICIPATION DATA
-  const participationDataNationWide = (participationFilter) => {
+  const participationDataRequestHandler = (filters) => {
     setGame("");
+    if (filters.hasOwnProperty("council")) {
+      const userIds = fetchRequestedUsers(filters);
+      participationData(userIds, filters["participationFilter"]);
+    } else {
+      participationData(everyUniqueGuestID, filters["participationFilter"]);
+    }
+  };
+
+  const participationData = (userIds, participationFilter) => {
     const answerObject = { ...answerData[participationFilter] };
     const answerObjectKeys = Object.keys(answerObject);
-    const listOfTotalUsers = [];
+    const totalUserCount = [];
     if (
       participationFilter === "What is your ethnicity?" ||
       participationFilter ===
@@ -375,79 +279,28 @@ const Dashboard = () => {
       questions.forEach((question) => {
         if (
           question["question"] === participationFilter &&
-          answerObjectKeys.includes(question["answer"])
+          answerObjectKeys.includes(question["answer"]) &&
+          userIds.includes(question["guest_id"])
         ) {
           answerObject[question["answer"]] =
             answerObject[question["answer"]] + 1;
-          listOfTotalUsers.push(question["guest_id"]);
+          totalUserCount.push(question["guest_id"]);
         }
       });
-      setTotalNumberOfUsers(listOfTotalUsers.length);
-      formatAnswers(answerObject);
-    } else if (
-      participationFilter === "age" ||
-      participationFilter === "gender"
-    ) {
+    } else {
       guests.forEach((guest) => {
-        if (answerObjectKeys.includes(guest[participationFilter])) {
+        if (
+          answerObjectKeys.includes(guest[participationFilter]) &&
+          userIds.includes(guest["id"])
+        ) {
           answerObject[guest[participationFilter]] =
             answerObject[guest[participationFilter]] + 1;
-          listOfTotalUsers.push(guest["id"]);
+          totalUserCount.push(guest["id"]);
         }
       });
-      setTotalNumberOfUsers(listOfTotalUsers.length);
-      formatAnswers(answerObject);
     }
-  };
-
-  const participationDataSpecificCouncil = (filters) => {
-    setGame("");
-    const answerObject = { ...answerData[filters["participationFilter"]] };
-    const answerObjectKeys = Object.keys(answerObject);
-    const listOfTotalUsers = [];
-    const guestIDs = [];
-    if (
-      filters["participationFilter"] === "What is your ethnicity?" ||
-      filters["participationFilter"] ===
-        "Have you ever engaged with a policy consultation run by your council before?" ||
-      filters["participationFilter"] ===
-        "Do you feel you have an opportunity to shape local climate policy?"
-    ) {
-      guests.forEach((guest) => {
-        if (guest["council"] === filters["council"]) {
-          guestIDs.push(guest["id"]);
-        }
-      });
-      questions.forEach((question) => {
-        if (
-          question["question"] === filters["participationFilter"] &&
-          answerObjectKeys.includes(question["answer"]) &&
-          guestIDs.includes(question["guest_id"])
-        ) {
-          answerObject[question["answer"]] =
-            answerObject[question["answer"]] + 1;
-          listOfTotalUsers.push(question["guest_id"]);
-        }
-      });
-      setTotalNumberOfUsers(listOfTotalUsers.length);
-      formatAnswers(answerObject);
-    } else if (
-      filters["participationFilter"] === "age" ||
-      filters["participationFilter"] === "gender"
-    ) {
-      guests.forEach((guest) => {
-        if (
-          answerObjectKeys.includes(guest[filters["participationFilter"]]) &&
-          guest["council"] === filters["council"]
-        ) {
-          answerObject[guest[filters["participationFilter"]]] =
-            answerObject[guest[filters["participationFilter"]]] + 1;
-          listOfTotalUsers.push(guest["id"]);
-        }
-      });
-      setTotalNumberOfUsers(listOfTotalUsers.length);
-      formatAnswers(answerObject);
-    }
+    formatAnswers(answerObject);
+    setTotalNumberOfUsers(totalUserCount.length);
   };
 
   //FORMAT DATA
@@ -460,7 +313,6 @@ const Dashboard = () => {
         "Times Selected": answers[name],
       });
     });
-    //am4core.disposeAllCharts();
     setDataForChart(formattedAnswers);
   };
 
@@ -475,7 +327,6 @@ const Dashboard = () => {
         Never: answers[name]["Never"],
       });
     });
-    //am4core.disposeAllCharts();
     setDataForChart(formattedAnswers);
   };
 
@@ -507,8 +358,7 @@ const Dashboard = () => {
             Select filters for game data:{" "}
           </h2>
           <FilterFormGameData
-            callAnswersWithNoFilters={callAnswersWithNoFilters}
-            fetchUsersThatComplyWithFilters={fetchUsersThatComplyWithFilters}
+            gameDataRequestHandler={gameDataRequestHandler}
             councils={councils}
           />
           <h2
@@ -523,8 +373,7 @@ const Dashboard = () => {
             Select filters for participation data:{" "}
           </h2>
           <FilterFormParticipationData
-            participationDataNationWide={participationDataNationWide}
-            participationDataSpecificCouncil={participationDataSpecificCouncil}
+            participationDataRequestHandler={participationDataRequestHandler}
             councils={councils}
           />
         </div>
@@ -540,14 +389,9 @@ const Dashboard = () => {
           >
             {game} Results
           </h2>
-         
-          {game !== "Circular Economy" ? (
-            <BarChart chartData={dataForChart} />
-          ) : (
-            <CircularEconomyBC chartData={dataForChart} />
-          )}
+          <BarChart chartData={dataForChart} game={game} />
           <p style={{ fontSize: "30px", textAlign: "center" }}>
-            Total Users: {totalNumberOfUsers}
+            Total Users Represented in Chart: {totalNumberOfUsers}
           </p>
           <Description game={game} />
         </div>
