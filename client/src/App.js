@@ -7,7 +7,7 @@ import PrivacyPage from './pages/PrivacyPage'
 import SourcesPage from './pages/SourcesPage'
 import AboutPage from './pages/AboutPage'
 import UserDataCollection from './pages/UserDataCollection'
-import { Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ReactGA from 'react-ga'
 import { createBrowserHistory } from 'history'
 import LowCarbonTravelGame from './games/low-carbon-travel/LowCarbonTravelGame'
@@ -19,13 +19,12 @@ import CleanEnergyGame from './games/clean-energy/CleanEnergyGame'
 import ResearchDevelopmentGame from './games/research-development/ResearchDevelopmentGame'
 import Loader from './components/Loader'
 import Dashboard from "./data-dashboard/Dashboard";
+import Auth0ProviderWithHistory from './auth/auth0-provider-with-history'
+import ProtectedRoute from './auth/ProtectedRoute'
 
 export const initGA = () => {
 	ReactGA.initialize('UA-191743567-1') // put your tracking id here
-}
-
-export const GApageView = (page) => {
-	ReactGA.pageview(page)
+	ReactGA.pageview(window.location.pathname)
 }
 
 const App = () => {
@@ -51,49 +50,52 @@ const App = () => {
 		<>
 			{loading === false ? (
 				<Router history={history}>
-					<div className='Layout'>
-						<Switch>
-							<Route path='/' exact component={HomePage} />
-							<Route path='/about'>
-								<AboutPage />
-							</Route>
-							<Route path='/privacy'>
-								<PrivacyPage />
-							</Route>
-							<Route path='/sources'>
-								<SourcesPage />
-							</Route>
-							<Route path='/user' component={UserDataCollection} />
-							<Route path='/low-carbon'>
-								<LowCarbonTravelGame />
-							</Route>
-							<Route path='/circular-economy'>
-								<CircularEconomyGame />
-							</Route>
-							<Route path='/retrofit-homes'>
-								<RetrofitHomesGame />
-							</Route>
-							<Route path='/nature'>
-								<NatureGame />
-							</Route>
-							<Route path='/clean-energy'>
-								<CleanEnergyGame />
-							</Route>
-							<Route path='/sustainable-food-system'>
-								<SustainableFoodGame />
-							</Route>
-							<Route path='/research-development'>
-								<ResearchDevelopmentGame />
-							</Route>
-							<Route path='/outro' component={OutroPage} />
-							<Route path="/data-dashboard">
+					<Auth0ProviderWithHistory>
+						<div className='Layout'>
+							<Switch>
+								<Route path='/' exact component={HomePage} />
+								<Route path='/about'>
+									<AboutPage />
+								</Route>
+								<Route path='/privacy'>
+									<PrivacyPage />
+								</Route>
+								<Route path='/sources'>
+									<SourcesPage />
+								</Route>
+								<Route path='/user' component={UserDataCollection} />
+								<Route path='/low-carbon'>
+									<LowCarbonTravelGame />
+								</Route>
+								<Route path='/circular-economy'>
+									<CircularEconomyGame />
+								</Route>
+								<Route path='/retrofit-homes'>
+									<RetrofitHomesGame />
+								</Route>
+								<Route path='/nature'>
+									<NatureGame />
+								</Route>
+								<Route path='/clean-energy'>
+									<CleanEnergyGame />
+								</Route>
+								<Route path='/sustainable-food-system'>
+									<SustainableFoodGame />
+								</Route>
+								<Route path='/research-development'>
+									<ResearchDevelopmentGame />
+								</Route>
+								<Route path='/outro' component={OutroPage} />
+								<ProtectedRoute path='/dashboard' component={AboutPage} />
+                <Route path="/data-dashboard">
                                 <Dashboard />
                             </Route>
-							<Route>
-								<NotFound />
-							</Route>
-						</Switch>
-					</div>
+								<Route>
+									<NotFound />
+								</Route>
+							</Switch>
+						</div>
+					</Auth0ProviderWithHistory>
 				</Router>
 			) : (
 				<Loader />
