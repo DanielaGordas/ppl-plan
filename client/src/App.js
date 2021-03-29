@@ -18,6 +18,7 @@ import SustainableFoodGame from './games/sustainable-food-system/SustainableFood
 import CleanEnergyGame from './games/clean-energy/CleanEnergyGame'
 import ResearchDevelopmentGame from './games/research-development/ResearchDevelopmentGame'
 import Loader from './components/Loader'
+import Dashboard from './data-dashboard/Dashboard'
 import Auth0ProviderWithHistory from './auth/auth0-provider-with-history'
 import ProtectedRoute from './auth/ProtectedRoute'
 
@@ -85,7 +86,7 @@ const App = () => {
 									<ResearchDevelopmentGame />
 								</Route>
 								<Route path='/outro' component={OutroPage} />
-								<ProtectedRoute path='/dashboard' component={AboutPage} />
+								<ProtectedRoute path='/dashboard' component={Dashboard} />
 								<Route>
 									<NotFound />
 								</Route>
