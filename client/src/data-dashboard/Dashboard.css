@@ -1,0 +1,13 @@
+.dashboard-background {
+    background: linear-gradient(rgba(174, 220, 232, 1), rgba(235, 249, 253, 1)); 
+    height: 100vh;
+    width: 100%;
+}
+
+.filterForm {
+    font-size: 20px;
+}
+
+.filterForm:hover{
+    cursor: pointer;
+}
